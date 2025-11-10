@@ -48,9 +48,9 @@ export const SpecialtyPageClient: React.FC<SpecialtyPageClientProps> = ({ specia
       )}
 
       {/* All Gyms Section */}
-      <section>
+      <section className="mb-12">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-text-white mb-6">
+          <h2 className="text-2xl font-bold text-text-white">
             All {specialty.name} Gyms
           </h2>
           <span className="text-text-muted">

@@ -352,6 +352,47 @@ export default function SpecialtyPage({ params }: SpecialtyPageProps) {
 
         {/* Client Component for Filtering/Sorting */}
         <SpecialtyPageClient specialty={specialty} initialGyms={gyms} />
+
+        {/* FAQ Section */}
+        <section className="mt-16 py-12 bg-background-dark-gray rounded-card">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-text-white mb-4">
+                Frequently Asked Questions About {specialty.name} in Cyprus
+              </h2>
+            </div>
+            
+            <div className="space-y-6">
+              <div className="bg-surface-card rounded-card p-6">
+                <h3 className="text-xl font-bold text-text-white mb-3">What are the best {specialty.name.toLowerCase()} gyms in Cyprus?</h3>
+                <p className="text-text-light">
+                  Our directory lists {specialty.gymCount} top-rated {specialty.name.toLowerCase()} gyms and facilities in Cyprus. You can browse by city, read reviews, and compare amenities to find the best {specialty.name.toLowerCase()} training facility near me that matches your fitness goals.
+                </p>
+              </div>
+              
+              <div className="bg-surface-card rounded-card p-6">
+                <h3 className="text-xl font-bold text-text-white mb-3">How do I find {specialty.name.toLowerCase()} training near me?</h3>
+                <p className="text-text-light">
+                  Use our directory to search for {specialty.name.toLowerCase()} gyms by city. Each listing includes location, ratings, reviews, and amenities. Filter by your preferred city to find {specialty.name.toLowerCase()} facilities close to you.
+                </p>
+              </div>
+              
+              <div className="bg-surface-card rounded-card p-6">
+                <h3 className="text-xl font-bold text-text-white mb-3">What should I look for in a {specialty.name.toLowerCase()} gym?</h3>
+                <p className="text-text-light">
+                  When choosing a {specialty.name.toLowerCase()} gym, consider the quality of equipment, instructor qualifications, class schedules, facility cleanliness, and member reviews. Our directory helps you compare these factors across different {specialty.name.toLowerCase()} facilities in Cyprus.
+                </p>
+              </div>
+              
+              <div className="bg-surface-card rounded-card p-6">
+                <h3 className="text-xl font-bold text-text-white mb-3">Are there {specialty.name.toLowerCase()} classes available in Cyprus?</h3>
+                <p className="text-text-light">
+                  Yes, many {specialty.name.toLowerCase()} gyms in Cyprus offer group classes, personal training, and specialized programs. Browse our directory to find {specialty.name.toLowerCase()} facilities that offer the type of training and class schedule that fits your needs.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
     </>

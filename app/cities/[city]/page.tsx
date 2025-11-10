@@ -170,6 +170,47 @@ export default function CityPage({ params }: CityPageProps) {
 
         {/* Client Component for Filtering/Sorting */}
         <CityPageClient city={city} initialGyms={gyms} />
+
+        {/* FAQ Section */}
+        <section className="mt-16 py-12 bg-background-dark-gray rounded-card">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-text-white mb-4">
+                Frequently Asked Questions About Gyms in {city.name}
+              </h2>
+            </div>
+            
+            <div className="space-y-6">
+              <div className="bg-surface-card rounded-card p-6">
+                <h3 className="text-xl font-bold text-text-white mb-3">What are the best gyms in {city.name}?</h3>
+                <p className="text-text-light">
+                  Our directory lists {city.gymCount} top-rated gyms and fitness centers in {city.name}. You can filter by rating, specialty, amenities, and read reviews to find the best gym near me in {city.name} that matches your fitness goals.
+                </p>
+              </div>
+              
+              <div className="bg-surface-card rounded-card p-6">
+                <h3 className="text-xl font-bold text-text-white mb-3">Are there 24-hour gyms in {city.name}?</h3>
+                <p className="text-text-light">
+                  Yes, several gyms in {city.name} offer 24/7 access. Look for the "24/7 Access" amenity when browsing gym listings in {city.name}. These facilities are perfect for early morning workouts or late-night training sessions.
+                </p>
+              </div>
+              
+              <div className="bg-surface-card rounded-card p-6">
+                <h3 className="text-xl font-bold text-text-white mb-3">How do I find a gym near me in {city.name}?</h3>
+                <p className="text-text-light">
+                  Use our directory to browse gyms in {city.name}. You can filter by location, specialty, amenities, and ratings. Each listing includes the exact address, opening hours, and a map to help you find the closest gym near me in {city.name}.
+                </p>
+              </div>
+              
+              <div className="bg-surface-card rounded-card p-6">
+                <h3 className="text-xl font-bold text-text-white mb-3">What types of fitness facilities are available in {city.name}?</h3>
+                <p className="text-text-light">
+                  {city.name} offers a variety of fitness options including bodybuilding gyms, CrossFit boxes, yoga studios, MMA facilities, and comprehensive health clubs. Browse our directory to find specialized training facilities that match your interests.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
     </>
