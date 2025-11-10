@@ -106,24 +106,47 @@
 
 ## 🎯 What's Next - Immediate Priorities
 
-### Phase 6: Enhanced SEO & Schema (Next Up)
-1. **FAQ Schema Markup** ⭐ High Priority
+**See STRATEGIC_ACTION_PLAN.md for comprehensive tactical roadmap**
+
+### Phase 6: Enhanced SEO & Schema (Next Up) ⭐ Critical
+1. **FAQ Schema Markup** 🔴 Critical
    - Add FAQPage schema to homepage
-   - Add FAQPage schema to specialty pages
+   - Add FAQPage schema to all city pages
+   - Add FAQPage schema to all specialty pages
    - Target "People Also Ask" SERP features
    - **Impact:** Better SERP visibility, featured snippets
+   - **Timeline:** Week 1
 
-2. **Additional Gym Data** ⭐ High Priority
-   - Add more gyms across all specialties
-   - Add more 24-hour gyms
-   - Enhance gym descriptions with keywords
-   - Add more reviews
-   - **Impact:** Better content depth, more listings
+2. **Content Expansion** 🔴 Critical
+   - Expand to 18-20 gyms minimum (currently 6)
+   - Cover ALL cities and specialties
+   - Add keyword-rich descriptions (150-300 words)
+   - Add 2-4 reviews per gym
+   - Optimize all meta titles/descriptions
+   - **Impact:** Better content depth, comprehensive coverage
+   - **Timeline:** Week 1-2
 
-3. **Location-Specific Pages** ⭐ Medium Priority
+3. **Internal Linking Strategy** 🔴 Critical
+   - Build "Best Gyms in [City]" links
+   - Add "Best [Specialty] Gyms Near Me" links
+   - Create hub pages
+   - Add contextual links in descriptions
+   - **Impact:** Better SEO, user navigation
+   - **Timeline:** Week 2
+
+4. **Owner Claim/Upgrade Paths** 🔴 Critical
+   - Unclaimed listing CTAs
+   - Owner dashboard enhancements
+   - Member count editing interface
+   - Featured listing upgrade prompts
+   - **Impact:** Monetization, owner engagement
+   - **Timeline:** Week 2
+
+5. **Location-Specific Pages** 🟡 High Priority
    - Create "Gym Strovolos" page (170 vol, 30 diff)
-   - Create other high-volume location pages
+   - Create other high-volume neighborhood pages
    - **Impact:** Capture long-tail location keywords
+   - **Timeline:** Week 3
 
 ### Phase 7: Backend Integration (Future)
 1. **Database Setup**
@@ -242,11 +265,16 @@
 4. ⏳ Internal linking optimization
 
 ### Week 3-4: Backend Preparation
-1. ⏳ Set up database (Supabase recommended)
-2. ⏳ Create API routes
-3. ⏳ Migrate data structure
-4. ⏳ Implement member count system with verification
-5. ⏳ Test data flow
+1. ⏳ Write migration document (mock → database)
+2. ⏳ Design database schema
+3. ⏳ Create API endpoint specifications
+4. ⏳ Set up modular data layer structure
+5. ⏳ Set up database (Supabase recommended)
+6. ⏳ Create API routes
+7. ⏳ Migrate data structure
+8. ⏳ Implement member count system with verification
+9. ⏳ Test data flow
+10. ⏳ Set up GA4 and Search Console
 
 ### Month 2: Backend Integration
 1. ⏳ User authentication
@@ -302,8 +330,21 @@
 - Backend integration is the next major milestone
 - Current focus: SEO optimization and content expansion
 - All specialty pages are functional and optimized
+- **See STRATEGIC_ACTION_PLAN.md for comprehensive tactical roadmap**
 
 ---
 
-**Next Immediate Action:** Add FAQ schema markup for better SERP visibility
+## 📚 Documentation
+
+- **PROJECT_PLAN.md** - Comprehensive development plan
+- **TECHNICAL_REFERENCE.md** - Quick reference guide
+- **SEO_ANALYSIS.md** - SEO best practices analysis
+- **KEYWORD_STRATEGY.md** - SEO keyword strategy based on SEMrush data
+- **SEO_INDEX_ANALYSIS.md** - Homepage SEO analysis and improvements
+- **MEMBER_COUNT_SPECIFICATION.md** - Member count system implementation spec
+- **STRATEGIC_ACTION_PLAN.md** ⭐ - Comprehensive tactical roadmap and implementation guide
+
+---
+
+**Next Immediate Action:** Implement FAQ schema markup and expand gym listings to 18-20 gyms (see STRATEGIC_ACTION_PLAN.md)
 
