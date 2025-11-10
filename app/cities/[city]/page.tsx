@@ -84,10 +84,10 @@ export default function CityPage({ params }: CityPageProps) {
   const collectionSchema = generateCollectionPageSchema(
     `Best Gyms in ${city.name}, Cyprus`,
     city.description,
-    gyms.map(gym => ({
+    gyms.length > 0 ? gyms.map(gym => ({
       name: gym.name,
       url: `https://gymnearme.cy/gyms/${gym.slug}`,
-    }))
+    })) : []
   );
 
   // City-specific FAQs
@@ -98,7 +98,9 @@ export default function CityPage({ params }: CityPageProps) {
     },
     {
       question: `Are there 24-hour gyms in ${city.name}?`,
-      answer: `Yes, several gyms in ${city.name} offer 24/7 access. Look for the "24/7 Access" amenity when browsing gym listings in ${city.name}. These facilities are perfect for early morning workouts or late-night training sessions.`,
+      answer: city.gymCount > 0 
+        ? `Yes, several gyms in ${city.name} offer 24/7 access. Look for the "24/7 Access" amenity when browsing gym listings in ${city.name}. These facilities are perfect for early morning workouts or late-night training sessions.`
+        : `We're currently building our directory for ${city.name}. Check back soon for 24-hour gym listings, or list your gym to help others find fitness facilities in ${city.name}.`,
     },
     {
       question: `How do I find a gym near me in ${city.name}?`,

@@ -115,6 +115,7 @@ new-gym/
   - Organization schema
   - WebSite schema with search action
   - CollectionPage schema for city/specialty pages
+  - **FAQPage schema** for homepage, city pages, and specialty pages
 - [x] **Enhanced Meta Tags**
   - Open Graph tags for social sharing
   - Twitter Card tags
@@ -129,9 +130,13 @@ new-gym/
   - Added "24 Hour Gyms Near Me" section
   - Added "Benefits" section with keyword-rich content
   - Added "Complete Guide" section
-  - Added FAQ section for "People Also Ask"
+  - Added FAQ section for "People Also Ask" (visible + schema)
 - [x] **City Pages SEO** - Enhanced with "Best Gyms in [City]" content
+  - Visible FAQ sections on all city pages
+  - FAQPage schema for all city pages
 - [x] **Specialty Pages SEO** - Created/enhanced Personal Training, Swimming, Pilates, CrossFit pages
+  - Visible FAQ sections on all specialty pages
+  - FAQPage schema for all specialty pages
 - [x] **Keyword Strategy** - Based on SEMrush data (30 keywords, ~20,700+ monthly searches)
 - [x] **Content Expansion** - Added 3 new swimming pool gyms (targeting high-volume keywords)
 
@@ -182,7 +187,9 @@ All data is structured in TypeScript files in `lib/data/` and ready for easy mig
 
 ## 🔍 SEO Features
 
-- ✅ Schema.org structured data (LocalBusiness, BreadcrumbList, Organization)
+- ✅ Schema.org structured data (LocalBusiness, BreadcrumbList, Organization, WebSite, CollectionPage, **FAQPage**)
+- ✅ FAQPage schema on homepage, all city pages, and all specialty pages
+- ✅ Visible FAQ sections targeting "People Also Ask" SERP features
 - ✅ Open Graph and Twitter Card meta tags
 - ✅ Auto-generated sitemap.xml
 - ✅ Robots.txt configuration
@@ -231,13 +238,16 @@ All data is structured in TypeScript files in `lib/data/` and ready for easy mig
 
 ### Current Status
 - **Phase 5 Complete**: SEO optimization and content enhancement
+- **FAQ Schema Implemented**: FAQPage schema + visible FAQ sections on homepage, all city pages, and all specialty pages
 - **Site Status**: Stable and production-ready for frontend MVP
-- **Next Phase**: FAQ schema markup and additional content expansion
+- **Next Phase**: Content expansion (18-20 gyms) and internal linking optimization
 
 ### Future Enhancements (Post-MVP)
-- FAQ schema markup for better SERP features
-- More gym data (target: 15-20 gyms)
+- ✅ FAQ schema markup for better SERP features (COMPLETED)
+- More gym data (target: 18-20 gyms) - **In Progress**
+- Internal linking optimization
 - Location-specific pages (Strovolos, etc.)
+- Owner claim/upgrade paths with CTAs
 - Backend integration (Supabase)
 - User authentication
 - Real review system
