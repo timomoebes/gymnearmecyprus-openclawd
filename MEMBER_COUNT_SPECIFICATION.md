@@ -10,6 +10,8 @@
 
 Member count should only be displayed when it's verified or provided by the gym owner. This ensures data credibility and prevents misleading information from appearing in the directory.
 
+**CRITICAL RULE: NEVER scrape or guess member counts from the web. Only owner-submitted and verified data is trustworthy.**
+
 ---
 
 ## 🗄️ Database/Schema Level
@@ -153,13 +155,27 @@ Only include `member_count` in LocalBusiness schema when:
 - Hide in production or show disclaimer
 - Example: "1,200 Members (Demo Data)"
 
-### Production Migration
+### Production Migration & Data Acquisition
 
-- Set all imported member counts to `NULL` initially
+**Hybrid Listing Acquisition:**
+- Seed gyms by scraping public data (Google Maps, Apify workflow)
+- Import data using Supabase scripts or CSV
+- **All listings start as "Unclaimed"**
+- **Exclude "member count" from scraped/imported data** (unless already public and verified)
+- Publicly invite owners to claim and enrich listings
+- All member counts become available only after owner verification
+
+**Migration Rules:**
+- Set all imported/scraped member counts to `NULL` initially
 - Only populate when:
   - Owner provides during claim/edit
   - Verified through admin review
-  - Imported from trusted source (with verification)
+  - **NEVER from scraped or guessed data**
+
+**Demo Data (Development Only):**
+- Can display plausible sample counts with "Demo Data" badge
+- Only for MVP/testing purposes
+- Real data requires claim and verification
 
 ---
 

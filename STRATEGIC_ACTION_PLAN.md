@@ -33,15 +33,19 @@ member_count_last_updated TIMESTAMP NULL
 ✅ **DO:**
 - Make member count **optional/hidden** for all gyms except owner-claimed ones
 - Show "Owner Provided" badge beside publicly-displayed counts
-- Add "Demo Data" badge for mock/demo profiles
+- Add "Demo Data" badge for mock/demo profiles (development only)
 - Include in schema.org **only for verified data**
 - Add clear help text: "Visible only if owner-verified. For conversion trust only!"
+- Allow demo data to display plausible sample counts with "Demo Data" badge (for MVP/testing)
+- Require owner claim and verification for real member count data
 
 ❌ **DON'T:**
-- Attempt to guess or scrape member counts from the web
+- **NEVER attempt to guess or scrape member counts from the web**
+- **NEVER include member count in scraped/imported data** (unless already public and verified)
 - Enable sort/filter by member count for users
-- Display unverified counts publicly
-- Show member count for unclaimed real gyms
+- Display unverified counts publicly (except demo data with badge)
+- Show member count for unclaimed real gyms (leave blank or show "Demo Data" badge)
+- Trust any member count data that isn't owner-submitted and verified
 
 ### Form Implementation
 - **Add/Edit Gym Form:**
@@ -249,24 +253,31 @@ class SupabaseDataProvider implements DataProvider { ... }
 
 ## 7. Immediate Actions (Next Sprint) ⭐
 
-### Week 1: SEO & Schema
-- [ ] Add FAQPage schema to homepage
-- [ ] Add FAQPage schema to all city pages
-- [ ] Add FAQPage schema to all specialty pages
-- [ ] Test schema validation (Google Rich Results Test)
+### Week 1: SEO & Schema + Content Expansion (NOW)
+- [ ] **FAQ Schema Implementation** (Quick Win - ~2 hours)
+  - Add FAQPage schema to homepage
+  - Add FAQPage schema to all city pages
+  - Add FAQPage schema to all specialty pages
+  - Test schema validation (Google Rich Results Test)
 
-### Week 1-2: Content Expansion
-- [ ] Expand listings to 18-20 gyms
-- [ ] Ensure coverage across all cities
-- [ ] Ensure coverage across all specialties
-- [ ] Add keyword-rich descriptions
-- [ ] Add 2-4 reviews per gym
+- [ ] **Content Expansion** (Parallel - Hybrid Approach)
+  - Expand listings to 18-20 gyms using hybrid seeding strategy
+  - Seed from public data (mock/scraped structure, marked as "Unclaimed")
+  - Ensure coverage across all cities
+  - Ensure coverage across all specialties
+  - Add keyword-rich descriptions (150-300 words)
+  - Add 2-4 reviews per gym (marked as "Demo Review")
+  - **DO NOT include member count** (leave blank or use "Demo Data" badge only for development)
+  - Add "Claim your gym" CTAs to all unclaimed listings
 
-### Week 2: Owner Features
+### Week 2: Owner Features & Verification
 - [ ] Implement owner claim CTA on unclaimed listings
-- [ ] Add claim status badges
+  - "Claim your gym to complete your member stats, add amenities, photos, and upgrade to featured."
+- [ ] Add claim status badges ("Unclaimed" vs "Verified")
 - [ ] Create owner dashboard enhancements
-- [ ] Add member count editing interface
+- [ ] Add member count editing interface (owner-only, optional field)
+- [ ] Add "Verified" badge logic (only for owner-claimed gyms with confirmed data)
+- [ ] Implement member count verification workflow
 
 ### Week 2-3: Internal Linking
 - [ ] Audit all pages for internal links

@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import { getSpecialtyBySlug, getGymsBySpecialty, specialties } from '@/lib/data';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { SpecialtyPageClient } from './SpecialtyPageClient';
-import { generateBreadcrumbSchema, generateCollectionPageSchema } from '@/lib/utils/schema';
+import { generateBreadcrumbSchema, generateCollectionPageSchema, generateFAQPageSchema } from '@/lib/utils/schema';
 import { CheckCircle } from 'lucide-react';
 
 interface SpecialtyPageProps {
@@ -95,6 +95,28 @@ export default function SpecialtyPage({ params }: SpecialtyPageProps) {
     }))
   );
 
+  // Specialty-specific FAQs
+  const specialtyFaqs = [
+    {
+      question: `What are the best ${specialty.name} gyms in Cyprus?`,
+      answer: `Our directory lists ${specialty.gymCount} top-rated ${specialty.name.toLowerCase()} gyms and facilities in Cyprus. You can browse by city, read reviews, and compare amenities to find the best ${specialty.name.toLowerCase()} training facility near me that matches your fitness goals.`,
+    },
+    {
+      question: `How do I find ${specialty.name.toLowerCase()} training near me?`,
+      answer: `Use our directory to search for ${specialty.name.toLowerCase()} gyms by city. Each listing includes location, ratings, reviews, and amenities. Filter by your preferred city to find ${specialty.name.toLowerCase()} facilities close to you.`,
+    },
+    {
+      question: `What should I look for in a ${specialty.name.toLowerCase()} gym?`,
+      answer: `When choosing a ${specialty.name.toLowerCase()} gym, consider the quality of equipment, instructor qualifications, class schedules, facility cleanliness, and member reviews. Our directory helps you compare these factors across different ${specialty.name.toLowerCase()} facilities in Cyprus.`,
+    },
+    {
+      question: `Are there ${specialty.name.toLowerCase()} classes available in Cyprus?`,
+      answer: `Yes, many ${specialty.name.toLowerCase()} gyms in Cyprus offer group classes, personal training, and specialized programs. Browse our directory to find ${specialty.name.toLowerCase()} facilities that offer the type of training and class schedule that fits your needs.`,
+    },
+  ];
+
+  const faqSchema = generateFAQPageSchema(specialtyFaqs);
+
   return (
     <>
       {/* Schema.org JSON-LD */}
@@ -105,6 +127,10 @@ export default function SpecialtyPage({ params }: SpecialtyPageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       <div className="min-h-screen bg-background-dark">

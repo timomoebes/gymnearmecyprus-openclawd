@@ -118,13 +118,16 @@
    - **Timeline:** Week 1
 
 2. **Content Expansion** 🔴 Critical
-   - Expand to 18-20 gyms minimum (currently 6)
+   - Expand to 18-20 gyms minimum (currently 6) using **hybrid seeding strategy**
+   - Seed from public data (mock/scraped structure), all listings start as "Unclaimed"
    - Cover ALL cities and specialties
    - Add keyword-rich descriptions (150-300 words)
-   - Add 2-4 reviews per gym
+   - Add 2-4 reviews per gym (marked as "Demo Review")
+   - **DO NOT include member count** (leave blank or "Demo Data" badge only)
+   - Add "Claim your gym" CTAs to all unclaimed listings
    - Optimize all meta titles/descriptions
    - **Impact:** Better content depth, comprehensive coverage
-   - **Timeline:** Week 1-2
+   - **Timeline:** Week 1 (in parallel with FAQ schema)
 
 3. **Internal Linking Strategy** 🔴 Critical
    - Build "Best Gyms in [City]" links
@@ -135,11 +138,12 @@
    - **Timeline:** Week 2
 
 4. **Owner Claim/Upgrade Paths** 🔴 Critical
-   - Unclaimed listing CTAs
+   - Unclaimed listing CTAs: "Claim your gym to complete your member stats, add amenities, photos, and upgrade to featured"
    - Owner dashboard enhancements
-   - Member count editing interface
+   - Member count editing interface (owner-only, optional)
    - Featured listing upgrade prompts
-   - **Impact:** Monetization, owner engagement
+   - "Verified" badge logic (only for owner-claimed gyms with confirmed data)
+   - **Impact:** Monetization, owner engagement, data enrichment
    - **Timeline:** Week 2
 
 5. **Location-Specific Pages** 🟡 High Priority
@@ -174,11 +178,14 @@
    - **Impact:** User-generated content
 
 5. **Member Count System** ⭐ Important
+   - **CRITICAL: NEVER scrape or guess member counts** - only owner-submitted/verified
    - Database schema: `member_count` (INTEGER, nullable), `member_count_source` (TEXT enum), `member_count_verified` (BOOLEAN)
-   - Display logic: Only show verified/owner-provided counts
+   - Display logic: Only show verified/owner-provided counts (or "Demo Data" badge for development)
    - Owner forms: Optional field with privacy option
    - SEO: Only index verified counts in schema.org
-   - Mock data: Mark as "Demo Data" for clarity
+   - Hybrid seeding: All scraped/imported listings start with NULL member_count
+   - Demo data: Can display plausible counts with "Demo Data" badge (development only)
+   - Real data: Requires owner claim and verification
    - **Impact:** Trustworthy data, better conversion signals
    - **See:** MEMBER_COUNT_SPECIFICATION.md for full details
 
@@ -252,11 +259,20 @@
 
 ## 📋 Recommended Next Steps (Priority Order)
 
-### Week 1: SEO Enhancement
+### Week 1: SEO Enhancement + Content Expansion (NOW)
 1. ✅ Add gyms with swimming pools (COMPLETED)
-2. ⏳ Add FAQ schema markup to homepage and specialty pages
-3. ⏳ Add more gym data (aim for 15-20 total gyms)
-4. ⏳ Enhance gym descriptions with more keywords
+2. ⏳ **FAQ Schema Implementation** (Quick Win - ~2 hours)
+   - Add FAQPage schema to homepage
+   - Add FAQPage schema to all city pages
+   - Add FAQPage schema to all specialty pages
+3. ⏳ **Content Expansion** (Parallel - Hybrid Approach)
+   - Expand to 18-20 gyms using hybrid seeding strategy
+   - Seed from public data structure (all "Unclaimed")
+   - Cover all cities and specialties
+   - Add keyword-rich descriptions (150-300 words)
+   - Add 2-4 reviews per gym (marked as "Demo Review")
+   - **DO NOT include member count** (leave blank or "Demo Data" badge only)
+   - Add "Claim your gym" CTAs
 
 ### Week 2: Content Expansion
 1. ⏳ Create location-specific pages (Strovolos, etc.)
@@ -330,6 +346,8 @@
 - Backend integration is the next major milestone
 - Current focus: SEO optimization and content expansion
 - All specialty pages are functional and optimized
+- **Hybrid seeding strategy:** From public data, then owner-claim enrichment
+- **Member count protocol:** Only display demo numbers for pre-claim, require owner verification for real data
 - **See STRATEGIC_ACTION_PLAN.md for comprehensive tactical roadmap**
 
 ---

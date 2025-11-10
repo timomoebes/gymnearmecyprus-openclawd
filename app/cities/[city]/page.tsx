@@ -8,7 +8,7 @@ import { GymCard } from '@/components/gym/GymCard';
 import { Badge } from '@/components/shared/Badge';
 import { CityMap } from '@/components/city/CityMapWrapper';
 import { CityPageClient } from './CityPageClient';
-import { generateBreadcrumbSchema, generateCollectionPageSchema } from '@/lib/utils/schema';
+import { generateBreadcrumbSchema, generateCollectionPageSchema, generateFAQPageSchema } from '@/lib/utils/schema';
 
 interface CityPageProps {
   params: {
@@ -90,6 +90,28 @@ export default function CityPage({ params }: CityPageProps) {
     }))
   );
 
+  // City-specific FAQs
+  const cityFaqs = [
+    {
+      question: `What are the best gyms in ${city.name}?`,
+      answer: `Our directory lists ${city.gymCount} top-rated gyms and fitness centers in ${city.name}. You can filter by rating, specialty, amenities, and read reviews to find the best gym near me in ${city.name} that matches your fitness goals.`,
+    },
+    {
+      question: `Are there 24-hour gyms in ${city.name}?`,
+      answer: `Yes, several gyms in ${city.name} offer 24/7 access. Look for the "24/7 Access" amenity when browsing gym listings in ${city.name}. These facilities are perfect for early morning workouts or late-night training sessions.`,
+    },
+    {
+      question: `How do I find a gym near me in ${city.name}?`,
+      answer: `Use our directory to browse gyms in ${city.name}. You can filter by location, specialty, amenities, and ratings. Each listing includes the exact address, opening hours, and a map to help you find the closest gym near me in ${city.name}.`,
+    },
+    {
+      question: `What types of fitness facilities are available in ${city.name}?`,
+      answer: `${city.name} offers a variety of fitness options including bodybuilding gyms, CrossFit boxes, yoga studios, MMA facilities, and comprehensive health clubs. Browse our directory to find specialized training facilities that match your interests.`,
+    },
+  ];
+
+  const faqSchema = generateFAQPageSchema(cityFaqs);
+
   return (
     <>
       {/* Schema.org JSON-LD */}
@@ -100,6 +122,10 @@ export default function CityPage({ params }: CityPageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       <div className="min-h-screen bg-background-dark">
