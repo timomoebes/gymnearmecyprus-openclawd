@@ -1,6 +1,6 @@
 # GymNearMe Cyprus Directory
 
-A high-credibility, visually stunning gym directory for Cyprus optimized for Google Page 1 rankings, modeled after scratchanddentlocator.com.
+A high-credibility, visually stunning gym directory for Cyprus SEO optimized for Google Page 1 rankings.
 
 ## 🚀 Getting Started
 
