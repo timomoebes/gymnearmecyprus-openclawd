@@ -1,0 +1,404 @@
+import React from 'react';
+import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
+import { MapPin, Phone, Globe, Mail, Clock, Users, Calendar } from 'lucide-react';
+import { getGymBySlug, getCityById, getTopReviews, getGymsByCity, getAllGyms, getReviewsByGymId } from '@/lib/data';
+import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
+import { Rating } from '@/components/shared/Rating';
+import { Badge } from '@/components/shared/Badge';
+import { GymCard } from '@/components/gym/GymCard';
+import { Button } from '@/components/shared/Button';
+import { GymMap } from '@/components/gym/GymMapWrapper';
+import { generateLocalBusinessSchema, generateBreadcrumbSchema } from '@/lib/utils/schema';
+
+interface GymPageProps {
+  params: {
+    slug: string;
+  };
+}
+
+export async function generateStaticParams() {
+  const gyms = getAllGyms();
+  return gyms.map((gym) => ({
+    slug: gym.slug,
+  }));
+}
+
+export async function generateMetadata({ params }: GymPageProps): Promise<Metadata> {
+  const gym = getGymBySlug(params.slug);
+  
+  if (!gym) {
+    return {
+      title: 'Gym Not Found',
+    };
+  }
+
+  const city = getCityById(gym.cityId);
+  const ogImage = gym.images.length > 0 
+    ? `https://gymnearme.cy${gym.images[0]}`
+    : 'https://gymnearme.cy/logo.png';
+
+  return {
+    title: `${gym.name} - ${city?.name || 'Cyprus'} | Ratings, Reviews, Amenities`,
+    description: `${gym.description.substring(0, 160)}... Located in ${city?.name || 'Cyprus'}. Rating: ${gym.rating}/5 from ${gym.reviewCount} reviews.`,
+    keywords: `${gym.name}, ${city?.name} gym, ${gym.specialties.join(', ')}, fitness center ${city?.name}`,
+    openGraph: {
+      title: `${gym.name} - ${city?.name || 'Cyprus'}`,
+      description: gym.description.substring(0, 200),
+      url: `https://gymnearme.cy/gyms/${gym.slug}`,
+      siteName: 'GymNearMe Cyprus',
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: gym.name,
+        },
+      ],
+      locale: 'en_US',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${gym.name} - ${city?.name || 'Cyprus'}`,
+      description: gym.description.substring(0, 200),
+      images: [ogImage],
+    },
+  };
+}
+
+export default function GymPage({ params }: GymPageProps) {
+  const gym = getGymBySlug(params.slug);
+  
+  if (!gym) {
+    notFound();
+  }
+
+  const city = getCityById(gym.cityId);
+  const reviews = getTopReviews(gym.id, 5);
+  const allReviews = getReviewsByGymId(gym.id);
+  const cityGyms = getGymsByCity(gym.cityId).filter(g => g.id !== gym.id).slice(0, 3);
+
+  // Generate Schema.org JSON-LD
+  const localBusinessSchema = generateLocalBusinessSchema(gym, city?.name || 'Cyprus', allReviews);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: 'https://gymnearme.cy' },
+    { name: 'Cities', url: 'https://gymnearme.cy/cities' },
+    ...(city ? [{ name: city.name, url: `https://gymnearme.cy/cities/${city.slug}` }] : []),
+    { name: gym.name, url: `https://gymnearme.cy/gyms/${gym.slug}` },
+  ]);
+
+  const openingHours = [
+    { day: 'Monday', hours: gym.openingHours.monday },
+    { day: 'Tuesday', hours: gym.openingHours.tuesday },
+    { day: 'Wednesday', hours: gym.openingHours.wednesday },
+    { day: 'Thursday', hours: gym.openingHours.thursday },
+    { day: 'Friday', hours: gym.openingHours.friday },
+    { day: 'Saturday', hours: gym.openingHours.saturday },
+    { day: 'Sunday', hours: gym.openingHours.sunday },
+  ];
+
+  return (
+    <>
+      {/* Schema.org JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
+      <div className="min-h-screen bg-background-dark">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <Breadcrumbs
+          items={[
+            { label: 'Cities', href: '/cities' },
+            ...(city ? [{ label: city.name, href: `/cities/${city.slug}` }] : []),
+            { label: gym.name, href: `/gyms/${gym.slug}` },
+          ]}
+        />
+
+        {/* Hero Section */}
+        <div className="mb-8">
+          <div className="flex items-start justify-between mb-4">
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-3">
+                <h1 className="text-4xl md:text-5xl font-bold text-text-white">
+                  {gym.name}
+                </h1>
+                {gym.featured && <Badge variant="featured">Featured</Badge>}
+              </div>
+              {city && (
+                <div className="flex items-center text-text-muted mb-4">
+                  <MapPin className="w-5 h-5 mr-2" />
+                  <span className="text-lg">{city.name}, Cyprus</span>
+                </div>
+              )}
+              <Rating rating={gym.rating} reviewCount={gym.reviewCount} size="lg" />
+            </div>
+          </div>
+
+          {/* Quick Actions */}
+          <div className="flex flex-wrap gap-4 mb-6">
+            {gym.phone && (
+              <a href={`tel:${gym.phone}`}>
+                <Button variant="outline" size="sm">
+                  <Phone className="w-4 h-4 mr-2" />
+                  Call
+                </Button>
+              </a>
+            )}
+            {gym.website && (
+              <a href={gym.website} target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" size="sm">
+                  <Globe className="w-4 h-4 mr-2" />
+                  Website
+                </Button>
+              </a>
+            )}
+            <a
+              href={`https://www.openstreetmap.org/?mlat=${gym.coordinates[0]}&mlon=${gym.coordinates[1]}&zoom=15`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="outline" size="sm">
+                <MapPin className="w-4 h-4 mr-2" />
+                Directions
+              </Button>
+            </a>
+          </div>
+        </div>
+
+        {/* Image Gallery */}
+        {gym.images.length > 0 && (
+          <div className="mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {gym.images.slice(0, 3).map((image, index) => (
+                <div
+                  key={index}
+                  className="relative h-64 bg-surface-card rounded-card overflow-hidden"
+                >
+                  <div className="w-full h-full bg-gradient-to-br from-primary-blue/20 to-primary-purple/20 flex items-center justify-center">
+                    <span className="text-text-muted">Image {index + 1}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Key Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+          <div className="bg-surface-card rounded-card p-4 text-center">
+            <Rating rating={gym.rating} showCount={false} size="md" />
+            <p className="text-text-muted text-sm mt-2">Rating</p>
+          </div>
+          <div className="bg-surface-card rounded-card p-4 text-center">
+            <div className="text-2xl font-bold text-text-white">{gym.reviewCount}</div>
+            <p className="text-text-muted text-sm mt-2">Reviews</p>
+          </div>
+          {gym.memberCount && (
+            <div className="bg-surface-card rounded-card p-4 text-center">
+              <div className="text-2xl font-bold text-text-white flex items-center justify-center gap-1">
+                <Users className="w-5 h-5" />
+                {gym.memberCount.toLocaleString()}
+              </div>
+              <p className="text-text-muted text-sm mt-2">Members</p>
+            </div>
+          )}
+          {gym.yearsInBusiness && (
+            <div className="bg-surface-card rounded-card p-4 text-center">
+              <div className="text-2xl font-bold text-text-white flex items-center justify-center gap-1">
+                <Calendar className="w-5 h-5" />
+                {gym.yearsInBusiness}
+              </div>
+              <p className="text-text-muted text-sm mt-2">Years</p>
+            </div>
+          )}
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Main Content */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* About Section */}
+            <section className="bg-surface-card rounded-card p-6">
+              <h2 className="text-2xl font-bold text-text-white mb-4">About</h2>
+              <p className="text-text-light leading-relaxed">{gym.description}</p>
+            </section>
+
+            {/* Specialties & Amenities */}
+            <section className="bg-surface-card rounded-card p-6">
+              <h2 className="text-2xl font-bold text-text-white mb-4">Specialties</h2>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {gym.specialties.map((specialty) => (
+                  <Badge key={specialty} variant="specialty">
+                    {specialty}
+                  </Badge>
+                ))}
+              </div>
+              <h2 className="text-2xl font-bold text-text-white mb-4">Amenities</h2>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {gym.amenities.map((amenity) => (
+                  <div
+                    key={amenity}
+                    className="flex items-center text-text-light text-sm"
+                  >
+                    <span className="w-2 h-2 bg-primary-blue rounded-full mr-2" />
+                    {amenity}
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Opening Hours */}
+            <section className="bg-surface-card rounded-card p-6">
+              <h2 className="text-2xl font-bold text-text-white mb-4 flex items-center gap-2">
+                <Clock className="w-6 h-6" />
+                Opening Hours
+              </h2>
+              <div className="space-y-2">
+                {openingHours.map(({ day, hours }) => (
+                  <div
+                    key={day}
+                    className="flex justify-between items-center py-2 border-b border-surface-lighter last:border-0"
+                  >
+                    <span className="text-text-light font-medium">{day}</span>
+                    <span className="text-text-muted">{hours || 'Closed'}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Top Reviews */}
+            {reviews.length > 0 && (
+              <section className="bg-surface-card rounded-card p-6">
+                <h2 className="text-2xl font-bold text-text-white mb-4">
+                  Top Reviews
+                </h2>
+                <div className="space-y-6">
+                  {reviews.map((review) => (
+                    <div
+                      key={review.id}
+                      className="border-b border-surface-lighter last:border-0 pb-6 last:pb-0"
+                    >
+                      <div className="flex items-start justify-between mb-2">
+                        <div>
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="font-semibold text-text-white">
+                              {review.reviewerName}
+                            </span>
+                            {review.verified && (
+                              <Badge variant="rating" className="text-xs">
+                                Verified
+                              </Badge>
+                            )}
+                          </div>
+                          <Rating rating={review.rating} showCount={false} size="sm" />
+                        </div>
+                        <span className="text-text-muted text-sm">
+                          {new Date(review.date).toLocaleDateString()}
+                        </span>
+                      </div>
+                      <p className="text-text-light mt-2">{review.text}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 pt-6 border-t border-surface-lighter">
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(gym.name + ' ' + gym.address)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary-blue hover:underline text-sm font-medium"
+                  >
+                    View all reviews on Google Maps →
+                  </a>
+                </div>
+              </section>
+            )}
+          </div>
+
+          {/* Sidebar */}
+          <div className="space-y-6">
+            {/* Contact Info */}
+            <div className="bg-surface-card rounded-card p-6">
+              <h3 className="text-xl font-bold text-text-white mb-4">Contact</h3>
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-primary-blue mt-0.5 flex-shrink-0" />
+                  <span className="text-text-light">{gym.address}</span>
+                </div>
+                {gym.phone && (
+                  <div className="flex items-center gap-3">
+                    <Phone className="w-5 h-5 text-primary-blue flex-shrink-0" />
+                    <a
+                      href={`tel:${gym.phone}`}
+                      className="text-text-light hover:text-primary-blue transition-colors"
+                    >
+                      {gym.phone}
+                    </a>
+                  </div>
+                )}
+                {gym.email && (
+                  <div className="flex items-center gap-3">
+                    <Mail className="w-5 h-5 text-primary-blue flex-shrink-0" />
+                    <a
+                      href={`mailto:${gym.email}`}
+                      className="text-text-light hover:text-primary-blue transition-colors"
+                    >
+                      {gym.email}
+                    </a>
+                  </div>
+                )}
+                {gym.website && (
+                  <div className="flex items-center gap-3">
+                    <Globe className="w-5 h-5 text-primary-blue flex-shrink-0" />
+                    <a
+                      href={gym.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-text-light hover:text-primary-blue transition-colors"
+                    >
+                      Visit Website
+                    </a>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Map Section */}
+            <div className="bg-surface-card rounded-card p-6">
+              <h3 className="text-xl font-bold text-text-white mb-4">Location</h3>
+              <GymMap gym={gym} />
+              <a
+                href={`https://www.openstreetmap.org/?mlat=${gym.coordinates[0]}&mlon=${gym.coordinates[1]}&zoom=15`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary-blue hover:underline text-sm mt-4 inline-block"
+              >
+                Open in OpenStreetMap →
+              </a>
+            </div>
+
+            {/* Related Gyms */}
+            {cityGyms.length > 0 && (
+              <div className="bg-surface-card rounded-card p-6">
+                <h3 className="text-xl font-bold text-text-white mb-4">
+                  Other Gyms in {city?.name}
+                </h3>
+                <div className="space-y-4">
+                  {cityGyms.map((relatedGym) => (
+                    <GymCard key={relatedGym.id} gym={relatedGym} showCity={false} />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+    </>
+  );
+}
+
