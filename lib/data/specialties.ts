@@ -73,6 +73,15 @@ export const specialties: Specialty[] = [
     gymCount: 0,
     relatedSpecialties: ['bodybuilding', 'crossfit'],
   },
+  {
+    id: 'personal-training',
+    name: 'Personal Training',
+    slug: 'personal-training',
+    description: 'Find certified personal trainers in Cyprus. One-on-one training sessions, customized workout plans, and expert guidance to achieve your fitness goals.',
+    icon: 'user',
+    gymCount: 0,
+    relatedSpecialties: ['bodybuilding', 'crossfit', 'fitness'],
+  },
 ];
 
 // Helper function to get specialty by slug

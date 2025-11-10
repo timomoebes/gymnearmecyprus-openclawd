@@ -31,10 +31,36 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
     };
   }
 
+  const cityNameLower = city.name.toLowerCase();
+  const isLimassol = cityNameLower.includes('limassol');
+  const isNicosia = cityNameLower.includes('nicosia');
+  const isLarnaca = cityNameLower.includes('larnaca');
+  const isPaphos = cityNameLower.includes('paphos');
+  
+  // Build keyword-rich title and description
+  let title = `Best Gyms in ${city.name}, Cyprus | Find Gyms Near Me in ${city.name}`;
+  let description = `Find the best gyms in ${city.name}. Search fitness centers, health clubs, and gyms near me in ${city.name}. Compare ratings, reviews, amenities, and find your perfect workout space.`;
+  let keywords = `gym ${cityNameLower}, best gym ${cityNameLower}, gyms in ${cityNameLower}, fitness center ${cityNameLower}, gym near me ${cityNameLower}, ${cityNameLower} gyms, cyprus gyms`;
+  
+  // Add specific keywords for high-volume cities
+  if (isLimassol) {
+    title = `Best Gyms in Limassol | Find Gyms Near Me in Limassol, Cyprus | ${city.gymCount} Gyms`;
+    keywords += ', best gym limassol, gym limassol';
+  } else if (isNicosia) {
+    title = `Best Gyms in Nicosia | Find Gyms Near Me in Nicosia, Cyprus | ${city.gymCount} Gyms`;
+    keywords += ', best gyms in nicosia, gym nicosia, gym strovolos';
+  } else if (isLarnaca) {
+    title = `Best Gyms in Larnaca | Find Gyms Near Me in Larnaca, Cyprus | ${city.gymCount} Gyms`;
+    keywords += ', gym larnaca';
+  } else if (isPaphos) {
+    title = `Best Gyms in Paphos | Find Gyms Near Me in Paphos, Cyprus | ${city.gymCount} Gyms`;
+    keywords += ', gym paphos';
+  }
+
   return {
-    title: `Best Gyms in ${city.name}, Cyprus | ${city.gymCount} Gyms Listed`,
-    description: city.description,
-    keywords: `gyms ${city.name}, fitness centers ${city.name}, ${city.name} gyms, cyprus gyms`,
+    title,
+    description,
+    keywords,
   };
 }
 
@@ -89,12 +115,12 @@ export default function CityPage({ params }: CityPageProps) {
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-4">
             <h1 className="text-4xl md:text-5xl font-bold text-text-white">
-              Best Gyms in {city.name}
+              Best Gyms in {city.name}, Cyprus
             </h1>
             <MapPin className="w-8 h-8 text-primary-blue" />
           </div>
           <p className="text-xl text-text-light max-w-3xl mb-4">
-            {city.description}
+            Find the best gyms in {city.name}. Search fitness centers, health clubs, and gyms near me in {city.name}. Compare ratings, reviews, amenities, and find your perfect workout space. Our directory includes {city.gymCount} top-rated gyms and fitness centers in {city.name}.
           </p>
           <div className="flex items-center gap-4 text-text-muted">
             <span className="text-lg font-semibold text-text-white">

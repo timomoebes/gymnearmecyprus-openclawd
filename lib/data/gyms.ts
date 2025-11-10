@@ -170,6 +170,110 @@ export const gyms: Gym[] = [
     createdAt: '2018-02-14',
     updatedAt: '2024-01-19',
   },
+  {
+    id: 'aqua-fitness-nicosia',
+    name: 'Aqua Fitness Nicosia',
+    slug: 'aqua-fitness-nicosia',
+    cityId: 'nicosia',
+    address: '45 Makarios Avenue, Nicosia 1065',
+    coordinates: [35.1750, 33.3600],
+    phone: '+357-22-789012',
+    website: 'https://aquafitnessnicosia.com',
+    email: 'info@aquafitnessnicosia.com',
+    specialties: ['Swimming', 'Personal Training', 'Yoga'],
+    amenities: ['Parking', 'Showers', 'Locker Rooms', 'Swimming Pool', 'Indoor Pool', 'Outdoor Pool', 'Sauna', 'Steam Room', 'Cafe', 'Personal Training'],
+    rating: 4.7,
+    reviewCount: 156,
+    featured: true,
+    description: 'Aqua Fitness Nicosia is a premier health club featuring state-of-the-art swimming facilities. Our facility includes both indoor and outdoor pools, perfect for lap swimming, water aerobics, and aquatic fitness. Located in the heart of Nicosia, we offer comprehensive fitness programs including swimming lessons, personal training, and group classes.',
+    images: [
+      '/images/gyms/aqua-fitness-1.jpg',
+      '/images/gyms/aqua-fitness-2.jpg',
+      '/images/gyms/aqua-fitness-3.jpg',
+    ],
+    openingHours: {
+      monday: '6:00 AM - 10:00 PM',
+      tuesday: '6:00 AM - 10:00 PM',
+      wednesday: '6:00 AM - 10:00 PM',
+      thursday: '6:00 AM - 10:00 PM',
+      friday: '6:00 AM - 10:00 PM',
+      saturday: '7:00 AM - 9:00 PM',
+      sunday: '8:00 AM - 8:00 PM',
+    },
+    memberCount: 1800,
+    yearsInBusiness: 10,
+    createdAt: '2014-03-15',
+    updatedAt: '2024-01-25',
+  },
+  {
+    id: 'olympus-health-club-nicosia',
+    name: 'Olympus Health Club Nicosia',
+    slug: 'olympus-health-club-nicosia',
+    cityId: 'nicosia',
+    address: '12 Stasikratous Street, Nicosia 1065',
+    coordinates: [35.1700, 33.3650],
+    phone: '+357-22-890123',
+    website: 'https://olympushealthclub.com',
+    email: 'nicosia@olympushealthclub.com',
+    specialties: ['Swimming', 'Bodybuilding', 'Personal Training'],
+    amenities: ['Parking', 'Showers', 'Locker Rooms', 'Swimming Pool', 'Olympic Pool', 'Indoor Pool', 'Sauna', 'Steam Room', 'Jacuzzi', 'Personal Training', 'Nutrition Counseling'],
+    rating: 4.8,
+    reviewCount: 234,
+    featured: true,
+    description: 'Olympus Health Club Nicosia is one of the most prestigious health clubs in the capital. Our facility features an Olympic-size swimming pool, perfect for serious swimmers and competitive training. Along with our comprehensive gym facilities, we offer swimming lessons, water aerobics classes, and personal training services. Our pools in Nicosia are among the best-equipped in Cyprus.',
+    images: [
+      '/images/gyms/olympus-1.jpg',
+      '/images/gyms/olympus-2.jpg',
+      '/images/gyms/olympus-3.jpg',
+    ],
+    openingHours: {
+      monday: '5:30 AM - 11:00 PM',
+      tuesday: '5:30 AM - 11:00 PM',
+      wednesday: '5:30 AM - 11:00 PM',
+      thursday: '5:30 AM - 11:00 PM',
+      friday: '5:30 AM - 11:00 PM',
+      saturday: '6:00 AM - 10:00 PM',
+      sunday: '7:00 AM - 9:00 PM',
+    },
+    memberCount: 2800,
+    yearsInBusiness: 15,
+    createdAt: '2009-06-01',
+    updatedAt: '2024-01-20',
+  },
+  {
+    id: 'coastal-fitness-limassol',
+    name: 'Coastal Fitness Limassol',
+    slug: 'coastal-fitness-limassol',
+    cityId: 'limassol',
+    address: '88 Amathus Avenue, Limassol 3040',
+    coordinates: [34.7150, 33.0300],
+    phone: '+357-25-901234',
+    website: 'https://coastalfitnesslimassol.com',
+    email: 'info@coastalfitnesslimassol.com',
+    specialties: ['Swimming', 'CrossFit', 'Yoga'],
+    amenities: ['Parking', 'Showers', 'Locker Rooms', 'Swimming Pool', 'Outdoor Pool', 'Beach Access', 'Personal Training', 'Cafe'],
+    rating: 4.6,
+    reviewCount: 142,
+    featured: false,
+    description: 'Coastal Fitness Limassol offers a unique fitness experience with both indoor and outdoor swimming pools. Our facility combines traditional gym equipment with aquatic fitness options. Perfect for those who enjoy swimming as part of their fitness routine, we offer lap swimming, water aerobics, and pool-based training programs.',
+    images: [
+      '/images/gyms/coastal-fitness-1.jpg',
+      '/images/gyms/coastal-fitness-2.jpg',
+    ],
+    openingHours: {
+      monday: '6:00 AM - 10:00 PM',
+      tuesday: '6:00 AM - 10:00 PM',
+      wednesday: '6:00 AM - 10:00 PM',
+      thursday: '6:00 AM - 10:00 PM',
+      friday: '6:00 AM - 10:00 PM',
+      saturday: '7:00 AM - 9:00 PM',
+      sunday: '8:00 AM - 8:00 PM',
+    },
+    memberCount: 1200,
+    yearsInBusiness: 7,
+    createdAt: '2017-04-10',
+    updatedAt: '2024-01-18',
+  },
 ];
 
 // Helper functions
@@ -186,8 +290,27 @@ export const getGymsByCity = (cityId: string): Gym[] => {
 };
 
 export const getGymsBySpecialty = (specialtyName: string): Gym[] => {
+  const specialtyLower = specialtyName.toLowerCase();
+  
+  // Special handling for Personal Training - check both specialties and amenities
+  if (specialtyLower === 'personal training' || specialtyLower === 'personal-training') {
+    return gyms.filter(gym => 
+      gym.specialties.some(s => s.toLowerCase().includes('personal training')) ||
+      gym.amenities.some(a => a.toLowerCase().includes('personal training'))
+    );
+  }
+  
+  // Special handling for Swimming - check both specialties and amenities (pools)
+  if (specialtyLower === 'swimming') {
+    return gyms.filter(gym => 
+      gym.specialties.some(s => s.toLowerCase() === 'swimming') ||
+      gym.amenities.some(a => a.toLowerCase().includes('pool') || a.toLowerCase().includes('swimming'))
+    );
+  }
+  
+  // Standard specialty matching - case-insensitive
   return gyms.filter(gym => 
-    gym.specialties.some(s => s.toLowerCase() === specialtyName.toLowerCase())
+    gym.specialties.some(s => s.toLowerCase() === specialtyLower)
   );
 };
 

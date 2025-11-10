@@ -4,6 +4,19 @@ import { specialties } from '@/lib/data';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 
 export default function SpecialtiesPage() {
+  // Assign emojis to specialties (matching homepage)
+  const specialtyEmojis: Record<string, string> = {
+    'crossfit': '🔥',
+    'bodybuilding': '💪',
+    'yoga': '🧘',
+    'pilates': '🤸',
+    'mma': '🥊',
+    'boxing': '👊',
+    'swimming': '🏊',
+    'powerlifting': '🏋️',
+    'personal-training': '👨‍🏫',
+  };
+
   return (
     <div className="min-h-screen bg-background-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -19,26 +32,35 @@ export default function SpecialtiesPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {specialties.map((specialty) => (
-            <Link
-              key={specialty.id}
-              href={`/specialties/${specialty.slug}`}
-              className="group bg-surface-card rounded-card p-8 text-center hover:bg-surface-lighter transition-all duration-200 hover:shadow-card-hover"
-            >
-              <div className="text-4xl mb-4">💪</div>
-              <h2 className="text-xl font-bold text-text-white mb-2 group-hover:text-primary-blue transition-colors">
-                {specialty.name}
-              </h2>
-              <p className="text-text-muted text-sm mb-4 line-clamp-2">
-                {specialty.description}
-              </p>
-              <div className="pt-4 border-t border-surface-lighter">
-                <span className="text-text-light font-semibold">
-                  {specialty.gymCount} {specialty.gymCount === 1 ? 'Gym' : 'Gyms'}
-                </span>
-              </div>
-            </Link>
-          ))}
+          {specialties.map((specialty) => {
+            const emoji = specialtyEmojis[specialty.id] || '💪';
+            
+            return (
+              <Link
+                key={specialty.id}
+                href={`/specialties/${specialty.slug}`}
+                className="group relative bg-surface-card rounded-card p-8 text-center hover:bg-surface-lighter transition-all duration-200 hover:shadow-card-hover overflow-hidden"
+              >
+                {/* Decorative background shape */}
+                <div className="absolute top-0 right-0 w-24 h-24 bg-primary-purple/10 rounded-full blur-2xl -mr-12 -mt-12 group-hover:bg-primary-purple/20 transition-colors" />
+                
+                <div className="relative z-10">
+                  <div className="text-4xl mb-4">{emoji}</div>
+                  <h2 className="text-xl font-bold text-text-white mb-2 group-hover:text-primary-blue transition-colors">
+                    {specialty.name}
+                  </h2>
+                  <p className="text-text-muted text-sm mb-4 line-clamp-2">
+                    {specialty.description}
+                  </p>
+                  <div className="pt-4 border-t border-surface-lighter">
+                    <span className="text-text-light font-semibold">
+                      {specialty.gymCount} {specialty.gymCount === 1 ? 'Gym' : 'Gyms'}
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </div>
