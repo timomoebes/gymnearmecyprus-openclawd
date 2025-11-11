@@ -1,0 +1,63 @@
+[
+  {
+    "id": "c1cedf1e-46b3-45d8-8e2a-14ccb3e9724b",
+    "name": "Ballet School & Pilates Studio Monika Perikleous",
+    "website": "https://www.monicadancepilatesstudio.com/",
+    "enrichment_status": "partial",
+    "description": null,
+    "opening_hours": null,
+    "amenities": [
+      "ac"
+    ],
+    "errors": [
+      "No description found",
+      "No opening hours found"
+    ]
+  },
+  {
+    "id": "e685a26c-b80b-4358-8eef-4ef399eada84",
+    "name": "Limassol Fitness",
+    "website": "http://limassol-fitness.com/",
+    "enrichment_status": "partial",
+    "description": null,
+    "opening_hours": null,
+    "amenities": [
+      "ac",
+      "martial arts"
+    ],
+    "errors": [
+      "No description found",
+      "No opening hours found"
+    ]
+  },
+  {
+    "id": "f2b85511-93a3-45dd-b2e1-e8cee676e732",
+    "name": "Soul Vibe Space",
+    "website": "https://soulvibespace.simplybook.it/",
+    "enrichment_status": "partial",
+    "description": "Welcome to the amazing space of Soul Vibe Space - a place where everyone is inspired, finds inner harmony and reveals its potential to the sounds of heart and soul. Here are born ideas that can change the world and projects that can lead to success and harmony.",
+    "opening_hours": null,
+    "amenities": [
+      "ac"
+    ],
+    "errors": [
+      "No opening hours found"
+    ]
+  },
+  {
+    "id": "8c1521e6-7412-4b73-ac90-3547fe972156",
+    "name": "Vinyasa Yoga Studio Limassol",
+    "website": "http://www.vinyasayogacyprus.com/",
+    "enrichment_status": "partial",
+    "description": null,
+    "opening_hours": null,
+    "amenities": [
+      "ac",
+      "yoga studio"
+    ],
+    "errors": [
+      "No description found",
+      "No opening hours found"
+    ]
+  }
+]
