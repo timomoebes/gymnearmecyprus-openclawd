@@ -55,6 +55,16 @@ new-gym/
 │   ├── data/              # Mock data (ready for backend)
 │   ├── types/             # TypeScript type definitions
 │   └── utils/             # Utility functions
+├── data/                  # Data processing
+│   ├── raw/               # Raw scraped data (CSV/JSON)
+│   └── clean/             # Cleaned data ready for import
+├── scripts/               # Data processing scripts
+│   ├── inspect_raw_data.py
+│   ├── gym_data_cleaner.py
+│   └── test_gym_import.py
+├── docs/                  # Documentation
+│   ├── data_mapping.md
+│   └── TEST_IMPORT_REPORT.md
 └── public/                # Static assets
     └── logo.png           # Site logo
 ```
@@ -67,6 +77,8 @@ new-gym/
 - **Leaflet.js** - OpenStreetMap integration
 - **Lucide React** - Icons
 - **next/image** - Image optimization
+- **Supabase** - PostgreSQL database backend
+- **Python** - Data processing and cleaning scripts (pandas, geopy, fuzzywuzzy)
 
 ## ✨ Features Implemented
 
@@ -249,9 +261,11 @@ All data is structured in TypeScript files in `lib/data/` and has been migrated 
 ### Current Status
 - **Phase 5 Complete**: SEO optimization and content enhancement
 - **FAQ Schema Implemented**: FAQPage schema + visible FAQ sections on homepage, all city pages, and all specialty pages
-- **Backend Integration**: ✅ Supabase database setup complete with 21 gyms migrated
+- **Backend Integration**: ✅ Supabase database setup complete with 26 gyms (21 mock + 5 test imports)
+- **Data Processing**: ✅ Automated cleaning pipeline for scraped gym data
+- **Test Import**: ✅ 5 Limassol gyms successfully imported and visible in frontend
 - **Site Status**: Stable and production-ready for frontend MVP
-- **Next Phase**: Connect frontend to Supabase API, add reviews migration, internal linking optimization
+- **Next Phase**: Bulk import remaining cleaned gyms, connect frontend to Supabase API, internal linking optimization
 
 ### Future Enhancements (Post-MVP)
 - ✅ FAQ schema markup for better SERP features (COMPLETED)
@@ -292,6 +306,8 @@ All data is structured in TypeScript files in `lib/data/` and has been migrated 
 - **MEMBER_COUNT_SPECIFICATION.md** - Member count system implementation specification
 - **STRATEGIC_ACTION_PLAN.md** ⭐ - Comprehensive tactical roadmap from MVP to top-ranking directory
 - **DATABASE_MIGRATION_STATUS.md** - Database migration status and results
+- **docs/data_mapping.md** - Apify to Supabase column mapping documentation
+- **docs/TEST_IMPORT_REPORT.md** - Test import results and verification
 
 ## 🎯 Key Features
 
