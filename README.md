@@ -291,6 +291,7 @@ All data is structured in TypeScript files in `lib/data/` and has been migrated 
 - **DEVELOPMENT_STATUS.md** - Current progress and roadmap
 - **MEMBER_COUNT_SPECIFICATION.md** - Member count system implementation specification
 - **STRATEGIC_ACTION_PLAN.md** ⭐ - Comprehensive tactical roadmap from MVP to top-ranking directory
+- **DATABASE_MIGRATION_STATUS.md** - Database migration status and results
 
 ## 🎯 Key Features
 
