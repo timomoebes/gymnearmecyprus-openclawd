@@ -9,6 +9,9 @@ export * from './specialties';
 // Re-export types for convenience
 export * from '../types';
 
+// Re-export specialty visibility config
+export { HIDDEN_FOR_MVP } from './specialties';
+
 // Data aggregation helpers
 import { cities } from './cities';
 import { gyms } from './gyms';

@@ -34,7 +34,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
-      <body>
+      <body className="bg-background-dark text-text-white antialiased">
         {/* Schema.org JSON-LD */}
         <script
           type="application/ld+json"

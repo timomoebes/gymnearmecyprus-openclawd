@@ -1,9 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
-import { specialties } from '@/lib/data';
+import { specialties, HIDDEN_FOR_MVP } from '@/lib/data';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 
 export default function SpecialtiesPage() {
+  // Filter out specialties hidden for MVP
+  const visibleSpecialties = specialties.filter(
+    specialty => !HIDDEN_FOR_MVP.includes(specialty.slug)
+  );
   // Assign emojis to specialties (matching homepage)
   const specialtyEmojis: Record<string, string> = {
     'crossfit': '🔥',
@@ -32,7 +36,7 @@ export default function SpecialtiesPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {specialties.map((specialty) => {
+          {visibleSpecialties.map((specialty) => {
             const emoji = specialtyEmojis[specialty.id] || '💪';
             
             return (

@@ -1,5 +1,9 @@
 import { Specialty } from '@/lib/types';
 
+// MVP Visibility: Hide certain specialties on frontend for MVP launch
+// Keep in database for future expansion
+export const HIDDEN_FOR_MVP = ['hotel-gym', 'women-only'];
+
 export const specialties: Specialty[] = [
   {
     id: 'crossfit',

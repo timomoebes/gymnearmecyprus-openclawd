@@ -188,7 +188,7 @@ export default function HomePage() {
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mb-8">
-            {specialties.map((specialty) => {
+            {specialties.filter(s => !['hotel-gym', 'women-only'].includes(s.slug)).map((specialty) => {
               // Assign emojis to specialties
               const specialtyEmojis: Record<string, string> = {
                 'crossfit': '🔥',

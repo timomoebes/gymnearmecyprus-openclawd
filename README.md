@@ -177,13 +177,23 @@ The project uses a custom dark/neon theme with:
 
 ## 📊 Data Structure
 
-### Mock Data (Ready for Backend Migration)
-- **Cities**: 6 major Cyprus cities (Limassol, Nicosia, Paphos, Larnaca, Ayia Napa, Protaras)
-- **Gyms**: 6 gyms with complete information (including 3 swimming pool gyms)
-- **Reviews**: Google Maps-style reviews for each gym
-- **Specialties**: 9 fitness specialties (CrossFit, Bodybuilding, Yoga, Pilates, MMA, Boxing, Swimming, Powerlifting, Personal Training)
+### Data Management
 
-All data is structured in TypeScript files in `lib/data/` and ready for easy migration to Supabase or any relational database.
+#### Backend Database (Supabase) ✅
+- **Database**: Supabase PostgreSQL
+- **Total Gyms**: 21 gyms in database
+- **Featured Gyms**: 5 featured listings
+- **Cities**: 6 cities (Limassol, Nicosia, Paphos, Larnaca, Ayia Napa, Protaras)
+- **Specialties**: 13 specialties (11 visible for MVP, 2 hidden: Hotel Gym, Women-Only)
+- **Member Count System**: Implemented with verification (5 gyms have demo member counts)
+- **Migration**: Complete SQL migration file available (`supabase/migrations/006_insert_all_mock_gyms.sql`)
+
+#### Mock Data (Frontend Fallback)
+- **Gyms**: 20 gyms with complete information
+- **Reviews**: Google Maps-style reviews for each gym
+- **Specialties**: 9 visible specialties for MVP
+
+All data is structured in TypeScript files in `lib/data/` and has been migrated to Supabase database.
 
 ## 🔍 SEO Features
 
@@ -239,25 +249,28 @@ All data is structured in TypeScript files in `lib/data/` and ready for easy mig
 ### Current Status
 - **Phase 5 Complete**: SEO optimization and content enhancement
 - **FAQ Schema Implemented**: FAQPage schema + visible FAQ sections on homepage, all city pages, and all specialty pages
+- **Backend Integration**: ✅ Supabase database setup complete with 21 gyms migrated
 - **Site Status**: Stable and production-ready for frontend MVP
-- **Next Phase**: Content expansion (18-20 gyms) and internal linking optimization
+- **Next Phase**: Connect frontend to Supabase API, add reviews migration, internal linking optimization
 
 ### Future Enhancements (Post-MVP)
 - ✅ FAQ schema markup for better SERP features (COMPLETED)
-- More gym data (target: 18-20 gyms) - **In Progress**
-- Internal linking optimization
-- Location-specific pages (Strovolos, etc.)
-- Owner claim/upgrade paths with CTAs
-- Backend integration (Supabase)
-- User authentication
-- Real review system
-- **Member Count System** - Verified member count display with owner privacy options
-- Advanced search filters
-- Comparison tool
-- User favorites/bookmarks
-- Email notifications
-- Blog section for SEO content
-- Analytics integration
+- ✅ More gym data (target: 18-20 gyms) - **COMPLETED** (21 gyms in database)
+- ✅ Backend integration (Supabase) - **COMPLETED** (Database setup and migration done)
+- ⏳ Connect frontend to Supabase API
+- ⏳ Migrate reviews to database
+- ⏳ Internal linking optimization
+- ⏳ Location-specific pages (Strovolos, etc.)
+- ⏳ Owner claim/upgrade paths with CTAs
+- ⏳ User authentication
+- ⏳ Real review system
+- ✅ **Member Count System** - Database schema implemented with verification
+- ⏳ Advanced search filters
+- ⏳ Comparison tool
+- ⏳ User favorites/bookmarks
+- ⏳ Email notifications
+- ⏳ Blog section for SEO content
+- ⏳ Analytics integration
 
 **See DEVELOPMENT_STATUS.md for detailed progress and roadmap.**
 
