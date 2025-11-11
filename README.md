@@ -269,8 +269,11 @@ All data is structured in TypeScript files in `lib/data/` and has been migrated 
 
 ### Future Enhancements (Post-MVP)
 - ✅ FAQ schema markup for better SERP features (COMPLETED)
-- ✅ More gym data (target: 18-20 gyms) - **COMPLETED** (21 gyms in database)
+- ✅ More gym data (target: 18-20 gyms) - **COMPLETED** (26 gyms: 21 mock + 5 test imports)
 - ✅ Backend integration (Supabase) - **COMPLETED** (Database setup and migration done)
+- ✅ **Data Processing Pipeline** - **COMPLETED** (Automated cleaning scripts for scraped data)
+- ✅ **Test Import** - **COMPLETED** (5 Limassol gyms imported and visible in frontend)
+- ⏳ Bulk import remaining cleaned gyms (45 more from Limassol scrape)
 - ⏳ Connect frontend to Supabase API
 - ⏳ Migrate reviews to database
 - ⏳ Internal linking optimization
@@ -308,6 +311,7 @@ All data is structured in TypeScript files in `lib/data/` and has been migrated 
 - **DATABASE_MIGRATION_STATUS.md** - Database migration status and results
 - **docs/data_mapping.md** - Apify to Supabase column mapping documentation
 - **docs/TEST_IMPORT_REPORT.md** - Test import results and verification
+- **docs/DATA_PROCESSING_GUIDE.md** - Complete data processing pipeline documentation
 
 ## 🎯 Key Features
 
