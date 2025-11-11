@@ -7,7 +7,9 @@
     "description": null,
     "opening_hours": null,
     "amenities": [
-      "ac"
+      "childcare",
+      "group classes",
+      "pilates studio"
     ],
     "errors": [
       "No description found",
@@ -22,7 +24,10 @@
     "description": null,
     "opening_hours": null,
     "amenities": [
-      "ac",
+      "personal training",
+      "cardio equipment",
+      "free weights",
+      "yoga studio",
       "martial arts"
     ],
     "errors": [
@@ -38,7 +43,7 @@
     "description": "Welcome to the amazing space of Soul Vibe Space - a place where everyone is inspired, finds inner harmony and reveals its potential to the sounds of heart and soul. Here are born ideas that can change the world and projects that can lead to success and harmony.",
     "opening_hours": null,
     "amenities": [
-      "ac"
+      "yoga studio"
     ],
     "errors": [
       "No opening hours found"
@@ -48,16 +53,23 @@
     "id": "8c1521e6-7412-4b73-ac90-3547fe972156",
     "name": "Vinyasa Yoga Studio Limassol",
     "website": "http://www.vinyasayogacyprus.com/",
-    "enrichment_status": "partial",
+    "enrichment_status": "success",
     "description": null,
-    "opening_hours": null,
+    "opening_hours": {
+      "mon": "6.30pm-8.30pm",
+      "wed": "6.30pm-8.00pm",
+      "thu": "6.00pm-8.00pm",
+      "fri": "6.30pm-8.00pm",
+      "sat": "8.30am-10.00am",
+      "sun": "closed",
+      "tue": "6.00pm-8.00pm"
+    },
     "amenities": [
-      "ac",
+      "group classes",
       "yoga studio"
     ],
     "errors": [
-      "No description found",
-      "No opening hours found"
+      "No description found"
     ]
   }
 ]

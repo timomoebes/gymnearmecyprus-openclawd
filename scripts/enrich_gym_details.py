@@ -17,7 +17,7 @@ PROJECT_ROOT = Path(__file__).parent.parent
 EXPORT_FILE = PROJECT_ROOT / "data" / "enrich" / "test_gyms_to_enrich.json"
 OUTPUT_FILE = PROJECT_ROOT / "data" / "enrich" / "enriched_test_gyms.json"
 
-# Standard amenities list for matching
+# Standard amenities list for matching (with variations)
 STANDARD_AMENITIES = [
     "pool", "swimming pool", "sauna", "jacuzzi", "steam room", "hot tub",
     "free parking", "parking", "wifi", "wi-fi", "air conditioning", "ac",
@@ -26,6 +26,64 @@ STANDARD_AMENITIES = [
     "cardio equipment", "free weights", "machines", "group classes", "yoga studio",
     "pilates studio", "boxing ring", "martial arts", "outdoor training"
 ]
+
+# Fuzzy amenity mapping (variations -> standard)
+AMENITY_VARIATIONS = {
+    # Air conditioning
+    'ac': 'air conditioning',
+    'air con': 'air conditioning',
+    'air-conditioning': 'air conditioning',
+    'a/c': 'air conditioning',
+    'airconditioning': 'air conditioning',
+    
+    # WiFi
+    'wifi': 'wifi',
+    'wi-fi': 'wifi',
+    'wireless': 'wifi',
+    'internet': 'wifi',
+    
+    # Parking
+    'parking': 'parking',
+    'free parking': 'parking',
+    'car park': 'parking',
+    'parking lot': 'parking',
+    
+    # Pool
+    'pool': 'swimming pool',
+    'swimming pool': 'swimming pool',
+    'swimming': 'swimming pool',
+    
+    # Personal training
+    'personal training': 'personal training',
+    'personal trainers': 'personal training',
+    'pt': 'personal training',
+    'trainer': 'personal training',
+    
+    # Locker rooms
+    'locker room': 'locker rooms',
+    'locker rooms': 'locker rooms',
+    'lockers': 'locker rooms',
+    'changing rooms': 'locker rooms',
+    'changing room': 'locker rooms',
+    
+    # Showers
+    'showers': 'showers',
+    'shower': 'showers',
+    
+    # Group classes
+    'group classes': 'group classes',
+    'classes': 'group classes',
+    'group training': 'group classes',
+    
+    # Yoga/Pilates (these are specialties, but can be amenities too)
+    'yoga studio': 'yoga studio',
+    'pilates studio': 'pilates studio',
+    
+    # Martial arts (specialty, but can be amenity)
+    'martial arts': 'martial arts',
+    'mma': 'martial arts',
+    'boxing': 'martial arts',
+}
 
 # Headers for ethical scraping
 HEADERS = {
@@ -162,29 +220,27 @@ def parse_time_range(time_str: str) -> Optional[str]:
     return None
 
 def extract_opening_hours(soup: BeautifulSoup) -> Optional[Dict]:
-    """Extract opening hours from page"""
+    """Extract opening hours from page using structured and plain-text methods"""
     hours_dict = {}
     
-    # Look for common patterns
-    keywords = ['opening hours', 'hours', 'schedule', 'opening times', 'business hours']
+    # Method 1: Structured scraping (tables, lists)
+    keywords = ['opening hours', 'hours', 'schedule', 'opening times', 'business hours', 'class schedule']
     
-    # Find sections with hours
     for keyword in keywords:
-        # Search in text
         elements = soup.find_all(string=re.compile(keyword, re.IGNORECASE))
         for elem in elements:
             parent = elem.find_parent()
             if parent:
-                # Look for table or list
+                # Look for table
                 table = parent.find('table')
                 if table:
                     rows = table.find_all('tr')
                     for row in rows:
                         cells = row.find_all(['td', 'th'])
                         if len(cells) >= 2:
-                            day = cells[0].get_text(strip=True).lower()[:3]  # First 3 chars
+                            day = cells[0].get_text(strip=True).lower()
                             time_str = cells[1].get_text(strip=True)
-                            if day and time_str:
+                            if day and time_str and 'closed' not in time_str.lower():
                                 hours_dict[day] = time_str
                 
                 # Look for list
@@ -193,85 +249,169 @@ def extract_opening_hours(soup: BeautifulSoup) -> Optional[Dict]:
                     items = ul.find_all('li')
                     for item in items:
                         text = item.get_text(strip=True)
-                        # Pattern: "Monday: 6AM-10PM"
-                        match = re.match(r'([A-Za-z]+):\s*(.+)', text)
+                        match = re.match(r'([A-Za-z]+day?):\s*(.+)', text, re.IGNORECASE)
                         if match:
-                            day = match.group(1).lower()[:3]
+                            day = match.group(1).lower()
                             time_str = match.group(2)
                             hours_dict[day] = time_str
     
-    # Look for specific class/ID patterns
+    # Method 2: Plain-text regex extraction (more robust)
+    all_text = soup.get_text(separator='\n')
+    lines = all_text.split('\n')
+    
+    # Day patterns
+    day_patterns = {
+        r'\b(monday|mon\.?)\b': 'monday',
+        r'\b(tuesday|tue\.?|tues\.?)\b': 'tuesday',
+        r'\b(wednesday|wed\.?)\b': 'wednesday',
+        r'\b(thursday|thu\.?|thur\.?|thurs\.?)\b': 'thursday',
+        r'\b(friday|fri\.?)\b': 'friday',
+        r'\b(saturday|sat\.?)\b': 'saturday',
+        r'\b(sunday|sun\.?)\b': 'sunday',
+    }
+    
+    # Time patterns (flexible)
+    time_pattern = r'(\d{1,2}[:.]?\d{0,2}\s*(?:am|pm|AM|PM|:00)?)\s*[-–—]\s*(\d{1,2}[:.]?\d{0,2}\s*(?:am|pm|AM|PM|:00)?)'
+    time_pattern_simple = r'(\d{1,2}[:.]?\d{0,2})\s*(?:am|pm|AM|PM)?\s*[-–—]\s*(\d{1,2}[:.]?\d{0,2})\s*(?:am|pm|AM|PM)?'
+    
+    # Search each line for day + time pattern
+    for line in lines:
+        line_lower = line.lower().strip()
+        if len(line) < 10 or len(line) > 100:  # Skip very short/long lines
+            continue
+        
+        # Check if line contains a day
+        for day_pattern, day_name in day_patterns.items():
+            if re.search(day_pattern, line_lower):
+                # Try to extract time from this line
+                time_match = re.search(time_pattern, line, re.IGNORECASE)
+                if not time_match:
+                    time_match = re.search(time_pattern_simple, line, re.IGNORECASE)
+                
+                if time_match:
+                    start_time = time_match.group(1).strip()
+                    end_time = time_match.group(2).strip()
+                    time_str = f"{start_time}-{end_time}"
+                    hours_dict[day_name] = time_str
+                    break
+                # Also check for "closed" or "24/7"
+                elif 'closed' in line_lower:
+                    hours_dict[day_name] = 'closed'
+                elif '24/7' in line_lower or '24 hours' in line_lower:
+                    hours_dict[day_name] = '24/7'
+    
+    # Method 3: Look for specific class/ID patterns
     selectors = [
-        'div.opening-hours', 'div.hours', 'div.schedule',
-        'table.opening-hours', 'div#hours', 'section.hours'
+        'div.opening-hours', 'div.hours', 'div.schedule', 'div.timetable',
+        'table.opening-hours', 'table.hours', 'div#hours', 'section.hours',
+        '.opening-times', '.business-hours'
     ]
     
     for selector in selectors:
-        element = soup.select_one(selector)
-        if element:
-            # Extract from table or list
-            table = element.find('table')
-            if table:
-                rows = table.find_all('tr')
-                for row in rows:
-                    cells = row.find_all(['td', 'th'])
-                    if len(cells) >= 2:
-                        day = cells[0].get_text(strip=True).lower()[:3]
-                        time_str = cells[1].get_text(strip=True)
-                        if day and time_str and 'closed' not in time_str.lower():
-                            hours_dict[day] = time_str
+        try:
+            element = soup.select_one(selector)
+            if element:
+                text = element.get_text(separator='\n')
+                for line in text.split('\n'):
+                    line_lower = line.lower().strip()
+                    for day_pattern, day_name in day_patterns.items():
+                        if re.search(day_pattern, line_lower):
+                            time_match = re.search(time_pattern, line, re.IGNORECASE)
+                            if not time_match:
+                                time_match = re.search(time_pattern_simple, line, re.IGNORECASE)
+                            if time_match:
+                                start_time = time_match.group(1).strip()
+                                end_time = time_match.group(2).strip()
+                                time_str = f"{start_time}-{end_time}"
+                                hours_dict[day_name] = time_str
+        except:
+            continue
     
-    # Standardize day names
+    # Standardize day names to 3-letter codes
     day_mapping = {
-        'mon': 'mon', 'tue': 'tue', 'wed': 'wed', 'thu': 'thu',
-        'fri': 'fri', 'sat': 'sat', 'sun': 'sun',
         'monday': 'mon', 'tuesday': 'tue', 'wednesday': 'wed', 'thursday': 'thu',
-        'friday': 'fri', 'saturday': 'sat', 'sunday': 'sun'
+        'friday': 'fri', 'saturday': 'sat', 'sunday': 'sun',
+        'mon': 'mon', 'tue': 'tue', 'wed': 'wed', 'thu': 'thu',
+        'fri': 'fri', 'sat': 'sat', 'sun': 'sun'
     }
     
     standardized = {}
     for day, time_str in hours_dict.items():
-        day_key = day_mapping.get(day, day[:3])
+        day_key = day_mapping.get(day.lower(), day[:3].lower())
         if day_key in ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']:
             standardized[day_key] = time_str
     
     return standardized if standardized else None
 
 def extract_amenities(soup: BeautifulSoup) -> List[str]:
-    """Extract amenities from page"""
+    """Extract amenities from page using structured and fuzzy text matching"""
     found_amenities = []
-    text_content = soup.get_text().lower()
+    all_text = soup.get_text(separator=' ').lower()
     
-    # Check for amenities section
+    # Method 1: Structured scraping (amenities sections)
     selectors = [
-        'div.amenities', 'div.facilities', 'div.features',
-        'ul.amenities', 'ul.facilities', 'section.amenities'
+        'div.amenities', 'div.facilities', 'div.features', 'div.services',
+        'ul.amenities', 'ul.facilities', 'section.amenities', 'section.facilities',
+        '.amenity', '.facility', '.feature'
     ]
     
     amenities_text = ""
     for selector in selectors:
-        element = soup.select_one(selector)
-        if element:
-            amenities_text += " " + element.get_text().lower()
+        try:
+            elements = soup.select(selector)
+            for element in elements:
+                amenities_text += " " + element.get_text(separator=' ').lower()
+        except:
+            continue
     
-    # Also check full page text
-    amenities_text += " " + text_content
+    # Method 2: Plain-text keyword search (fuzzy matching)
+    # Combine structured and full text
+    search_text = amenities_text + " " + all_text
     
-    # Match against standard amenities
-    for amenity in STANDARD_AMENITIES:
-        if amenity.lower() in amenities_text:
-            # Use standardized name
-            standardized = {
-                'swimming pool': 'pool',
-                'wi-fi': 'wifi',
-                'air conditioning': 'air conditioning',
-                'personal training': 'personal trainers',
-                'kids room': 'childcare',
-                'changing rooms': 'locker rooms',
-            }.get(amenity.lower(), amenity.lower())
-            
-            if standardized not in found_amenities:
-                found_amenities.append(standardized)
+    # Direct keyword matching (case-insensitive)
+    keyword_patterns = {
+        r'\b(pool|swimming pool|swimming)\b': 'swimming pool',
+        r'\b(sauna)\b': 'sauna',
+        r'\b(jacuzzi|hot tub|spa)\b': 'jacuzzi',
+        r'\b(steam room|steam)\b': 'steam room',
+        r'\b(parking|free parking|car park)\b': 'parking',
+        r'\b(wifi|wi-fi|wireless|internet)\b': 'wifi',
+        r'\b(ac|air con|air-conditioning|airconditioning|a/c)\b': 'air conditioning',
+        r'\b(personal training|personal trainers|pt|trainer)\b': 'personal training',
+        r'\b(childcare|kids room|children)\b': 'childcare',
+        r'\b(cafe|coffee|juice bar)\b': 'cafe',
+        r'\b(locker room|locker rooms|lockers|changing room|changing rooms)\b': 'locker rooms',
+        r'\b(shower|showers)\b': 'showers',
+        r'\b(cardio equipment|cardio|treadmill|elliptical)\b': 'cardio equipment',
+        r'\b(free weights|weights|dumbbells)\b': 'free weights',
+        r'\b(group classes|classes|group training)\b': 'group classes',
+        r'\b(yoga studio|yoga)\b': 'yoga studio',
+        r'\b(pilates studio|pilates)\b': 'pilates studio',
+        r'\b(martial arts|mma|boxing|judo|karate)\b': 'martial arts',
+    }
+    
+    # Search for patterns
+    for pattern, standard_name in keyword_patterns.items():
+        if re.search(pattern, search_text, re.IGNORECASE):
+            if standard_name not in found_amenities:
+                found_amenities.append(standard_name)
+    
+    # Method 3: List/table extraction
+    for selector in ['ul.amenities', 'ul.facilities', 'ol.amenities']:
+        try:
+            ul = soup.select_one(selector)
+            if ul:
+                items = ul.find_all('li')
+                for item in items:
+                    text = item.get_text(strip=True).lower()
+                    # Try to match against variations
+                    for variation, standard in AMENITY_VARIATIONS.items():
+                        if variation in text:
+                            if standard not in found_amenities:
+                                found_amenities.append(standard)
+                            break
+        except:
+            continue
     
     # Limit to 15 amenities
     return found_amenities[:15]
@@ -342,7 +482,21 @@ def enrich_gym(gym_data: Dict) -> Dict:
     
     # Determine status
     if result['description'] or result['opening_hours'] or result['amenities']:
-        result['enrichment_status'] = 'partial' if result['errors'] else 'success'
+        # Check if we have high confidence data
+        has_hours = bool(result['opening_hours'] and len(result['opening_hours']) >= 3)
+        has_amenities = bool(result['amenities'] and len(result['amenities']) > 0)
+        has_desc = bool(result['description'])
+        
+        if has_hours and has_amenities:
+            result['enrichment_status'] = 'success'
+        elif has_hours or has_amenities or has_desc:
+            # If we have some data but it's incomplete, mark for review
+            if not has_hours and not has_amenities:
+                result['enrichment_status'] = 'manual_review_needed'
+            else:
+                result['enrichment_status'] = 'partial'
+        else:
+            result['enrichment_status'] = 'failed'
     else:
         result['enrichment_status'] = 'failed'
     

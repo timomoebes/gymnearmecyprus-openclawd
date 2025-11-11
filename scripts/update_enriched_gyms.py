@@ -12,8 +12,9 @@ import sys
 PROJECT_ROOT = Path(__file__).parent.parent
 ENRICHED_FILE = PROJECT_ROOT / "data" / "enrich" / "enriched_test_gyms.json"
 
-# Amenity name to UUID mapping (from database)
+# Amenity name to UUID mapping (from database) - expanded with fuzzy matches
 AMENITY_MAPPING = {
+    # Standard names
     'cafe': '5d3ced7f-823a-43dd-91cc-45da729b5496',
     'cardio equipment': '030fd487-234b-450b-9080-c48419d88266',
     'group classes': '10959b05-8018-4780-a7d5-5053086d246a',
@@ -31,6 +32,11 @@ AMENITY_MAPPING = {
     'weight training': '8f9622bd-57de-44d0-8c34-7be3bd921cdc',
     'wifi': '2684754f-40c0-480e-a8cb-fedcb0983d0b',
     'wi-fi': '2684754f-40c0-480e-a8cb-fedcb0983d0b',
+    # Fuzzy matches (from enrichment script)
+    'air conditioning': None,  # Not in database - skip
+    'yoga studio': None,  # Specialty, not amenity - skip
+    'pilates studio': None,  # Specialty, not amenity - skip
+    'martial arts': None,  # Specialty, not amenity - skip
 }
 
 def map_amenity_to_uuid(amenity_name: str) -> str:
@@ -56,10 +62,11 @@ def generate_update_sql(enriched_gyms):
         # Skip description updates - we already have SEO-optimized descriptions
         # Only update if we found a significantly better one (not in this case)
         
-        # Update opening_hours if found (JSONB)
-        if gym.get('opening_hours'):
+        # Update opening_hours if found (JSONB) - this is valuable new data
+        if gym.get('opening_hours') and len(gym['opening_hours']) >= 3:
             hours_json = json.dumps(gym['opening_hours'])
-            updates_sql.append(f"opening_hours = '{hours_json}'::jsonb")
+            hours_escaped = hours_json.replace("'", "''")
+            updates_sql.append(f"opening_hours = '{hours_escaped}'::jsonb")
         
         # Map amenities to UUIDs and generate INSERT statements
         if gym.get('amenities'):
@@ -157,12 +164,12 @@ def main():
     print()
     for update in updates:
         print(f"  - {update['gym_name']}")
-        if update['description']:
-            print(f"    Description: {len(update['description'])} chars")
-        if update['opening_hours']:
+        if update.get('opening_hours'):
             print(f"    Opening hours: {len(update['opening_hours'])} days")
-        if update['amenities']:
-            print(f"    Amenities: {len(update['amenities'])} items (note: use gym_amenities table)")
+            print(f"      {json.dumps(update['opening_hours'], indent=6)}")
+        if update.get('amenities'):
+            print(f"    Amenities: {len(update['amenities'])} items")
+            print(f"      {', '.join(update['amenities'])}")
         print()
     
     print("=" * 80)
