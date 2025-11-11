@@ -754,15 +754,7 @@ export const gyms: Gym[] = [
     featured: false,
     description: 'Vinyasa Yoga Studio Limassol is a top-rated yoga studio in Limassol, Cyprus, specializing in Vinyasa flow yoga classes. Located at Athina Court on Ypsilantou 6, this studio offers dynamic yoga sessions that combine movement with breath for a transformative practice. With a perfect 5.0 rating and 17 reviews, it\'s one of the most highly regarded yoga studios in Limassol. Whether you\'re a beginner looking for yoga classes near me in Limassol or an experienced practitioner seeking advanced Vinyasa flows, this studio provides expert instruction in a serene setting. Find your perfect yoga practice at this premier Limassol yoga studio.',
     images: [],
-    openingHours: {
-      monday: '6.30pm-8.30pm',
-      tuesday: '6.00pm-8.00pm',
-      wednesday: '6.30pm-8.00pm',
-      thursday: '6.00pm-8.00pm',
-      friday: '6.30pm-8.00pm',
-      saturday: '8.30am-10.00am',
-      sunday: 'closed',
-    },
+    openingHours: {}, // Class schedule has multiple sessions per day - better to leave blank than show incomplete info
     createdAt: '2025-01-26',
     updatedAt: '2025-01-26',
   },

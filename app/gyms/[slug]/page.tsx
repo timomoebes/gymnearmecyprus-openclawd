@@ -253,23 +253,25 @@ export default function GymPage({ params }: GymPageProps) {
             </section>
 
             {/* Opening Hours */}
-            <section className="bg-surface-card rounded-card p-6">
-              <h2 className="text-2xl font-bold text-text-white mb-4 flex items-center gap-2">
-                <Clock className="w-6 h-6" />
-                Opening Hours
-              </h2>
-              <div className="space-y-2">
-                {openingHours.map(({ day, hours }) => (
-                  <div
-                    key={day}
-                    className="flex justify-between items-center py-2 border-b border-surface-lighter last:border-0"
-                  >
-                    <span className="text-text-light font-medium">{day}</span>
-                    <span className="text-text-muted">{hours || 'Closed'}</span>
-                  </div>
-                ))}
-              </div>
-            </section>
+            {openingHours.length > 0 && (
+              <section className="bg-surface-card rounded-card p-6">
+                <h2 className="text-2xl font-bold text-text-white mb-4 flex items-center gap-2">
+                  <Clock className="w-6 h-6" />
+                  Opening Hours
+                </h2>
+                <div className="space-y-2">
+                  {openingHours.map(({ day, hours }) => (
+                    <div
+                      key={day}
+                      className="flex justify-between items-center py-2 border-b border-surface-lighter last:border-0"
+                    >
+                      <span className="text-text-light font-medium">{day}</span>
+                      <span className="text-text-muted">{hours || 'Closed'}</span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
 
             {/* Top Reviews */}
             {reviews.length > 0 && (
