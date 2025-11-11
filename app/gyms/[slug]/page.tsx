@@ -96,7 +96,7 @@ export default function GymPage({ params }: GymPageProps) {
     { day: 'Friday', hours: gym.openingHours.friday },
     { day: 'Saturday', hours: gym.openingHours.saturday },
     { day: 'Sunday', hours: gym.openingHours.sunday },
-  ];
+  ].filter(item => item.hours); // Only show days with hours
 
   return (
     <>
