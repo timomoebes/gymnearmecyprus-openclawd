@@ -193,19 +193,20 @@ The project uses a custom dark/neon theme with:
 
 #### Backend Database (Supabase) ✅
 - **Database**: Supabase PostgreSQL
-- **Total Gyms**: 21 gyms in database
-- **Featured Gyms**: 5 featured listings
+- **Total Gyms**: 5 gyms in database (all scraped from Google Maps)
+- **Featured Gyms**: 0 featured listings (all unclaimed)
 - **Cities**: 6 cities (Limassol, Nicosia, Paphos, Larnaca, Ayia Napa, Protaras)
 - **Specialties**: 13 specialties (11 visible for MVP, 2 hidden: Hotel Gym, Women-Only)
-- **Member Count System**: Implemented with verification (5 gyms have demo member counts)
-- **Migration**: Complete SQL migration file available (`supabase/migrations/006_insert_all_mock_gyms.sql`)
+- **Member Count System**: Implemented with verification (no member counts set - all unclaimed)
+- **Data Source**: All gyms from Google Maps scrape (test imports)
+- **Ready for Import**: 45 cleaned Limassol gyms ready for bulk import
 
 #### Mock Data (Frontend Fallback)
-- **Gyms**: 20 gyms with complete information
-- **Reviews**: Google Maps-style reviews for each gym
+- **Gyms**: 5 gyms (matching database - all scraped/real data)
+- **Reviews**: Empty (reviews will come from database)
 - **Specialties**: 9 visible specialties for MVP
 
-All data is structured in TypeScript files in `lib/data/` and has been migrated to Supabase database.
+**Note:** All mock/demo gyms have been removed. Only real scraped gym data remains. Frontend uses mock data temporarily until API connection is established.
 
 ## 🔍 SEO Features
 
@@ -261,18 +262,19 @@ All data is structured in TypeScript files in `lib/data/` and has been migrated 
 ### Current Status
 - **Phase 5 Complete**: SEO optimization and content enhancement
 - **FAQ Schema Implemented**: FAQPage schema + visible FAQ sections on homepage, all city pages, and all specialty pages
-- **Backend Integration**: ✅ Supabase database setup complete with 26 gyms (21 mock + 5 test imports)
+- **Backend Integration**: ✅ Supabase database setup complete with 5 real gyms (all scraped from Google Maps)
 - **Data Processing**: ✅ Automated cleaning pipeline for scraped gym data
 - **Test Import**: ✅ 5 Limassol gyms successfully imported and visible in frontend
+- **Mock Data Cleanup**: ✅ All mock/demo gyms removed (21 deleted from database and frontend)
 - **Site Status**: Stable and production-ready for frontend MVP
-- **Next Phase**: Bulk import remaining cleaned gyms, connect frontend to Supabase API, internal linking optimization
+- **Next Phase**: Bulk import 45 remaining cleaned Limassol gyms, connect frontend to Supabase API, internal linking optimization
 
 ### Future Enhancements (Post-MVP)
 - ✅ FAQ schema markup for better SERP features (COMPLETED)
-- ✅ More gym data (target: 18-20 gyms) - **COMPLETED** (26 gyms: 21 mock + 5 test imports)
 - ✅ Backend integration (Supabase) - **COMPLETED** (Database setup and migration done)
 - ✅ **Data Processing Pipeline** - **COMPLETED** (Automated cleaning scripts for scraped data)
 - ✅ **Test Import** - **COMPLETED** (5 Limassol gyms imported and visible in frontend)
+- ✅ **Mock Data Cleanup** - **COMPLETED** (All mock/demo gyms removed - clean slate for real data)
 - ⏳ Bulk import remaining cleaned gyms (45 more from Limassol scrape)
 - ⏳ Connect frontend to Supabase API
 - ⏳ Migrate reviews to database

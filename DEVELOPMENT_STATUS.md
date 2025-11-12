@@ -2,7 +2,7 @@
 ## GymNearMe Cyprus - Current Progress & Roadmap
 
 **Last Updated:** January 26, 2025  
-**Project Status:** Phase 5 Complete - SEO Optimization & Content Enhancement | Backend Database Setup Complete | Data Processing Pipeline Operational
+**Project Status:** Phase 5 Complete - SEO Optimization & Content Enhancement | Backend Database Setup Complete | Data Processing Pipeline Operational | Mock Data Cleanup Complete - Ready for Bulk Import
 
 ---
 
@@ -81,15 +81,16 @@
 ## 📊 Current Status
 
 ### Data & Content
-- **Total Gyms:** 26 gyms in database (21 mock + 5 test imports from Google Maps scrape)
-- **Featured Gyms:** 5 featured listings
-- **Unclaimed Gyms:** 21 gyms (ready for owner claims)
+- **Total Gyms:** 5 gyms in database (all scraped from Google Maps - test imports)
+- **Featured Gyms:** 0 featured listings (all unclaimed)
+- **Unclaimed Gyms:** 5 gyms (ready for owner claims)
 - **Test Imports:** 5 Limassol gyms with SEO-optimized descriptions, visible in frontend
 - **Cities:** 6 cities (Limassol, Nicosia, Paphos, Larnaca, Ayia Napa, Protaras)
 - **Specialties:** 13 specialties in database (11 visible for MVP, 2 hidden: Hotel Gym, Women-Only)
-- **Swimming Gyms:** 3 gyms with pools (2 in Nicosia, 1 in Limassol)
-- **Member Count:** 5 gyms have demo member counts (marked as "Demo Data")
-- **Cleaned Data Ready:** 50 Limassol gyms cleaned and ready for bulk import
+- **Swimming Gyms:** 0 (will be added during bulk import)
+- **Member Count:** 0 gyms have member counts (all unclaimed - no demo data)
+- **Cleaned Data Ready:** 45 Limassol gyms cleaned and ready for bulk import (`data/clean/limassol_gyms_clean.csv`)
+- **Mock/Demo Gyms:** All removed (21 mock gyms deleted from database and frontend)
 
 ### SEO Implementation
 - **Primary Keyword:** "gym near me" (9,900 volume) - ✅ Optimized
@@ -180,6 +181,8 @@
    - ✅ 5 test gyms successfully imported and verified
    - ✅ SEO-optimized descriptions generated and added
    - ✅ Frontend integration complete (gyms visible on Limassol page)
+   - ✅ Web enrichment scripts created (`scripts/enrich_gym_details.py`)
+   - ✅ All mock/demo gyms removed (database and frontend cleaned)
    - ⏳ Bulk import remaining 45 cleaned gyms
    - **Impact:** Automated data processing, scalable import workflow
 
@@ -273,11 +276,12 @@
 - None currently - site is stable
 
 ### Technical Debt
-- Mock data needs migration to database
 - Form submissions not connected to backend
 - Review system needs real user input
 - Image placeholders need real images
 - Member count system needs proper verification logic
+- Frontend still uses mock data (needs API connection)
+- Bulk import of 45 remaining Limassol gyms pending
 
 ---
 
@@ -328,15 +332,16 @@
 
 ### Current Metrics
 - **Pages Created:** 20+ pages
-- **Gyms Listed:** 26 gyms (21 mock + 5 test imports in database)
-- **Gyms Ready for Import:** 45 cleaned Limassol gyms
-- **Featured Gyms:** 5 featured listings
+- **Gyms Listed:** 5 gyms in database (all scraped from Google Maps)
+- **Gyms Ready for Import:** 45 cleaned Limassol gyms (`data/clean/limassol_gyms_clean.csv`)
+- **Featured Gyms:** 0 featured listings (all unclaimed)
 - **Cities Covered:** 6 cities
 - **Specialties:** 13 specialties (11 visible for MVP)
 - **SEO Keywords Targeted:** 30+ keywords
 - **Total Search Volume:** ~20,700+ monthly searches
-- **Database Status:** ✅ Supabase configured and populated
+- **Database Status:** ✅ Supabase configured and populated (5 real gyms only)
 - **Data Processing:** ✅ Automated pipeline operational
+- **Mock Data Status:** ✅ All mock/demo gyms removed (clean slate for real data)
 
 ### Target Metrics (3 months)
 - **Gyms Listed:** 20+ gyms
