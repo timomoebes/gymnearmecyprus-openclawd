@@ -275,7 +275,7 @@ The project uses a custom dark/neon theme with:
 - ✅ **Data Processing Pipeline** - **COMPLETED** (Automated cleaning scripts for scraped data)
 - ✅ **Test Import** - **COMPLETED** (5 Limassol gyms imported and visible in frontend)
 - ✅ **Mock Data Cleanup** - **COMPLETED** (All mock/demo gyms removed - clean slate for real data)
-- ⏳ Bulk import remaining cleaned gyms (45 more from Limassol scrape)
+- ⏳ Bulk import remaining cleaned gyms (45 more from Limassol scrape - ready to import)
 - ⏳ Connect frontend to Supabase API
 - ⏳ Migrate reviews to database
 - ⏳ Internal linking optimization
