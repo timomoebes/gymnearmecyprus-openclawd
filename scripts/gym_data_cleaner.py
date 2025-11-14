@@ -33,8 +33,10 @@ LIMASSOL_CENTER_LNG = 33.0226
 
 # Specialty mapping (categoryName -> Supabase specialty slugs)
 SPECIALTY_MAPPING = {
-    "Gym": "24-hour-gym",
-    "Fitness center": "24-hour-gym",
+    # IMPORTANT: Do NOT automatically assign "24-hour-gym" to general gyms
+    # Only assign "24-hour-gym" if verified (name contains "24" or opening hours show 24/7)
+    "Gym": None,  # General gyms - no specialty assigned by default
+    "Fitness center": None,  # General fitness centers - no specialty assigned by default
     "Boxing gym": "boxing",
     "Personal trainer": "personal-trainer",
     "Yoga studio": "yoga",
@@ -173,8 +175,8 @@ def clean_data():
     print("[4/8] Relevance & Quality Filtering...")
     before_filter = len(df)
     
-    # Filter by category - keep only gym-related
-    valid_categories = [cat for cat in SPECIALTY_MAPPING.keys() if SPECIALTY_MAPPING[cat] is not None]
+    # Filter by category - keep gym-related categories (including general "Gym" and "Fitness center")
+    valid_categories = list(SPECIALTY_MAPPING.keys())  # All categories in mapping are valid
     df = df[df['categoryName'].isin(valid_categories)].copy()
     category_filtered = before_filter - len(df)
     print(f"  Removed {category_filtered} rows with non-gym categories")
@@ -240,7 +242,23 @@ def clean_data():
     
     # Specialties: Map category to specialty
     df['specialty_slug'] = df['categoryName'].apply(map_category_to_specialty)
-    df = df[df['specialty_slug'].notna()].copy()  # Remove unmappable categories
+    
+    # Check for 24-hour gyms by name (only if category is "Gym" or "Fitness center")
+    def check_24hour_in_name(row):
+        if pd.isna(row['specialty_slug']) and pd.notna(row['name']):
+            name_lower = str(row['name']).lower()
+            if any(indicator in name_lower for indicator in ['24', '24 hour', '24hr', '24/7', 'twenty-four']):
+                return '24-hour-gym'
+        return row['specialty_slug']
+    
+    df['specialty_slug'] = df.apply(check_24hour_in_name, axis=1)
+    
+    # Remove only truly unmappable categories (None specialty AND not a general gym/fitness center)
+    # Keep general gyms/fitness centers even if they have no specialty
+    df = df[
+        (df['specialty_slug'].notna()) |  # Has a specialty
+        (df['categoryName'].isin(['Gym', 'Fitness center']))  # Or is a general gym/fitness center
+    ].copy()
     
     print(f"  Standardized {len(df)} rows")
     print()

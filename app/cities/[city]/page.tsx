@@ -64,14 +64,14 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
   };
 }
 
-export default function CityPage({ params }: CityPageProps) {
+export default async function CityPage({ params }: CityPageProps) {
   const city = getCityBySlug(params.city);
   
   if (!city) {
     notFound();
   }
 
-  const gyms = getGymsByCity(city.id);
+  const gyms = await getGymsByCity(city.id);
   const featuredGyms = gyms.filter(gym => gym.featured);
 
   // Generate Schema.org JSON-LD
@@ -148,11 +148,11 @@ export default function CityPage({ params }: CityPageProps) {
             <MapPin className="w-8 h-8 text-primary-blue" />
           </div>
           <p className="text-xl text-text-light max-w-3xl mb-4">
-            Find the best gyms in {city.name}. Search fitness centers, health clubs, and gyms near me in {city.name}. Compare ratings, reviews, amenities, and find your perfect workout space. Our directory includes {city.gymCount} top-rated gyms and fitness centers in {city.name}.
+            Find the best gyms in {city.name}. Search fitness centers, health clubs, and gyms near me in {city.name}. Compare ratings, reviews, amenities, and find your perfect workout space. Our directory includes {gyms.length} top-rated gyms and fitness centers in {city.name}.
           </p>
           <div className="flex items-center gap-4 text-text-muted">
             <span className="text-lg font-semibold text-text-white">
-              {city.gymCount} {city.gymCount === 1 ? 'Gym' : 'Gyms'} Listed
+              {gyms.length} {gyms.length === 1 ? 'Gym' : 'Gyms'} Listed
             </span>
             {featuredGyms.length > 0 && (
               <Badge variant="featured">
@@ -186,7 +186,7 @@ export default function CityPage({ params }: CityPageProps) {
               <div className="bg-surface-card rounded-card p-6">
                 <h3 className="text-xl font-bold text-text-white mb-3">What are the best gyms in {city.name}?</h3>
                 <p className="text-text-light">
-                  Our directory lists {city.gymCount} top-rated gyms and fitness centers in {city.name}. You can filter by rating, specialty, amenities, and read reviews to find the best gym near me in {city.name} that matches your fitness goals.
+                  Our directory lists {gyms.length} top-rated gyms and fitness centers in {city.name}. You can filter by rating, specialty, amenities, and read reviews to find the best gym near me in {city.name} that matches your fitness goals.
                 </p>
               </div>
               

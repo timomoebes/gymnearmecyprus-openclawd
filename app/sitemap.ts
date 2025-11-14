@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 import { getAllGyms, cities, specialties } from '@/lib/data';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://gymnearme.cy';
 
   // Static pages
@@ -61,7 +61,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // Gym pages
-  const gymPages: MetadataRoute.Sitemap = getAllGyms().map((gym) => ({
+  const allGyms = await getAllGyms();
+  const gymPages: MetadataRoute.Sitemap = allGyms.map((gym) => ({
     url: `${baseUrl}/gyms/${gym.slug}`,
     lastModified: new Date(gym.updatedAt),
     changeFrequency: 'weekly',

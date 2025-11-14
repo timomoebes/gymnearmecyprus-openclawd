@@ -69,8 +69,9 @@ const pricingPlans = [
   },
 ];
 
-export default function AdvertiseWithUsPage() {
-  const totalGyms = getAllGyms().length;
+export default async function AdvertiseWithUsPage() {
+  const allGyms = await getAllGyms();
+  const totalGyms = allGyms.length;
   const totalCities = cities.length;
 
   return (

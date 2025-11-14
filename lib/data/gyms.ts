@@ -1,8 +1,15 @@
 import { Gym } from '@/lib/types';
+import {
+  getAllGymsFromDB,
+  getGymBySlugFromDB,
+  getGymsByCityFromDB,
+  getGymsBySpecialtyFromDB,
+  getFeaturedGymsFromDB,
+} from '@/lib/api/gyms';
 
-// Real gym data from Google Maps scrape (test imports)
+// Mock gym data (fallback only)
 // Only keeping the 5 test-imported gyms - all mock/demo gyms removed
-export const gyms: Gym[] = [
+const mockGyms: Gym[] = [
   // Test imports from Supabase (Google Maps Scrape)
   {
     id: 'c1cedf1e-46b3-45d8-8e2a-14ccb3e9724b',
@@ -105,25 +112,25 @@ export const gyms: Gym[] = [
   },
 ];
 
-// Helper functions
-export const getGymBySlug = (slug: string): Gym | undefined => {
-  return gyms.find(gym => gym.slug === slug);
+// Mock helper functions (fallback)
+const getGymBySlugMock = (slug: string): Gym | undefined => {
+  return mockGyms.find(gym => gym.slug === slug);
 };
 
-export const getGymById = (id: string): Gym | undefined => {
-  return gyms.find(gym => gym.id === id);
+const getGymByIdMock = (id: string): Gym | undefined => {
+  return mockGyms.find(gym => gym.id === id);
 };
 
-export const getGymsByCity = (cityId: string): Gym[] => {
-  return gyms.filter(gym => gym.cityId === cityId);
+const getGymsByCityMock = (cityId: string): Gym[] => {
+  return mockGyms.filter(gym => gym.cityId === cityId);
 };
 
-export const getGymsBySpecialty = (specialtyName: string): Gym[] => {
+const getGymsBySpecialtyMock = (specialtyName: string): Gym[] => {
   const specialtyLower = specialtyName.toLowerCase();
   
   // Special handling for Personal Training - check both specialties and amenities
   if (specialtyLower === 'personal training' || specialtyLower === 'personal-training') {
-    return gyms.filter(gym => 
+    return mockGyms.filter(gym => 
       gym.specialties.some(s => s.toLowerCase().includes('personal training')) ||
       gym.amenities.some(a => a.toLowerCase().includes('personal training'))
     );
@@ -131,22 +138,83 @@ export const getGymsBySpecialty = (specialtyName: string): Gym[] => {
   
   // Special handling for Swimming - check both specialties and amenities (pools)
   if (specialtyLower === 'swimming') {
-    return gyms.filter(gym => 
+    return mockGyms.filter(gym => 
       gym.specialties.some(s => s.toLowerCase() === 'swimming') ||
       gym.amenities.some(a => a.toLowerCase().includes('pool') || a.toLowerCase().includes('swimming'))
     );
   }
   
   // Standard specialty matching - case-insensitive
-  return gyms.filter(gym =>
+  return mockGyms.filter(gym =>
     gym.specialties.some(s => s.toLowerCase() === specialtyLower)
   );
 };
 
-export const getFeaturedGyms = (): Gym[] => {
-  return gyms.filter(gym => gym.featured);
+const getFeaturedGymsMock = (): Gym[] => {
+  return mockGyms.filter(gym => gym.featured);
 };
 
-export const getAllGyms = (): Gym[] => {
-  return gyms;
+const getAllGymsMock = (): Gym[] => {
+  return mockGyms;
 };
+
+// Unified data access functions (Supabase first, fallback to mock)
+export async function getGymBySlug(slug: string): Promise<Gym | undefined> {
+  try {
+    const gym = await getGymBySlugFromDB(slug);
+    if (gym) return gym;
+  } catch (error) {
+    console.warn('Supabase fetch failed for getGymBySlug, using mock data:', error);
+  }
+  return getGymBySlugMock(slug);
+}
+
+export async function getGymById(id: string): Promise<Gym | undefined> {
+  // For now, use mock data for ID lookup (can be enhanced later)
+  return getGymByIdMock(id);
+}
+
+export async function getGymsByCity(cityId: string): Promise<Gym[]> {
+  try {
+    const gyms = await getGymsByCityFromDB(cityId);
+    if (gyms.length > 0) return gyms;
+  } catch (error) {
+    console.warn('Supabase fetch failed for getGymsByCity, using mock data:', error);
+  }
+  return getGymsByCityMock(cityId);
+}
+
+export async function getGymsBySpecialty(specialtyName: string): Promise<Gym[]> {
+  try {
+    // Convert specialty name to slug
+    const specialtySlug = specialtyName.toLowerCase().replace(/\s+/g, '-');
+    const gyms = await getGymsBySpecialtyFromDB(specialtySlug);
+    if (gyms.length > 0) return gyms;
+  } catch (error) {
+    console.warn('Supabase fetch failed for getGymsBySpecialty, using mock data:', error);
+  }
+  return getGymsBySpecialtyMock(specialtyName);
+}
+
+export async function getFeaturedGyms(): Promise<Gym[]> {
+  try {
+    const gyms = await getFeaturedGymsFromDB();
+    if (gyms.length > 0) return gyms;
+  } catch (error) {
+    console.warn('Supabase fetch failed for getFeaturedGyms, using mock data:', error);
+  }
+  return getFeaturedGymsMock();
+}
+
+export async function getAllGyms(): Promise<Gym[]> {
+  try {
+    const gyms = await getAllGymsFromDB();
+    if (gyms.length > 0) return gyms;
+  } catch (error) {
+    console.warn('Supabase fetch failed for getAllGyms, using mock data:', error);
+  }
+  return getAllGymsMock();
+}
+
+// Export mock gyms for backward compatibility (used in data/index.ts)
+export const gyms = mockGyms;

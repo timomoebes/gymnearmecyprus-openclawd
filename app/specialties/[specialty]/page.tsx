@@ -30,7 +30,9 @@ export async function generateMetadata({ params }: SpecialtyPageProps): Promise<
 
   // Custom metadata for high-value keywords
   const specialtySlug = specialty.slug.toLowerCase();
-  let title = `Best ${specialty.name} Gyms in Cyprus | ${specialty.gymCount} Gyms Listed`;
+  // Note: We'll use a placeholder for title since we need async data
+  // The actual count will be in the page content
+  let title = `Best ${specialty.name} Gyms in Cyprus`;
   let description = specialty.description;
   let keywords = `${specialty.name} gyms cyprus, ${specialty.name} training, ${specialty.name} fitness centers`;
 
@@ -69,7 +71,7 @@ export async function generateMetadata({ params }: SpecialtyPageProps): Promise<
   };
 }
 
-export default function SpecialtyPage({ params }: SpecialtyPageProps) {
+export default async function SpecialtyPage({ params }: SpecialtyPageProps) {
   const specialty = getSpecialtyBySlug(params.specialty);
   
   if (!specialty) {
@@ -77,7 +79,7 @@ export default function SpecialtyPage({ params }: SpecialtyPageProps) {
   }
 
   const specialtySlug = specialty.slug.toLowerCase();
-  const gyms = getGymsBySpecialty(specialty.name);
+  const gyms = await getGymsBySpecialty(specialty.name);
 
   // Generate Schema.org JSON-LD
   const breadcrumbSchema = generateBreadcrumbSchema([
@@ -99,7 +101,7 @@ export default function SpecialtyPage({ params }: SpecialtyPageProps) {
   const specialtyFaqs = [
     {
       question: `What are the best ${specialty.name} gyms in Cyprus?`,
-      answer: `Our directory lists ${specialty.gymCount} top-rated ${specialty.name.toLowerCase()} gyms and facilities in Cyprus. You can browse by city, read reviews, and compare amenities to find the best ${specialty.name.toLowerCase()} training facility near me that matches your fitness goals.`,
+      answer: `Our directory lists ${gyms.length} top-rated ${specialty.name.toLowerCase()} gyms and facilities in Cyprus. You can browse by city, read reviews, and compare amenities to find the best ${specialty.name.toLowerCase()} training facility near me that matches your fitness goals.`,
     },
     {
       question: `How do I find ${specialty.name.toLowerCase()} training near me?`,
@@ -174,7 +176,7 @@ export default function SpecialtyPage({ params }: SpecialtyPageProps) {
           </p>
           <div className="text-text-muted">
             <span className="text-lg font-semibold text-text-white">
-              {specialty.gymCount} {specialty.gymCount === 1 ? 'Gym' : 'Gyms'} Found
+              {gyms.length} {gyms.length === 1 ? 'Gym' : 'Gyms'} Found
             </span>
           </div>
         </div>
@@ -366,7 +368,7 @@ export default function SpecialtyPage({ params }: SpecialtyPageProps) {
               <div className="bg-surface-card rounded-card p-6">
                 <h3 className="text-xl font-bold text-text-white mb-3">What are the best {specialty.name.toLowerCase()} gyms in Cyprus?</h3>
                 <p className="text-text-light">
-                  Our directory lists {specialty.gymCount} top-rated {specialty.name.toLowerCase()} gyms and facilities in Cyprus. You can browse by city, read reviews, and compare amenities to find the best {specialty.name.toLowerCase()} training facility near me that matches your fitness goals.
+                  Our directory lists {gyms.length} top-rated {specialty.name.toLowerCase()} gyms and facilities in Cyprus. You can browse by city, read reviews, and compare amenities to find the best {specialty.name.toLowerCase()} training facility near me that matches your fitness goals.
                 </p>
               </div>
               

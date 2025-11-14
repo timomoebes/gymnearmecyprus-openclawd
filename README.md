@@ -193,20 +193,32 @@ The project uses a custom dark/neon theme with:
 
 #### Backend Database (Supabase) ✅
 - **Database**: Supabase PostgreSQL
-- **Total Gyms**: 5 gyms in database (all scraped from Google Maps)
+- **Total Gyms**: 50 gyms in database (all scraped from Google Maps - Limassol)
 - **Featured Gyms**: 0 featured listings (all unclaimed)
 - **Cities**: 6 cities (Limassol, Nicosia, Paphos, Larnaca, Ayia Napa, Protaras)
 - **Specialties**: 13 specialties (11 visible for MVP, 2 hidden: Hotel Gym, Women-Only)
+- **Specialty Distribution**: 
+  - MMA: 7 gyms
+  - Pilates: 6 gyms
+  - Personal Trainer: 5 gyms
+  - Boxing: 3 gyms
+  - Yoga: 2 gyms
+  - 24 Hour Gym: 1 gym (only verified: "Muscle Factory 24 Hours")
+  - CrossFit: 1 gym
+  - General gyms: ~30+ with no specialty (correctly assigned)
 - **Member Count System**: Implemented with verification (no member counts set - all unclaimed)
-- **Data Source**: All gyms from Google Maps scrape (test imports)
-- **Ready for Import**: 45 cleaned Limassol gyms ready for bulk import
+- **Data Source**: All gyms from Google Maps scrape (50 Limassol gyms imported)
+- **Data Quality**: ✅ Specialty assignments verified and corrected (removed incorrect "24-hour-gym" tags)
 
-#### Mock Data (Frontend Fallback)
-- **Gyms**: 5 gyms (matching database - all scraped/real data)
+#### Frontend Data Access
+- **Data Layer**: Unified data access layer with Supabase API integration
+- **Fallback**: Mock data available as fallback (5 test gyms)
+- **API Integration**: ✅ Frontend connected to Supabase API
+- **Dynamic Counts**: ✅ City and specialty counts calculated dynamically from database
 - **Reviews**: Empty (reviews will come from database)
 - **Specialties**: 9 visible specialties for MVP
 
-**Note:** All mock/demo gyms have been removed. Only real scraped gym data remains. Frontend uses mock data temporarily until API connection is established.
+**Note:** All mock/demo gyms have been removed. Frontend fetches data from Supabase with fallback to mock data if API fails.
 
 ## 🔍 SEO Features
 
@@ -262,12 +274,18 @@ The project uses a custom dark/neon theme with:
 ### Current Status
 - **Phase 5 Complete**: SEO optimization and content enhancement
 - **FAQ Schema Implemented**: FAQPage schema + visible FAQ sections on homepage, all city pages, and all specialty pages
-- **Backend Integration**: ✅ Supabase database setup complete with 5 real gyms (all scraped from Google Maps)
+- **Backend Integration**: ✅ Supabase database setup complete with 50 real gyms (all scraped from Google Maps - Limassol)
 - **Data Processing**: ✅ Automated cleaning pipeline for scraped gym data
-- **Test Import**: ✅ 5 Limassol gyms successfully imported and visible in frontend
-- **Mock Data Cleanup**: ✅ All mock/demo gyms removed (21 deleted from database and frontend)
+- **Bulk Import**: ✅ 50 Limassol gyms successfully imported (5 test + 45 bulk)
+- **Data Quality Fixes**: ✅ Corrected incorrect "24-hour-gym" specialty assignments
+  - Removed "24-hour-gym" from 33 incorrectly tagged gyms
+  - Only "Muscle Factory 24 Hours" verified as 24-hour gym
+  - Reassigned gyms to correct specialties (MMA, Boxing, CrossFit, Pilates, Personal Trainer)
+  - Updated gym descriptions to remove incorrect "24 hour gym" references
+- **Frontend Integration**: ✅ Connected to Supabase API with dynamic counts
+- **Mock Data Cleanup**: ✅ All mock/demo gyms removed (clean slate for real data)
 - **Site Status**: Stable and production-ready for frontend MVP
-- **Next Phase**: Bulk import 45 remaining cleaned Limassol gyms, connect frontend to Supabase API, internal linking optimization
+- **Next Phase**: Expand to other cities, internal linking optimization, owner claim system
 
 ### Future Enhancements (Post-MVP)
 - ✅ FAQ schema markup for better SERP features (COMPLETED)
@@ -275,8 +293,10 @@ The project uses a custom dark/neon theme with:
 - ✅ **Data Processing Pipeline** - **COMPLETED** (Automated cleaning scripts for scraped data)
 - ✅ **Test Import** - **COMPLETED** (5 Limassol gyms imported and visible in frontend)
 - ✅ **Mock Data Cleanup** - **COMPLETED** (All mock/demo gyms removed - clean slate for real data)
-- ⏳ Bulk import remaining cleaned gyms (45 more from Limassol scrape - ready to import)
-- ⏳ Connect frontend to Supabase API
+- ✅ Bulk import completed (50 Limassol gyms total - 5 test + 45 bulk)
+- ✅ Frontend connected to Supabase API
+- ✅ Specialty assignments corrected and verified
+- ✅ Gym descriptions updated to match actual specialties
 - ⏳ Migrate reviews to database
 - ⏳ Internal linking optimization
 - ⏳ Location-specific pages (Strovolos, etc.)

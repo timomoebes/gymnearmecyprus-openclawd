@@ -18,14 +18,14 @@ interface GymPageProps {
 }
 
 export async function generateStaticParams() {
-  const gyms = getAllGyms();
+  const gyms = await getAllGyms();
   return gyms.map((gym) => ({
     slug: gym.slug,
   }));
 }
 
 export async function generateMetadata({ params }: GymPageProps): Promise<Metadata> {
-  const gym = getGymBySlug(params.slug);
+  const gym = await getGymBySlug(params.slug);
   
   if (!gym) {
     return {
@@ -67,8 +67,8 @@ export async function generateMetadata({ params }: GymPageProps): Promise<Metada
   };
 }
 
-export default function GymPage({ params }: GymPageProps) {
-  const gym = getGymBySlug(params.slug);
+export default async function GymPage({ params }: GymPageProps) {
+  const gym = await getGymBySlug(params.slug);
   
   if (!gym) {
     notFound();
@@ -77,7 +77,7 @@ export default function GymPage({ params }: GymPageProps) {
   const city = getCityById(gym.cityId);
   const reviews = getTopReviews(gym.id, 5);
   const allReviews = getReviewsByGymId(gym.id);
-  const cityGyms = getGymsByCity(gym.cityId).filter(g => g.id !== gym.id).slice(0, 3);
+  const cityGyms = (await getGymsByCity(gym.cityId)).filter(g => g.id !== gym.id).slice(0, 3);
 
   // Generate Schema.org JSON-LD
   const localBusinessSchema = generateLocalBusinessSchema(gym, city?.name || 'Cyprus', allReviews);

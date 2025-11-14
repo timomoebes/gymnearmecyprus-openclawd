@@ -19,10 +19,10 @@ import { Button } from '@/components/shared/Button';
 import { Badge } from '@/components/shared/Badge';
 import { Rating } from '@/components/shared/Rating';
 import { GymCard } from '@/components/gym/GymCard';
-import { getAllGyms } from '@/lib/data';
+import { gyms } from '@/lib/data/gyms';
 
 // Mock data - in real app, this would come from API
-const mockGym = getAllGyms()[0];
+const mockGym = gyms[0];
 const mockStats = {
   views: 1247,
   clicks: 342,

@@ -36,12 +36,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
-  const totalGyms = getAllGyms().length;
-  const allGyms = getAllGyms();
+export default async function HomePage() {
+  const allGyms = await getAllGyms();
+  const totalGyms = allGyms.length;
   const twentyFourHourGyms = allGyms.filter(gym => 
     gym.amenities.some(amenity => amenity.toLowerCase().includes('24') || amenity.toLowerCase().includes('24/7'))
   );
+
+  // Calculate actual city gym counts from fetched data
+  const cityGymCounts = cities.reduce((acc, city) => {
+    acc[city.id] = allGyms.filter(gym => gym.cityId === city.id).length;
+    return acc;
+  }, {} as Record<string, number>);
 
   // FAQ data for schema
   const faqs = [
@@ -149,7 +155,7 @@ export default function HomePage() {
                     
                     {/* Stats */}
                     <div className="flex items-center gap-3 mb-4 text-text-muted text-sm">
-                      <span>{city.gymCount} {city.gymCount === 1 ? 'gym' : 'gyms'}</span>
+                      <span>{cityGymCounts[city.id] || 0} {(cityGymCounts[city.id] || 0) === 1 ? 'gym' : 'gyms'}</span>
                     </div>
                     
                     {/* View Directory Link */}

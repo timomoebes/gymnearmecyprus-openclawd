@@ -2,7 +2,7 @@
 ## GymNearMe Cyprus - Current Progress & Roadmap
 
 **Last Updated:** January 26, 2025  
-**Project Status:** Phase 5 Complete - SEO Optimization & Content Enhancement | Backend Database Setup Complete | Data Processing Pipeline Operational | Mock Data Cleanup Complete - Ready for Bulk Import
+**Project Status:** Phase 5 Complete - SEO Optimization & Content Enhancement | Backend Database Setup Complete | Data Processing Pipeline Operational | Bulk Import Complete (50 Limassol Gyms) | Data Quality Fixes Applied | Frontend API Integration Complete
 
 ---
 
@@ -81,16 +81,28 @@
 ## 📊 Current Status
 
 ### Data & Content
-- **Total Gyms:** 5 gyms in database (all scraped from Google Maps - test imports)
+- **Total Gyms:** 50 gyms in database (all scraped from Google Maps - Limassol)
 - **Featured Gyms:** 0 featured listings (all unclaimed)
-- **Unclaimed Gyms:** 5 gyms (ready for owner claims)
-- **Test Imports:** 5 Limassol gyms with SEO-optimized descriptions, visible in frontend
+- **Unclaimed Gyms:** 50 gyms (ready for owner claims)
+- **Bulk Import:** ✅ 50 Limassol gyms successfully imported (5 test + 45 bulk)
 - **Cities:** 6 cities (Limassol, Nicosia, Paphos, Larnaca, Ayia Napa, Protaras)
 - **Specialties:** 13 specialties in database (11 visible for MVP, 2 hidden: Hotel Gym, Women-Only)
-- **Swimming Gyms:** 0 (will be added during bulk import)
+- **Specialty Distribution:**
+  - MMA: 7 gyms
+  - Pilates: 6 gyms
+  - Personal Trainer: 5 gyms
+  - Boxing: 3 gyms
+  - Yoga: 2 gyms
+  - 24 Hour Gym: 1 gym (only verified: "Muscle Factory 24 Hours")
+  - CrossFit: 1 gym
+  - General gyms: ~30+ with no specialty (correctly assigned)
+- **Swimming Gyms:** 0 (will be added in future imports)
 - **Member Count:** 0 gyms have member counts (all unclaimed - no demo data)
-- **Cleaned Data Ready:** 45 Limassol gyms cleaned and ready for bulk import (`data/clean/limassol_gyms_clean.csv`)
-- **Mock/Demo Gyms:** All removed (21 mock gyms deleted from database and frontend)
+- **Data Quality:** ✅ Specialty assignments verified and corrected
+  - Removed incorrect "24-hour-gym" tags from 33 gyms
+  - Updated descriptions to remove incorrect "24 hour gym" references
+  - Only verified 24-hour gyms show the specialty badge
+- **Mock/Demo Gyms:** All removed (clean slate for real data)
 
 ### SEO Implementation
 - **Primary Keyword:** "gym near me" (9,900 volume) - ✅ Optimized
@@ -163,12 +175,16 @@
    - ✅ Supabase PostgreSQL database configured
    - ✅ Database schema created (gyms, cities, specialties, amenities, reviews)
    - ✅ Member count fields added (member_count, member_count_source, member_count_verified)
-   - ✅ All 21 mock gyms migrated to database
+   - ✅ All 21 mock gyms migrated to database (later removed)
    - ✅ Specialty and amenity relationships established
    - ✅ Migration file created: `supabase/migrations/006_insert_all_mock_gyms.sql`
-   - ⏳ Connect frontend to Supabase API
-   - ⏳ Create API routes
-   - **Impact:** Real data management, scalability
+   - ✅ **Frontend API Integration** - Connected to Supabase API
+   - ✅ **Unified Data Access Layer** - `lib/data/gyms.ts` with Supabase-first, mock fallback
+   - ✅ **Dynamic Counts** - City and specialty counts calculated from database
+   - ✅ **50 Limassol gyms imported** - All visible in frontend
+   - ✅ **Data Quality Fixes** - Specialty assignments corrected via migration
+   - ⏳ Create API routes for mutations (add gym, update gym, etc.)
+   - **Impact:** Real data management, scalability, verified data quality
 
 2. **Data Processing Pipeline** ✅ COMPLETED
    - ✅ Raw data inspection script (`scripts/inspect_raw_data.py`)
@@ -176,15 +192,20 @@
    - ✅ Data mapping documentation (`docs/data_mapping.md`)
    - ✅ Processed 129 raw gyms → 50 clean gyms (61.2% quality filter)
    - ✅ Specialty mapping (Apify categories → Supabase UUIDs)
+   - ✅ **Fixed specialty mapping logic** - No longer auto-assigns "24-hour-gym" to all gyms
+   - ✅ **24-hour gym detection** - Only assigns "24-hour-gym" if name contains "24" or opening hours show 24/7
    - ✅ Geocoding integration (Nominatim/OpenStreetMap)
    - ✅ Test import script (`scripts/test_gym_import.py`)
    - ✅ 5 test gyms successfully imported and verified
+   - ✅ Bulk import script (`scripts/bulk_import_limassol_gyms.py`)
+   - ✅ 45 additional gyms successfully bulk imported
    - ✅ SEO-optimized descriptions generated and added
+   - ✅ **Description fixes** - Removed incorrect "24 hour gym" references from descriptions
    - ✅ Frontend integration complete (gyms visible on Limassol page)
    - ✅ Web enrichment scripts created (`scripts/enrich_gym_details.py`)
    - ✅ All mock/demo gyms removed (database and frontend cleaned)
-   - ⏳ Bulk import remaining 45 cleaned gyms
-   - **Impact:** Automated data processing, scalable import workflow
+   - ✅ **Data quality fixes** - Corrected specialty assignments and descriptions
+   - **Impact:** Automated data processing, scalable import workflow, verified data quality
 
 2. **User Authentication**
    - Implement auth system
@@ -280,8 +301,8 @@
 - Review system needs real user input
 - Image placeholders need real images
 - Member count system needs proper verification logic
-- Frontend still uses mock data (needs API connection)
-- Bulk import of 45 remaining Limassol gyms pending
+- API routes for mutations (add/update gym) not yet implemented
+- Expand gym listings to other cities (currently only Limassol)
 
 ---
 
@@ -332,15 +353,17 @@
 
 ### Current Metrics
 - **Pages Created:** 20+ pages
-- **Gyms Listed:** 5 gyms in database (all scraped from Google Maps)
-- **Gyms Ready for Import:** 45 cleaned Limassol gyms (`data/clean/limassol_gyms_clean.csv`)
+- **Gyms Listed:** 50 gyms in database (all scraped from Google Maps - Limassol)
 - **Featured Gyms:** 0 featured listings (all unclaimed)
-- **Cities Covered:** 6 cities
+- **Cities Covered:** 6 cities (50 gyms in Limassol)
 - **Specialties:** 13 specialties (11 visible for MVP)
+- **Specialty Distribution:** MMA (7), Pilates (6), Personal Trainer (5), Boxing (3), Yoga (2), 24 Hour Gym (1), CrossFit (1), General (30+)
 - **SEO Keywords Targeted:** 30+ keywords
 - **Total Search Volume:** ~20,700+ monthly searches
-- **Database Status:** ✅ Supabase configured and populated (5 real gyms only)
+- **Database Status:** ✅ Supabase configured and populated (50 real gyms)
 - **Data Processing:** ✅ Automated pipeline operational
+- **Data Quality:** ✅ Specialty assignments verified and corrected
+- **Frontend Integration:** ✅ Connected to Supabase API with dynamic counts
 - **Mock Data Status:** ✅ All mock/demo gyms removed (clean slate for real data)
 
 ### Target Metrics (3 months)
@@ -397,5 +420,12 @@
 
 ---
 
-**Next Immediate Action:** Implement FAQ schema markup and expand gym listings to 18-20 gyms (see STRATEGIC_ACTION_PLAN.md)
+**Recent Updates (January 26, 2025):**
+- ✅ Bulk import completed: 50 Limassol gyms now in database
+- ✅ Data quality fixes: Corrected incorrect "24-hour-gym" specialty assignments
+- ✅ Description updates: Removed incorrect "24 hour gym" references from descriptions
+- ✅ Frontend API integration: Connected to Supabase with dynamic counts
+- ✅ Data cleaning script improvements: Fixed specialty mapping logic
+
+**Next Immediate Action:** Expand gym listings to other cities, implement owner claim system, optimize internal linking (see STRATEGIC_ACTION_PLAN.md)
 
