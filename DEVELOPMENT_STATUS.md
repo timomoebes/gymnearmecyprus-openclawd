@@ -2,7 +2,7 @@
 ## GymNearMe Cyprus - Current Progress & Roadmap
 
 **Last Updated:** November 15, 2025  
-**Project Status:** Phase 5 Complete - SEO Optimization & Content Enhancement | Backend Database Setup Complete | Data Processing Pipeline Operational | Bulk Import Complete (127 Gyms Across 4 Cities) | Data Quality Fixes Applied | Frontend API Integration Complete
+**Project Status:** Phase 5 Complete - SEO Optimization & Content Enhancement | Backend Database Setup Complete | Data Processing Pipeline Operational | Bulk Import Complete (214 Gyms Across 6 Cities) | Data Quality Fixes Applied | Frontend API Integration Complete
 
 ---
 
@@ -81,19 +81,23 @@
 ## 📊 Current Status
 
 ### Data & Content
-- **Total Gyms:** 127 gyms in database (all scraped from Google Maps)
+- **Total Gyms:** 214 gyms in database (all scraped from Google Maps)
   - **Limassol:** 50 gyms ✅ Imported
   - **Nicosia:** 71 gyms ✅ Imported
-  - **Larnaca:** 43 gyms ✅ Imported (manually updated in database)
-  - **Paphos:** 34 gyms ✅ Imported (manually updated in database)
+  - **Larnaca:** 43 gyms ✅ Imported
+  - **Paphos:** 34 gyms ✅ Imported
+  - **Ayia Napa:** 5 gyms ✅ Imported
+  - **Protaras:** 11 gyms ✅ Imported
 - **Featured Gyms:** 0 featured listings (all unclaimed)
-- **Unclaimed Gyms:** 127 gyms (ready for owner claims)
+- **Unclaimed Gyms:** 214 gyms (ready for owner claims)
 - **Bulk Import:** ✅ Multi-city bulk imports completed and applied to database
-  - ✅ 50 Limassol gyms (5 test + 45 bulk) - Imported via SQL
-  - ✅ 71 Nicosia gyms - Imported via SQL
+  - ✅ 50 Limassol gyms - Imported manually via Supabase Dashboard
+  - ✅ 71 Nicosia gyms - Imported manually via Supabase Dashboard
   - ✅ 43 Larnaca gyms - Imported manually via Supabase Dashboard
   - ✅ 34 Paphos gyms - Imported manually via Supabase Dashboard
-- **Cities:** 6 cities (Limassol ✅, Nicosia ✅, Paphos ✅, Larnaca ✅, Ayia Napa ⏳, Protaras ⏳)
+  - ✅ 5 Ayia Napa gyms - Imported manually via Supabase Dashboard
+  - ✅ 11 Protaras gyms - Imported manually via Supabase Dashboard
+- **Cities:** 6 cities (all cities ✅ - Limassol, Nicosia, Paphos, Larnaca, Ayia Napa, Protaras)
 - **Specialties:** 13 specialties in database (11 visible for MVP, 2 hidden: Hotel Gym, Women-Only)
 - **Specialty Distribution:**
   - MMA: Multiple gyms across all cities
@@ -190,11 +194,13 @@
    - ✅ **Frontend API Integration** - Connected to Supabase API
    - ✅ **Unified Data Access Layer** - `lib/data/gyms.ts` with Supabase-first, mock fallback
    - ✅ **Dynamic Counts** - City and specialty counts calculated from database
-   - ✅ **127 gyms imported across 4 cities** - All visible in frontend
-     - ✅ 50 Limassol gyms (imported via SQL)
-     - ✅ 71 Nicosia gyms (imported via SQL)
+   - ✅ **214 gyms imported across 6 cities** - All visible in frontend
+     - ✅ 50 Limassol gyms (imported manually via Supabase Dashboard)
+     - ✅ 71 Nicosia gyms (imported manually via Supabase Dashboard)
      - ✅ 43 Larnaca gyms (imported manually via Supabase Dashboard)
      - ✅ 34 Paphos gyms (imported manually via Supabase Dashboard)
+     - ✅ 5 Ayia Napa gyms (imported manually via Supabase Dashboard)
+     - ✅ 11 Protaras gyms (imported manually via Supabase Dashboard)
    - ✅ **Data Quality Fixes** - Specialty assignments corrected via migration
    - ✅ **SEO Descriptions** - All gyms have SEO-optimized descriptions
    - ⏳ Create API routes for mutations (add gym, update gym, etc.)
@@ -207,12 +213,16 @@
      - ✅ `scripts/gym_data_cleaner_nicosia.py` (Nicosia)
      - ✅ `scripts/gym_data_cleaner_larnaca.py` (Larnaca)
      - ✅ `scripts/gym_data_cleaner_paphos.py` (Paphos)
+     - ✅ `scripts/gym_data_cleaner_ayia_napa.py` (Ayia Napa)
+     - ✅ `scripts/gym_data_cleaner_protaras.py` (Protaras)
    - ✅ Data mapping documentation (`docs/data_mapping.md`)
-   - ✅ Processed raw gyms across 4 cities:
+   - ✅ Processed raw gyms across 6 cities:
      - Limassol: 129 raw → 50 clean (61.2% quality filter)
      - Nicosia: 83 raw → 71 clean
      - Larnaca: 83 raw → 43 clean (48.2% quality filter)
      - Paphos: 61 raw → 34 clean (44.3% quality filter)
+     - Ayia Napa: 5 raw → 5 clean (0.0% quality filter)
+     - Protaras: 21 raw → 11 clean (47.6% quality filter)
    - ✅ Specialty mapping (Apify categories → Supabase UUIDs)
    - ✅ **Fixed specialty mapping logic** - No longer auto-assigns "24-hour-gym" to all gyms
    - ✅ **24-hour gym detection** - Only assigns "24-hour-gym" if name contains "24" or opening hours show 24/7
@@ -224,11 +234,15 @@
      - ✅ `scripts/bulk_import_nicosia_gyms.py` (71 gyms)
      - ✅ `scripts/bulk_import_larnaca_gyms.py` (43 gyms)
      - ✅ `scripts/bulk_import_paphos_gyms.py` (34 gyms)
+     - ✅ `scripts/bulk_import_ayia_napa_gyms.py` (5 gyms)
+     - ✅ `scripts/bulk_import_protaras_gyms.py` (11 gyms)
    - ✅ SEO-optimized description generation scripts:
      - ✅ `scripts/generate_bulk_gym_descriptions.py` (Limassol)
      - ✅ `scripts/generate_nicosia_gym_descriptions.py` (Nicosia)
      - ✅ `scripts/generate_larnaca_gym_descriptions.py` (Larnaca)
      - ✅ `scripts/generate_paphos_gym_descriptions.py` (Paphos)
+     - ✅ `scripts/generate_ayia_napa_gym_descriptions.py` (Ayia Napa)
+     - ✅ `scripts/generate_protaras_gym_descriptions.py` (Protaras)
    - ✅ **Description fixes** - Removed incorrect "24 hour gym" references from descriptions
    - ✅ Frontend integration complete (gyms visible on all city pages)
    - ✅ Web enrichment scripts created (`scripts/enrich_gym_details.py`)
@@ -383,19 +397,21 @@
 
 ### Current Metrics
 - **Pages Created:** 20+ pages
-- **Gyms Listed:** 127 gyms in database (all scraped from Google Maps)
+- **Gyms Listed:** 214 gyms in database (all scraped from Google Maps)
   - Limassol: 50 gyms
   - Nicosia: 71 gyms
   - Larnaca: 43 gyms
   - Paphos: 34 gyms
+  - Ayia Napa: 5 gyms
+  - Protaras: 11 gyms
 - **Featured Gyms:** 0 featured listings (all unclaimed)
-- **Cities Covered:** 4 cities with gyms (Limassol ✅, Nicosia ✅, Larnaca ✅, Paphos ✅), 2 cities pending (Ayia Napa ⏳, Protaras ⏳)
+- **Cities Covered:** 6 cities with gyms (all cities ✅ - Limassol, Nicosia, Larnaca, Paphos, Ayia Napa, Protaras)
 - **Specialties:** 13 specialties (11 visible for MVP)
 - **Specialty Distribution:** Multiple gyms across all specialties in all cities
 - **SEO Keywords Targeted:** 30+ keywords
 - **Total Search Volume:** ~20,700+ monthly searches
-- **Database Status:** ✅ Supabase configured and populated (127 real gyms)
-- **Data Processing:** ✅ Automated pipeline operational for all cities
+- **Database Status:** ✅ Supabase configured and populated (214 real gyms)
+- **Data Processing:** ✅ Automated pipeline operational for all 6 cities
 - **Data Quality:** ✅ Specialty assignments verified and corrected
 - **Frontend Integration:** ✅ Connected to Supabase API with dynamic counts
 - **Mock Data Status:** ✅ All mock/demo gyms removed (clean slate for real data)
@@ -455,19 +471,22 @@
 ---
 
 **Recent Updates (November 15, 2025):**
-- ✅ Bulk import completed: 127 gyms across 4 cities now in database
-  - ✅ 50 Limassol gyms (imported via SQL)
-  - ✅ 71 Nicosia gyms (imported via SQL)
+- ✅ Bulk import completed: 214 gyms across all 6 cities now in database
+  - ✅ 50 Limassol gyms (imported manually via Supabase Dashboard)
+  - ✅ 71 Nicosia gyms (imported manually via Supabase Dashboard)
   - ✅ 43 Larnaca gyms (imported manually via Supabase Dashboard)
   - ✅ 34 Paphos gyms (imported manually via Supabase Dashboard)
-- ✅ Database updated: All 127 gyms are now live in the database and visible on frontend
+  - ✅ 5 Ayia Napa gyms (imported manually via Supabase Dashboard)
+  - ✅ 11 Protaras gyms (imported manually via Supabase Dashboard)
+- ✅ Database updated: All 214 gyms are now live in the database and visible on frontend
+- ✅ Complete city coverage: All 6 cities now have gyms imported and visible
 - ✅ SEO descriptions: All gyms have SEO-optimized descriptions applied
 - ✅ Data quality fixes: Corrected incorrect "24-hour-gym" specialty assignments
 - ✅ Description updates: Removed incorrect "24 hour gym" references from descriptions
 - ✅ Frontend API integration: Connected to Supabase with dynamic counts for all cities
 - ✅ Data cleaning script improvements: Fixed specialty mapping logic
-- ✅ Multi-city support: Created city-specific cleaning and import scripts
+- ✅ Multi-city support: Created city-specific cleaning and import scripts for all 6 cities
 - ✅ Truncated description fixes: Fixed descriptions ending with "..." for Nicosia gyms
 
-**Next Immediate Action:** Expand gym listings to remaining cities (Ayia Napa, Protaras), implement owner claim system, optimize internal linking (see STRATEGIC_ACTION_PLAN.md)
+**Next Immediate Action:** Implement owner claim system, optimize internal linking, expand gym listings further (see STRATEGIC_ACTION_PLAN.md)
 
