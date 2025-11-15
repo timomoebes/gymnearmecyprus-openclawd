@@ -1,9 +1,23 @@
 import React from 'react';
 import Link from 'next/link';
-import { specialties, HIDDEN_FOR_MVP } from '@/lib/data';
+import { specialties, HIDDEN_FOR_MVP, getAllGyms } from '@/lib/data';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 
-export default function SpecialtiesPage() {
+// Enable revalidation so page updates when gym counts change
+export const revalidate = 0; // 0 = always revalidate, or use a number for seconds
+
+export default async function SpecialtiesPage() {
+  // Fetch all gyms to calculate dynamic specialty counts
+  const allGyms = await getAllGyms();
+  
+  // Calculate actual specialty gym counts from fetched data
+  const specialtyGymCounts = specialties.reduce((acc, specialty) => {
+    acc[specialty.id] = allGyms.filter(gym => 
+      gym.specialties.includes(specialty.name)
+    ).length;
+    return acc;
+  }, {} as Record<string, number>);
+
   // Filter out specialties hidden for MVP
   const visibleSpecialties = specialties.filter(
     specialty => !HIDDEN_FOR_MVP.includes(specialty.slug)
@@ -58,7 +72,7 @@ export default function SpecialtiesPage() {
                   </p>
                   <div className="pt-4 border-t border-surface-lighter">
                     <span className="text-text-light font-semibold">
-                      {specialty.gymCount} {specialty.gymCount === 1 ? 'Gym' : 'Gyms'}
+                      {specialtyGymCounts[specialty.id] || 0} {(specialtyGymCounts[specialty.id] || 0) === 1 ? 'Gym' : 'Gyms'}
                     </span>
                   </div>
                 </div>

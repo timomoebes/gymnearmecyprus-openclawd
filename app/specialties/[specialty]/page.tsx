@@ -13,6 +13,9 @@ interface SpecialtyPageProps {
   };
 }
 
+// Enable revalidation so pages update when gym counts change
+export const revalidate = 0; // 0 = always revalidate, or use a number for seconds
+
 export async function generateStaticParams() {
   return specialties.map((specialty) => ({
     specialty: specialty.slug,

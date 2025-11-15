@@ -17,6 +17,9 @@ interface GymPageProps {
   };
 }
 
+// Enable revalidation so pages update when data changes (e.g., when website is added)
+export const revalidate = 0; // 0 = always revalidate, or use a number for seconds
+
 export async function generateStaticParams() {
   const gyms = await getAllGyms();
   return gyms.map((gym) => ({
@@ -259,16 +262,56 @@ export default async function GymPage({ params }: GymPageProps) {
                   <Clock className="w-6 h-6" />
                   Opening Hours
                 </h2>
-                <div className="space-y-2">
-                  {openingHours.map(({ day, hours }) => (
-                    <div
-                      key={day}
-                      className="flex justify-between items-center py-2 border-b border-surface-lighter last:border-0"
-                    >
-                      <span className="text-text-light font-medium">{day}</span>
-                      <span className="text-text-muted">{hours || 'Closed'}</span>
-                    </div>
-                  ))}
+                <div className="space-y-3">
+                  {openingHours.map(({ day, hours }) => {
+                    // Check if hours contain newlines (complex format with sessions)
+                    const isComplexFormat = hours && hours.includes('\n');
+                    
+                    return (
+                      <div
+                        key={day}
+                        className="py-2 border-b border-surface-lighter last:border-0"
+                      >
+                        <div className="flex items-start gap-4">
+                          <span className="text-text-light font-medium min-w-[100px]">{day}</span>
+                          <div className="flex-1">
+                            {isComplexFormat ? (
+                              // Complex format: render with line breaks and formatting
+                              <div className="text-text-muted text-sm whitespace-pre-line">
+                                {hours.split('\n').map((line, idx) => {
+                                  // Check if line is a section header (ends with colon)
+                                  if (line.endsWith(':')) {
+                                    return (
+                                      <div key={idx} className="font-semibold text-text-light mt-2 first:mt-0">
+                                        {line}
+                                      </div>
+                                    );
+                                  }
+                                  // Check if line is a bullet point
+                                  if (line.trim().startsWith('•')) {
+                                    return (
+                                      <div key={idx} className="ml-4 text-text-muted">
+                                        {line}
+                                      </div>
+                                    );
+                                  }
+                                  // Regular line
+                                  return (
+                                    <div key={idx} className="text-text-muted">
+                                      {line}
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            ) : (
+                              // Simple format: single line
+                              <span className="text-text-muted">{hours || 'Closed'}</span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </section>
             )}

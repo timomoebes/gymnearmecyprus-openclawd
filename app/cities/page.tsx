@@ -1,10 +1,22 @@
 import React from 'react';
 import Link from 'next/link';
 import { MapPin } from 'lucide-react';
-import { cities } from '@/lib/data';
+import { cities, getAllGyms } from '@/lib/data';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 
-export default function CitiesPage() {
+// Enable revalidation so page updates when gym counts change
+export const revalidate = 0; // 0 = always revalidate, or use a number for seconds
+
+export default async function CitiesPage() {
+  // Fetch all gyms to calculate dynamic city counts
+  const allGyms = await getAllGyms();
+  
+  // Calculate actual city gym counts from fetched data
+  const cityGymCounts = cities.reduce((acc, city) => {
+    acc[city.id] = allGyms.filter(gym => gym.cityId === city.id).length;
+    return acc;
+  }, {} as Record<string, number>);
+
   return (
     <div className="min-h-screen bg-background-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -21,31 +33,34 @@ export default function CitiesPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {cities.map((city) => (
-            <Link
-              key={city.id}
-              href={`/cities/${city.slug}`}
-              className="group bg-surface-card rounded-card p-8 hover:bg-surface-lighter transition-all duration-200 hover:shadow-card-hover"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-2xl font-bold text-text-white group-hover:text-primary-blue transition-colors">
-                  {city.name}
-                </h2>
-                <MapPin className="w-6 h-6 text-primary-blue" />
-              </div>
-              <p className="text-text-muted mb-4 line-clamp-3">
-                {city.description}
-              </p>
-              <div className="flex items-center justify-between pt-4 border-t border-surface-lighter">
-                <span className="text-text-light font-semibold">
-                  {city.gymCount} {city.gymCount === 1 ? 'Gym' : 'Gyms'}
-                </span>
-                <span className="text-primary-blue text-sm font-medium group-hover:underline">
-                  Explore →
-                </span>
-              </div>
-            </Link>
-          ))}
+          {cities.map((city) => {
+            const gymCount = cityGymCounts[city.id] || 0;
+            return (
+              <Link
+                key={city.id}
+                href={`/cities/${city.slug}`}
+                className="group bg-surface-card rounded-card p-8 hover:bg-surface-lighter transition-all duration-200 hover:shadow-card-hover"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-2xl font-bold text-text-white group-hover:text-primary-blue transition-colors">
+                    {city.name}
+                  </h2>
+                  <MapPin className="w-6 h-6 text-primary-blue" />
+                </div>
+                <p className="text-text-muted mb-4 line-clamp-3">
+                  {city.description}
+                </p>
+                <div className="flex items-center justify-between pt-4 border-t border-surface-lighter">
+                  <span className="text-text-light font-semibold">
+                    {gymCount} {gymCount === 1 ? 'Gym' : 'Gyms'}
+                  </span>
+                  <span className="text-primary-blue text-sm font-medium group-hover:underline">
+                    Explore →
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </div>

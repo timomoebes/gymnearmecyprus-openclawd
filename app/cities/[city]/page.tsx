@@ -16,6 +16,9 @@ interface CityPageProps {
   };
 }
 
+// Enable revalidation so pages update when gym counts change
+export const revalidate = 0; // 0 = always revalidate, or use a number for seconds
+
 export async function generateStaticParams() {
   return cities.map((city) => ({
     city: city.slug,
@@ -31,6 +34,10 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
     };
   }
 
+  // Fetch actual gym count dynamically
+  const gyms = await getGymsByCity(city.id);
+  const gymCount = gyms.length;
+
   const cityNameLower = city.name.toLowerCase();
   const isLimassol = cityNameLower.includes('limassol');
   const isNicosia = cityNameLower.includes('nicosia');
@@ -44,16 +51,16 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
   
   // Add specific keywords for high-volume cities
   if (isLimassol) {
-    title = `Best Gyms in Limassol | Find Gyms Near Me in Limassol, Cyprus | ${city.gymCount} Gyms`;
+    title = `Best Gyms in Limassol | Find Gyms Near Me in Limassol, Cyprus | ${gymCount} Gyms`;
     keywords += ', best gym limassol, gym limassol';
   } else if (isNicosia) {
-    title = `Best Gyms in Nicosia | Find Gyms Near Me in Nicosia, Cyprus | ${city.gymCount} Gyms`;
+    title = `Best Gyms in Nicosia | Find Gyms Near Me in Nicosia, Cyprus | ${gymCount} Gyms`;
     keywords += ', best gyms in nicosia, gym nicosia, gym strovolos';
   } else if (isLarnaca) {
-    title = `Best Gyms in Larnaca | Find Gyms Near Me in Larnaca, Cyprus | ${city.gymCount} Gyms`;
+    title = `Best Gyms in Larnaca | Find Gyms Near Me in Larnaca, Cyprus | ${gymCount} Gyms`;
     keywords += ', gym larnaca';
   } else if (isPaphos) {
-    title = `Best Gyms in Paphos | Find Gyms Near Me in Paphos, Cyprus | ${city.gymCount} Gyms`;
+    title = `Best Gyms in Paphos | Find Gyms Near Me in Paphos, Cyprus | ${gymCount} Gyms`;
     keywords += ', gym paphos';
   }
 
@@ -94,11 +101,11 @@ export default async function CityPage({ params }: CityPageProps) {
   const cityFaqs = [
     {
       question: `What are the best gyms in ${city.name}?`,
-      answer: `Our directory lists ${city.gymCount} top-rated gyms and fitness centers in ${city.name}. You can filter by rating, specialty, amenities, and read reviews to find the best gym near me in ${city.name} that matches your fitness goals.`,
+      answer: `Our directory lists ${gyms.length} top-rated gyms and fitness centers in ${city.name}. You can filter by rating, specialty, amenities, and read reviews to find the best gym near me in ${city.name} that matches your fitness goals.`,
     },
     {
       question: `Are there 24-hour gyms in ${city.name}?`,
-      answer: city.gymCount > 0 
+      answer: gyms.length > 0 
         ? `Yes, several gyms in ${city.name} offer 24/7 access. Look for the "24/7 Access" amenity when browsing gym listings in ${city.name}. These facilities are perfect for early morning workouts or late-night training sessions.`
         : `We're currently building our directory for ${city.name}. Check back soon for 24-hour gym listings, or list your gym to help others find fitness facilities in ${city.name}.`,
     },

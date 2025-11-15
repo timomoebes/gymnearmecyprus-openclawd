@@ -24,6 +24,12 @@ function transformGymFromDB(dbGym: any, specialties: string[], amenities: string
     }
   }
 
+  // Ensure website URL has protocol
+  let website = dbGym.website || undefined;
+  if (website && !website.startsWith('http://') && !website.startsWith('https://')) {
+    website = `https://${website}`;
+  }
+
   return {
     id: dbGym.id,
     name: dbGym.name,
@@ -32,7 +38,7 @@ function transformGymFromDB(dbGym: any, specialties: string[], amenities: string
     address: dbGym.address || '',
     coordinates: [dbGym.latitude || 0, dbGym.longitude || 0] as [number, number],
     phone: dbGym.phone || undefined,
-    website: dbGym.website || undefined,
+    website: website,
     email: dbGym.email || undefined,
     specialties,
     amenities,

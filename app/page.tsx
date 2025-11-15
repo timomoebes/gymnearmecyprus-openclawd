@@ -8,6 +8,9 @@ import { SearchBar } from '@/components/home/SearchBar';
 import { Clock, CheckCircle, MapPin, Star, Users } from 'lucide-react';
 import { generateFAQPageSchema } from '@/lib/utils/schema';
 
+// Enable revalidation so homepage updates when gym counts change
+export const revalidate = 0; // 0 = always revalidate, or use a number for seconds
+
 export const metadata: Metadata = {
   title: 'Gym Near Me in Cyprus | Find Best Fitness Centers & Health Clubs | 50+ Gyms',
   description: 'Find gyms near me in Cyprus. Search 50+ fitness centers, health clubs, and 24-hour gyms. Compare ratings, reviews, and amenities. List your gym for free.',
@@ -46,6 +49,14 @@ export default async function HomePage() {
   // Calculate actual city gym counts from fetched data
   const cityGymCounts = cities.reduce((acc, city) => {
     acc[city.id] = allGyms.filter(gym => gym.cityId === city.id).length;
+    return acc;
+  }, {} as Record<string, number>);
+
+  // Calculate actual specialty gym counts from fetched data
+  const specialtyGymCounts = specialties.reduce((acc, specialty) => {
+    acc[specialty.id] = allGyms.filter(gym => 
+      gym.specialties.includes(specialty.name)
+    ).length;
     return acc;
   }, {} as Record<string, number>);
 
@@ -224,7 +235,7 @@ export default async function HomePage() {
                       {specialty.name}
                     </h3>
                     <p className="text-text-muted text-sm">
-                      {specialty.gymCount} {specialty.gymCount === 1 ? 'gym' : 'gyms'}
+                      {specialtyGymCounts[specialty.id] || 0} {(specialtyGymCounts[specialty.id] || 0) === 1 ? 'gym' : 'gyms'}
                     </p>
                   </div>
                 </Link>
