@@ -105,7 +105,7 @@ export default async function HomePage() {
             </p>
             
             {/* Search Bar */}
-            <SearchBar />
+            <SearchBar gyms={allGyms} cities={cities} />
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

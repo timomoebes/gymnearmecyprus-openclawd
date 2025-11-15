@@ -122,7 +122,10 @@ new-gym/
   - Custom markers for featured gyms
 - [x] **Review System** - Display top 3-5 reviews per gym
 - [x] **Featured Listings** - Badges and priority placement for featured gyms
-- [x] **Search Functionality** - Search by city or gym name
+- [x] **Search Functionality** - Smart search by city or gym name with intelligent matching
+  - City names take priority over gym names
+  - Exact matches prioritized over partial matches
+  - Redirects to gym page for gym matches, city page for city matches
 - [x] **Filtering & Sorting** - Filter by rating, specialty, amenities; sort by rating, name, featured
 
 ### Phase 4: Owner Experience ✅
@@ -210,13 +213,13 @@ The project uses a custom dark/neon theme with:
 
 #### Backend Database (Supabase) ✅
 - **Database**: Supabase PostgreSQL
-- **Total Gyms**: 214 gyms in database (all scraped from Google Maps)
+- **Total Gyms**: 211 gyms in database (all scraped from Google Maps)
   - Limassol: 50 gyms
   - Nicosia: 71 gyms
   - Larnaca: 43 gyms
   - Paphos: 34 gyms
-  - Ayia Napa: 5 gyms
-  - Protaras: 11 gyms
+  - Ayia Napa: 6 gyms
+  - Protaras: 7 gyms
 - **Featured Gyms**: 0 featured listings (all unclaimed)
 - **Cities**: 6 cities (all cities now have gyms imported)
 - **Specialties**: 13 specialties (11 visible for MVP, 2 hidden: Hotel Gym, Women-Only)
@@ -235,10 +238,11 @@ The project uses a custom dark/neon theme with:
   - ✅ 71 Nicosia gyms imported (manually via Supabase Dashboard)
   - ✅ 43 Larnaca gyms imported (manually via Supabase Dashboard)
   - ✅ 34 Paphos gyms imported (manually via Supabase Dashboard)
-  - ✅ 5 Ayia Napa gyms imported (manually via Supabase Dashboard)
-  - ✅ 11 Protaras gyms imported (manually via Supabase Dashboard)
-- **Database Status**: ✅ All 214 gyms are live in the database and visible on frontend
+  - ✅ 6 Ayia Napa gyms imported (manually via Supabase Dashboard)
+  - ✅ 7 Protaras gyms imported (manually via Supabase Dashboard)
+- **Database Status**: ✅ All 211 gyms are live in the database and visible on frontend
 - **Data Quality**: ✅ Specialty assignments verified and corrected (removed incorrect "24-hour-gym" tags)
+- **City Assignment Fixes**: ✅ Corrected gym city assignments (e.g., "Bad Dog Bjj" moved from Protaras to Ayia Napa based on address)
 
 #### Frontend Data Access
 - **Data Layer**: Unified data access layer with Supabase API integration
@@ -304,16 +308,16 @@ The project uses a custom dark/neon theme with:
 ### Current Status
 - **Phase 5 Complete**: SEO optimization and content enhancement
 - **FAQ Schema Implemented**: FAQPage schema + visible FAQ sections on homepage, all city pages, and all specialty pages
-- **Backend Integration**: ✅ Supabase database setup complete with 214 real gyms (all scraped from Google Maps)
+- **Backend Integration**: ✅ Supabase database setup complete with 211 real gyms (all scraped from Google Maps)
 - **Data Processing**: ✅ Automated cleaning pipeline for scraped gym data
 - **Bulk Import**: ✅ Multi-city bulk imports completed and applied to database
   - ✅ 50 Limassol gyms imported - manually via Supabase Dashboard
   - ✅ 71 Nicosia gyms imported - manually via Supabase Dashboard
   - ✅ 43 Larnaca gyms imported - manually via Supabase Dashboard
   - ✅ 34 Paphos gyms imported - manually via Supabase Dashboard
-  - ✅ 5 Ayia Napa gyms imported - manually via Supabase Dashboard
-  - ✅ 11 Protaras gyms imported - manually via Supabase Dashboard
-- **Database Status**: ✅ All 214 gyms are live and visible on frontend
+  - ✅ 6 Ayia Napa gyms imported - manually via Supabase Dashboard
+  - ✅ 7 Protaras gyms imported - manually via Supabase Dashboard
+- **Database Status**: ✅ All 211 gyms are live and visible on frontend
 - **Data Quality Fixes**: ✅ Corrected incorrect "24-hour-gym" specialty assignments
   - Removed "24-hour-gym" from incorrectly tagged gyms
   - Only "Muscle Factory 24 Hours" verified as 24-hour gym
@@ -335,8 +339,8 @@ The project uses a custom dark/neon theme with:
   - ✅ 71 Nicosia gyms
   - ✅ 43 Larnaca gyms
   - ✅ 34 Paphos gyms
-  - ✅ 5 Ayia Napa gyms
-  - ✅ 11 Protaras gyms
+  - ✅ 6 Ayia Napa gyms
+  - ✅ 7 Protaras gyms
 - ✅ Frontend connected to Supabase API with dynamic data fetching
 - ✅ Specialty assignments corrected and verified
 - ✅ Gym descriptions updated to match actual specialties

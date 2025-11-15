@@ -4,19 +4,77 @@ import React, { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { Search } from 'lucide-react';
 import { Button } from '@/components/shared/Button';
-import { searchGyms } from '@/lib/utils/search';
+import type { Gym } from '@/lib/types';
+import type { City } from '@/lib/types';
 
-export const SearchBar: React.FC = () => {
+interface SearchBarProps {
+  gyms: Gym[];
+  cities: City[];
+}
+
+export const SearchBar: React.FC<SearchBarProps> = ({ gyms, cities }) => {
   const [query, setQuery] = useState('');
   const router = useRouter();
 
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
-    if (query.trim()) {
-      // For now, redirect to a search results page or cities page
-      // In a full implementation, you'd have a /search page
-      router.push(`/cities?search=${encodeURIComponent(query)}`);
+    const searchQuery = query.trim();
+    if (!searchQuery) return;
+
+    const queryLower = searchQuery.toLowerCase();
+
+    // FIRST: Check for city matches (cities should take priority over gyms)
+    // Try exact match first
+    let matchedCity = cities.find(city => {
+      const cityNameLower = city.name.toLowerCase();
+      const citySlugLower = city.slug.toLowerCase();
+      return cityNameLower === queryLower || citySlugLower === queryLower;
+    });
+
+    // If no exact city match, try partial match (but only if query is a complete word match)
+    if (!matchedCity) {
+      matchedCity = cities.find(city => {
+        const cityNameLower = city.name.toLowerCase();
+        const citySlugLower = city.slug.toLowerCase();
+        // Check if query matches the start of city name or is contained as a whole word
+        return cityNameLower.startsWith(queryLower) || 
+               citySlugLower.startsWith(queryLower) ||
+               cityNameLower === queryLower ||
+               citySlugLower === queryLower;
+      });
     }
+
+    if (matchedCity) {
+      // Redirect to city page
+      router.push(`/cities/${matchedCity.slug}`);
+      return;
+    }
+
+    // SECOND: Check for gym matches (only if no city match found)
+    // Try exact match first
+    let matchedGym = gyms.find(gym => {
+      const gymNameLower = gym.name.toLowerCase();
+      const gymSlugLower = gym.slug.toLowerCase();
+      return gymNameLower === queryLower || gymSlugLower === queryLower;
+    });
+
+    // If no exact match, try partial match
+    if (!matchedGym) {
+      matchedGym = gyms.find(gym => {
+        const gymNameLower = gym.name.toLowerCase();
+        const gymSlugLower = gym.slug.toLowerCase();
+        return gymNameLower.includes(queryLower) || gymSlugLower.includes(queryLower);
+      });
+    }
+
+    if (matchedGym) {
+      // Redirect to gym page
+      router.push(`/gyms/${matchedGym.slug}`);
+      return;
+    }
+
+    // If no match, redirect to cities page with search query
+    router.push(`/cities?search=${encodeURIComponent(searchQuery)}`);
   };
 
   return (
