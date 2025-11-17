@@ -1,7 +1,7 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { MapPin, Phone, Globe, Mail, Clock, Users, Calendar } from 'lucide-react';
+import { MapPin, Phone, Globe, Mail, Clock, Users, Calendar, DollarSign, Facebook } from 'lucide-react';
 import { getGymBySlug, getCityById, getTopReviews, getGymsByCity, getAllGyms, getReviewsByGymId } from '@/lib/data';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { Rating } from '@/components/shared/Rating';
@@ -10,6 +10,7 @@ import { GymCard } from '@/components/gym/GymCard';
 import { Button } from '@/components/shared/Button';
 import { GymMap } from '@/components/gym/GymMapWrapper';
 import { generateLocalBusinessSchema, generateBreadcrumbSchema } from '@/lib/utils/schema';
+import { isGymOpenNow } from '@/lib/utils/opening-hours';
 
 interface GymPageProps {
   params: {
@@ -91,15 +92,37 @@ export default async function GymPage({ params }: GymPageProps) {
     { name: gym.name, url: `https://gymnearme.cy/gyms/${gym.slug}` },
   ]);
 
+  // Always show all 7 days - use "Closed" if no hours specified
   const openingHours = [
-    { day: 'Monday', hours: gym.openingHours.monday },
-    { day: 'Tuesday', hours: gym.openingHours.tuesday },
-    { day: 'Wednesday', hours: gym.openingHours.wednesday },
-    { day: 'Thursday', hours: gym.openingHours.thursday },
-    { day: 'Friday', hours: gym.openingHours.friday },
-    { day: 'Saturday', hours: gym.openingHours.saturday },
-    { day: 'Sunday', hours: gym.openingHours.sunday },
-  ].filter(item => item.hours); // Only show days with hours
+    { day: 'Monday', hours: gym.openingHours.monday || 'Closed' },
+    { day: 'Tuesday', hours: gym.openingHours.tuesday || 'Closed' },
+    { day: 'Wednesday', hours: gym.openingHours.wednesday || 'Closed' },
+    { day: 'Thursday', hours: gym.openingHours.thursday || 'Closed' },
+    { day: 'Friday', hours: gym.openingHours.friday || 'Closed' },
+    { day: 'Saturday', hours: gym.openingHours.saturday || 'Closed' },
+    { day: 'Sunday', hours: gym.openingHours.sunday || 'Closed' },
+  ];
+  
+  // Check if all days are "Closed" or if opening hours are empty/null
+  // Also check for "Contact for opening hour details" - show section but don't show Open/Closed badge
+  const hasValidOpeningHours = openingHours.some(item => 
+    item.hours && 
+    item.hours.toLowerCase() !== 'closed' && 
+    item.hours.toLowerCase() !== 'no sessions' &&
+    item.hours.trim() !== ''
+  );
+  
+  // Check if all days are "Contact for opening hour details" (don't show Open/Closed badge)
+  const isContactForDetails = openingHours.every(item => 
+    item.hours && 
+    item.hours.toLowerCase().includes('contact for opening hour details')
+  );
+  
+  // Check if website is a Facebook URL
+  const isFacebookUrl = gym.website && (
+    gym.website.includes('facebook.com') || 
+    gym.website.includes('fb.com')
+  );
 
   return (
     <>
@@ -156,8 +179,17 @@ export default async function GymPage({ params }: GymPageProps) {
             {gym.website && (
               <a href={gym.website} target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="sm">
-                  <Globe className="w-4 h-4 mr-2" />
-                  Website
+                  {isFacebookUrl ? (
+                    <>
+                      <Facebook className="w-4 h-4 mr-2" />
+                      Facebook
+                    </>
+                  ) : (
+                    <>
+                      <Globe className="w-4 h-4 mr-2" />
+                      Visit Website
+                    </>
+                  )}
                 </Button>
               </a>
             )}
@@ -255,13 +287,31 @@ export default async function GymPage({ params }: GymPageProps) {
               </div>
             </section>
 
-            {/* Opening Hours */}
-            {openingHours.length > 0 && (
+            {/* Opening Hours - Only show if there are valid opening hours (not all "Closed") */}
+            {hasValidOpeningHours && (
               <section className="bg-surface-card rounded-card p-6">
-                <h2 className="text-2xl font-bold text-text-white mb-4 flex items-center gap-2">
-                  <Clock className="w-6 h-6" />
-                  Opening Hours
-                </h2>
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-2xl font-bold text-text-white flex items-center gap-2">
+                    <Clock className="w-6 h-6" />
+                    Opening Hours
+                  </h2>
+                  {/* Open/Closed Status Badge - Only show if not "Contact for opening hour details" */}
+                  {!isContactForDetails && (() => {
+                    const isOpen = isGymOpenNow(gym.openingHours);
+                    return (
+                      <Badge 
+                        variant={isOpen ? "rating" : "specialty"}
+                        className={`px-4 py-2 ${
+                          isOpen 
+                            ? 'bg-green-500/20 text-green-400 border-green-500/50' 
+                            : 'bg-red-500/20 text-red-400 border-red-500/50'
+                        }`}
+                      >
+                        {isOpen ? '🟢 Open Now' : '🔴 Closed'}
+                      </Badge>
+                    );
+                  })()}
+                </div>
                 <div className="space-y-3">
                   {openingHours.map(({ day, hours }) => {
                     // Check if hours contain newlines (complex format with sessions)
@@ -304,8 +354,12 @@ export default async function GymPage({ params }: GymPageProps) {
                                 })}
                               </div>
                             ) : (
-                              // Simple format: single line
-                              <span className="text-text-muted">{hours || 'Closed'}</span>
+                              // Simple format: single line - normalize "No sessions" to "Closed"
+                              <span className="text-text-muted">
+                                {hours && hours.toLowerCase() !== 'no sessions' 
+                                  ? hours 
+                                  : 'Closed'}
+                              </span>
                             )}
                           </div>
                         </div>
@@ -315,6 +369,29 @@ export default async function GymPage({ params }: GymPageProps) {
                 </div>
               </section>
             )}
+
+            {/* Pricing Section */}
+            <section className="bg-surface-card rounded-card p-6">
+              <h2 className="text-2xl font-bold text-text-white mb-4 flex items-center gap-2">
+                <DollarSign className="w-6 h-6" />
+                Pricing
+              </h2>
+              {gym.pricing && Object.keys(gym.pricing).length > 0 ? (
+                <div className="space-y-3">
+                  {Object.entries(gym.pricing).map(([key, value]) => (
+                    <div
+                      key={key}
+                      className="flex items-center justify-between py-2 border-b border-surface-lighter last:border-0"
+                    >
+                      <span className="text-text-light font-medium">{key}</span>
+                      <span className="text-text-white font-semibold">{value}</span>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-text-muted">Contact for pricing details</p>
+              )}
+            </section>
 
             {/* Top Reviews */}
             {reviews.length > 0 && (
@@ -398,15 +475,31 @@ export default async function GymPage({ params }: GymPageProps) {
                 )}
                 {gym.website && (
                   <div className="flex items-center gap-3">
-                    <Globe className="w-5 h-5 text-primary-blue flex-shrink-0" />
-                    <a
-                      href={gym.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-text-light hover:text-primary-blue transition-colors"
-                    >
-                      Visit Website
-                    </a>
+                    {isFacebookUrl ? (
+                      <>
+                        <Facebook className="w-5 h-5 text-primary-blue flex-shrink-0" />
+                        <a
+                          href={gym.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-text-light hover:text-primary-blue transition-colors"
+                        >
+                          Visit Facebook
+                        </a>
+                      </>
+                    ) : (
+                      <>
+                        <Globe className="w-5 h-5 text-primary-blue flex-shrink-0" />
+                        <a
+                          href={gym.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-text-light hover:text-primary-blue transition-colors"
+                        >
+                          Visit Website
+                        </a>
+                      </>
+                    )}
                   </div>
                 )}
               </div>

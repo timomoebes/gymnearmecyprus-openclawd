@@ -1,0 +1,70 @@
+{
+  "name": "Lumpinee Gym",
+  "meta_title": "Lumpinee Gym | Muay Thai & Muay Boran | Muay Thai Training & Personal Training | Flexible Hours | Limassol",
+  "meta_description": "Discover Lumpinee Gym in Limassol. Specializing in Muay Thai, Muay Boran, Kids Martial Arts, equipped with muay thai training, personal training, kids' classes, open Monday: 6:30 am – 9:00 pm | Tuesday: 6:30 am – 9:00 pm | Wednesday: 6:30 am – 9:00 pm | Thursday: 6:30 am – 9:00 pm | Friday: 6:30 am – 9:00 pm | Saturday: 11:00 am – 1:00 pm. Located Agios Athanasios, contact Contact for details for details.",
+  "description": "Located on Akarnanias 4 Yermasogia, Lumpinee Gym delivers authentic muay thai instruction in Limassol. Specializing in Muay Thai, Muay Boran, and Kids Martial Arts, this facility caters to all fitness levels. Perfect for families with dedicated kids' classes and family-friendly facilities.",
+  "opening_hours": {
+    "Monday": "6:30 am – 9:00 pm",
+    "Tuesday": "6:30 am – 9:00 pm",
+    "Wednesday": "6:30 am – 9:00 pm",
+    "Thursday": "6:30 am – 9:00 pm",
+    "Friday": "6:30 am – 9:00 pm",
+    "Saturday": "11:00 am – 1:00 pm",
+    "Sunday": "Closed"
+  },
+  "is_open_now": false,
+  "pricing": {},
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Lumpinee Gym",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "Akarnanias 4 Yermasogia, Agios Athanasios, Limassol"
+    },
+    "email": "lumpineegymlimassol@gmail.com",
+    "openingHoursSpecification": [
+      "Mo 6:30 am – 9:00 pm",
+      "Tu 6:30 am – 9:00 pm",
+      "We 6:30 am – 9:00 pm",
+      "Th 6:30 am – 9:00 pm",
+      "Fr 6:30 am – 9:00 pm",
+      "Sa 11:00 am – 1:00 pm"
+    ],
+    "keywords": "Muay Thai, Muay Boran, Kids Martial Arts, Personal Training, Fight Preparation",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Muay Thai Training"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Personal Training"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Kids' Classes"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Competitive Training"
+      }
+    ]
+  },
+  "internal_links": [
+    "/cities/limassol",
+    "/specialties/personal-trainer",
+    "/specialties/mma"
+  ],
+  "raw_data": {
+    "address": "Akarnanias 4 Yermasogia, Agios Athanasios, Limassol",
+    "amenities": "Muay Thai Training, Personal Training, Kids' Classes, Competitive Training",
+    "specialties": "Muay Thai, Muay Boran, Kids Martial Arts, Personal Training, Fight Preparation",
+    "opening_hours": "{\"Monday\":\"6:30 am – 9:00 pm\",\"Tuesday\":\"6:30 am – 9:00 pm\",\"Wednesday\":\"6:30 am – 9:00 pm\",\"Thursday\":\"6:30 am – 9:00 pm\",\"Friday\":\"6:30 am – 9:00 pm\",\"Saturday\":\"11:00 am – 1:00 pm\",\"Sunday\":\"Closed\"}",
+    "email": "lumpineegymlimassol@gmail.com",
+    "phone": "#ERROR!",
+    "pricing": "Not specified on website"
+  }
+}

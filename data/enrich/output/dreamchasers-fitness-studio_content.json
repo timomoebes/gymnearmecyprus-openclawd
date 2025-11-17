@@ -1,0 +1,49 @@
+{
+  "name": "Dreamchasers Fitness Studio",
+  "meta_title": "Dreamchasers Fitness Studio | TRX Training & Functional Training | Contact for details | Flexible Hours | Limassol",
+  "meta_description": "Discover Dreamchasers Fitness Studio in Limassol. Specializing in TRX Training, Functional Training, Weight Loss, equipped with contact for details, open Contact for details. Located Agios Spiridonas, contact Contact for details for details.",
+  "description": "Located Agios Spiridonas, Dreamchasers Fitness Studio offers comprehensive fitness training in Limassol. Specializing in TRX Training, Functional Training, and Weight Loss, this facility caters to all fitness levels. Great for one-on-one coaching and personalized fitness programs. Memberships from €10 monthly with flexible payment options.",
+  "opening_hours": {},
+  "is_open_now": false,
+  "pricing": {
+    "PrivateTraining": "€30",
+    "SemiPrivateTraining": "€40",
+    "MonthlyGroupPackages - 3SessionsPerWeek": "€80",
+    "MonthlyGroupPackages - 4SessionsPerWeek": "€100",
+    "MonthlyGroupPackages - 5SessionsPerWeek": "€120",
+    "DailyPass": "€10"
+  },
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Dreamchasers Fitness Studio",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "Kekropos 8, Agios Spiridonas, Limassol 3051"
+    },
+    "email": "info@dreamchasers.cy",
+    "keywords": "TRX Training, Functional Training, Weight Loss, Muscle Building, Personal Training",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Contact for details"
+      }
+    ],
+    "priceRange": "Contact for details"
+  },
+  "internal_links": [
+    "/cities/limassol",
+    "/specialties/personal-trainer"
+  ],
+  "raw_data": {
+    "address": "Kekropos 8, Agios Spiridonas, Limassol 3051",
+    "amenities": "Contact for details",
+    "specialties": "TRX Training, Functional Training, Weight Loss, Muscle Building, Personal Training",
+    "opening_hours": "{}",
+    "email": "info@dreamchasers.cy",
+    "phone": "#ERROR!",
+    "pricing": "{\"PrivateTraining\":\"€30\",\"SemiPrivateTraining\":\"€40\",\"MonthlyGroupPackages\":{\"3SessionsPerWeek\":\"€80\",\"4SessionsPerWeek\":\"€100\",\"5SessionsPerWeek\":\"€120\"},\"DailyPass\":\"€10\"}"
+  }
+}

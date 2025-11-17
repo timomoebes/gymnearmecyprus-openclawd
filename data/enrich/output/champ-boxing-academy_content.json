@@ -1,0 +1,43 @@
+{
+  "name": "Champ Boxing Academy",
+  "meta_title": "Champ Boxing Academy | Boxing | Boxing Training | Flexible Hours | Limassol",
+  "meta_description": "Discover Champ Boxing Academy in Limassol. Specializing in Boxing, equipped with boxing training, open Contact for details. Located in Limassol, contact Contact for details for details.",
+  "description": "Champ Boxing Academy delivers authentic boxing instruction in Limassol, Cyprus. Specializing in Boxing, this facility caters to all fitness levels. Contact for membership details and class schedules.",
+  "opening_hours": {},
+  "is_open_now": false,
+  "pricing": {},
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Champ Boxing Academy",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "Contact for details"
+    },
+    "telephone": "Contact for details",
+    "email": "Contact for details",
+    "keywords": "Boxing",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Boxing Training"
+      }
+    ],
+    "priceRange": "Contact for details"
+  },
+  "internal_links": [
+    "/cities/limassol",
+    "/specialties/boxing"
+  ],
+  "raw_data": {
+    "address": "Contact for details",
+    "amenities": "Boxing Training",
+    "specialties": "Boxing",
+    "opening_hours": "Contact for details",
+    "email": "Contact for details",
+    "phone": "Contact for details",
+    "pricing": "Contact for details"
+  }
+}

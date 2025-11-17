@@ -5,6 +5,7 @@ import { Gym } from '@/lib/types';
 import { Rating } from '@/components/shared/Rating';
 import { Badge } from '@/components/shared/Badge';
 import { getCityById } from '@/lib/data';
+import { isGymOpenNow } from '@/lib/utils/opening-hours';
 
 interface GymCardProps {
   gym: Gym;
@@ -21,13 +22,29 @@ export const GymCard: React.FC<GymCardProps> = ({ gym, showCity = true }) => {
     >
       <div className="flex items-start justify-between mb-4">
         <div className="flex-1">
-          <div className="flex items-center gap-2 mb-2">
+          <div className="flex items-center gap-2 mb-2 flex-wrap">
             <h3 className="text-xl font-semibold text-text-white group-hover:text-primary-blue transition-colors">
               {gym.name}
             </h3>
             {gym.featured && (
               <Badge variant="featured">Featured</Badge>
             )}
+            {/* Open/Closed Status Badge */}
+            {(() => {
+              const isOpen = isGymOpenNow(gym.openingHours);
+              return (
+                <Badge 
+                  variant={isOpen ? "rating" : "specialty"}
+                  className={`text-xs ${
+                    isOpen 
+                      ? 'bg-green-500/20 text-green-400 border-green-500/50' 
+                      : 'bg-red-500/20 text-red-400 border-red-500/50'
+                  }`}
+                >
+                  {isOpen ? '🟢 Open' : '🔴 Closed'}
+                </Badge>
+              );
+            })()}
           </div>
           {showCity && city && (
             <div className="flex items-center text-text-muted text-sm mb-2">

@@ -1,0 +1,54 @@
+{
+  "name": "CrossFit Limassol",
+  "meta_title": "CrossFit Limassol | CrossFit & Body Recomposition | Group Training & Personal Training | Flexible Hours | Limassol",
+  "meta_description": "Discover CrossFit Limassol in Limassol. Specializing in CrossFit, Body Recomposition, Competition Prep, equipped with group training, personal training, digital coaching, open Contact for details. Located in Limassol, contact Contact for details for details.",
+  "description": "Located on 9 Sheakspear 3041 Limassol, CrossFit Limassol provides top-tier fitness services in Limassol. Specializing in CrossFit, Body Recomposition, and Competition Prep, this facility caters to all fitness levels. Also offers Competition Prep training. Contact for membership details and class schedules.",
+  "opening_hours": {},
+  "is_open_now": false,
+  "pricing": {},
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "CrossFit Limassol",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "9 Sheakspear 3041 Limassol, Cyprus"
+    },
+    "email": "info@crossfitlimassol.com",
+    "keywords": "CrossFit, Body Recomposition, Competition Prep, Sport-Specific Nutrition",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Group Training"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Personal Training"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Digital Coaching"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Outdoor Classes"
+      }
+    ],
+    "priceRange": "Contact for details"
+  },
+  "internal_links": [
+    "/cities/limassol",
+    "/specialties/crossfit"
+  ],
+  "raw_data": {
+    "address": "9 Sheakspear 3041 Limassol, Cyprus",
+    "amenities": "Group Training, Personal Training, Digital Coaching, Outdoor Classes",
+    "specialties": "CrossFit, Body Recomposition, Competition Prep, Sport-Specific Nutrition",
+    "opening_hours": "Contact for details",
+    "email": "info@crossfitlimassol.com",
+    "phone": "#ERROR!",
+    "pricing": "Contact for details"
+  }
+}

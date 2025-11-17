@@ -1,0 +1,67 @@
+{
+  "name": "VIP GYM",
+  "meta_title": "VIP GYM | Fight Do & Suspension Training | Weight Training & Personal Training | Flexible Hours | Limassol",
+  "meta_description": "Discover VIP GYM in Limassol. Specializing in Fight Do, Suspension Training, Step, equipped with weight training, personal training, group classes, open Monday-Friday: 06:00 am - 22:00 pm | Saturday: 07:00 am - 18:00 pm | Sunday: 08:00 am - 14:00 pm. Located in Limassol, contact 77 776525 for details.",
+  "description": "VIP GYM brings specialized fight do training to Limassol, Cyprus. Specializing in Fight Do, Suspension Training, and Step, this facility caters to all fitness levels. Operating 06:00am to 22:00pm, perfect for morning and evening workouts. Perfect for families with dedicated kids' classes and family-friendly facilities.",
+  "opening_hours": {
+    "Monday-Friday": "06:00 am - 22:00 pm",
+    "Saturday": "07:00 am - 18:00 pm",
+    "Sunday": "08:00 am - 14:00 pm"
+  },
+  "is_open_now": true,
+  "pricing": {},
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "VIP GYM",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "Steliou Kyriakide 31A Str., 3080, Limassol"
+    },
+    "telephone": "77 776525",
+    "email": "vipgym.livelonger@gmail.com",
+    "openingHoursSpecification": [
+      "Mo 06:00 am - 22:00 pm",
+      "Sa 07:00 am - 18:00 pm",
+      "Su 08:00 am - 14:00 pm"
+    ],
+    "keywords": "Fight Do, Suspension Training, Step, Aerial Yoga, Pilates, Kickboxing, Personal Training, Semi Personal Training, Weight Training",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Weight Training"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Personal Training"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Group Classes"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Gymnastics for Kids"
+      }
+    ],
+    "priceRange": "Contact for details"
+  },
+  "internal_links": [
+    "/cities/limassol",
+    "/specialties/pilates",
+    "/specialties/yoga",
+    "/specialties/boxing",
+    "/specialties/personal-trainer"
+  ],
+  "raw_data": {
+    "address": "Steliou Kyriakide 31A Str., 3080, Limassol",
+    "amenities": "Weight Training, Personal Training, Group Classes, Gymnastics for Kids",
+    "specialties": "Fight Do, Suspension Training, Step, Aerial Yoga, Pilates, Kickboxing, Personal Training, Semi Personal Training, Weight Training",
+    "opening_hours": "{\"Monday-Friday\":\"06:00 am - 22:00 pm\",\"Saturday\":\"07:00 am - 18:00 pm\",\"Sunday\":\"08:00 am - 14:00 pm\"}",
+    "email": "vipgym.livelonger@gmail.com",
+    "phone": "77 776525",
+    "pricing": "Pricing details not explicitly provided in the HTML"
+  }
+}

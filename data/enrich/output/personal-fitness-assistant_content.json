@@ -1,0 +1,51 @@
+{
+  "name": "Personal Fitness Assistant",
+  "meta_title": "Personal Fitness Assistant | Strength Training & Cardio | Water & Towel | Flexible Hours | Limassol",
+  "meta_description": "Discover Personal Fitness Assistant in Limassol. Specializing in Strength Training, Cardio, TRX, equipped with water, towel, nutritionist visit, open Contact for details. Located in Limassol, contact Contact for details for details.",
+  "description": "Located on Eleftherias 119, Personal Fitness Assistant provides top-tier fitness services in Limassol. Specializing in Strength Training, Cardio, and TRX, this facility caters to all fitness levels. Memberships from €750 monthly with flexible payment options. Also offers TRX training. Contact for membership details and class schedules.",
+  "opening_hours": {},
+  "is_open_now": false,
+  "pricing": {
+    "8 Trainings": "€750/1 month"
+  },
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Personal Fitness Assistant",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "Eleftherias 119, Limassol"
+    },
+    "email": "Contact for details",
+    "keywords": "Strength Training, Cardio, TRX, HIIT, 3D Training, Animal Flow Stretching, Foam Rolling",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Water"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Towel"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Nutritionist Visit"
+      }
+    ],
+    "priceRange": "Contact for details"
+  },
+  "internal_links": [
+    "/cities/limassol"
+  ],
+  "raw_data": {
+    "address": "Eleftherias 119, Limassol",
+    "amenities": "Water, Towel, Nutritionist Visit",
+    "specialties": "Strength Training, Cardio, TRX, HIIT, 3D Training, Animal Flow Stretching, Foam Rolling",
+    "opening_hours": "{}",
+    "email": "Contact for details",
+    "phone": "#ERROR!",
+    "pricing": "8 Trainings for 1 month: 750€, 12 Trainings for 1 month: 1030€, 20 Trainings for 2 months: 1599€"
+  }
+}

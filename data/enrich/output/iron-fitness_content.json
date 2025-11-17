@@ -1,0 +1,56 @@
+{
+  "name": "Iron Fitness",
+  "meta_title": "Iron Fitness | Body Weight Training & TRX | Personal Training & Semi-Personal Training | Flexible Hours | Limassol",
+  "meta_description": "Discover Iron Fitness in Limassol. Specializing in Body Weight Training, TRX, Cardio, equipped with personal training, semi-personal training, group classes, open Morning Sessions: 7:00AM ~ 9:00AM | Afternoon Sessions: 6:00PM ~ 8:00PM. Located in Limassol, contact Contact for details for details.",
+  "description": "Located on Agias Fylaxeos, Iron Fitness provides top-tier fitness services in Limassol. Specializing in Body Weight Training, TRX, and Cardio, this facility caters to all fitness levels. Also offers Cardio training. Contact for membership details and class schedules.",
+  "opening_hours": {
+    "Morning Sessions": "7:00AM ~ 9:00AM",
+    "Afternoon Sessions": "6:00PM ~ 8:00PM"
+  },
+  "is_open_now": false,
+  "pricing": {},
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Iron Fitness",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "Agias Fylaxeos, & 1, Limassol 3082, Limassol, Cyprus"
+    },
+    "email": "contact@ironfitness.com",
+    "openingHoursSpecification": [
+      "Mo 7:00AM ~ 9:00AM",
+      "Af 6:00PM ~ 8:00PM"
+    ],
+    "keywords": "Body Weight Training, TRX, Cardio, CrossFit, Bodybuilding",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Personal Training"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Semi-Personal Training"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Group Classes"
+      }
+    ]
+  },
+  "internal_links": [
+    "/cities/limassol",
+    "/specialties/crossfit"
+  ],
+  "raw_data": {
+    "address": "Agias Fylaxeos, & 1, Limassol 3082, Limassol, Cyprus",
+    "amenities": "Personal Training, Semi-Personal Training, Group Classes",
+    "specialties": "Body Weight Training, TRX, Cardio, CrossFit, Bodybuilding",
+    "opening_hours": "{\"Morning Sessions\":\"7:00AM ~ 9:00AM\",\"Afternoon Sessions\":\"6:00PM ~ 8:00PM\"}",
+    "email": "contact@ironfitness.com",
+    "phone": "#ERROR!",
+    "pricing": "Personal Training and Semi-Personal Sessions available, exact pricing not specified on website"
+  }
+}

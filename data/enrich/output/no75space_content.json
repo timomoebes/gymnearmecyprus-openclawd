@@ -1,0 +1,72 @@
+{
+  "name": "no.75space",
+  "meta_title": "no.75space | Pilates & Private Sessions | Lockers & Showers | Flexible Hours | Limassol",
+  "meta_description": "Discover no.75space in Limassol. Specializing in Pilates, Private Sessions, Group Sessions, equipped with lockers, showers, men's dressing room, open Monday-Friday: 06:30-21:00. Located in Limassol, contact Contact for details for details.",
+  "description": "no.75space brings specialized pilates training to Limassol, Cyprus. Specializing in Pilates, Private Sessions, and Group Sessions, this facility caters to all fitness levels. Features include Reformer & Wunda Chair Equipment for enhanced workouts. Operating 06:30 to 21:00, perfect for morning and evening workouts. Memberships from €20 monthly with flexible payment options.",
+  "opening_hours": {
+    "Monday-Friday": "06:30-21:00"
+  },
+  "is_open_now": false,
+  "pricing": {
+    "GroupSessionsEquipment - SingleClass": "€20",
+    "GroupSessionsEquipment - 5ClassCard": "€90",
+    "GroupSessionsEquipment - 10ClassCard": "€150",
+    "GroupSessionsEquipment - 20ClassCard": "€260",
+    "PrivateSessions - SingleClass": "€60",
+    "PrivateSessions - 10ClassCard": "€500",
+    "SemiPrivateSessions - SingleClass": "€40",
+    "SemiPrivateSessions - 10ClassCard": "€350"
+  },
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "no.75space",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "Thesalonikis 75, 3025 Limassol, Cyprus"
+    },
+    "email": "info@no75space.com",
+    "openingHoursSpecification": [
+      "Mo 06:30-21:00"
+    ],
+    "keywords": "Pilates, Private Sessions, Group Sessions, Core Align, Equipment Training",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Lockers"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Showers"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Men's Dressing Room"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Ladies' Dressing Room"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Reformer & Wunda Chair Equipment"
+      }
+    ],
+    "priceRange": "Contact for details"
+  },
+  "internal_links": [
+    "/cities/limassol",
+    "/specialties/pilates"
+  ],
+  "raw_data": {
+    "address": "Thesalonikis 75, 3025 Limassol, Cyprus",
+    "amenities": "Lockers, Showers, Men's Dressing Room, Ladies' Dressing Room, Reformer & Wunda Chair Equipment",
+    "specialties": "Pilates, Private Sessions, Group Sessions, Core Align, Equipment Training",
+    "opening_hours": "{\"Monday-Friday\":\"06:30-21:00\"}",
+    "email": "info@no75space.com",
+    "phone": "#ERROR!",
+    "pricing": "{\"GroupSessionsEquipment\":{\"SingleClass\":\"€20\",\"5ClassCard\":\"€90\",\"10ClassCard\":\"€150\",\"20ClassCard\":\"€260\"},\"PrivateSessions\":{\"SingleClass\":\"€60\",\"10ClassCard\":\"€500\"},\"SemiPrivateSessions\":{\"SingleClass\":\"€40\",\"10ClassCard\":\"€350\"}}"
+  }
+}

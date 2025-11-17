@@ -1,0 +1,77 @@
+{
+  "name": "Anaplasis Gym Fitness Center",
+  "meta_title": "Anaplasis Gym Fitness Center | Personal Training & Body Building | Sauna & Locker Rooms | Flexible Hours | Limassol",
+  "meta_description": "Discover Anaplasis Gym Fitness Center in Limassol. Specializing in Personal Training, Body Building, Les Mills™ Classes, equipped with sauna, locker rooms, showers, open Monday: 06:30 - 22:00 | Tuesday: 06:30 - 22:00 | Wednesday: 06:30 - 22:00 | Thursday: 06:30 - 22:00 | Friday: 06:30 - 22:00 | Saturday: 08:00 - 18:00 | Sunday: 09:00 - 12:00. Located Enaerios, contact Contact for details for details.",
+  "description": "Located Enaerios, Anaplasis Gym Fitness Center offers comprehensive fitness training in Limassol. Specializing in Personal Training, Body Building, and Les Mills™ Classes, this facility caters to all fitness levels. Features include Sauna and Free WiFi for a complete training experience. Operating 06:30 to 22:00, perfect for morning and evening workouts. Great for one-on-one coaching and personalized fitness programs.",
+  "opening_hours": {
+    "Monday": "06:30 - 22:00",
+    "Tuesday": "06:30 - 22:00",
+    "Wednesday": "06:30 - 22:00",
+    "Thursday": "06:30 - 22:00",
+    "Friday": "06:30 - 22:00",
+    "Saturday": "08:00 - 18:00",
+    "Sunday": "09:00 - 12:00"
+  },
+  "is_open_now": true,
+  "pricing": {
+    "Pricing": "Competitive prices including all fitness equipment, group classes, and one free weekly sauna session"
+  },
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Anaplasis Gym Fitness Center",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "28th Oktovriou str, 319A Kanika Business Center, Enaerios Area, Limassol, Cyprus"
+    },
+    "email": "Contact for details",
+    "openingHoursSpecification": [
+      "Mo 06:30 - 22:00",
+      "Tu 06:30 - 22:00",
+      "We 06:30 - 22:00",
+      "Th 06:30 - 22:00",
+      "Fr 06:30 - 22:00",
+      "Sa 08:00 - 18:00",
+      "Su 09:00 - 12:00"
+    ],
+    "keywords": "Personal Training, Body Building, Les Mills™ Classes, Group Fitness",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Sauna"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Locker Rooms"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Showers"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Free WiFi"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Group Exercise Studio"
+      }
+    ],
+    "priceRange": "Contact for details"
+  },
+  "internal_links": [
+    "/cities/limassol",
+    "/specialties/personal-trainer"
+  ],
+  "raw_data": {
+    "address": "28th Oktovriou str, 319A Kanika Business Center, Enaerios Area, Limassol, Cyprus",
+    "amenities": "Sauna, Locker Rooms, Showers, Free WiFi, Group Exercise Studio",
+    "specialties": "Personal Training, Body Building, Les Mills™ Classes, Group Fitness",
+    "opening_hours": "{\"Monday\":\"06:30 - 22:00\",\"Tuesday\":\"06:30 - 22:00\",\"Wednesday\":\"06:30 - 22:00\",\"Thursday\":\"06:30 - 22:00\",\"Friday\":\"06:30 - 22:00\",\"Saturday\":\"08:00 - 18:00\",\"Sunday\":\"09:00 - 12:00\"}",
+    "email": "Contact for details",
+    "phone": "#ERROR!",
+    "pricing": "Competitive prices including all fitness equipment, group classes, and one free weekly sauna session"
+  }
+}

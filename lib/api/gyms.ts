@@ -3,24 +3,90 @@ import { Gym } from '@/lib/types';
 
 // Transform Supabase gym data to match our Gym interface
 function transformGymFromDB(dbGym: any, specialties: string[], amenities: string[], citySlug?: string): Gym {
-  // Parse opening hours JSON
-  let openingHours: Gym['openingHours'] = {};
+  // Parse opening hours JSON - ALWAYS include all 7 days
+  let openingHours: Gym['openingHours'] = {
+    monday: 'Closed',
+    tuesday: 'Closed',
+    wednesday: 'Closed',
+    thursday: 'Closed',
+    friday: 'Closed',
+    saturday: 'Closed',
+    sunday: 'Closed',
+  };
+  
   if (dbGym.opening_hours) {
     try {
       const hours = typeof dbGym.opening_hours === 'string' 
         ? JSON.parse(dbGym.opening_hours) 
         : dbGym.opening_hours;
-      openingHours = {
-        monday: hours.monday || hours.Monday,
-        tuesday: hours.tuesday || hours.Tuesday,
-        wednesday: hours.wednesday || hours.Wednesday,
-        thursday: hours.thursday || hours.Thursday,
-        friday: hours.friday || hours.Friday,
-        saturday: hours.saturday || hours.Saturday,
-        sunday: hours.sunday || hours.Sunday,
+      
+      // Handle "Monday-Sunday" format (applies to all days)
+      if (hours['Monday-Sunday']) {
+        const allWeekHours = hours['Monday-Sunday'];
+        openingHours.monday = allWeekHours;
+        openingHours.tuesday = allWeekHours;
+        openingHours.wednesday = allWeekHours;
+        openingHours.thursday = allWeekHours;
+        openingHours.friday = allWeekHours;
+        openingHours.saturday = allWeekHours;
+        openingHours.sunday = allWeekHours;
+      }
+      // Handle "Monday-Friday" format
+      else if (hours['Monday-Friday']) {
+        const weekDaysHours = hours['Monday-Friday'];
+        openingHours.monday = weekDaysHours;
+        openingHours.tuesday = weekDaysHours;
+        openingHours.wednesday = weekDaysHours;
+        openingHours.thursday = weekDaysHours;
+        openingHours.friday = weekDaysHours;
+        // Saturday and Sunday remain "Closed" unless specified
+        const satValue = hours.saturday || hours.Saturday;
+        const sunValue = hours.sunday || hours.Sunday;
+        openingHours.saturday = satValue && satValue.toLowerCase() !== 'no sessions' ? satValue : 'Closed';
+        openingHours.sunday = sunValue && sunValue.toLowerCase() !== 'no sessions' ? sunValue : 'Closed';
+      }
+      // Handle "Week Days" format
+      else if (hours['Week Days']) {
+        const weekDaysHours = hours['Week Days'];
+        openingHours.monday = weekDaysHours;
+        openingHours.tuesday = weekDaysHours;
+        openingHours.wednesday = weekDaysHours;
+        openingHours.thursday = weekDaysHours;
+        openingHours.friday = weekDaysHours;
+        // Saturday and Sunday remain "Closed" unless specified
+        const satValue = hours.saturday || hours.Saturday;
+        const sunValue = hours.sunday || hours.Sunday;
+        openingHours.saturday = satValue && satValue.toLowerCase() !== 'no sessions' ? satValue : 'Closed';
+        openingHours.sunday = sunValue && sunValue.toLowerCase() !== 'no sessions' ? sunValue : 'Closed';
+      }
+      // Handle individual days
+      else {
+        openingHours.monday = hours.monday || hours.Monday || 'Closed';
+        openingHours.tuesday = hours.tuesday || hours.Tuesday || 'Closed';
+        openingHours.wednesday = hours.wednesday || hours.Wednesday || 'Closed';
+        openingHours.thursday = hours.thursday || hours.Thursday || 'Closed';
+        openingHours.friday = hours.friday || hours.Friday || 'Closed';
+        openingHours.saturday = hours.saturday || hours.Saturday || 'Closed';
+        openingHours.sunday = hours.sunday || hours.Sunday || 'Closed';
+      }
+      
+      // Normalize "No sessions" to "Closed" for all days
+      const normalizeClosed = (value: string): string => {
+        if (!value) return 'Closed';
+        const lower = value.toLowerCase();
+        if (lower === 'no sessions' || lower === 'closed') return 'Closed';
+        return value;
       };
+      
+      openingHours.monday = normalizeClosed(openingHours.monday);
+      openingHours.tuesday = normalizeClosed(openingHours.tuesday);
+      openingHours.wednesday = normalizeClosed(openingHours.wednesday);
+      openingHours.thursday = normalizeClosed(openingHours.thursday);
+      openingHours.friday = normalizeClosed(openingHours.friday);
+      openingHours.saturday = normalizeClosed(openingHours.saturday);
+      openingHours.sunday = normalizeClosed(openingHours.sunday);
     } catch (e) {
-      // Invalid JSON, leave empty
+      // Invalid JSON - keep defaults (all "Closed")
     }
   }
 
@@ -28,6 +94,18 @@ function transformGymFromDB(dbGym: any, specialties: string[], amenities: string
   let website = dbGym.website || undefined;
   if (website && !website.startsWith('http://') && !website.startsWith('https://')) {
     website = `https://${website}`;
+  }
+
+  // Parse pricing if available (stored as JSONB or JSON string)
+  let pricing: Record<string, string> | undefined = undefined;
+  if (dbGym.pricing) {
+    try {
+      pricing = typeof dbGym.pricing === 'string' 
+        ? JSON.parse(dbGym.pricing) 
+        : dbGym.pricing;
+    } catch (e) {
+      // Invalid JSON, leave undefined
+    }
   }
 
   return {
@@ -48,6 +126,7 @@ function transformGymFromDB(dbGym: any, specialties: string[], amenities: string
     description: dbGym.description || '',
     images: dbGym.cover_image_url ? [dbGym.cover_image_url] : [],
     openingHours,
+    pricing,
     memberCount: dbGym.member_count || undefined,
     yearsInBusiness: dbGym.years_in_business || undefined,
     ownerId: dbGym.owner_id || undefined,

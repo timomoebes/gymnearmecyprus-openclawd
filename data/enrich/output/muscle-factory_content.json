@@ -1,0 +1,67 @@
+{
+  "name": "Muscle Factory",
+  "meta_title": "Muscle Factory | Strength Training & Muscle Building | 24/7 Access & Strength Training | 24/7 Access | Limassol",
+  "meta_description": "Discover Muscle Factory in Limassol. Specializing in Strength Training, Muscle Building, Conditioning, equipped with 24/7 access, strength training, conditioning training, open 24/7. Located in Limassol, contact -438253 for details.",
+  "description": "Muscle Factory stands out as Limassol's premier 24/7 fitness destination. Specializing in Strength Training, Muscle Building, and Conditioning, this facility caters to all fitness levels. Features include 24/7 Access for enhanced workouts. Open 24/7 for early birds and night owls seeking flexible training schedules.",
+  "opening_hours": {
+    "Monday": "24/7",
+    "Tuesday": "24/7",
+    "Wednesday": "24/7",
+    "Thursday": "24/7",
+    "Friday": "24/7",
+    "Saturday": "24/7",
+    "Sunday": "24/7"
+  },
+  "is_open_now": true,
+  "pricing": {},
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Muscle Factory",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "Griva Digeni 16, Limassol, Cyprus"
+    },
+    "telephone": "-438253",
+    "email": "musclefactory24hoursgym@outlook.com",
+    "openingHoursSpecification": [
+      "Mo-Su 00:00-23:59",
+      "Mo-Su 00:00-23:59",
+      "Mo-Su 00:00-23:59",
+      "Mo-Su 00:00-23:59",
+      "Mo-Su 00:00-23:59",
+      "Mo-Su 00:00-23:59",
+      "Mo-Su 00:00-23:59"
+    ],
+    "keywords": "Strength Training, Muscle Building, Conditioning",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "24/7 Access"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Strength Training"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Conditioning Training"
+      }
+    ],
+    "priceRange": "Contact for details"
+  },
+  "internal_links": [
+    "/cities/limassol"
+  ],
+  "raw_data": {
+    "address": "Griva Digeni 16, Limassol, Cyprus",
+    "amenities": "24/7 Access, Strength Training, Conditioning Training",
+    "specialties": "Strength Training, Muscle Building, Conditioning",
+    "opening_hours": "{\"Monday\":\"24/7\",\"Tuesday\":\"24/7\",\"Wednesday\":\"24/7\",\"Thursday\":\"24/7\",\"Friday\":\"24/7\",\"Saturday\":\"24/7\",\"Sunday\":\"24/7\"}",
+    "email": "musclefactory24hoursgym@outlook.com",
+    "phone": "-438253",
+    "pricing": "Contact for details"
+  }
+}

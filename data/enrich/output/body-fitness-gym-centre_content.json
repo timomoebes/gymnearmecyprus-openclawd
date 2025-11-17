@@ -1,0 +1,75 @@
+{
+  "name": "Body Fitness Gym Centre",
+  "meta_title": "Body Fitness Gym Centre | Les Mills & Circuit Training | State-of-the-art facilities & Cutting-edge equipment | Flexible Hours | Limassol",
+  "meta_description": "Discover Body Fitness Gym Centre in Limassol. Specializing in Les Mills, Circuit Training, TRX, equipped with state-of-the-art facilities, cutting-edge equipment, shower access, open Monday: Open | Tuesday: Open | Wednesday: Open | Thursday: Open | Friday: Open | Saturday: Open. Located in Limassol, contact 35799817412 for details.",
+  "description": "Body Fitness Gym Centre delivers authentic les mills instruction in Limassol, Cyprus. Specializing in Les Mills, Circuit Training, and TRX, this facility caters to all fitness levels. Features include Free Parking for enhanced workouts. Great for one-on-one coaching and personalized fitness programs.",
+  "opening_hours": {
+    "Monday": "Open",
+    "Tuesday": "Open",
+    "Wednesday": "Open",
+    "Thursday": "Open",
+    "Friday": "Open",
+    "Saturday": "Open"
+  },
+  "is_open_now": false,
+  "pricing": {},
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Body Fitness Gym Centre",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "Contact for details"
+    },
+    "telephone": "35799817412",
+    "email": "stefos-cy@hotmail.com",
+    "openingHoursSpecification": [
+      "Mo Open",
+      "Tu Open",
+      "We Open",
+      "Th Open",
+      "Fr Open",
+      "Sa Open"
+    ],
+    "keywords": "Les Mills, Circuit Training, TRX, Weightlifting, Personal Training, MMA, BJJ",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "State-of-the-art facilities"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Cutting-edge equipment"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Shower Access"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Free Parking"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Cardio Machines"
+      }
+    ],
+    "priceRange": "Contact for details"
+  },
+  "internal_links": [
+    "/cities/limassol",
+    "/specialties/mma",
+    "/specialties/personal-trainer"
+  ],
+  "raw_data": {
+    "address": "Contact for details",
+    "amenities": "State-of-the-art facilities, Cutting-edge equipment, Shower Access, Free Parking, Cardio Machines, Strength Training Equipment",
+    "specialties": "Les Mills, Circuit Training, TRX, Weightlifting, Personal Training, MMA, BJJ",
+    "opening_hours": "{\"Monday\":\"Open\",\"Tuesday\":\"Open\",\"Wednesday\":\"Open\",\"Thursday\":\"Open\",\"Friday\":\"Open\",\"Saturday\":\"Open\"}",
+    "email": "stefos-cy@hotmail.com",
+    "phone": "35799817412",
+    "pricing": "{\"Plan\":\"GYM\",\"Price\":\"€50/month\",\"Details\":[\"Membership\",\"Access to All Gym Facilities\",\"Free Parking Pass\",\"Shower Access\",\"Monday-Saturday Access\"]}, {\"Plan\":\"GROUP CLASSES\",\"Price\":\"€50/month\",\"Details\":[\"Membership\",\"Access to All Gym Group Classes\",\"Free Parking Pass\",\"Shower Access\",\"Monday-Saturday Access\"]}, {\"Plan\":\"GYM & GROUP\",\"Price\":\"€60/month\",\"Details\":[\"Membership\",\"Access to All Gym Facilities\",\"Free Parking Pass\",\"Shower Access\",\"Monday-Saturday Access\",\"Access to All Gym Group Classes\"]}, {\"Plan\":\"PREMIUM\",\"Price\":\"€80/month\",\"Details\":[\"Membership\",\"Access to All Gym Facilities\",\"Free Parking Pass\",\"Shower Access\",\"Monday-Saturday Access\",\"Access to All Gym Group Classes\",\"Access to All MMA + BJJ Group Classes\"]}"
+  }
+}

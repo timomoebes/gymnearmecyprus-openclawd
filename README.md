@@ -53,8 +53,11 @@ new-gym/
 │   └── city/              # City page components
 ├── lib/
 │   ├── data/              # Mock data (ready for backend)
+│   ├── api/               # API integration (Supabase)
 │   ├── types/             # TypeScript type definitions
 │   └── utils/             # Utility functions
+│       ├── opening-hours.ts  # Opening hours parsing and timezone handling
+│       └── schema.ts         # Schema.org JSON-LD generation
 ├── data/                  # Data processing
 │   ├── raw/               # Raw scraped data (CSV/JSON)
 │   └── clean/             # Cleaned data ready for import
@@ -127,6 +130,17 @@ new-gym/
   - Exact matches prioritized over partial matches
   - Redirects to gym page for gym matches, city page for city matches
 - [x] **Filtering & Sorting** - Filter by rating, specialty, amenities; sort by rating, name, featured
+- [x] **Opening Hours System** - Comprehensive opening hours display and management
+  - All gyms have all 7 days (Monday-Sunday) in opening hours
+  - Standardized format: HH:MM-HH:MM (24-hour format, always 2 digits)
+  - Real-time "Open Now" / "Closed" status badge using Cyprus local timezone
+  - Support for multiple time ranges per day (e.g., "06:30-11:00, 15:30-20:30")
+  - "Contact for opening hour details" option for gyms without available hours
+  - Opening hours section hidden when all days are "Closed"
+- [x] **Social Media Integration** - Facebook button detection and display
+  - Automatic detection of Facebook URLs in website field
+  - Facebook icon and "Visit Facebook" text for Facebook links
+  - "Facebook" button in quick actions, "Visit Facebook" in contact section
 
 ### Phase 4: Owner Experience ✅
 - [x] **Add Gym Form** - Single-page form for gym owners to submit listings
@@ -243,6 +257,13 @@ The project uses a custom dark/neon theme with:
 - **Database Status**: ✅ All 211 gyms are live in the database and visible on frontend
 - **Data Quality**: ✅ Specialty assignments verified and corrected (removed incorrect "24-hour-gym" tags)
 - **City Assignment Fixes**: ✅ Corrected gym city assignments (e.g., "Bad Dog Bjj" moved from Protaras to Ayia Napa based on address)
+- **Opening Hours**: ✅ Standardized opening hours format across all gyms (HH:MM-HH:MM, 24-hour format)
+  - All 210 gyms have all 7 days (Monday-Sunday) in opening hours
+  - 21+ gyms updated with accurate opening hours
+  - Real-time open/closed status using Cyprus timezone (Asia/Nicosia)
+  - Support for "Contact for opening hour details" for gyms without available hours
+- **Pricing Information**: ✅ Pricing section added to gym detail pages (JSONB field in database)
+- **Social Media Links**: ✅ Facebook URL detection and display with appropriate icons and text
 
 #### Frontend Data Access
 - **Data Layer**: Unified data access layer with Supabase API integration
@@ -334,6 +355,8 @@ The project uses a custom dark/neon theme with:
 - ✅ **Data Processing Pipeline** - **COMPLETED** (Automated cleaning scripts for scraped data)
 - ✅ **Test Import** - **COMPLETED** (5 Limassol gyms imported and visible in frontend)
 - ✅ **Mock Data Cleanup** - **COMPLETED** (All mock/demo gyms removed - clean slate for real data)
+- ✅ **Opening Hours System** - **COMPLETED** (Standardized format, all 7 days, real-time status, Cyprus timezone)
+- ✅ **Data Enrichment** - **COMPLETED** (Opening hours updates, pricing information, Facebook link detection)
 - ✅ Bulk import completed for all 6 cities:
   - ✅ 50 Limassol gyms
   - ✅ 71 Nicosia gyms

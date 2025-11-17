@@ -1,0 +1,60 @@
+{
+  "name": "Monica Dance Pilates Studio",
+  "meta_title": "Monica Dance Pilates Studio | Classical Ballet & Point Work | Ballet Classes & Pilates Group Classes | Flexible Hours | Limassol",
+  "meta_description": "Discover Monica Dance Pilates Studio in Limassol. Specializing in Classical Ballet, Point Work, Contemporary Dance, equipped with ballet classes, pilates group classes, pilates equipment, open Monday-Friday: 14:30-20:00. Located in Limassol, contact 99785748 for details.",
+  "description": "Monica Dance Pilates Studio brings specialized classical ballet training to Limassol, Cyprus. Specializing in Classical Ballet, Point Work, and Contemporary Dance, this facility caters to all fitness levels. Operating 14:30 to 20:00, perfect for morning and evening workouts. Also offers Contemporary Dance training. Contact for membership details and class schedules.",
+  "opening_hours": {
+    "Monday-Friday": "14:30-20:00"
+  },
+  "is_open_now": false,
+  "pricing": {},
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Monica Dance Pilates Studio",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "Contact for details"
+    },
+    "telephone": "99785748",
+    "email": "MONIKAPILATESTUDIO@HOTMAIL.COM",
+    "openingHoursSpecification": [
+      "Mo 14:30-20:00"
+    ],
+    "keywords": "Classical Ballet, Point Work, Contemporary Dance, Pilates, Stretching & Strengthening",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Ballet Classes"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Pilates Group Classes"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Pilates Equipment"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "One-to-One and Duet Sessions"
+      }
+    ],
+    "priceRange": "Contact for details"
+  },
+  "internal_links": [
+    "/cities/limassol",
+    "/specialties/pilates"
+  ],
+  "raw_data": {
+    "address": "Contact for details",
+    "amenities": "Ballet Classes, Pilates Group Classes, Pilates Equipment, One-to-One and Duet Sessions",
+    "specialties": "Classical Ballet, Point Work, Contemporary Dance, Pilates, Stretching & Strengthening",
+    "opening_hours": "{\"Monday-Friday\":\"14:30-20:00\"}",
+    "email": "MONIKAPILATESTUDIO@HOTMAIL.COM",
+    "phone": "99785748",
+    "pricing": "Contact for details"
+  }
+}

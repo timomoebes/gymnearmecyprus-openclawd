@@ -1,0 +1,49 @@
+{
+  "name": "MMA School The Cage",
+  "meta_title": "MMA School The Cage | Taekwondo & Wrestling | Contact for details | Flexible Hours | Limassol",
+  "meta_description": "Discover MMA School The Cage in Limassol. Specializing in Taekwondo, Wrestling, Muay Thai, equipped with contact for details, open Monday-Sunday: 06:30 - 21:45. Located in Limassol, contact 35799817412 for details.",
+  "description": "Located on Jean Sibelius & Γεωργίου Παυλίδη 12, MMA School The Cage delivers authentic taekwondo instruction in Limassol. Specializing in Taekwondo, Wrestling, and Muay Thai, this facility caters to all fitness levels. Operating 06:30 to 21:45, perfect for morning and evening workouts.",
+  "opening_hours": {
+    "Monday-Sunday": "06:30 - 21:45"
+  },
+  "is_open_now": true,
+  "pricing": {},
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "MMA School The Cage",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "Jean Sibelius & Γεωργίου Παυλίδη 12, Limassol, Cyprus"
+    },
+    "telephone": "35799817412",
+    "email": "stefos-cy@hotmail.com",
+    "openingHoursSpecification": [
+      "Mo 06:30 - 21:45"
+    ],
+    "keywords": "Taekwondo, Wrestling, Muay Thai, Boxing, Mixed Martial Arts, Kickboxing, Brazilian Jiu Jitsu",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Contact for details"
+      }
+    ],
+    "priceRange": "Contact for details"
+  },
+  "internal_links": [
+    "/cities/limassol",
+    "/specialties/boxing",
+    "/specialties/mma"
+  ],
+  "raw_data": {
+    "address": "Jean Sibelius & Γεωργίου Παυλίδη 12, Limassol, Cyprus",
+    "amenities": "Contact for details",
+    "specialties": "Taekwondo, Wrestling, Muay Thai, Boxing, Mixed Martial Arts, Kickboxing, Brazilian Jiu Jitsu",
+    "opening_hours": "{\"Monday-Sunday\":\"06:30 - 21:45\"}",
+    "email": "stefos-cy@hotmail.com",
+    "phone": "35799817412",
+    "pricing": "Contact for details"
+  }
+}

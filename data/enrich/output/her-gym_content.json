@@ -1,0 +1,88 @@
+{
+  "name": "Her Gym",
+  "meta_title": "Her Gym | Women's Only Fitness & Personal Training | Modern Equipment & Group Classes | Flexible Hours | Limassol",
+  "meta_description": "Discover Her Gym in Limassol. Specializing in Women's Only Fitness, Personal Training, Group Classes, equipped with modern equipment, group classes, yoga classes, open Monday: 07:00-22:00 | Tuesday: 07:00-22:00 | Wednesday: 07:00-22:00 | Thursday: 07:00-22:00 | Friday: 07:00-22:00 | Saturday: 07:00-22:00 | Sunday: 08:00-18:00. Located near main avenue, contact Contact for details for details.",
+  "description": "Located near main avenue, Her Gym offers comprehensive fitness training in Limassol. Specializing in Women's Only Fitness, Personal Training, and Group Classes, this facility caters to all fitness levels. Operating 07:00 to 22:00, perfect for morning and evening workouts. Ideal for women and families seeking a supportive fitness environment. Memberships from €1 monthly with flexible payment options.",
+  "opening_hours": {
+    "Monday": "07:00-22:00",
+    "Tuesday": "07:00-22:00",
+    "Wednesday": "07:00-22:00",
+    "Thursday": "07:00-22:00",
+    "Friday": "07:00-22:00",
+    "Saturday": "07:00-22:00",
+    "Sunday": "08:00-18:00"
+  },
+  "is_open_now": true,
+  "pricing": {
+    "SelfTraining - 1Month": "€98",
+    "SelfTraining - 3Months": "€280",
+    "SelfTraining - 6Months": "€518",
+    "SelfTraining - 12Months": "€976",
+    "GroupClasses - 1Month": "€155-€210",
+    "GroupClasses - 3Months": "€436-€568",
+    "GroupClasses - 6Months": "€772-€1,096",
+    "GroupClasses - 12Months": "€1,495-€2,050",
+    "PersonalTraining - 1Month": "€430-€575",
+    "PersonalTraining - 3Months": "€1,232-€1,626",
+    "PersonalTraining - 6Months": "€2,464-€3,252",
+    "PersonalTraining - 12Months": "€4,300-€5,720"
+  },
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Her Gym",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "Omonoias Avenue No. 19, 3052 Limassol, Cyprus"
+    },
+    "email": "info@hergym.cy",
+    "openingHoursSpecification": [
+      "Mo 07:00-22:00",
+      "Tu 07:00-22:00",
+      "We 07:00-22:00",
+      "Th 07:00-22:00",
+      "Fr 07:00-22:00",
+      "Sa 07:00-22:00",
+      "Su 08:00-18:00"
+    ],
+    "keywords": "Women's Only Fitness, Personal Training, Group Classes, Combat Sports, Nutrition Coaching",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Modern Equipment"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Group Classes"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Yoga Classes"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Pilates Classes"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Kickboxing"
+      }
+    ],
+    "priceRange": "Contact for details"
+  },
+  "internal_links": [
+    "/cities/limassol",
+    "/specialties/personal-trainer"
+  ],
+  "raw_data": {
+    "address": "Omonoias Avenue No. 19, 3052 Limassol, Cyprus",
+    "amenities": "Modern Equipment, Group Classes, Yoga Classes, Pilates Classes, Kickboxing, Muay Thai, MMA, Personal Training, Nutrition Plans",
+    "specialties": "Women's Only Fitness, Personal Training, Group Classes, Combat Sports, Nutrition Coaching",
+    "opening_hours": "{\"Monday\":\"07:00-22:00\",\"Tuesday\":\"07:00-22:00\",\"Wednesday\":\"07:00-22:00\",\"Thursday\":\"07:00-22:00\",\"Friday\":\"07:00-22:00\",\"Saturday\":\"07:00-22:00\",\"Sunday\":\"08:00-18:00\"}",
+    "email": "info@hergym.cy",
+    "phone": "#ERROR!",
+    "pricing": "{\"SelfTraining\":{\"1Month\":\"€98\",\"3Months\":\"€280\",\"6Months\":\"€518\",\"12Months\":\"€976\"},\"GroupClasses\":{\"1Month\":\"€155-€210\",\"3Months\":\"€436-€568\",\"6Months\":\"€772-€1,096\",\"12Months\":\"€1,495-€2,050\"},\"PersonalTraining\":{\"1Month\":\"€430-€575\",\"3Months\":\"€1,232-€1,626\",\"6Months\":\"€2,464-€3,252\",\"12Months\":\"€4,300-€5,720\"}}"
+  }
+}

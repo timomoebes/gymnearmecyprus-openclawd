@@ -1,0 +1,64 @@
+{
+  "name": "Team Rogue Forge",
+  "meta_title": "Team Rogue Forge | Cross Training & General Fitness | Group Classes & Cross-Training | Flexible Hours | Limassol",
+  "meta_description": "Discover Team Rogue Forge in Limassol. Specializing in Cross Training, General Fitness, Physical Fitness, equipped with group classes, cross-training, strength training, open Monday: 07:00 – 21:00 | Tuesday: 07:00 – 21:00 | Wednesday: 07:00 – 21:00 | Thursday: 07:00 – 21:00 | Friday: 07:00 – 21:00 | Saturday: 07:00 – 12:30. Located near main avenue, contact Contact for details for details.",
+  "description": "Located near main avenue, Team Rogue Forge offers comprehensive fitness training in Limassol. Specializing in Cross Training, General Fitness, and Physical Fitness, this facility caters to all fitness levels. Also offers Physical Fitness training. Contact for membership details and class schedules.",
+  "opening_hours": {
+    "Monday": "07:00 – 21:00",
+    "Tuesday": "07:00 – 21:00",
+    "Wednesday": "07:00 – 21:00",
+    "Thursday": "07:00 – 21:00",
+    "Friday": "07:00 – 21:00",
+    "Saturday": "07:00 – 12:30",
+    "Sunday": "Closed"
+  },
+  "is_open_now": false,
+  "pricing": {},
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Team Rogue Forge",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "116 Spyrou Kyprianou Ave, Limassol"
+    },
+    "email": "info@teamrogueforge.com.cy",
+    "openingHoursSpecification": [
+      "Mo 07:00 – 21:00",
+      "Tu 07:00 – 21:00",
+      "We 07:00 – 21:00",
+      "Th 07:00 – 21:00",
+      "Fr 07:00 – 21:00",
+      "Sa 07:00 – 12:30"
+    ],
+    "keywords": "Cross Training, General Fitness, Physical Fitness, Aerobic & Cardio, Strength & Core, Muscular Fitness, Stretching & Flexibility",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Group Classes"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Cross-Training"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Strength Training"
+      }
+    ]
+  },
+  "internal_links": [
+    "/cities/limassol"
+  ],
+  "raw_data": {
+    "address": "116 Spyrou Kyprianou Ave, Limassol",
+    "amenities": "Group Classes, Cross-Training, Strength Training",
+    "specialties": "Cross Training, General Fitness, Physical Fitness, Aerobic & Cardio, Strength & Core, Muscular Fitness, Stretching & Flexibility",
+    "opening_hours": "{\"Monday\":\"07:00 – 21:00\",\"Tuesday\":\"07:00 – 21:00\",\"Wednesday\":\"07:00 – 21:00\",\"Thursday\":\"07:00 – 21:00\",\"Friday\":\"07:00 – 21:00\",\"Saturday\":\"07:00 – 12:30\",\"Sunday\":\"Closed\"}",
+    "email": "info@teamrogueforge.com.cy",
+    "phone": "#ERROR!",
+    "pricing": "Membership pricing not specified in provided HTML"
+  }
+}

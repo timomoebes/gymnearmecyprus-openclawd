@@ -1,0 +1,58 @@
+{
+  "name": "Peak Condition",
+  "meta_title": "Peak Condition | Personal Training & Group Training | Cardio room & Free weights room | Flexible Hours | Limassol",
+  "meta_description": "Discover Peak Condition in Limassol. Specializing in Personal Training, Group Training, Exercise Rehabilitation, equipped with cardio room, free weights room, resistance machine room, open Contact for details. Located in Limassol, contact Contact for details for details.",
+  "description": "Located on 152 Vasileos Konstantinou, Peak Condition provides top-tier fitness services in Limassol. Specializing in Personal Training, Group Training, and Exercise Rehabilitation, this facility caters to all fitness levels. Features include Hot showers for enhanced workouts. Great for one-on-one coaching and personalized fitness programs.",
+  "opening_hours": {},
+  "is_open_now": false,
+  "pricing": {},
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Peak Condition",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "152 Vasileos Konstantinou, 1st Floor, Limassol, 3080, Cyprus"
+    },
+    "email": "Contact for details",
+    "keywords": "Personal Training, Group Training, Exercise Rehabilitation, Corporate Fitness, 12 Week Body Transformation, 12 Weeks To Peak Condition, Online Training",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Cardio room"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Free weights room"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Resistance machine room"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Class training room"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Consultation area"
+      }
+    ],
+    "priceRange": "Contact for details"
+  },
+  "internal_links": [
+    "/cities/limassol",
+    "/specialties/personal-trainer"
+  ],
+  "raw_data": {
+    "address": "152 Vasileos Konstantinou, 1st Floor, Limassol, 3080, Cyprus",
+    "amenities": "Cardio room, Free weights room, Resistance machine room, Class training room, Consultation area, Changing rooms, Hot showers, Complementary towels, Shower products, Body lotions, Moisturisers, Air conditioning",
+    "specialties": "Personal Training, Group Training, Exercise Rehabilitation, Corporate Fitness, 12 Week Body Transformation, 12 Weeks To Peak Condition, Online Training",
+    "opening_hours": "{}",
+    "email": "Contact for details",
+    "phone": "#ERROR!",
+    "pricing": "Free consultation included in Personal Training packages. Two world-class personal fitness packages available for 3-month transformations. Specific prices not listed on this page."
+  }
+}

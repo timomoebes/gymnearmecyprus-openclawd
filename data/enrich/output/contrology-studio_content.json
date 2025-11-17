@@ -1,0 +1,52 @@
+{
+  "name": "Contrology Studio",
+  "meta_title": "Contrology Studio | Reformer Pilates & Yoga | Sauna & Private Reformer Pilates | Flexible Hours | Limassol",
+  "meta_description": "Discover Contrology Studio in Limassol. Specializing in Reformer Pilates, Yoga, Personal Training, equipped with sauna, private reformer pilates, yoga sessions, open Contact for details. Located in Limassol, contact 35799282127 for details.",
+  "description": "Contrology Studio brings specialized reformer pilates training to Limassol, Cyprus. Specializing in Reformer Pilates, Yoga, and Personal Training, this facility caters to all fitness levels. Features include Sauna and Private Reformer Pilates for a complete training experience. Great for one-on-one coaching and personalized fitness programs.",
+  "opening_hours": {},
+  "is_open_now": false,
+  "pricing": {},
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Contrology Studio",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "Contact for details"
+    },
+    "telephone": "35799282127",
+    "email": "Contact for details",
+    "keywords": "Reformer Pilates, Yoga, Personal Training",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Sauna"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Private Reformer Pilates"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Yoga Sessions"
+      }
+    ]
+  },
+  "internal_links": [
+    "/cities/limassol",
+    "/specialties/pilates",
+    "/specialties/yoga",
+    "/specialties/personal-trainer"
+  ],
+  "raw_data": {
+    "address": "Contact for details",
+    "amenities": "Sauna, Private Reformer Pilates, Yoga Sessions",
+    "specialties": "Reformer Pilates, Yoga, Personal Training",
+    "opening_hours": "Contact for details",
+    "email": "Contact for details",
+    "phone": "35799282127",
+    "pricing": "{\"SaunaSession\":{\"StudioMembers\":\"€15\",\"NonMembers\":\"€25\",\"PrivateGroupSauna\":\"€80 per group (1-4 people)\"},\"PrivateClasses\":\"Pricing not specified\"}"
+  }
+}

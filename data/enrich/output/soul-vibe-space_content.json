@@ -1,0 +1,42 @@
+{
+  "name": "Soul Vibe Space",
+  "meta_title": "Soul Vibe Space | Contact for details | Contact for details | Flexible Hours | Limassol",
+  "meta_description": "Discover Soul Vibe Space in Limassol. Specializing in Contact for details, equipped with contact for details, open Contact for details. Located in Limassol, contact Contact for details for details.",
+  "description": "Soul Vibe Space offers premier fitness training in Limassol, Cyprus. Specializing in Contact for details, this facility caters to all fitness levels. Contact for membership details and class schedules.",
+  "opening_hours": {},
+  "is_open_now": false,
+  "pricing": {},
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Soul Vibe Space",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "Contact for details"
+    },
+    "telephone": "Contact for details",
+    "email": "Contact for details",
+    "keywords": "Contact for details",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Contact for details"
+      }
+    ],
+    "priceRange": "Contact for details"
+  },
+  "internal_links": [
+    "/cities/limassol"
+  ],
+  "raw_data": {
+    "address": "Contact for details",
+    "amenities": "Contact for details",
+    "specialties": "Contact for details",
+    "opening_hours": "{\nMonday        07:30 - 21:00\nTuesday        07:30 - 21:00\nWednesday        07:00 - 21:00\nThursday        08:00 - 22:00\nFriday        08:00 - 21:00\nSaturday        07:30 - 24:00\nSunday        07:30 - 21:00\n}",
+    "email": "Contact for details",
+    "phone": "Contact for details",
+    "pricing": "Contact for details"
+  }
+}

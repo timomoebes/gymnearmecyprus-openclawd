@@ -17,11 +17,11 @@ export const Footer: React.FC = () => {
           <div>
             <Link href="/" className="flex items-center mb-4 hover:opacity-80 transition-opacity">
               <Image
-                src="/logo.png"
+                src="/logo1.png"
                 alt="GymNearMe Cyprus Logo"
                 width={400}
                 height={200}
-                className="h-32 w-auto object-contain"
+                className="h-20 w-auto object-contain"
               />
             </Link>
             <p className="text-text-muted text-sm mb-4">

@@ -35,11 +35,11 @@ export const Navigation: React.FC = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center hover:opacity-80 transition-opacity flex-shrink-0">
             <Image
-              src="/logo.png"
+              src="/logo1.png"
               alt="GymNearMe Cyprus Logo"
               width={500}
               height={250}
-              className="h-40 w-auto object-contain"
+              className="h-20 w-auto object-contain"
               priority
             />
           </Link>

@@ -1,0 +1,67 @@
+{
+  "name": "Vinyasa Yoga Studio Limassol",
+  "meta_title": "Vinyasa Yoga Studio Limassol | Ashtanga Vinyasa Yoga & Mysore Yoga | Yoga Studio & Private Classes | Flexible Hours | Limassol",
+  "meta_description": "Discover Vinyasa Yoga Studio Limassol in Limassol. Specializing in Ashtanga Vinyasa Yoga, Mysore Yoga, Vinyasa Yoga, equipped with yoga studio, private classes, aerial yoga space, open Monday: Morning: 8:30AM-10:00AM | Evening: 6:30PM-8:30PM | Tuesday: Evening: 6:00PM-8:00PM | Wednesday: Morning: 8:30AM-10:00AM | Evening: 6:30PM-8:00PM | Thursday: Morning: 8:00AM-10:00AM | Evening: 6:00PM-8:00PM | Friday: Morning: 8:30AM-10:00AM | Evening: 6:30PM-8:00PM | Saturday: Morning: 8:30AM-10:00AM. Located Neapolis, in residential area, contact 25106848, 99160096 for details.",
+  "description": "Located Neapolis, in residential area, Vinyasa Yoga Studio Limassol brings specialized ashtanga vinyasa yoga training to Limassol. Specializing in Ashtanga Vinyasa Yoga, Mysore Yoga, and Vinyasa Yoga, this facility caters to all fitness levels. Features include Aerial Yoga Space for enhanced workouts. Operating 8:30AM to 10:00AM, perfect for morning and evening workouts.",
+  "opening_hours": {
+    "Monday": "Morning: 8:30AM-10:00AM | Evening: 6:30PM-8:30PM",
+    "Tuesday": "Evening: 6:00PM-8:00PM",
+    "Wednesday": "Morning: 8:30AM-10:00AM | Evening: 6:30PM-8:00PM",
+    "Thursday": "Morning: 8:00AM-10:00AM | Evening: 6:00PM-8:00PM",
+    "Friday": "Morning: 8:30AM-10:00AM | Evening: 6:30PM-8:00PM",
+    "Saturday": "Morning: 8:30AM-10:00AM",
+    "Sunday": "Closed"
+  },
+  "is_open_now": false,
+  "pricing": {},
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Vinyasa Yoga Studio Limassol",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "6 Ypsilanti, Athina Court, Neapolis, Limassol, Cyprus"
+    },
+    "telephone": "25106848, 99160096",
+    "email": "info@vinyasayogacyprus.com",
+    "openingHoursSpecification": [
+      "Mo Morning: 8:30AM-10:00AM | Evening: 6:30PM-8:30PM",
+      "Tu Evening: 6:00PM-8:00PM",
+      "We Morning: 8:30AM-10:00AM | Evening: 6:30PM-8:00PM",
+      "Th Morning: 8:00AM-10:00AM | Evening: 6:00PM-8:00PM",
+      "Fr Morning: 8:30AM-10:00AM | Evening: 6:30PM-8:00PM",
+      "Sa Morning: 8:30AM-10:00AM"
+    ],
+    "keywords": "Ashtanga Vinyasa Yoga, Mysore Yoga, Vinyasa Yoga, Aerial Yoga, YogaWorks, Prenatal Yoga, Private Yoga Classes",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Yoga Studio"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Private Classes"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Aerial Yoga Space"
+      }
+    ],
+    "priceRange": "Contact for details"
+  },
+  "internal_links": [
+    "/cities/limassol",
+    "/specialties/yoga"
+  ],
+  "raw_data": {
+    "address": "6 Ypsilanti, Athina Court, Neapolis, Limassol, Cyprus",
+    "amenities": "Yoga Studio, Private Classes, Aerial Yoga Space",
+    "specialties": "Ashtanga Vinyasa Yoga, Mysore Yoga, Vinyasa Yoga, Aerial Yoga, YogaWorks, Prenatal Yoga, Private Yoga Classes",
+    "opening_hours": "{\"Monday\":{\"Morning\":\"8:30AM-10:00AM\",\"Evening\":\"6:30PM-8:30PM\"},\"Tuesday\":{\"Morning\":\"No Morning Classes\",\"Evening\":\"6:00PM-8:00PM\"},\"Wednesday\":{\"Morning\":\"8:30AM-10:00AM\",\"Evening\":\"6:30PM-8:00PM\"},\"Thursday\":{\"Morning\":\"8:00AM-10:00AM\",\"Evening\":\"6:00PM-8:00PM\"},\"Friday\":{\"Morning\":\"8:30AM-10:00AM\",\"Evening\":\"6:30PM-8:00PM\"},\"Saturday\":{\"Morning\":\"8:30AM-10:00AM\",\"Evening\":\"No Evening Classes\"},\"Sunday\":\"Closed\"}",
+    "email": "info@vinyasayogacyprus.com",
+    "phone": "25106848, 99160096",
+    "pricing": "No specific pricing information available in HTML"
+  }
+}

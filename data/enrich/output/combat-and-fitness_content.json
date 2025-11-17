@@ -1,0 +1,82 @@
+{
+  "name": "Combat and Fitness",
+  "meta_title": "Combat and Fitness | Muay Thai & HIIT Training | Changing Rooms & Showers | Flexible Hours | Limassol",
+  "meta_description": "Discover Combat and Fitness in Limassol. Specializing in Muay Thai, HIIT Training, Functional Training, equipped with changing rooms, showers, toilets, open Monday-Friday: 6:30 - 9:15 (Morning), 16:00 - 20:00 (Afternoon) | Saturday: 8:30 - 9:30 (Morning). Located in Limassol, contact Contact for details for details.",
+  "description": "Located on Vasileos Pavlou 44, Combat and Fitness delivers authentic muay thai instruction in Limassol. Specializing in Muay Thai, HIIT Training, and Functional Training, this facility caters to all fitness levels. Operating 6:30 to 9:15, perfect for morning and evening workouts. Perfect for families with dedicated kids' classes and family-friendly facilities. Memberships from €2 monthly with flexible payment options.",
+  "opening_hours": {
+    "Monday-Friday": "6:30 - 9:15 (Morning), 16:00 - 20:00 (Afternoon)",
+    "Saturday": "8:30 - 9:30 (Morning)"
+  },
+  "is_open_now": false,
+  "pricing": {
+    "FreeTrial": "2 Weeks Unlimited Classes",
+    "PrepaidPackages": [
+      "4 Classes (1 time/week): €70",
+      "8 Classes (1-2 times/week): €120",
+      "12 Classes (1-3 times/week): €150",
+      "16 Classes (1-4 times/week): €180"
+    ],
+    "MonthlyPackages": [
+      "Monthly 24 Classes: €160",
+      "Monthly 48 Classes: €240"
+    ],
+    "ChildClasses": [
+      "Muay Thai for Kids (5-8 years): €60/month",
+      "Juniors Muay Thai (9-13 years): €70/month"
+    ],
+    "Monthly": "€24"
+  },
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Combat and Fitness",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "Vasileos Pavlou 44, 3052 Limassol, Cyprus"
+    },
+    "email": "hello@combatandfitness.com",
+    "openingHoursSpecification": [
+      "Mo 6:30 - 9:15 (Morning), 16:00 - 20:00 (Afternoon)",
+      "Sa 8:30 - 9:30 (Morning)"
+    ],
+    "keywords": "Muay Thai, HIIT Training, Functional Training, Kids Muay Thai",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Changing Rooms"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Showers"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Toilets"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Towels"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Drinking Water"
+      }
+    ],
+    "priceRange": "Contact for details"
+  },
+  "internal_links": [
+    "/cities/limassol",
+    "/specialties/mma"
+  ],
+  "raw_data": {
+    "address": "Vasileos Pavlou 44, 3052 Limassol, Cyprus",
+    "amenities": "Changing Rooms, Showers, Toilets, Towels, Drinking Water, Hydrogenated Water, Fully Air Conditioned, Anti-Bacterial Entrance Carpets",
+    "specialties": "Muay Thai, HIIT Training, Functional Training, Kids Muay Thai",
+    "opening_hours": "{\"Monday-Friday\":\"6:30 - 9:15 (Morning), 16:00 - 20:00 (Afternoon)\",\"Saturday\":\"8:30 - 9:30 (Morning)\"}",
+    "email": "hello@combatandfitness.com",
+    "phone": "#ERROR!",
+    "pricing": "{\"FreeTrial\":\"2 Weeks Unlimited Classes\",\"PrepaidPackages\":[\"4 Classes (1 time/week): €70\",\"8 Classes (1-2 times/week): €120\",\"12 Classes (1-3 times/week): €150\",\"16 Classes (1-4 times/week): €180\"],\"MonthlyPackages\":[\"Monthly 24 Classes: €160\",\"Monthly 48 Classes: €240\"],\"ChildClasses\":[\"Muay Thai for Kids (5-8 years): €60/month\",\"Juniors Muay Thai (9-13 years): €70/month\"]}"
+  }
+}

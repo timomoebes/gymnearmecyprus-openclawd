@@ -1,0 +1,59 @@
+{
+  "name": "Grind Fitness",
+  "meta_title": "Grind Fitness | CrossFit & Group Classes | Free Weights & Cardio Equipment | Flexible Hours | Limassol",
+  "meta_description": "Discover Grind Fitness in Limassol. Specializing in CrossFit, Group Classes, Personal Training, equipped with free weights, cardio equipment, lockers, open Contact for details. Located in Limassol, contact Contact for details for details.",
+  "description": "Located on Steliou Kiriakidi, Grind Fitness provides top-tier fitness services in Limassol. Specializing in CrossFit, Group Classes, and Personal Training, this facility caters to all fitness levels. Features include Parking for enhanced workouts. Great for one-on-one coaching and personalized fitness programs.",
+  "opening_hours": {},
+  "is_open_now": false,
+  "pricing": {},
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Grind Fitness",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "Steliou Kiriakidi, Limassol 3080, Cyprus"
+    },
+    "email": "giannis1996.g9@hotmail.com",
+    "keywords": "CrossFit, Group Classes, Personal Training, Nutrition Coaching",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Free Weights"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Cardio Equipment"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Lockers"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Clean Showers"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Parking"
+      }
+    ],
+    "priceRange": "Contact for details"
+  },
+  "internal_links": [
+    "/cities/limassol",
+    "/specialties/crossfit",
+    "/specialties/personal-trainer"
+  ],
+  "raw_data": {
+    "address": "Steliou Kiriakidi, Limassol 3080, Cyprus",
+    "amenities": "Free Weights, Cardio Equipment, Lockers, Clean Showers, Parking",
+    "specialties": "CrossFit, Group Classes, Personal Training, Nutrition Coaching",
+    "opening_hours": "Not specified in HTML",
+    "email": "giannis1996.g9@hotmail.com",
+    "phone": "#ERROR!",
+    "pricing": "€10 Per Drop-In Class, Full Membership Pricing Details Not Explicitly Stated"
+  }
+}

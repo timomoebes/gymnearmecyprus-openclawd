@@ -1,0 +1,58 @@
+{
+  "name": "UN1T Limassol",
+  "meta_title": "UN1T Limassol | Strength Training & Conditioning | Dumbbells & Kettlebells | Flexible Hours | Limassol",
+  "meta_description": "Discover UN1T Limassol in Limassol. Specializing in Strength Training, Conditioning, Team-Based Workouts, equipped with dumbbells, kettlebells, barbells, open Contact for details. Located Germasogia, contact 00357 96727088 for details.",
+  "description": "Located Germasogia, UN1T Limassol offers comprehensive fitness training in Limassol. Specializing in Strength Training, Conditioning, and Team-Based Workouts, this facility caters to all fitness levels. Also offers Team-Based Workouts training. Contact for membership details and class schedules.",
+  "opening_hours": {},
+  "is_open_now": false,
+  "pricing": {},
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "UN1T Limassol",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "45, Georgiou A Street, 4047, Germasogia, Limassol, Cyprus"
+    },
+    "telephone": "00357 96727088",
+    "email": "team.limassol@un1t.com",
+    "keywords": "Strength Training, Conditioning, Team-Based Workouts, Performance Tracking",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Dumbbells"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Kettlebells"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Barbells"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Concept 2 Rowers"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Bike Ergs"
+      }
+    ],
+    "priceRange": "Contact for details"
+  },
+  "internal_links": [
+    "/cities/limassol"
+  ],
+  "raw_data": {
+    "address": "45, Georgiou A Street, 4047, Germasogia, Limassol, Cyprus",
+    "amenities": "Dumbbells, Kettlebells, Barbells, Concept 2 Rowers, Bike Ergs, Ski Ergs, Rogue Echo Bikes, Digital Screens, Heart Rate Monitors",
+    "specialties": "Strength Training, Conditioning, Team-Based Workouts, Performance Tracking",
+    "opening_hours": "{}",
+    "email": "team.limassol@un1t.com",
+    "phone": "00357 96727088",
+    "pricing": "Intro Offer/Trial Available (Specific pricing not detailed in HTML)"
+  }
+}

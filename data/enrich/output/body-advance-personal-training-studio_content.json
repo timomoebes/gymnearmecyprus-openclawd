@@ -1,0 +1,53 @@
+{
+  "name": "Body Advance Personal Training Studio",
+  "meta_title": "Body Advance Personal Training Studio | Pilates & Yoga | Power Plate & Sport Massage | Flexible Hours | Limassol",
+  "meta_description": "Discover Body Advance Personal Training Studio in Limassol. Specializing in Pilates, Yoga, Aerobics, equipped with power plate, sport massage, open Week Days: 09:00-18:00. Located near main avenue, contact Contact for details for details.",
+  "description": "Located near main avenue, Body Advance Personal Training Studio brings specialized pilates training to Limassol. Specializing in Pilates, Yoga, and Aerobics, this facility caters to all fitness levels. Operating 09:00 to 18:00, perfect for morning and evening workouts. Great for one-on-one coaching and personalized fitness programs.",
+  "opening_hours": {
+    "Week Days": "09:00-18:00",
+    "Sunday": "Closed"
+  },
+  "is_open_now": false,
+  "pricing": {},
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Body Advance Personal Training Studio",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "161. Arch. Makarios III Ave. Akapnitis Court Floor 2, Limassol, Cyprus"
+    },
+    "email": "info@bodyadvance.net",
+    "openingHoursSpecification": [
+      "We 09:00-18:00"
+    ],
+    "keywords": "Pilates, Yoga, Aerobics, Weight Lifting, Personal Training",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Power Plate"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Sport Massage"
+      }
+    ]
+  },
+  "internal_links": [
+    "/cities/limassol",
+    "/specialties/pilates",
+    "/specialties/yoga",
+    "/specialties/personal-trainer"
+  ],
+  "raw_data": {
+    "address": "161. Arch. Makarios III Ave. Akapnitis Court Floor 2, Limassol, Cyprus",
+    "amenities": "Power Plate, Sport Massage",
+    "specialties": "Pilates, Yoga, Aerobics, Weight Lifting, Personal Training",
+    "opening_hours": "{\"Week Days\":\"09:00-18:00\",\"Sunday\":\"Closed\"}",
+    "email": "info@bodyadvance.net",
+    "phone": "#ERROR!",
+    "pricing": "Not specified on website"
+  }
+}

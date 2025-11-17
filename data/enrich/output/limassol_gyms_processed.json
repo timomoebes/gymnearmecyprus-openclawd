@@ -1,0 +1,1593 @@
+[
+  {
+    "name": "Monica Dance Pilates Studio",
+    "meta_title": "Monica Dance Pilates Studio | Classical Ballet & Point Work | Ballet Classes & Pilates Group Classes | Flexible Hours | Limassol",
+    "meta_description": "Discover Monica Dance Pilates Studio in Limassol. Specializing in Classical Ballet, Point Work, Contemporary Dance, equipped with ballet classes, pilates group classes, pilates equipment, open Monday-Friday: 14:30-20:00. Located in Limassol, contact 99785748 for details.",
+    "description": "Monica Dance Pilates Studio brings specialized classical ballet training to Limassol, Cyprus. Specializing in Classical Ballet, Point Work, and Contemporary Dance, this facility caters to all fitness levels. Operating 14:30 to 20:00, perfect for morning and evening workouts. Also offers Contemporary Dance training. Contact for membership details and class schedules.",
+    "opening_hours": {
+      "Monday-Friday": "14:30-20:00"
+    },
+    "is_open_now": false,
+    "pricing": {},
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Monica Dance Pilates Studio",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "Contact for details"
+      },
+      "telephone": "99785748",
+      "email": "MONIKAPILATESTUDIO@HOTMAIL.COM",
+      "openingHoursSpecification": [
+        "Mo 14:30-20:00"
+      ],
+      "keywords": "Classical Ballet, Point Work, Contemporary Dance, Pilates, Stretching & Strengthening",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Ballet Classes"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Pilates Group Classes"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Pilates Equipment"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "One-to-One and Duet Sessions"
+        }
+      ],
+      "priceRange": "Contact for details"
+    },
+    "internal_links": [
+      "/cities/limassol",
+      "/specialties/pilates"
+    ],
+    "raw_data": {
+      "address": "Contact for details",
+      "amenities": "Ballet Classes, Pilates Group Classes, Pilates Equipment, One-to-One and Duet Sessions",
+      "specialties": "Classical Ballet, Point Work, Contemporary Dance, Pilates, Stretching & Strengthening",
+      "opening_hours": "{\"Monday-Friday\":\"14:30-20:00\"}",
+      "email": "MONIKAPILATESTUDIO@HOTMAIL.COM",
+      "phone": "99785748",
+      "pricing": "Contact for details"
+    }
+  },
+  {
+    "name": "Vinyasa Yoga Studio Limassol",
+    "meta_title": "Vinyasa Yoga Studio Limassol | Ashtanga Vinyasa Yoga & Mysore Yoga | Yoga Studio & Private Classes | Flexible Hours | Limassol",
+    "meta_description": "Discover Vinyasa Yoga Studio Limassol in Limassol. Specializing in Ashtanga Vinyasa Yoga, Mysore Yoga, Vinyasa Yoga, equipped with yoga studio, private classes, aerial yoga space, open Monday: Morning: 8:30AM-10:00AM | Evening: 6:30PM-8:30PM | Tuesday: Evening: 6:00PM-8:00PM | Wednesday: Morning: 8:30AM-10:00AM | Evening: 6:30PM-8:00PM | Thursday: Morning: 8:00AM-10:00AM | Evening: 6:00PM-8:00PM | Friday: Morning: 8:30AM-10:00AM | Evening: 6:30PM-8:00PM | Saturday: Morning: 8:30AM-10:00AM. Located Neapolis, in residential area, contact 25106848, 99160096 for details.",
+    "description": "Located Neapolis, in residential area, Vinyasa Yoga Studio Limassol brings specialized ashtanga vinyasa yoga training to Limassol. Specializing in Ashtanga Vinyasa Yoga, Mysore Yoga, and Vinyasa Yoga, this facility caters to all fitness levels. Features include Aerial Yoga Space for enhanced workouts. Operating 8:30AM to 10:00AM, perfect for morning and evening workouts.",
+    "opening_hours": {
+      "Monday": "Morning: 8:30AM-10:00AM | Evening: 6:30PM-8:30PM",
+      "Tuesday": "Evening: 6:00PM-8:00PM",
+      "Wednesday": "Morning: 8:30AM-10:00AM | Evening: 6:30PM-8:00PM",
+      "Thursday": "Morning: 8:00AM-10:00AM | Evening: 6:00PM-8:00PM",
+      "Friday": "Morning: 8:30AM-10:00AM | Evening: 6:30PM-8:00PM",
+      "Saturday": "Morning: 8:30AM-10:00AM",
+      "Sunday": "Closed"
+    },
+    "is_open_now": false,
+    "pricing": {},
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Vinyasa Yoga Studio Limassol",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "6 Ypsilanti, Athina Court, Neapolis, Limassol, Cyprus"
+      },
+      "telephone": "25106848, 99160096",
+      "email": "info@vinyasayogacyprus.com",
+      "openingHoursSpecification": [
+        "Mo Morning: 8:30AM-10:00AM | Evening: 6:30PM-8:30PM",
+        "Tu Evening: 6:00PM-8:00PM",
+        "We Morning: 8:30AM-10:00AM | Evening: 6:30PM-8:00PM",
+        "Th Morning: 8:00AM-10:00AM | Evening: 6:00PM-8:00PM",
+        "Fr Morning: 8:30AM-10:00AM | Evening: 6:30PM-8:00PM",
+        "Sa Morning: 8:30AM-10:00AM"
+      ],
+      "keywords": "Ashtanga Vinyasa Yoga, Mysore Yoga, Vinyasa Yoga, Aerial Yoga, YogaWorks, Prenatal Yoga, Private Yoga Classes",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Yoga Studio"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Private Classes"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Aerial Yoga Space"
+        }
+      ],
+      "priceRange": "Contact for details"
+    },
+    "internal_links": [
+      "/cities/limassol",
+      "/specialties/yoga"
+    ],
+    "raw_data": {
+      "address": "6 Ypsilanti, Athina Court, Neapolis, Limassol, Cyprus",
+      "amenities": "Yoga Studio, Private Classes, Aerial Yoga Space",
+      "specialties": "Ashtanga Vinyasa Yoga, Mysore Yoga, Vinyasa Yoga, Aerial Yoga, YogaWorks, Prenatal Yoga, Private Yoga Classes",
+      "opening_hours": "{\"Monday\":{\"Morning\":\"8:30AM-10:00AM\",\"Evening\":\"6:30PM-8:30PM\"},\"Tuesday\":{\"Morning\":\"No Morning Classes\",\"Evening\":\"6:00PM-8:00PM\"},\"Wednesday\":{\"Morning\":\"8:30AM-10:00AM\",\"Evening\":\"6:30PM-8:00PM\"},\"Thursday\":{\"Morning\":\"8:00AM-10:00AM\",\"Evening\":\"6:00PM-8:00PM\"},\"Friday\":{\"Morning\":\"8:30AM-10:00AM\",\"Evening\":\"6:30PM-8:00PM\"},\"Saturday\":{\"Morning\":\"8:30AM-10:00AM\",\"Evening\":\"No Evening Classes\"},\"Sunday\":\"Closed\"}",
+      "email": "info@vinyasayogacyprus.com",
+      "phone": "25106848, 99160096",
+      "pricing": "No specific pricing information available in HTML"
+    }
+  },
+  {
+    "name": "Personal Fitness Assistant",
+    "meta_title": "Personal Fitness Assistant | Strength Training & Cardio | Water & Towel | Flexible Hours | Limassol",
+    "meta_description": "Discover Personal Fitness Assistant in Limassol. Specializing in Strength Training, Cardio, TRX, equipped with water, towel, nutritionist visit, open Contact for details. Located in Limassol, contact Contact for details for details.",
+    "description": "Located on Eleftherias 119, Personal Fitness Assistant provides top-tier fitness services in Limassol. Specializing in Strength Training, Cardio, and TRX, this facility caters to all fitness levels. Memberships from €750 monthly with flexible payment options. Also offers TRX training. Contact for membership details and class schedules.",
+    "opening_hours": {},
+    "is_open_now": false,
+    "pricing": {
+      "8 Trainings": "€750/1 month"
+    },
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Personal Fitness Assistant",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "Eleftherias 119, Limassol"
+      },
+      "email": "Contact for details",
+      "keywords": "Strength Training, Cardio, TRX, HIIT, 3D Training, Animal Flow Stretching, Foam Rolling",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Water"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Towel"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Nutritionist Visit"
+        }
+      ],
+      "priceRange": "Contact for details"
+    },
+    "internal_links": [
+      "/cities/limassol"
+    ],
+    "raw_data": {
+      "address": "Eleftherias 119, Limassol",
+      "amenities": "Water, Towel, Nutritionist Visit",
+      "specialties": "Strength Training, Cardio, TRX, HIIT, 3D Training, Animal Flow Stretching, Foam Rolling",
+      "opening_hours": "{}",
+      "email": "Contact for details",
+      "phone": "#ERROR!",
+      "pricing": "8 Trainings for 1 month: 750€, 12 Trainings for 1 month: 1030€, 20 Trainings for 2 months: 1599€"
+    }
+  },
+  {
+    "name": "Soul Vibe Space",
+    "meta_title": "Soul Vibe Space | Contact for details | Contact for details | Flexible Hours | Limassol",
+    "meta_description": "Discover Soul Vibe Space in Limassol. Specializing in Contact for details, equipped with contact for details, open Contact for details. Located in Limassol, contact Contact for details for details.",
+    "description": "Soul Vibe Space offers premier fitness training in Limassol, Cyprus. Specializing in Contact for details, this facility caters to all fitness levels. Contact for membership details and class schedules.",
+    "opening_hours": {},
+    "is_open_now": false,
+    "pricing": {},
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Soul Vibe Space",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "Contact for details"
+      },
+      "telephone": "Contact for details",
+      "email": "Contact for details",
+      "keywords": "Contact for details",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Contact for details"
+        }
+      ],
+      "priceRange": "Contact for details"
+    },
+    "internal_links": [
+      "/cities/limassol"
+    ],
+    "raw_data": {
+      "address": "Contact for details",
+      "amenities": "Contact for details",
+      "specialties": "Contact for details",
+      "opening_hours": "{\nMonday        07:30 - 21:00\nTuesday        07:30 - 21:00\nWednesday        07:00 - 21:00\nThursday        08:00 - 22:00\nFriday        08:00 - 21:00\nSaturday        07:30 - 24:00\nSunday        07:30 - 21:00\n}",
+      "email": "Contact for details",
+      "phone": "Contact for details",
+      "pricing": "Contact for details"
+    }
+  },
+  {
+    "name": "no.75space",
+    "meta_title": "no.75space | Pilates & Private Sessions | Lockers & Showers | Flexible Hours | Limassol",
+    "meta_description": "Discover no.75space in Limassol. Specializing in Pilates, Private Sessions, Group Sessions, equipped with lockers, showers, men's dressing room, open Monday-Friday: 06:30-21:00. Located in Limassol, contact Contact for details for details.",
+    "description": "no.75space brings specialized pilates training to Limassol, Cyprus. Specializing in Pilates, Private Sessions, and Group Sessions, this facility caters to all fitness levels. Features include Reformer & Wunda Chair Equipment for enhanced workouts. Operating 06:30 to 21:00, perfect for morning and evening workouts. Memberships from €20 monthly with flexible payment options.",
+    "opening_hours": {
+      "Monday-Friday": "06:30-21:00"
+    },
+    "is_open_now": false,
+    "pricing": {
+      "GroupSessionsEquipment - SingleClass": "€20",
+      "GroupSessionsEquipment - 5ClassCard": "€90",
+      "GroupSessionsEquipment - 10ClassCard": "€150",
+      "GroupSessionsEquipment - 20ClassCard": "€260",
+      "PrivateSessions - SingleClass": "€60",
+      "PrivateSessions - 10ClassCard": "€500",
+      "SemiPrivateSessions - SingleClass": "€40",
+      "SemiPrivateSessions - 10ClassCard": "€350"
+    },
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "no.75space",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "Thesalonikis 75, 3025 Limassol, Cyprus"
+      },
+      "email": "info@no75space.com",
+      "openingHoursSpecification": [
+        "Mo 06:30-21:00"
+      ],
+      "keywords": "Pilates, Private Sessions, Group Sessions, Core Align, Equipment Training",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Lockers"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Showers"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Men's Dressing Room"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Ladies' Dressing Room"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Reformer & Wunda Chair Equipment"
+        }
+      ],
+      "priceRange": "Contact for details"
+    },
+    "internal_links": [
+      "/cities/limassol",
+      "/specialties/pilates"
+    ],
+    "raw_data": {
+      "address": "Thesalonikis 75, 3025 Limassol, Cyprus",
+      "amenities": "Lockers, Showers, Men's Dressing Room, Ladies' Dressing Room, Reformer & Wunda Chair Equipment",
+      "specialties": "Pilates, Private Sessions, Group Sessions, Core Align, Equipment Training",
+      "opening_hours": "{\"Monday-Friday\":\"06:30-21:00\"}",
+      "email": "info@no75space.com",
+      "phone": "#ERROR!",
+      "pricing": "{\"GroupSessionsEquipment\":{\"SingleClass\":\"€20\",\"5ClassCard\":\"€90\",\"10ClassCard\":\"€150\",\"20ClassCard\":\"€260\"},\"PrivateSessions\":{\"SingleClass\":\"€60\",\"10ClassCard\":\"€500\"},\"SemiPrivateSessions\":{\"SingleClass\":\"€40\",\"10ClassCard\":\"€350\"}}"
+    }
+  },
+  {
+    "name": "CHECKMAT Limassol",
+    "meta_title": "CHECKMAT Limassol | Brazilian Jiu-Jitsu (BJJ) & No-Gi BJJ | BJJ Classes & Boxing | Flexible Hours | Limassol",
+    "meta_description": "Discover CHECKMAT Limassol in Limassol. Specializing in Brazilian Jiu-Jitsu (BJJ), No-Gi BJJ, Boxing, equipped with bjj classes, boxing, kids classes, open Monday: 8:00-21:00 | Tuesday: 8:30-20:30 | Wednesday: 8:00-21:00 | Thursday: 8:30-20:30 | Friday: 8:00-22:30. Located in Limassol, contact 35797442244 for details.",
+    "description": "Located on Pafou 74, CHECKMAT Limassol delivers authentic brazilian jiu-jitsu (bjj) instruction in Limassol. Specializing in Brazilian Jiu-Jitsu (BJJ), No-Gi BJJ, and Boxing, this facility caters to all fitness levels. Operating 8:00 to 21:00, perfect for morning and evening workouts. Perfect for families with dedicated kids' classes and family-friendly facilities.",
+    "opening_hours": {
+      "Monday": "8:00-21:00",
+      "Tuesday": "8:30-20:30",
+      "Wednesday": "8:00-21:00",
+      "Thursday": "8:30-20:30",
+      "Friday": "8:00-22:30",
+      "Saturday": "No sessions",
+      "Sunday": "No sessions"
+    },
+    "is_open_now": false,
+    "pricing": {},
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "CHECKMAT Limassol",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "Pafou 74, Limassol, 3051, CY"
+      },
+      "telephone": "35797442244",
+      "email": "club@checkmat.cy",
+      "openingHoursSpecification": [
+        "Mo 8:00-21:00",
+        "Tu 8:30-20:30",
+        "We 8:00-21:00",
+        "Th 8:30-20:30",
+        "Fr 8:00-22:30"
+      ],
+      "keywords": "Brazilian Jiu-Jitsu (BJJ), No-Gi BJJ, Boxing, Kids Martial Arts",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "BJJ Classes"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Boxing"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Kids Classes"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Mobility Training"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Open Mat"
+        }
+      ]
+    },
+    "internal_links": [
+      "/cities/limassol",
+      "/specialties/boxing",
+      "/specialties/mma"
+    ],
+    "raw_data": {
+      "address": "Pafou 74, Limassol, 3051, CY",
+      "amenities": "BJJ Classes, Boxing, Kids Classes, Mobility Training, Open Mat",
+      "specialties": "Brazilian Jiu-Jitsu (BJJ), No-Gi BJJ, Boxing, Kids Martial Arts",
+      "opening_hours": "{\"Monday\":\"8:00-21:00\",\"Tuesday\":\"8:30-20:30\",\"Wednesday\":\"8:00-21:00\",\"Thursday\":\"8:30-20:30\",\"Friday\":\"8:00-22:30\",\"Saturday\":\"No sessions\",\"Sunday\":\"No sessions\"}",
+      "email": "club@checkmat.cy",
+      "phone": "35797442244",
+      "pricing": "Not specified on website"
+    }
+  },
+  {
+    "name": "MMA School The Cage",
+    "meta_title": "MMA School The Cage | Taekwondo & Wrestling | Contact for details | Flexible Hours | Limassol",
+    "meta_description": "Discover MMA School The Cage in Limassol. Specializing in Taekwondo, Wrestling, Muay Thai, equipped with contact for details, open Monday-Sunday: 06:30 - 21:45. Located in Limassol, contact 35799817412 for details.",
+    "description": "Located on Jean Sibelius & Γεωργίου Παυλίδη 12, MMA School The Cage delivers authentic taekwondo instruction in Limassol. Specializing in Taekwondo, Wrestling, and Muay Thai, this facility caters to all fitness levels. Operating 06:30 to 21:45, perfect for morning and evening workouts.",
+    "opening_hours": {
+      "Monday-Sunday": "06:30 - 21:45"
+    },
+    "is_open_now": true,
+    "pricing": {},
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "MMA School The Cage",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "Jean Sibelius & Γεωργίου Παυλίδη 12, Limassol, Cyprus"
+      },
+      "telephone": "35799817412",
+      "email": "stefos-cy@hotmail.com",
+      "openingHoursSpecification": [
+        "Mo 06:30 - 21:45"
+      ],
+      "keywords": "Taekwondo, Wrestling, Muay Thai, Boxing, Mixed Martial Arts, Kickboxing, Brazilian Jiu Jitsu",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Contact for details"
+        }
+      ],
+      "priceRange": "Contact for details"
+    },
+    "internal_links": [
+      "/cities/limassol",
+      "/specialties/boxing",
+      "/specialties/mma"
+    ],
+    "raw_data": {
+      "address": "Jean Sibelius & Γεωργίου Παυλίδη 12, Limassol, Cyprus",
+      "amenities": "Contact for details",
+      "specialties": "Taekwondo, Wrestling, Muay Thai, Boxing, Mixed Martial Arts, Kickboxing, Brazilian Jiu Jitsu",
+      "opening_hours": "{\"Monday-Sunday\":\"06:30 - 21:45\"}",
+      "email": "stefos-cy@hotmail.com",
+      "phone": "35799817412",
+      "pricing": "Contact for details"
+    }
+  },
+  {
+    "name": "Gymania Fitness Club",
+    "meta_title": "Gymania Fitness Club | Zumba & Pilates | Fitness Area & Group Classes | Flexible Hours | Limassol",
+    "meta_description": "Discover Gymania Fitness Club in Limassol. Specializing in Zumba, Pilates, Trampolines, equipped with fitness area, group classes, changing rooms, open Contact for details. Located in Limassol, contact Contact for details for details.",
+    "description": "Gymania Fitness Club brings specialized zumba training to Limassol, Cyprus. Specializing in Zumba, Pilates, and Trampolines, this facility caters to all fitness levels. Perfect for families with dedicated kids' classes and family-friendly facilities. Memberships from €35 monthly with flexible payment options.",
+    "opening_hours": {},
+    "is_open_now": false,
+    "pricing": {
+      "Pricing": "Weekend Offer: 35 Euros per month"
+    },
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Gymania Fitness Club",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "Contact for details"
+      },
+      "telephone": "Contact for details",
+      "email": "Contact for details",
+      "keywords": "Zumba, Pilates, Trampolines, Shaping, Abs & Legs, Anti-Stress Stretching, TRX, Yoga, Abs Workout",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Fitness Area"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Group Classes"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Changing Rooms"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Kids Playground"
+        }
+      ],
+      "priceRange": "Contact for details"
+    },
+    "internal_links": [
+      "/cities/limassol",
+      "/specialties/pilates",
+      "/specialties/yoga"
+    ],
+    "raw_data": {
+      "address": "Contact for details",
+      "amenities": "Fitness Area, Group Classes, Changing Rooms, Kids Playground",
+      "specialties": "Zumba, Pilates, Trampolines, Shaping, Abs & Legs, Anti-Stress Stretching, TRX, Yoga, Abs Workout",
+      "opening_hours": "Contact for details",
+      "email": "Contact for details",
+      "phone": "Contact for details",
+      "pricing": "Weekend Offer: 35 Euros per month"
+    }
+  },
+  {
+    "name": "Lumpinee Gym",
+    "meta_title": "Lumpinee Gym | Muay Thai & Muay Boran | Muay Thai Training & Personal Training | Flexible Hours | Limassol",
+    "meta_description": "Discover Lumpinee Gym in Limassol. Specializing in Muay Thai, Muay Boran, Kids Martial Arts, equipped with muay thai training, personal training, kids' classes, open Monday: 6:30 am – 9:00 pm | Tuesday: 6:30 am – 9:00 pm | Wednesday: 6:30 am – 9:00 pm | Thursday: 6:30 am – 9:00 pm | Friday: 6:30 am – 9:00 pm | Saturday: 11:00 am – 1:00 pm. Located Agios Athanasios, contact Contact for details for details.",
+    "description": "Located on Akarnanias 4 Yermasogia, Lumpinee Gym delivers authentic muay thai instruction in Limassol. Specializing in Muay Thai, Muay Boran, and Kids Martial Arts, this facility caters to all fitness levels. Perfect for families with dedicated kids' classes and family-friendly facilities.",
+    "opening_hours": {
+      "Monday": "6:30 am – 9:00 pm",
+      "Tuesday": "6:30 am – 9:00 pm",
+      "Wednesday": "6:30 am – 9:00 pm",
+      "Thursday": "6:30 am – 9:00 pm",
+      "Friday": "6:30 am – 9:00 pm",
+      "Saturday": "11:00 am – 1:00 pm",
+      "Sunday": "Closed"
+    },
+    "is_open_now": false,
+    "pricing": {},
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Lumpinee Gym",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "Akarnanias 4 Yermasogia, Agios Athanasios, Limassol"
+      },
+      "email": "lumpineegymlimassol@gmail.com",
+      "openingHoursSpecification": [
+        "Mo 6:30 am – 9:00 pm",
+        "Tu 6:30 am – 9:00 pm",
+        "We 6:30 am – 9:00 pm",
+        "Th 6:30 am – 9:00 pm",
+        "Fr 6:30 am – 9:00 pm",
+        "Sa 11:00 am – 1:00 pm"
+      ],
+      "keywords": "Muay Thai, Muay Boran, Kids Martial Arts, Personal Training, Fight Preparation",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Muay Thai Training"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Personal Training"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Kids' Classes"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Competitive Training"
+        }
+      ]
+    },
+    "internal_links": [
+      "/cities/limassol",
+      "/specialties/personal-trainer",
+      "/specialties/mma"
+    ],
+    "raw_data": {
+      "address": "Akarnanias 4 Yermasogia, Agios Athanasios, Limassol",
+      "amenities": "Muay Thai Training, Personal Training, Kids' Classes, Competitive Training",
+      "specialties": "Muay Thai, Muay Boran, Kids Martial Arts, Personal Training, Fight Preparation",
+      "opening_hours": "{\"Monday\":\"6:30 am – 9:00 pm\",\"Tuesday\":\"6:30 am – 9:00 pm\",\"Wednesday\":\"6:30 am – 9:00 pm\",\"Thursday\":\"6:30 am – 9:00 pm\",\"Friday\":\"6:30 am – 9:00 pm\",\"Saturday\":\"11:00 am – 1:00 pm\",\"Sunday\":\"Closed\"}",
+      "email": "lumpineegymlimassol@gmail.com",
+      "phone": "#ERROR!",
+      "pricing": "Not specified on website"
+    }
+  },
+  {
+    "name": "Peak Condition",
+    "meta_title": "Peak Condition | Personal Training & Group Training | Cardio room & Free weights room | Flexible Hours | Limassol",
+    "meta_description": "Discover Peak Condition in Limassol. Specializing in Personal Training, Group Training, Exercise Rehabilitation, equipped with cardio room, free weights room, resistance machine room, open Contact for details. Located in Limassol, contact Contact for details for details.",
+    "description": "Located on 152 Vasileos Konstantinou, Peak Condition provides top-tier fitness services in Limassol. Specializing in Personal Training, Group Training, and Exercise Rehabilitation, this facility caters to all fitness levels. Features include Hot showers for enhanced workouts. Great for one-on-one coaching and personalized fitness programs.",
+    "opening_hours": {},
+    "is_open_now": false,
+    "pricing": {},
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Peak Condition",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "152 Vasileos Konstantinou, 1st Floor, Limassol, 3080, Cyprus"
+      },
+      "email": "Contact for details",
+      "keywords": "Personal Training, Group Training, Exercise Rehabilitation, Corporate Fitness, 12 Week Body Transformation, 12 Weeks To Peak Condition, Online Training",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Cardio room"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Free weights room"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Resistance machine room"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Class training room"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Consultation area"
+        }
+      ],
+      "priceRange": "Contact for details"
+    },
+    "internal_links": [
+      "/cities/limassol",
+      "/specialties/personal-trainer"
+    ],
+    "raw_data": {
+      "address": "152 Vasileos Konstantinou, 1st Floor, Limassol, 3080, Cyprus",
+      "amenities": "Cardio room, Free weights room, Resistance machine room, Class training room, Consultation area, Changing rooms, Hot showers, Complementary towels, Shower products, Body lotions, Moisturisers, Air conditioning",
+      "specialties": "Personal Training, Group Training, Exercise Rehabilitation, Corporate Fitness, 12 Week Body Transformation, 12 Weeks To Peak Condition, Online Training",
+      "opening_hours": "{}",
+      "email": "Contact for details",
+      "phone": "#ERROR!",
+      "pricing": "Free consultation included in Personal Training packages. Two world-class personal fitness packages available for 3-month transformations. Specific prices not listed on this page."
+    }
+  },
+  {
+    "name": "Body Advance Personal Training Studio",
+    "meta_title": "Body Advance Personal Training Studio | Pilates & Yoga | Power Plate & Sport Massage | Flexible Hours | Limassol",
+    "meta_description": "Discover Body Advance Personal Training Studio in Limassol. Specializing in Pilates, Yoga, Aerobics, equipped with power plate, sport massage, open Week Days: 09:00-18:00. Located near main avenue, contact Contact for details for details.",
+    "description": "Located near main avenue, Body Advance Personal Training Studio brings specialized pilates training to Limassol. Specializing in Pilates, Yoga, and Aerobics, this facility caters to all fitness levels. Operating 09:00 to 18:00, perfect for morning and evening workouts. Great for one-on-one coaching and personalized fitness programs.",
+    "opening_hours": {
+      "Week Days": "09:00-18:00",
+      "Sunday": "Closed"
+    },
+    "is_open_now": false,
+    "pricing": {},
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Body Advance Personal Training Studio",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "161. Arch. Makarios III Ave. Akapnitis Court Floor 2, Limassol, Cyprus"
+      },
+      "email": "info@bodyadvance.net",
+      "openingHoursSpecification": [
+        "We 09:00-18:00"
+      ],
+      "keywords": "Pilates, Yoga, Aerobics, Weight Lifting, Personal Training",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Power Plate"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Sport Massage"
+        }
+      ]
+    },
+    "internal_links": [
+      "/cities/limassol",
+      "/specialties/pilates",
+      "/specialties/yoga",
+      "/specialties/personal-trainer"
+    ],
+    "raw_data": {
+      "address": "161. Arch. Makarios III Ave. Akapnitis Court Floor 2, Limassol, Cyprus",
+      "amenities": "Power Plate, Sport Massage",
+      "specialties": "Pilates, Yoga, Aerobics, Weight Lifting, Personal Training",
+      "opening_hours": "{\"Week Days\":\"09:00-18:00\",\"Sunday\":\"Closed\"}",
+      "email": "info@bodyadvance.net",
+      "phone": "#ERROR!",
+      "pricing": "Not specified on website"
+    }
+  },
+  {
+    "name": "Contrology Studio",
+    "meta_title": "Contrology Studio | Reformer Pilates & Yoga | Sauna & Private Reformer Pilates | Flexible Hours | Limassol",
+    "meta_description": "Discover Contrology Studio in Limassol. Specializing in Reformer Pilates, Yoga, Personal Training, equipped with sauna, private reformer pilates, yoga sessions, open Contact for details. Located in Limassol, contact 35799282127 for details.",
+    "description": "Contrology Studio brings specialized reformer pilates training to Limassol, Cyprus. Specializing in Reformer Pilates, Yoga, and Personal Training, this facility caters to all fitness levels. Features include Sauna and Private Reformer Pilates for a complete training experience. Great for one-on-one coaching and personalized fitness programs.",
+    "opening_hours": {},
+    "is_open_now": false,
+    "pricing": {},
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Contrology Studio",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "Contact for details"
+      },
+      "telephone": "35799282127",
+      "email": "Contact for details",
+      "keywords": "Reformer Pilates, Yoga, Personal Training",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Sauna"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Private Reformer Pilates"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Yoga Sessions"
+        }
+      ]
+    },
+    "internal_links": [
+      "/cities/limassol",
+      "/specialties/pilates",
+      "/specialties/yoga",
+      "/specialties/personal-trainer"
+    ],
+    "raw_data": {
+      "address": "Contact for details",
+      "amenities": "Sauna, Private Reformer Pilates, Yoga Sessions",
+      "specialties": "Reformer Pilates, Yoga, Personal Training",
+      "opening_hours": "Contact for details",
+      "email": "Contact for details",
+      "phone": "35799282127",
+      "pricing": "{\"SaunaSession\":{\"StudioMembers\":\"€15\",\"NonMembers\":\"€25\",\"PrivateGroupSauna\":\"€80 per group (1-4 people)\"},\"PrivateClasses\":\"Pricing not specified\"}"
+    }
+  },
+  {
+    "name": "UN1T Limassol",
+    "meta_title": "UN1T Limassol | Strength Training & Conditioning | Dumbbells & Kettlebells | Flexible Hours | Limassol",
+    "meta_description": "Discover UN1T Limassol in Limassol. Specializing in Strength Training, Conditioning, Team-Based Workouts, equipped with dumbbells, kettlebells, barbells, open Contact for details. Located Germasogia, contact 00357 96727088 for details.",
+    "description": "Located Germasogia, UN1T Limassol offers comprehensive fitness training in Limassol. Specializing in Strength Training, Conditioning, and Team-Based Workouts, this facility caters to all fitness levels. Also offers Team-Based Workouts training. Contact for membership details and class schedules.",
+    "opening_hours": {},
+    "is_open_now": false,
+    "pricing": {},
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "UN1T Limassol",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "45, Georgiou A Street, 4047, Germasogia, Limassol, Cyprus"
+      },
+      "telephone": "00357 96727088",
+      "email": "team.limassol@un1t.com",
+      "keywords": "Strength Training, Conditioning, Team-Based Workouts, Performance Tracking",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Dumbbells"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Kettlebells"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Barbells"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Concept 2 Rowers"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Bike Ergs"
+        }
+      ],
+      "priceRange": "Contact for details"
+    },
+    "internal_links": [
+      "/cities/limassol"
+    ],
+    "raw_data": {
+      "address": "45, Georgiou A Street, 4047, Germasogia, Limassol, Cyprus",
+      "amenities": "Dumbbells, Kettlebells, Barbells, Concept 2 Rowers, Bike Ergs, Ski Ergs, Rogue Echo Bikes, Digital Screens, Heart Rate Monitors",
+      "specialties": "Strength Training, Conditioning, Team-Based Workouts, Performance Tracking",
+      "opening_hours": "{}",
+      "email": "team.limassol@un1t.com",
+      "phone": "00357 96727088",
+      "pricing": "Intro Offer/Trial Available (Specific pricing not detailed in HTML)"
+    }
+  },
+  {
+    "name": "Combat and Fitness",
+    "meta_title": "Combat and Fitness | Muay Thai & HIIT Training | Changing Rooms & Showers | Flexible Hours | Limassol",
+    "meta_description": "Discover Combat and Fitness in Limassol. Specializing in Muay Thai, HIIT Training, Functional Training, equipped with changing rooms, showers, toilets, open Monday-Friday: 6:30 - 9:15 (Morning), 16:00 - 20:00 (Afternoon) | Saturday: 8:30 - 9:30 (Morning). Located in Limassol, contact Contact for details for details.",
+    "description": "Located on Vasileos Pavlou 44, Combat and Fitness delivers authentic muay thai instruction in Limassol. Specializing in Muay Thai, HIIT Training, and Functional Training, this facility caters to all fitness levels. Operating 6:30 to 9:15, perfect for morning and evening workouts. Perfect for families with dedicated kids' classes and family-friendly facilities. Memberships from €2 monthly with flexible payment options.",
+    "opening_hours": {
+      "Monday-Friday": "6:30 - 9:15 (Morning), 16:00 - 20:00 (Afternoon)",
+      "Saturday": "8:30 - 9:30 (Morning)"
+    },
+    "is_open_now": false,
+    "pricing": {
+      "FreeTrial": "2 Weeks Unlimited Classes",
+      "PrepaidPackages": [
+        "4 Classes (1 time/week): €70",
+        "8 Classes (1-2 times/week): €120",
+        "12 Classes (1-3 times/week): €150",
+        "16 Classes (1-4 times/week): €180"
+      ],
+      "MonthlyPackages": [
+        "Monthly 24 Classes: €160",
+        "Monthly 48 Classes: €240"
+      ],
+      "ChildClasses": [
+        "Muay Thai for Kids (5-8 years): €60/month",
+        "Juniors Muay Thai (9-13 years): €70/month"
+      ],
+      "Monthly": "€24"
+    },
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Combat and Fitness",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "Vasileos Pavlou 44, 3052 Limassol, Cyprus"
+      },
+      "email": "hello@combatandfitness.com",
+      "openingHoursSpecification": [
+        "Mo 6:30 - 9:15 (Morning), 16:00 - 20:00 (Afternoon)",
+        "Sa 8:30 - 9:30 (Morning)"
+      ],
+      "keywords": "Muay Thai, HIIT Training, Functional Training, Kids Muay Thai",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Changing Rooms"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Showers"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Toilets"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Towels"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Drinking Water"
+        }
+      ],
+      "priceRange": "Contact for details"
+    },
+    "internal_links": [
+      "/cities/limassol",
+      "/specialties/mma"
+    ],
+    "raw_data": {
+      "address": "Vasileos Pavlou 44, 3052 Limassol, Cyprus",
+      "amenities": "Changing Rooms, Showers, Toilets, Towels, Drinking Water, Hydrogenated Water, Fully Air Conditioned, Anti-Bacterial Entrance Carpets",
+      "specialties": "Muay Thai, HIIT Training, Functional Training, Kids Muay Thai",
+      "opening_hours": "{\"Monday-Friday\":\"6:30 - 9:15 (Morning), 16:00 - 20:00 (Afternoon)\",\"Saturday\":\"8:30 - 9:30 (Morning)\"}",
+      "email": "hello@combatandfitness.com",
+      "phone": "#ERROR!",
+      "pricing": "{\"FreeTrial\":\"2 Weeks Unlimited Classes\",\"PrepaidPackages\":[\"4 Classes (1 time/week): €70\",\"8 Classes (1-2 times/week): €120\",\"12 Classes (1-3 times/week): €150\",\"16 Classes (1-4 times/week): €180\"],\"MonthlyPackages\":[\"Monthly 24 Classes: €160\",\"Monthly 48 Classes: €240\"],\"ChildClasses\":[\"Muay Thai for Kids (5-8 years): €60/month\",\"Juniors Muay Thai (9-13 years): €70/month\"]}"
+    }
+  },
+  {
+    "name": "Body Fitness Gym Centre",
+    "meta_title": "Body Fitness Gym Centre | Les Mills & Circuit Training | State-of-the-art facilities & Cutting-edge equipment | Flexible Hours | Limassol",
+    "meta_description": "Discover Body Fitness Gym Centre in Limassol. Specializing in Les Mills, Circuit Training, TRX, equipped with state-of-the-art facilities, cutting-edge equipment, shower access, open Monday: Open | Tuesday: Open | Wednesday: Open | Thursday: Open | Friday: Open | Saturday: Open. Located in Limassol, contact 35799817412 for details.",
+    "description": "Body Fitness Gym Centre delivers authentic les mills instruction in Limassol, Cyprus. Specializing in Les Mills, Circuit Training, and TRX, this facility caters to all fitness levels. Features include Free Parking for enhanced workouts. Great for one-on-one coaching and personalized fitness programs.",
+    "opening_hours": {
+      "Monday": "Open",
+      "Tuesday": "Open",
+      "Wednesday": "Open",
+      "Thursday": "Open",
+      "Friday": "Open",
+      "Saturday": "Open"
+    },
+    "is_open_now": false,
+    "pricing": {},
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Body Fitness Gym Centre",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "Contact for details"
+      },
+      "telephone": "35799817412",
+      "email": "stefos-cy@hotmail.com",
+      "openingHoursSpecification": [
+        "Mo Open",
+        "Tu Open",
+        "We Open",
+        "Th Open",
+        "Fr Open",
+        "Sa Open"
+      ],
+      "keywords": "Les Mills, Circuit Training, TRX, Weightlifting, Personal Training, MMA, BJJ",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "State-of-the-art facilities"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Cutting-edge equipment"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Shower Access"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Free Parking"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Cardio Machines"
+        }
+      ],
+      "priceRange": "Contact for details"
+    },
+    "internal_links": [
+      "/cities/limassol",
+      "/specialties/mma",
+      "/specialties/personal-trainer"
+    ],
+    "raw_data": {
+      "address": "Contact for details",
+      "amenities": "State-of-the-art facilities, Cutting-edge equipment, Shower Access, Free Parking, Cardio Machines, Strength Training Equipment",
+      "specialties": "Les Mills, Circuit Training, TRX, Weightlifting, Personal Training, MMA, BJJ",
+      "opening_hours": "{\"Monday\":\"Open\",\"Tuesday\":\"Open\",\"Wednesday\":\"Open\",\"Thursday\":\"Open\",\"Friday\":\"Open\",\"Saturday\":\"Open\"}",
+      "email": "stefos-cy@hotmail.com",
+      "phone": "35799817412",
+      "pricing": "{\"Plan\":\"GYM\",\"Price\":\"€50/month\",\"Details\":[\"Membership\",\"Access to All Gym Facilities\",\"Free Parking Pass\",\"Shower Access\",\"Monday-Saturday Access\"]}, {\"Plan\":\"GROUP CLASSES\",\"Price\":\"€50/month\",\"Details\":[\"Membership\",\"Access to All Gym Group Classes\",\"Free Parking Pass\",\"Shower Access\",\"Monday-Saturday Access\"]}, {\"Plan\":\"GYM & GROUP\",\"Price\":\"€60/month\",\"Details\":[\"Membership\",\"Access to All Gym Facilities\",\"Free Parking Pass\",\"Shower Access\",\"Monday-Saturday Access\",\"Access to All Gym Group Classes\"]}, {\"Plan\":\"PREMIUM\",\"Price\":\"€80/month\",\"Details\":[\"Membership\",\"Access to All Gym Facilities\",\"Free Parking Pass\",\"Shower Access\",\"Monday-Saturday Access\",\"Access to All Gym Group Classes\",\"Access to All MMA + BJJ Group Classes\"]}"
+    }
+  },
+  {
+    "name": "CrossFit Limassol",
+    "meta_title": "CrossFit Limassol | CrossFit & Body Recomposition | Group Training & Personal Training | Flexible Hours | Limassol",
+    "meta_description": "Discover CrossFit Limassol in Limassol. Specializing in CrossFit, Body Recomposition, Competition Prep, equipped with group training, personal training, digital coaching, open Contact for details. Located in Limassol, contact Contact for details for details.",
+    "description": "Located on 9 Sheakspear 3041 Limassol, CrossFit Limassol provides top-tier fitness services in Limassol. Specializing in CrossFit, Body Recomposition, and Competition Prep, this facility caters to all fitness levels. Also offers Competition Prep training. Contact for membership details and class schedules.",
+    "opening_hours": {},
+    "is_open_now": false,
+    "pricing": {},
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "CrossFit Limassol",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "9 Sheakspear 3041 Limassol, Cyprus"
+      },
+      "email": "info@crossfitlimassol.com",
+      "keywords": "CrossFit, Body Recomposition, Competition Prep, Sport-Specific Nutrition",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Group Training"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Personal Training"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Digital Coaching"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Outdoor Classes"
+        }
+      ],
+      "priceRange": "Contact for details"
+    },
+    "internal_links": [
+      "/cities/limassol",
+      "/specialties/crossfit"
+    ],
+    "raw_data": {
+      "address": "9 Sheakspear 3041 Limassol, Cyprus",
+      "amenities": "Group Training, Personal Training, Digital Coaching, Outdoor Classes",
+      "specialties": "CrossFit, Body Recomposition, Competition Prep, Sport-Specific Nutrition",
+      "opening_hours": "Contact for details",
+      "email": "info@crossfitlimassol.com",
+      "phone": "#ERROR!",
+      "pricing": "Contact for details"
+    }
+  },
+  {
+    "name": "Iron Fitness",
+    "meta_title": "Iron Fitness | Body Weight Training & TRX | Personal Training & Semi-Personal Training | Flexible Hours | Limassol",
+    "meta_description": "Discover Iron Fitness in Limassol. Specializing in Body Weight Training, TRX, Cardio, equipped with personal training, semi-personal training, group classes, open Morning Sessions: 7:00AM ~ 9:00AM | Afternoon Sessions: 6:00PM ~ 8:00PM. Located in Limassol, contact Contact for details for details.",
+    "description": "Located on Agias Fylaxeos, Iron Fitness provides top-tier fitness services in Limassol. Specializing in Body Weight Training, TRX, and Cardio, this facility caters to all fitness levels. Also offers Cardio training. Contact for membership details and class schedules.",
+    "opening_hours": {
+      "Morning Sessions": "7:00AM ~ 9:00AM",
+      "Afternoon Sessions": "6:00PM ~ 8:00PM"
+    },
+    "is_open_now": false,
+    "pricing": {},
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Iron Fitness",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "Agias Fylaxeos, & 1, Limassol 3082, Limassol, Cyprus"
+      },
+      "email": "contact@ironfitness.com",
+      "openingHoursSpecification": [
+        "Mo 7:00AM ~ 9:00AM",
+        "Af 6:00PM ~ 8:00PM"
+      ],
+      "keywords": "Body Weight Training, TRX, Cardio, CrossFit, Bodybuilding",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Personal Training"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Semi-Personal Training"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Group Classes"
+        }
+      ]
+    },
+    "internal_links": [
+      "/cities/limassol",
+      "/specialties/crossfit"
+    ],
+    "raw_data": {
+      "address": "Agias Fylaxeos, & 1, Limassol 3082, Limassol, Cyprus",
+      "amenities": "Personal Training, Semi-Personal Training, Group Classes",
+      "specialties": "Body Weight Training, TRX, Cardio, CrossFit, Bodybuilding",
+      "opening_hours": "{\"Morning Sessions\":\"7:00AM ~ 9:00AM\",\"Afternoon Sessions\":\"6:00PM ~ 8:00PM\"}",
+      "email": "contact@ironfitness.com",
+      "phone": "#ERROR!",
+      "pricing": "Personal Training and Semi-Personal Sessions available, exact pricing not specified on website"
+    }
+  },
+  {
+    "name": "Team Rogue Forge",
+    "meta_title": "Team Rogue Forge | Cross Training & General Fitness | Group Classes & Cross-Training | Flexible Hours | Limassol",
+    "meta_description": "Discover Team Rogue Forge in Limassol. Specializing in Cross Training, General Fitness, Physical Fitness, equipped with group classes, cross-training, strength training, open Monday: 07:00 – 21:00 | Tuesday: 07:00 – 21:00 | Wednesday: 07:00 – 21:00 | Thursday: 07:00 – 21:00 | Friday: 07:00 – 21:00 | Saturday: 07:00 – 12:30. Located near main avenue, contact Contact for details for details.",
+    "description": "Located near main avenue, Team Rogue Forge offers comprehensive fitness training in Limassol. Specializing in Cross Training, General Fitness, and Physical Fitness, this facility caters to all fitness levels. Also offers Physical Fitness training. Contact for membership details and class schedules.",
+    "opening_hours": {
+      "Monday": "07:00 – 21:00",
+      "Tuesday": "07:00 – 21:00",
+      "Wednesday": "07:00 – 21:00",
+      "Thursday": "07:00 – 21:00",
+      "Friday": "07:00 – 21:00",
+      "Saturday": "07:00 – 12:30",
+      "Sunday": "Closed"
+    },
+    "is_open_now": false,
+    "pricing": {},
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Team Rogue Forge",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "116 Spyrou Kyprianou Ave, Limassol"
+      },
+      "email": "info@teamrogueforge.com.cy",
+      "openingHoursSpecification": [
+        "Mo 07:00 – 21:00",
+        "Tu 07:00 – 21:00",
+        "We 07:00 – 21:00",
+        "Th 07:00 – 21:00",
+        "Fr 07:00 – 21:00",
+        "Sa 07:00 – 12:30"
+      ],
+      "keywords": "Cross Training, General Fitness, Physical Fitness, Aerobic & Cardio, Strength & Core, Muscular Fitness, Stretching & Flexibility",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Group Classes"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Cross-Training"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Strength Training"
+        }
+      ]
+    },
+    "internal_links": [
+      "/cities/limassol"
+    ],
+    "raw_data": {
+      "address": "116 Spyrou Kyprianou Ave, Limassol",
+      "amenities": "Group Classes, Cross-Training, Strength Training",
+      "specialties": "Cross Training, General Fitness, Physical Fitness, Aerobic & Cardio, Strength & Core, Muscular Fitness, Stretching & Flexibility",
+      "opening_hours": "{\"Monday\":\"07:00 – 21:00\",\"Tuesday\":\"07:00 – 21:00\",\"Wednesday\":\"07:00 – 21:00\",\"Thursday\":\"07:00 – 21:00\",\"Friday\":\"07:00 – 21:00\",\"Saturday\":\"07:00 – 12:30\",\"Sunday\":\"Closed\"}",
+      "email": "info@teamrogueforge.com.cy",
+      "phone": "#ERROR!",
+      "pricing": "Membership pricing not specified in provided HTML"
+    }
+  },
+  {
+    "name": "Reload Fitness Studio",
+    "meta_title": "Reload Fitness Studio | HIIT & RUN & Joy Ride | Fuel Bar & App-based Booking | Flexible Hours | Limassol",
+    "meta_description": "Discover Reload Fitness Studio in Limassol. Specializing in HIIT & RUN, Joy Ride, One on One, equipped with fuel bar, app-based booking, open Contact for details. Located in Limassol, contact Contact for details for details.",
+    "description": "Reload Fitness Studio brings specialized hiit & run training to Limassol, Cyprus. Specializing in HIIT & RUN, Joy Ride, and One on One, this facility caters to all fitness levels. Also offers One on One training. Contact for membership details and class schedules.",
+    "opening_hours": {},
+    "is_open_now": false,
+    "pricing": {},
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Reload Fitness Studio",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "Eleftherias 119, 3042 Limassol, Cyprus"
+      },
+      "email": "info@reload-fitness.com",
+      "keywords": "HIIT & RUN, Joy Ride, One on One, Glutes & Abs, HIIT & Box, Rebuild, Reform / Mat Pilates",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Fuel Bar"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "App-based Booking"
+        }
+      ],
+      "priceRange": "Contact for details"
+    },
+    "internal_links": [
+      "/cities/limassol",
+      "/specialties/pilates"
+    ],
+    "raw_data": {
+      "address": "Eleftherias 119, 3042 Limassol, Cyprus",
+      "amenities": "Fuel Bar, App-based Booking",
+      "specialties": "HIIT & RUN, Joy Ride, One on One, Glutes & Abs, HIIT & Box, Rebuild, Reform / Mat Pilates",
+      "opening_hours": "{}",
+      "email": "info@reload-fitness.com",
+      "phone": "#ERROR!",
+      "pricing": "Subscription available through mobile app"
+    }
+  },
+  {
+    "name": "Muscle Factory",
+    "meta_title": "Muscle Factory | Strength Training & Muscle Building | 24/7 Access & Strength Training | 24/7 Access | Limassol",
+    "meta_description": "Discover Muscle Factory in Limassol. Specializing in Strength Training, Muscle Building, Conditioning, equipped with 24/7 access, strength training, conditioning training, open 24/7. Located in Limassol, contact -438253 for details.",
+    "description": "Muscle Factory stands out as Limassol's premier 24/7 fitness destination. Specializing in Strength Training, Muscle Building, and Conditioning, this facility caters to all fitness levels. Features include 24/7 Access for enhanced workouts. Open 24/7 for early birds and night owls seeking flexible training schedules.",
+    "opening_hours": {
+      "Monday": "24/7",
+      "Tuesday": "24/7",
+      "Wednesday": "24/7",
+      "Thursday": "24/7",
+      "Friday": "24/7",
+      "Saturday": "24/7",
+      "Sunday": "24/7"
+    },
+    "is_open_now": true,
+    "pricing": {},
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Muscle Factory",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "Griva Digeni 16, Limassol, Cyprus"
+      },
+      "telephone": "-438253",
+      "email": "musclefactory24hoursgym@outlook.com",
+      "openingHoursSpecification": [
+        "Mo-Su 00:00-23:59",
+        "Mo-Su 00:00-23:59",
+        "Mo-Su 00:00-23:59",
+        "Mo-Su 00:00-23:59",
+        "Mo-Su 00:00-23:59",
+        "Mo-Su 00:00-23:59",
+        "Mo-Su 00:00-23:59"
+      ],
+      "keywords": "Strength Training, Muscle Building, Conditioning",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "24/7 Access"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Strength Training"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Conditioning Training"
+        }
+      ],
+      "priceRange": "Contact for details"
+    },
+    "internal_links": [
+      "/cities/limassol"
+    ],
+    "raw_data": {
+      "address": "Griva Digeni 16, Limassol, Cyprus",
+      "amenities": "24/7 Access, Strength Training, Conditioning Training",
+      "specialties": "Strength Training, Muscle Building, Conditioning",
+      "opening_hours": "{\"Monday\":\"24/7\",\"Tuesday\":\"24/7\",\"Wednesday\":\"24/7\",\"Thursday\":\"24/7\",\"Friday\":\"24/7\",\"Saturday\":\"24/7\",\"Sunday\":\"24/7\"}",
+      "email": "musclefactory24hoursgym@outlook.com",
+      "phone": "-438253",
+      "pricing": "Contact for details"
+    }
+  },
+  {
+    "name": "Grind Fitness",
+    "meta_title": "Grind Fitness | CrossFit & Group Classes | Free Weights & Cardio Equipment | Flexible Hours | Limassol",
+    "meta_description": "Discover Grind Fitness in Limassol. Specializing in CrossFit, Group Classes, Personal Training, equipped with free weights, cardio equipment, lockers, open Contact for details. Located in Limassol, contact Contact for details for details.",
+    "description": "Located on Steliou Kiriakidi, Grind Fitness provides top-tier fitness services in Limassol. Specializing in CrossFit, Group Classes, and Personal Training, this facility caters to all fitness levels. Features include Parking for enhanced workouts. Great for one-on-one coaching and personalized fitness programs.",
+    "opening_hours": {},
+    "is_open_now": false,
+    "pricing": {},
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Grind Fitness",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "Steliou Kiriakidi, Limassol 3080, Cyprus"
+      },
+      "email": "giannis1996.g9@hotmail.com",
+      "keywords": "CrossFit, Group Classes, Personal Training, Nutrition Coaching",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Free Weights"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Cardio Equipment"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Lockers"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Clean Showers"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Parking"
+        }
+      ],
+      "priceRange": "Contact for details"
+    },
+    "internal_links": [
+      "/cities/limassol",
+      "/specialties/crossfit",
+      "/specialties/personal-trainer"
+    ],
+    "raw_data": {
+      "address": "Steliou Kiriakidi, Limassol 3080, Cyprus",
+      "amenities": "Free Weights, Cardio Equipment, Lockers, Clean Showers, Parking",
+      "specialties": "CrossFit, Group Classes, Personal Training, Nutrition Coaching",
+      "opening_hours": "Not specified in HTML",
+      "email": "giannis1996.g9@hotmail.com",
+      "phone": "#ERROR!",
+      "pricing": "€10 Per Drop-In Class, Full Membership Pricing Details Not Explicitly Stated"
+    }
+  },
+  {
+    "name": "VIP GYM",
+    "meta_title": "VIP GYM | Fight Do & Suspension Training | Weight Training & Personal Training | Flexible Hours | Limassol",
+    "meta_description": "Discover VIP GYM in Limassol. Specializing in Fight Do, Suspension Training, Step, equipped with weight training, personal training, group classes, open Monday-Friday: 06:00 am - 22:00 pm | Saturday: 07:00 am - 18:00 pm | Sunday: 08:00 am - 14:00 pm. Located in Limassol, contact 77 776525 for details.",
+    "description": "VIP GYM brings specialized fight do training to Limassol, Cyprus. Specializing in Fight Do, Suspension Training, and Step, this facility caters to all fitness levels. Operating 06:00am to 22:00pm, perfect for morning and evening workouts. Perfect for families with dedicated kids' classes and family-friendly facilities.",
+    "opening_hours": {
+      "Monday-Friday": "06:00 am - 22:00 pm",
+      "Saturday": "07:00 am - 18:00 pm",
+      "Sunday": "08:00 am - 14:00 pm"
+    },
+    "is_open_now": true,
+    "pricing": {},
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "VIP GYM",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "Steliou Kyriakide 31A Str., 3080, Limassol"
+      },
+      "telephone": "77 776525",
+      "email": "vipgym.livelonger@gmail.com",
+      "openingHoursSpecification": [
+        "Mo 06:00 am - 22:00 pm",
+        "Sa 07:00 am - 18:00 pm",
+        "Su 08:00 am - 14:00 pm"
+      ],
+      "keywords": "Fight Do, Suspension Training, Step, Aerial Yoga, Pilates, Kickboxing, Personal Training, Semi Personal Training, Weight Training",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Weight Training"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Personal Training"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Group Classes"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Gymnastics for Kids"
+        }
+      ],
+      "priceRange": "Contact for details"
+    },
+    "internal_links": [
+      "/cities/limassol",
+      "/specialties/pilates",
+      "/specialties/yoga",
+      "/specialties/boxing",
+      "/specialties/personal-trainer"
+    ],
+    "raw_data": {
+      "address": "Steliou Kyriakide 31A Str., 3080, Limassol",
+      "amenities": "Weight Training, Personal Training, Group Classes, Gymnastics for Kids",
+      "specialties": "Fight Do, Suspension Training, Step, Aerial Yoga, Pilates, Kickboxing, Personal Training, Semi Personal Training, Weight Training",
+      "opening_hours": "{\"Monday-Friday\":\"06:00 am - 22:00 pm\",\"Saturday\":\"07:00 am - 18:00 pm\",\"Sunday\":\"08:00 am - 14:00 pm\"}",
+      "email": "vipgym.livelonger@gmail.com",
+      "phone": "77 776525",
+      "pricing": "Pricing details not explicitly provided in the HTML"
+    }
+  },
+  {
+    "name": "Anaplasis Gym Fitness Center",
+    "meta_title": "Anaplasis Gym Fitness Center | Personal Training & Body Building | Sauna & Locker Rooms | Flexible Hours | Limassol",
+    "meta_description": "Discover Anaplasis Gym Fitness Center in Limassol. Specializing in Personal Training, Body Building, Les Mills™ Classes, equipped with sauna, locker rooms, showers, open Monday: 06:30 - 22:00 | Tuesday: 06:30 - 22:00 | Wednesday: 06:30 - 22:00 | Thursday: 06:30 - 22:00 | Friday: 06:30 - 22:00 | Saturday: 08:00 - 18:00 | Sunday: 09:00 - 12:00. Located Enaerios, contact Contact for details for details.",
+    "description": "Located Enaerios, Anaplasis Gym Fitness Center offers comprehensive fitness training in Limassol. Specializing in Personal Training, Body Building, and Les Mills™ Classes, this facility caters to all fitness levels. Features include Sauna and Free WiFi for a complete training experience. Operating 06:30 to 22:00, perfect for morning and evening workouts. Great for one-on-one coaching and personalized fitness programs.",
+    "opening_hours": {
+      "Monday": "06:30 - 22:00",
+      "Tuesday": "06:30 - 22:00",
+      "Wednesday": "06:30 - 22:00",
+      "Thursday": "06:30 - 22:00",
+      "Friday": "06:30 - 22:00",
+      "Saturday": "08:00 - 18:00",
+      "Sunday": "09:00 - 12:00"
+    },
+    "is_open_now": true,
+    "pricing": {
+      "Pricing": "Competitive prices including all fitness equipment, group classes, and one free weekly sauna session"
+    },
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Anaplasis Gym Fitness Center",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "28th Oktovriou str, 319A Kanika Business Center, Enaerios Area, Limassol, Cyprus"
+      },
+      "email": "Contact for details",
+      "openingHoursSpecification": [
+        "Mo 06:30 - 22:00",
+        "Tu 06:30 - 22:00",
+        "We 06:30 - 22:00",
+        "Th 06:30 - 22:00",
+        "Fr 06:30 - 22:00",
+        "Sa 08:00 - 18:00",
+        "Su 09:00 - 12:00"
+      ],
+      "keywords": "Personal Training, Body Building, Les Mills™ Classes, Group Fitness",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Sauna"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Locker Rooms"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Showers"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Free WiFi"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Group Exercise Studio"
+        }
+      ],
+      "priceRange": "Contact for details"
+    },
+    "internal_links": [
+      "/cities/limassol",
+      "/specialties/personal-trainer"
+    ],
+    "raw_data": {
+      "address": "28th Oktovriou str, 319A Kanika Business Center, Enaerios Area, Limassol, Cyprus",
+      "amenities": "Sauna, Locker Rooms, Showers, Free WiFi, Group Exercise Studio",
+      "specialties": "Personal Training, Body Building, Les Mills™ Classes, Group Fitness",
+      "opening_hours": "{\"Monday\":\"06:30 - 22:00\",\"Tuesday\":\"06:30 - 22:00\",\"Wednesday\":\"06:30 - 22:00\",\"Thursday\":\"06:30 - 22:00\",\"Friday\":\"06:30 - 22:00\",\"Saturday\":\"08:00 - 18:00\",\"Sunday\":\"09:00 - 12:00\"}",
+      "email": "Contact for details",
+      "phone": "#ERROR!",
+      "pricing": "Competitive prices including all fitness equipment, group classes, and one free weekly sauna session"
+    }
+  },
+  {
+    "name": "Champ Boxing Academy",
+    "meta_title": "Champ Boxing Academy | Boxing | Boxing Training | Flexible Hours | Limassol",
+    "meta_description": "Discover Champ Boxing Academy in Limassol. Specializing in Boxing, equipped with boxing training, open Contact for details. Located in Limassol, contact Contact for details for details.",
+    "description": "Champ Boxing Academy delivers authentic boxing instruction in Limassol, Cyprus. Specializing in Boxing, this facility caters to all fitness levels. Contact for membership details and class schedules.",
+    "opening_hours": {},
+    "is_open_now": false,
+    "pricing": {},
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Champ Boxing Academy",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "Contact for details"
+      },
+      "telephone": "Contact for details",
+      "email": "Contact for details",
+      "keywords": "Boxing",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Boxing Training"
+        }
+      ],
+      "priceRange": "Contact for details"
+    },
+    "internal_links": [
+      "/cities/limassol",
+      "/specialties/boxing"
+    ],
+    "raw_data": {
+      "address": "Contact for details",
+      "amenities": "Boxing Training",
+      "specialties": "Boxing",
+      "opening_hours": "Contact for details",
+      "email": "Contact for details",
+      "phone": "Contact for details",
+      "pricing": "Contact for details"
+    }
+  },
+  {
+    "name": "Her Gym",
+    "meta_title": "Her Gym | Women's Only Fitness & Personal Training | Modern Equipment & Group Classes | Flexible Hours | Limassol",
+    "meta_description": "Discover Her Gym in Limassol. Specializing in Women's Only Fitness, Personal Training, Group Classes, equipped with modern equipment, group classes, yoga classes, open Monday: 07:00-22:00 | Tuesday: 07:00-22:00 | Wednesday: 07:00-22:00 | Thursday: 07:00-22:00 | Friday: 07:00-22:00 | Saturday: 07:00-22:00 | Sunday: 08:00-18:00. Located near main avenue, contact Contact for details for details.",
+    "description": "Located near main avenue, Her Gym offers comprehensive fitness training in Limassol. Specializing in Women's Only Fitness, Personal Training, and Group Classes, this facility caters to all fitness levels. Operating 07:00 to 22:00, perfect for morning and evening workouts. Ideal for women and families seeking a supportive fitness environment. Memberships from €1 monthly with flexible payment options.",
+    "opening_hours": {
+      "Monday": "07:00-22:00",
+      "Tuesday": "07:00-22:00",
+      "Wednesday": "07:00-22:00",
+      "Thursday": "07:00-22:00",
+      "Friday": "07:00-22:00",
+      "Saturday": "07:00-22:00",
+      "Sunday": "08:00-18:00"
+    },
+    "is_open_now": true,
+    "pricing": {
+      "SelfTraining - 1Month": "€98",
+      "SelfTraining - 3Months": "€280",
+      "SelfTraining - 6Months": "€518",
+      "SelfTraining - 12Months": "€976",
+      "GroupClasses - 1Month": "€155-€210",
+      "GroupClasses - 3Months": "€436-€568",
+      "GroupClasses - 6Months": "€772-€1,096",
+      "GroupClasses - 12Months": "€1,495-€2,050",
+      "PersonalTraining - 1Month": "€430-€575",
+      "PersonalTraining - 3Months": "€1,232-€1,626",
+      "PersonalTraining - 6Months": "€2,464-€3,252",
+      "PersonalTraining - 12Months": "€4,300-€5,720"
+    },
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Her Gym",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "Omonoias Avenue No. 19, 3052 Limassol, Cyprus"
+      },
+      "email": "info@hergym.cy",
+      "openingHoursSpecification": [
+        "Mo 07:00-22:00",
+        "Tu 07:00-22:00",
+        "We 07:00-22:00",
+        "Th 07:00-22:00",
+        "Fr 07:00-22:00",
+        "Sa 07:00-22:00",
+        "Su 08:00-18:00"
+      ],
+      "keywords": "Women's Only Fitness, Personal Training, Group Classes, Combat Sports, Nutrition Coaching",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Modern Equipment"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Group Classes"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Yoga Classes"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Pilates Classes"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Kickboxing"
+        }
+      ],
+      "priceRange": "Contact for details"
+    },
+    "internal_links": [
+      "/cities/limassol",
+      "/specialties/personal-trainer"
+    ],
+    "raw_data": {
+      "address": "Omonoias Avenue No. 19, 3052 Limassol, Cyprus",
+      "amenities": "Modern Equipment, Group Classes, Yoga Classes, Pilates Classes, Kickboxing, Muay Thai, MMA, Personal Training, Nutrition Plans",
+      "specialties": "Women's Only Fitness, Personal Training, Group Classes, Combat Sports, Nutrition Coaching",
+      "opening_hours": "{\"Monday\":\"07:00-22:00\",\"Tuesday\":\"07:00-22:00\",\"Wednesday\":\"07:00-22:00\",\"Thursday\":\"07:00-22:00\",\"Friday\":\"07:00-22:00\",\"Saturday\":\"07:00-22:00\",\"Sunday\":\"08:00-18:00\"}",
+      "email": "info@hergym.cy",
+      "phone": "#ERROR!",
+      "pricing": "{\"SelfTraining\":{\"1Month\":\"€98\",\"3Months\":\"€280\",\"6Months\":\"€518\",\"12Months\":\"€976\"},\"GroupClasses\":{\"1Month\":\"€155-€210\",\"3Months\":\"€436-€568\",\"6Months\":\"€772-€1,096\",\"12Months\":\"€1,495-€2,050\"},\"PersonalTraining\":{\"1Month\":\"€430-€575\",\"3Months\":\"€1,232-€1,626\",\"6Months\":\"€2,464-€3,252\",\"12Months\":\"€4,300-€5,720\"}}"
+    }
+  },
+  {
+    "name": "Dreamchasers Fitness Studio",
+    "meta_title": "Dreamchasers Fitness Studio | TRX Training & Functional Training | Contact for details | Flexible Hours | Limassol",
+    "meta_description": "Discover Dreamchasers Fitness Studio in Limassol. Specializing in TRX Training, Functional Training, Weight Loss, equipped with contact for details, open Contact for details. Located Agios Spiridonas, contact Contact for details for details.",
+    "description": "Located Agios Spiridonas, Dreamchasers Fitness Studio offers comprehensive fitness training in Limassol. Specializing in TRX Training, Functional Training, and Weight Loss, this facility caters to all fitness levels. Great for one-on-one coaching and personalized fitness programs. Memberships from €10 monthly with flexible payment options.",
+    "opening_hours": {},
+    "is_open_now": false,
+    "pricing": {
+      "PrivateTraining": "€30",
+      "SemiPrivateTraining": "€40",
+      "MonthlyGroupPackages - 3SessionsPerWeek": "€80",
+      "MonthlyGroupPackages - 4SessionsPerWeek": "€100",
+      "MonthlyGroupPackages - 5SessionsPerWeek": "€120",
+      "DailyPass": "€10"
+    },
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Dreamchasers Fitness Studio",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Limassol",
+        "addressCountry": "CY",
+        "streetAddress": "Kekropos 8, Agios Spiridonas, Limassol 3051"
+      },
+      "email": "info@dreamchasers.cy",
+      "keywords": "TRX Training, Functional Training, Weight Loss, Muscle Building, Personal Training",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Contact for details"
+        }
+      ],
+      "priceRange": "Contact for details"
+    },
+    "internal_links": [
+      "/cities/limassol",
+      "/specialties/personal-trainer"
+    ],
+    "raw_data": {
+      "address": "Kekropos 8, Agios Spiridonas, Limassol 3051",
+      "amenities": "Contact for details",
+      "specialties": "TRX Training, Functional Training, Weight Loss, Muscle Building, Personal Training",
+      "opening_hours": "{}",
+      "email": "info@dreamchasers.cy",
+      "phone": "#ERROR!",
+      "pricing": "{\"PrivateTraining\":\"€30\",\"SemiPrivateTraining\":\"€40\",\"MonthlyGroupPackages\":{\"3SessionsPerWeek\":\"€80\",\"4SessionsPerWeek\":\"€100\",\"5SessionsPerWeek\":\"€120\"},\"DailyPass\":\"€10\"}"
+    }
+  }
+]

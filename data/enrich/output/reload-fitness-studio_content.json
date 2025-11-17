@@ -1,0 +1,46 @@
+{
+  "name": "Reload Fitness Studio",
+  "meta_title": "Reload Fitness Studio | HIIT & RUN & Joy Ride | Fuel Bar & App-based Booking | Flexible Hours | Limassol",
+  "meta_description": "Discover Reload Fitness Studio in Limassol. Specializing in HIIT & RUN, Joy Ride, One on One, equipped with fuel bar, app-based booking, open Contact for details. Located in Limassol, contact Contact for details for details.",
+  "description": "Reload Fitness Studio brings specialized hiit & run training to Limassol, Cyprus. Specializing in HIIT & RUN, Joy Ride, and One on One, this facility caters to all fitness levels. Also offers One on One training. Contact for membership details and class schedules.",
+  "opening_hours": {},
+  "is_open_now": false,
+  "pricing": {},
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Reload Fitness Studio",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "Eleftherias 119, 3042 Limassol, Cyprus"
+    },
+    "email": "info@reload-fitness.com",
+    "keywords": "HIIT & RUN, Joy Ride, One on One, Glutes & Abs, HIIT & Box, Rebuild, Reform / Mat Pilates",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Fuel Bar"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "App-based Booking"
+      }
+    ],
+    "priceRange": "Contact for details"
+  },
+  "internal_links": [
+    "/cities/limassol",
+    "/specialties/pilates"
+  ],
+  "raw_data": {
+    "address": "Eleftherias 119, 3042 Limassol, Cyprus",
+    "amenities": "Fuel Bar, App-based Booking",
+    "specialties": "HIIT & RUN, Joy Ride, One on One, Glutes & Abs, HIIT & Box, Rebuild, Reform / Mat Pilates",
+    "opening_hours": "{}",
+    "email": "info@reload-fitness.com",
+    "phone": "#ERROR!",
+    "pricing": "Subscription available through mobile app"
+  }
+}

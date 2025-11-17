@@ -1,0 +1,74 @@
+{
+  "name": "CHECKMAT Limassol",
+  "meta_title": "CHECKMAT Limassol | Brazilian Jiu-Jitsu (BJJ) & No-Gi BJJ | BJJ Classes & Boxing | Flexible Hours | Limassol",
+  "meta_description": "Discover CHECKMAT Limassol in Limassol. Specializing in Brazilian Jiu-Jitsu (BJJ), No-Gi BJJ, Boxing, equipped with bjj classes, boxing, kids classes, open Monday: 8:00-21:00 | Tuesday: 8:30-20:30 | Wednesday: 8:00-21:00 | Thursday: 8:30-20:30 | Friday: 8:00-22:30. Located in Limassol, contact 35797442244 for details.",
+  "description": "Located on Pafou 74, CHECKMAT Limassol delivers authentic brazilian jiu-jitsu (bjj) instruction in Limassol. Specializing in Brazilian Jiu-Jitsu (BJJ), No-Gi BJJ, and Boxing, this facility caters to all fitness levels. Operating 8:00 to 21:00, perfect for morning and evening workouts. Perfect for families with dedicated kids' classes and family-friendly facilities.",
+  "opening_hours": {
+    "Monday": "8:00-21:00",
+    "Tuesday": "8:30-20:30",
+    "Wednesday": "8:00-21:00",
+    "Thursday": "8:30-20:30",
+    "Friday": "8:00-22:30",
+    "Saturday": "No sessions",
+    "Sunday": "No sessions"
+  },
+  "is_open_now": false,
+  "pricing": {},
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "CHECKMAT Limassol",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "Pafou 74, Limassol, 3051, CY"
+    },
+    "telephone": "35797442244",
+    "email": "club@checkmat.cy",
+    "openingHoursSpecification": [
+      "Mo 8:00-21:00",
+      "Tu 8:30-20:30",
+      "We 8:00-21:00",
+      "Th 8:30-20:30",
+      "Fr 8:00-22:30"
+    ],
+    "keywords": "Brazilian Jiu-Jitsu (BJJ), No-Gi BJJ, Boxing, Kids Martial Arts",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "BJJ Classes"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Boxing"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Kids Classes"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Mobility Training"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Open Mat"
+      }
+    ]
+  },
+  "internal_links": [
+    "/cities/limassol",
+    "/specialties/boxing",
+    "/specialties/mma"
+  ],
+  "raw_data": {
+    "address": "Pafou 74, Limassol, 3051, CY",
+    "amenities": "BJJ Classes, Boxing, Kids Classes, Mobility Training, Open Mat",
+    "specialties": "Brazilian Jiu-Jitsu (BJJ), No-Gi BJJ, Boxing, Kids Martial Arts",
+    "opening_hours": "{\"Monday\":\"8:00-21:00\",\"Tuesday\":\"8:30-20:30\",\"Wednesday\":\"8:00-21:00\",\"Thursday\":\"8:30-20:30\",\"Friday\":\"8:00-22:30\",\"Saturday\":\"No sessions\",\"Sunday\":\"No sessions\"}",
+    "email": "club@checkmat.cy",
+    "phone": "35797442244",
+    "pricing": "Not specified on website"
+  }
+}

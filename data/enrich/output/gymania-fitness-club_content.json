@@ -1,0 +1,58 @@
+{
+  "name": "Gymania Fitness Club",
+  "meta_title": "Gymania Fitness Club | Zumba & Pilates | Fitness Area & Group Classes | Flexible Hours | Limassol",
+  "meta_description": "Discover Gymania Fitness Club in Limassol. Specializing in Zumba, Pilates, Trampolines, equipped with fitness area, group classes, changing rooms, open Contact for details. Located in Limassol, contact Contact for details for details.",
+  "description": "Gymania Fitness Club brings specialized zumba training to Limassol, Cyprus. Specializing in Zumba, Pilates, and Trampolines, this facility caters to all fitness levels. Perfect for families with dedicated kids' classes and family-friendly facilities. Memberships from €35 monthly with flexible payment options.",
+  "opening_hours": {},
+  "is_open_now": false,
+  "pricing": {
+    "Pricing": "Weekend Offer: 35 Euros per month"
+  },
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Gymania Fitness Club",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limassol",
+      "addressCountry": "CY",
+      "streetAddress": "Contact for details"
+    },
+    "telephone": "Contact for details",
+    "email": "Contact for details",
+    "keywords": "Zumba, Pilates, Trampolines, Shaping, Abs & Legs, Anti-Stress Stretching, TRX, Yoga, Abs Workout",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Fitness Area"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Group Classes"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Changing Rooms"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Kids Playground"
+      }
+    ],
+    "priceRange": "Contact for details"
+  },
+  "internal_links": [
+    "/cities/limassol",
+    "/specialties/pilates",
+    "/specialties/yoga"
+  ],
+  "raw_data": {
+    "address": "Contact for details",
+    "amenities": "Fitness Area, Group Classes, Changing Rooms, Kids Playground",
+    "specialties": "Zumba, Pilates, Trampolines, Shaping, Abs & Legs, Anti-Stress Stretching, TRX, Yoga, Abs Workout",
+    "opening_hours": "Contact for details",
+    "email": "Contact for details",
+    "phone": "Contact for details",
+    "pricing": "Weekend Offer: 35 Euros per month"
+  }
+}
