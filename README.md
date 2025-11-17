@@ -133,14 +133,18 @@ new-gym/
 - [x] **Opening Hours System** - Comprehensive opening hours display and management
   - All gyms have all 7 days (Monday-Sunday) in opening hours
   - Standardized format: HH:MM-HH:MM (24-hour format, always 2 digits)
-  - Real-time "Open Now" / "Closed" status badge using Cyprus local timezone
+  - Real-time "Open Now" / "Closed" status badge using Cyprus local timezone (Europe/Nicosia)
   - Support for multiple time ranges per day (e.g., "06:30-11:00, 15:30-20:30")
+  - Handles both hyphens (-) and em dashes (—) in opening hours
   - "Contact for opening hour details" option for gyms without available hours
   - Opening hours section hidden when all days are "Closed"
-- [x] **Social Media Integration** - Facebook button detection and display
+- [x] **Social Media Integration** - Facebook and Instagram button detection and display
   - Automatic detection of Facebook URLs in website field
+  - Automatic detection of Instagram URLs in website field
   - Facebook icon and "Visit Facebook" text for Facebook links
-  - "Facebook" button in quick actions, "Visit Facebook" in contact section
+  - Instagram icon and "Visit Instagram" text for Instagram links
+  - "Facebook"/"Instagram" button in quick actions, "Visit Facebook"/"Visit Instagram" in contact section
+  - Regular website links show Globe icon and "Visit Website" text
 
 ### Phase 4: Owner Experience ✅
 - [x] **Add Gym Form** - Single-page form for gym owners to submit listings
@@ -259,11 +263,15 @@ The project uses a custom dark/neon theme with:
 - **City Assignment Fixes**: ✅ Corrected gym city assignments (e.g., "Bad Dog Bjj" moved from Protaras to Ayia Napa based on address)
 - **Opening Hours**: ✅ Standardized opening hours format across all gyms (HH:MM-HH:MM, 24-hour format)
   - All 210 gyms have all 7 days (Monday-Sunday) in opening hours
-  - 21+ gyms updated with accurate opening hours
-  - Real-time open/closed status using Cyprus timezone (Asia/Nicosia)
+  - 29+ gyms updated with accurate opening hours from verified sources
+  - Real-time open/closed status using Cyprus timezone (Europe/Nicosia)
+  - Handles both hyphens (-) and em dashes (—) in opening hours for accurate parsing
   - Support for "Contact for opening hour details" for gyms without available hours
 - **Pricing Information**: ✅ Pricing section added to gym detail pages (JSONB field in database)
-- **Social Media Links**: ✅ Facebook URL detection and display with appropriate icons and text
+- **Social Media Links**: ✅ Facebook and Instagram URL detection and display with appropriate icons and text
+  - Facebook links show Facebook icon and "Visit Facebook" text
+  - Instagram links show Instagram icon and "Visit Instagram" text
+  - Regular website links show Globe icon and "Visit Website" text
 
 #### Frontend Data Access
 - **Data Layer**: Unified data access layer with Supabase API integration

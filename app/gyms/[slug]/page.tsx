@@ -1,7 +1,7 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { MapPin, Phone, Globe, Mail, Clock, Users, Calendar, DollarSign, Facebook } from 'lucide-react';
+import { MapPin, Phone, Globe, Mail, Clock, Users, Calendar, DollarSign, Facebook, Instagram } from 'lucide-react';
 import { getGymBySlug, getCityById, getTopReviews, getGymsByCity, getAllGyms, getReviewsByGymId } from '@/lib/data';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { Rating } from '@/components/shared/Rating';
@@ -123,6 +123,12 @@ export default async function GymPage({ params }: GymPageProps) {
     gym.website.includes('facebook.com') || 
     gym.website.includes('fb.com')
   );
+  
+  // Check if website is an Instagram URL
+  const isInstagramUrl = gym.website && (
+    gym.website.includes('instagram.com') || 
+    gym.website.includes('instagr.am')
+  );
 
   return (
     <>
@@ -183,6 +189,11 @@ export default async function GymPage({ params }: GymPageProps) {
                     <>
                       <Facebook className="w-4 h-4 mr-2" />
                       Facebook
+                    </>
+                  ) : isInstagramUrl ? (
+                    <>
+                      <Instagram className="w-4 h-4 mr-2" />
+                      Instagram
                     </>
                   ) : (
                     <>
@@ -485,6 +496,18 @@ export default async function GymPage({ params }: GymPageProps) {
                           className="text-text-light hover:text-primary-blue transition-colors"
                         >
                           Visit Facebook
+                        </a>
+                      </>
+                    ) : isInstagramUrl ? (
+                      <>
+                        <Instagram className="w-5 h-5 text-primary-blue flex-shrink-0" />
+                        <a
+                          href={gym.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-text-light hover:text-primary-blue transition-colors"
+                        >
+                          Visit Instagram
                         </a>
                       </>
                     ) : (

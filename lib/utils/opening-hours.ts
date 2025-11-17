@@ -15,7 +15,7 @@ export interface OpeningHours {
 /**
  * Get current time in Cyprus (EET/EEST timezone)
  * Cyprus is UTC+2 (EET) or UTC+3 (EEST during daylight saving)
- * Uses Asia/Nicosia timezone (same as Europe/Nicosia)
+ * Uses Europe/Nicosia timezone
  */
 function getCyprusTime(): { day: number; hours: number; minutes: number; timeInMinutes: number } {
   const now = new Date();
@@ -23,7 +23,7 @@ function getCyprusTime(): { day: number; hours: number; minutes: number; timeInM
   try {
     // Use Intl.DateTimeFormat for better timezone support
     const formatter = new Intl.DateTimeFormat('en-US', {
-      timeZone: 'Asia/Nicosia',
+      timeZone: 'Europe/Nicosia',
       hour12: false,
       hour: '2-digit',
       minute: '2-digit',
@@ -134,7 +134,7 @@ function parseTimeToMinutes(timeStr: string): number | null {
 
 /**
  * Check if a gym is currently open based on opening hours
- * Uses Cyprus local time (Asia/Nicosia timezone)
+ * Uses Cyprus local time (Europe/Nicosia timezone)
  */
 export function isGymOpenNow(openingHours: OpeningHours): boolean {
   if (!openingHours) return false;
@@ -164,10 +164,12 @@ export function isGymOpenNow(openingHours: OpeningHours): boolean {
   }
 
   // Try to parse time ranges
-  // Format examples: "8:00-21:00", "8:00AM-9:00PM", "06:30 - 22:00", "08:00 am - 14:00 pm"
-  // Match time ranges with optional AM/PM
+  // Format examples: "8:00-21:00", "8:00AM-9:00PM", "06:30 - 22:00", "08:00 am - 14:00 pm", "07:00 – 21:00" (em dash)
+  // Match time ranges with optional AM/PM, handle both hyphen (-) and em dash (—)
+  // Replace em dash with hyphen for consistent parsing
+  const normalizedHours = hours.replace(/[–—]/g, '-');
   const timeRangePattern = /(\d{1,2}):?(\d{2})?\s*(am|pm)?\s*-\s*(\d{1,2}):?(\d{2})?\s*(am|pm)?/gi;
-  const timeRanges = hours.match(timeRangePattern);
+  const timeRanges = normalizedHours.match(timeRangePattern);
   
   if (!timeRanges || timeRanges.length === 0) {
     // If we can't parse, assume closed to be safe

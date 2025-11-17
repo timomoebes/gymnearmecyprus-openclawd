@@ -1,8 +1,8 @@
 # Development Status Summary
 ## GymNearMe Cyprus - Current Progress & Roadmap
 
-**Last Updated:** November 16, 2025  
-**Project Status:** Phase 5 Complete - SEO Optimization & Content Enhancement | Backend Database Setup Complete | Data Processing Pipeline Operational | Bulk Import Complete (211 Gyms Across 6 Cities) | Data Quality Fixes Applied | Frontend API Integration Complete | Opening Hours System Implemented | Data Enrichment Complete
+**Last Updated:** November 17, 2025  
+**Project Status:** Phase 5 Complete - SEO Optimization & Content Enhancement | Backend Database Setup Complete | Data Processing Pipeline Operational | Bulk Import Complete (211 Gyms Across 6 Cities) | Data Quality Fixes Applied | Frontend API Integration Complete | Opening Hours System Implemented | Data Enrichment Complete | Social Media Integration Complete
 
 ---
 
@@ -122,19 +122,23 @@
 - **Opening Hours:** ✅ Comprehensive opening hours system implemented
   - All 210 gyms have all 7 days (Monday-Sunday) in opening hours
   - Standardized format: HH:MM-HH:MM (24-hour format, always 2 digits, no AM/PM)
-  - 21+ gyms updated with accurate opening hours from verified sources
-  - Real-time "Open Now" / "Closed" status badge using Cyprus timezone (Asia/Nicosia)
+  - 29+ gyms updated with accurate opening hours from verified sources
+  - Real-time "Open Now" / "Closed" status badge using Cyprus timezone (Europe/Nicosia)
+  - Handles both hyphens (-) and em dashes (—) in opening hours for accurate parsing
   - Support for multiple time ranges per day (e.g., "06:30-11:00, 15:30-20:30")
   - "Contact for opening hour details" option for gyms without available hours
   - Opening hours section automatically hidden when all days are "Closed"
   - Format validation and standardization applied across all gyms
+  - Fixed em dash parsing issue that was causing incorrect "Closed" status
 - **Pricing Information:** ✅ Pricing section added to gym detail pages
   - JSONB field in database for structured pricing data
   - Display of pricing information or "Contact for pricing details"
-- **Social Media Integration:** ✅ Facebook link detection and display
-  - Automatic detection of Facebook URLs in website field
+- **Social Media Integration:** ✅ Facebook and Instagram link detection and display
+  - Automatic detection of Facebook URLs in website field (facebook.com, fb.com)
+  - Automatic detection of Instagram URLs in website field (instagram.com, instagr.am)
   - Facebook icon and appropriate text ("Facebook" in quick actions, "Visit Facebook" in contact section)
-  - Regular website links still show with Globe icon and "Visit Website" text
+  - Instagram icon and appropriate text ("Instagram" in quick actions, "Visit Instagram" in contact section)
+  - Regular website links show with Globe icon and "Visit Website" text
 - **Mock/Demo Gyms:** All removed (clean slate for real data)
 
 ### SEO Implementation
@@ -490,7 +494,7 @@
 
 ---
 
-**Recent Updates (November 16, 2025):**
+**Recent Updates (November 17, 2025):**
 - ✅ Bulk import completed: 211 gyms across all 6 cities now in database
   - ✅ 50 Limassol gyms (imported manually via Supabase Dashboard)
   - ✅ 71 Nicosia gyms (imported manually via Supabase Dashboard)
@@ -513,13 +517,21 @@
 - ✅ **Opening Hours System:** Comprehensive opening hours implementation
   - All 210 gyms have all 7 days (Monday-Sunday) in opening hours
   - Standardized format: HH:MM-HH:MM (24-hour format, always 2 digits)
-  - 21+ gyms updated with accurate opening hours (Peak Condition Cyprus, Gymania Personal Trainer, Iron Fitness, Kinetic Fitness Studio, Kinetic Pilates Studio, Kpk Performance, Limassol Fitness, Lumpinee Gym, No75Space, Piero Judo Academy, Raw Calisthenics Academy, SavS Gym, Target Boxing Club, Vinyasa Yoga Studio, Body Advance, Dainas Planet Fitness, Gymania Fitness Club, Reload Fitness Studio, Bodysense Health&Fitness, Crossfit Limassol, and more)
-  - Real-time "Open Now" / "Closed" status using Cyprus timezone (Asia/Nicosia)
-  - Format validation and fixes applied (e.g., "8:00" → "08:00", removed extra spaces)
+  - 29+ gyms updated with accurate opening hours (Peak Condition Cyprus, Gymania Personal Trainer, Iron Fitness, Kinetic Fitness Studio, Kinetic Pilates Studio, Kpk Performance, Limassol Fitness, Lumpinee Gym, No75Space, Piero Judo Academy, Raw Calisthenics Academy, SavS Gym, Target Boxing Club, Vinyasa Yoga Studio, Body Advance, Dainas Planet Fitness, Gymania Fitness Club, Reload Fitness Studio, Bodysense Health&Fitness, Crossfit Limassol, Kalopedi Gym, Team Rogue Forge, The Fitzone By Kondylis, Un1T, Bodyfitness Gym Center, Soul Vibe Space, Catman Olympic Boxing Academy, R-Evolution Of Gym, and more)
+  - Real-time "Open Now" / "Closed" status using Cyprus timezone (Europe/Nicosia)
+  - Fixed em dash (—) parsing issue - now handles both hyphens (-) and em dashes correctly
+  - Format validation and fixes applied (e.g., "8:00" → "08:00", removed extra spaces, normalized em dashes)
   - Support for "Contact for opening hour details" (e.g., Contrology Studio)
 - ✅ **Pricing Information:** Added pricing section to gym detail pages with JSONB database field
-- ✅ **Social Media Integration:** Facebook URL detection and display with appropriate icons and text
-- ✅ **Data Enrichment:** Updated gym descriptions (e.g., Gymania Personal Trainer mentions Vasilis)
+- ✅ **Social Media Integration:** Facebook and Instagram URL detection and display with appropriate icons and text
+  - Facebook links: Facebook icon, "Facebook" button, "Visit Facebook" link
+  - Instagram links: Instagram icon, "Instagram" button, "Visit Instagram" link
+  - Regular websites: Globe icon, "Visit Website" text
+- ✅ **Data Enrichment:** Updated gym descriptions, opening hours, emails, and amenities
+  - Updated gym descriptions (e.g., Gymania Personal Trainer mentions Vasilis)
+  - Added email addresses for multiple gyms (The Fitzone By Kondylis, Catman Olympic Boxing Academy, R-Evolution Of Gym)
+  - Added amenities for Un1T (Toilets, Showers, Hair Dryers, Free Water, Cafe) and Soul Vibe Space (Cafe, Locker Room, Showers)
+  - Added Facebook link for Catman Olympic Boxing Academy
 
 **Next Immediate Action:** Implement owner claim system, optimize internal linking, expand gym listings further (see STRATEGIC_ACTION_PLAN.md)
 
