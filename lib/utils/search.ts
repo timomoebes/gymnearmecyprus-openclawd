@@ -9,8 +9,23 @@ export interface SearchFilters {
   featured?: boolean;
 }
 
-export const searchGyms = (filters: SearchFilters): Gym[] => {
-  let results = getAllGyms();
+/**
+ * Search and filter gyms based on provided criteria.
+ * 
+ * @param filters - Search criteria including query, city, specialty, rating, and featured status
+ * @returns Promise resolving to filtered array of gyms
+ * 
+ * @example
+ * ```typescript
+ * const results = await searchGyms({ 
+ *   cityId: 'limassol', 
+ *   minRating: 4.0 
+ * });
+ * ```
+ */
+export const searchGyms = async (filters: SearchFilters): Promise<Gym[]> => {
+  const allGyms = await getAllGyms();
+  let results = allGyms;
 
   // Filter by city
   if (filters.cityId) {
@@ -48,6 +63,19 @@ export const searchGyms = (filters: SearchFilters): Gym[] => {
   return results;
 };
 
+/**
+ * Sort an array of gyms by the specified criteria.
+ * Featured gyms are always sorted first, then by the specified criteria.
+ * 
+ * @param gyms - Array of gyms to sort
+ * @param sortBy - Sort criteria: 'rating', 'name', 'featured', or 'reviews'
+ * @returns Sorted array of gyms
+ * 
+ * @example
+ * ```typescript
+ * const sorted = sortGyms(gyms, 'rating');
+ * ```
+ */
 export const sortGyms = (gyms: Gym[], sortBy: 'rating' | 'name' | 'featured' | 'reviews'): Gym[] => {
   const sorted = [...gyms];
 

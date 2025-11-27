@@ -2,30 +2,11 @@
 
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Gym } from '@/lib/types';
-
-// Fix for default marker icons in Next.js
-const defaultIcon = new Icon({
-  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-  iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41],
-});
-
-const featuredIcon = new Icon({
-  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png',
-  iconRetinaUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png',
-  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41],
-});
+import { defaultIcon, featuredIcon } from '@/lib/utils/map-icons';
+import { formatGymNameWithCity } from '@/lib/utils/gym-name';
+import { getCityById } from '@/lib/data';
 
 interface GymMapProps {
   gym: Gym;
@@ -51,7 +32,7 @@ export const GymMap: React.FC<GymMapProps> = ({ gym }) => {
           <Popup>
             <div className="p-2 min-w-[200px]">
               <div className="font-semibold text-sm text-gray-900 mb-2">
-                {gym.name}
+                {formatGymNameWithCity(gym.name, getCityById(gym.cityId)?.name)}
               </div>
               <div className="text-xs text-gray-600">
                 {gym.address}

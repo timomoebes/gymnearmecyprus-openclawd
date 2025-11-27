@@ -86,6 +86,24 @@ export const specialties: Specialty[] = [
     gymCount: 0,
     relatedSpecialties: ['bodybuilding', 'crossfit', 'fitness'],
   },
+  {
+    id: 'fitness',
+    name: 'Fitness',
+    slug: 'fitness',
+    description: 'General fitness centers and gyms offering a wide range of equipment and training options for overall fitness and wellness.',
+    icon: 'dumbbell',
+    gymCount: 0,
+    relatedSpecialties: ['bodybuilding', 'crossfit', 'personal-training', 'gym'],
+  },
+  {
+    id: 'gym',
+    name: 'Gym',
+    slug: 'gym',
+    description: 'Traditional gyms and fitness centers offering a comprehensive range of equipment for strength training, cardio, and general fitness workouts.',
+    icon: 'dumbbell',
+    gymCount: 0,
+    relatedSpecialties: ['fitness', 'bodybuilding', 'crossfit', 'personal-training'],
+  },
 ];
 
 // Helper function to get specialty by slug

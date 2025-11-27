@@ -7,6 +7,7 @@ import { specialties } from '@/lib/data';
 import { SearchBar } from '@/components/home/SearchBar';
 import { Clock, CheckCircle, MapPin, Star, Users } from 'lucide-react';
 import { generateFAQPageSchema } from '@/lib/utils/schema';
+import { formatGymNameWithCity } from '@/lib/utils/gym-name';
 
 // Enable revalidation so homepage updates when gym counts change
 export const revalidate = 0; // 0 = always revalidate, or use a number for seconds
@@ -279,7 +280,7 @@ export default async function HomePage() {
                   >
                     <div className="flex items-start justify-between mb-3">
                       <h3 className="text-xl font-bold text-text-white group-hover:text-primary-blue transition-colors">
-                        {gym.name}
+                        {formatGymNameWithCity(gym.name, city?.name)}
                       </h3>
                       <Clock className="w-5 h-5 text-primary-blue flex-shrink-0 ml-2" />
                     </div>

@@ -2,39 +2,19 @@
 
 import React, { useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Gym } from '@/lib/types';
 import { getCityById } from '@/lib/data';
 import Link from 'next/link';
 import { Rating } from '@/components/shared/Rating';
 import { Badge } from '@/components/shared/Badge';
+import { defaultIcon, featuredIcon } from '@/lib/utils/map-icons';
+import { formatGymNameWithCity } from '@/lib/utils/gym-name';
 
 interface CityMapProps {
   cityId: string;
   gyms: Gym[];
 }
-
-// Fix for default marker icons in Next.js
-const defaultIcon = new Icon({
-  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-  iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41],
-});
-
-const featuredIcon = new Icon({
-  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png',
-  iconRetinaUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png',
-  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41],
-});
 
 export const CityMap: React.FC<CityMapProps> = ({ cityId, gyms }) => {
   const city = getCityById(cityId);
@@ -68,7 +48,7 @@ export const CityMap: React.FC<CityMapProps> = ({ cityId, gyms }) => {
                     href={`/gyms/${gym.slug}`}
                     className="font-semibold text-sm text-gray-900 hover:text-primary-blue"
                   >
-                    {gym.name}
+                    {formatGymNameWithCity(gym.name, getCityById(gym.cityId)?.name)}
                   </Link>
                   {gym.featured && (
                     <Badge variant="featured" className="ml-2 text-xs">

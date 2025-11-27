@@ -1,0 +1,907 @@
+{
+  "timestamp": "2025-11-23T11:17:52.416546",
+  "total_files": 81,
+  "total_lines": 15917,
+  "issues": [
+    {
+      "severity": "warning",
+      "category": "redundancy",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_larnaca_gym_descriptions.py",
+      "line": 1,
+      "message": "Duplicate generate_descriptions scripts found: 4 files",
+      "suggestion": "Consider consolidating into a single parameterized script"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\utils.ts",
+      "line": 4,
+      "message": "Exported function 'cn' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\api\\gyms.ts",
+      "line": 139,
+      "message": "Exported function 'getAllGymsFromDB' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\api\\gyms.ts",
+      "line": 177,
+      "message": "Exported function 'getGymsByCityFromDB' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\api\\gyms.ts",
+      "line": 225,
+      "message": "Exported function 'getGymBySlugFromDB' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\api\\gyms.ts",
+      "line": 257,
+      "message": "Exported function 'getFeaturedGymsFromDB' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\api\\gyms.ts",
+      "line": 294,
+      "message": "Exported function 'getGymsBySpecialtyFromDB' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\data\\gyms.ts",
+      "line": 162,
+      "message": "Exported function 'getGymBySlug' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\data\\gyms.ts",
+      "line": 172,
+      "message": "Exported function 'getGymById' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\data\\gyms.ts",
+      "line": 177,
+      "message": "Exported function 'getGymsByCity' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\data\\gyms.ts",
+      "line": 187,
+      "message": "Exported function 'getGymsBySpecialty' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\data\\gyms.ts",
+      "line": 199,
+      "message": "Exported function 'getFeaturedGyms' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\data\\gyms.ts",
+      "line": 209,
+      "message": "Exported function 'getAllGyms' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\utils\\schema.ts",
+      "line": 3,
+      "message": "Exported function 'generateLocalBusinessSchema' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\utils\\schema.ts",
+      "line": 79,
+      "message": "Exported function 'generateBreadcrumbSchema' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\utils\\schema.ts",
+      "line": 92,
+      "message": "Exported function 'generateOrganizationSchema' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\utils\\schema.ts",
+      "line": 111,
+      "message": "Exported function 'generateWebSiteSchema' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\utils\\schema.ts",
+      "line": 128,
+      "message": "Exported function 'generateCollectionPageSchema' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\utils\\schema.ts",
+      "line": 154,
+      "message": "Exported function 'generateFAQPageSchema' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\components\\city\\CityMap.tsx",
+      "line": 18,
+      "message": "React component 'export' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment describing component props and usage"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\components\\gym\\GymCard.tsx",
+      "line": 15,
+      "message": "React component 'export' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment describing component props and usage"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\components\\gym\\GymMap.tsx",
+      "line": 13,
+      "message": "React component 'export' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment describing component props and usage"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\components\\home\\SearchBar.tsx",
+      "line": 15,
+      "message": "React component 'export' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment describing component props and usage"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\components\\layout\\Footer.tsx",
+      "line": 8,
+      "message": "React component 'export' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment describing component props and usage"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\components\\layout\\Header.tsx",
+      "line": 4,
+      "message": "React component 'export' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment describing component props and usage"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\components\\layout\\Navigation.tsx",
+      "line": 9,
+      "message": "React component 'export' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment describing component props and usage"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\components\\shared\\Badge.tsx",
+      "line": 10,
+      "message": "React component 'export' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment describing component props and usage"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\components\\shared\\Breadcrumbs.tsx",
+      "line": 14,
+      "message": "React component 'export' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment describing component props and usage"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\components\\shared\\FilterSort.tsx",
+      "line": 19,
+      "message": "React component 'export' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment describing component props and usage"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\components\\shared\\Rating.tsx",
+      "line": 13,
+      "message": "React component 'export' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment describing component props and usage"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\app\\cities\\[city]\\CityPageClient.tsx",
+      "line": 15,
+      "message": "React component 'export' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment describing component props and usage"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\app\\cities\\[city]\\page.tsx",
+      "line": 22,
+      "message": "Exported function 'generateStaticParams' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\app\\cities\\[city]\\page.tsx",
+      "line": 28,
+      "message": "Exported function 'generateMetadata' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\app\\gyms\\[slug]\\page.tsx",
+      "line": 24,
+      "message": "Exported function 'generateStaticParams' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\app\\gyms\\[slug]\\page.tsx",
+      "line": 31,
+      "message": "Exported function 'generateMetadata' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\app\\specialties\\[specialty]\\page.tsx",
+      "line": 19,
+      "message": "Exported function 'generateStaticParams' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\app\\specialties\\[specialty]\\page.tsx",
+      "line": 25,
+      "message": "Exported function 'generateMetadata' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment above function"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\app\\specialties\\[specialty]\\SpecialtyPageClient.tsx",
+      "line": 14,
+      "message": "React component 'export' lacks JSDoc documentation",
+      "suggestion": "Add JSDoc comment describing component props and usage"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\apply_bulk_import.py",
+      "line": 11,
+      "message": "Function 'main' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_ayia_napa_gyms.py",
+      "line": 167,
+      "message": "Function 'main' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_larnaca_gyms.py",
+      "line": 167,
+      "message": "Function 'main' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_limassol_gyms.py",
+      "line": 179,
+      "message": "Function 'main' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_nicosia_gyms.py",
+      "line": 167,
+      "message": "Function 'main' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_paphos_gyms.py",
+      "line": 167,
+      "message": "Function 'main' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_protaras_gyms.py",
+      "line": 167,
+      "message": "Function 'main' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\check_missing_gyms.py",
+      "line": 44,
+      "message": "Function 'main' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\code_quality_audit.py",
+      "line": 480,
+      "message": "Function 'main' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\enrich_gym_details.py",
+      "line": 507,
+      "message": "Function 'main' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\execute_bulk_import.py",
+      "line": 27,
+      "message": "Function 'get_supabase_client' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\execute_bulk_import.py",
+      "line": 34,
+      "message": "Function 'main' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\export_test_gyms.py",
+      "line": 53,
+      "message": "Function 'main' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\fix_24hour_gym_assignments.py",
+      "line": 93,
+      "message": "Function 'main' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\fix_truncated_descriptions.py",
+      "line": 151,
+      "message": "Function 'main' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_ayia_napa_gym_descriptions.py",
+      "line": 154,
+      "message": "Function 'main' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_bulk_gym_descriptions.py",
+      "line": 116,
+      "message": "Function 'main' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_larnaca_gym_descriptions.py",
+      "line": 156,
+      "message": "Function 'main' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_nicosia_gym_descriptions.py",
+      "line": 139,
+      "message": "Function 'main' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_paphos_gym_descriptions.py",
+      "line": 154,
+      "message": "Function 'main' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_protaras_gym_descriptions.py",
+      "line": 154,
+      "message": "Function 'main' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\inspect_raw_data.py",
+      "line": 15,
+      "message": "Function 'main' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\process_enriched_gyms.py",
+      "line": 224,
+      "message": "Function 'generate_meta_description' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\process_enriched_gyms.py",
+      "line": 309,
+      "message": "Function 'generate_description' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\process_enriched_gyms.py",
+      "line": 445,
+      "message": "Function 'generate_json_ld_schema' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\test_gym_import.py",
+      "line": 140,
+      "message": "Function 'main' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "info",
+      "category": "documentation",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\update_enriched_gyms.py",
+      "line": 114,
+      "message": "Function 'main' lacks docstring",
+      "suggestion": "Add docstring describing function parameters and return value"
+    },
+    {
+      "severity": "warning",
+      "category": "duplication",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\app\\cities\\[city]\\page.tsx",
+      "line": 22,
+      "message": "Duplicate function signature found in 3 locations",
+      "suggestion": "Consider extracting to shared utility"
+    },
+    {
+      "severity": "warning",
+      "category": "duplication",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\apply_bulk_import.py",
+      "line": 11,
+      "message": "Duplicate function signature found in 27 locations",
+      "suggestion": "Consider extracting to shared utility"
+    },
+    {
+      "severity": "warning",
+      "category": "duplication",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_ayia_napa_gyms.py",
+      "line": 32,
+      "message": "Duplicate function signature found in 7 locations",
+      "suggestion": "Consider extracting to shared utility"
+    },
+    {
+      "severity": "warning",
+      "category": "duplication",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_ayia_napa_gyms.py",
+      "line": 41,
+      "message": "Duplicate function signature found in 7 locations",
+      "suggestion": "Consider extracting to shared utility"
+    },
+    {
+      "severity": "warning",
+      "category": "duplication",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_ayia_napa_gyms.py",
+      "line": 47,
+      "message": "Duplicate function signature found in 7 locations",
+      "suggestion": "Consider extracting to shared utility"
+    },
+    {
+      "severity": "warning",
+      "category": "duplication",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_ayia_napa_gyms.py",
+      "line": 57,
+      "message": "Duplicate function signature found in 7 locations",
+      "suggestion": "Consider extracting to shared utility"
+    },
+    {
+      "severity": "warning",
+      "category": "duplication",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_ayia_napa_gyms.py",
+      "line": 66,
+      "message": "Duplicate function signature found in 7 locations",
+      "suggestion": "Consider extracting to shared utility"
+    },
+    {
+      "severity": "warning",
+      "category": "duplication",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_ayia_napa_gyms.py",
+      "line": 75,
+      "message": "Duplicate function signature found in 7 locations",
+      "suggestion": "Consider extracting to shared utility"
+    },
+    {
+      "severity": "warning",
+      "category": "duplication",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_ayia_napa_gym_descriptions.py",
+      "line": 59,
+      "message": "Duplicate function signature found in 5 locations",
+      "suggestion": "Consider extracting to shared utility"
+    },
+    {
+      "severity": "warning",
+      "category": "duplication",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_enriched_updates_sql.py",
+      "line": 14,
+      "message": "Duplicate function signature found in 2 locations",
+      "suggestion": "Consider extracting to shared utility"
+    },
+    {
+      "severity": "warning",
+      "category": "duplication",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_enriched_updates_sql.py",
+      "line": 20,
+      "message": "Duplicate function signature found in 2 locations",
+      "suggestion": "Consider extracting to shared utility"
+    },
+    {
+      "severity": "warning",
+      "category": "duplication",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner.py",
+      "line": 62,
+      "message": "Duplicate function signature found in 6 locations",
+      "suggestion": "Consider extracting to shared utility"
+    },
+    {
+      "severity": "warning",
+      "category": "duplication",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner.py",
+      "line": 71,
+      "message": "Duplicate function signature found in 6 locations",
+      "suggestion": "Consider extracting to shared utility"
+    },
+    {
+      "severity": "warning",
+      "category": "duplication",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner.py",
+      "line": 92,
+      "message": "Duplicate function signature found in 6 locations",
+      "suggestion": "Consider extracting to shared utility"
+    },
+    {
+      "severity": "warning",
+      "category": "duplication",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner.py",
+      "line": 101,
+      "message": "Duplicate function signature found in 6 locations",
+      "suggestion": "Consider extracting to shared utility"
+    },
+    {
+      "severity": "warning",
+      "category": "duplication",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner.py",
+      "line": 127,
+      "message": "Duplicate function signature found in 6 locations",
+      "suggestion": "Consider extracting to shared utility"
+    },
+    {
+      "severity": "warning",
+      "category": "duplication",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner.py",
+      "line": 134,
+      "message": "Duplicate function signature found in 6 locations",
+      "suggestion": "Consider extracting to shared utility"
+    },
+    {
+      "severity": "warning",
+      "category": "duplication",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner.py",
+      "line": 216,
+      "message": "Duplicate function signature found in 6 locations",
+      "suggestion": "Consider extracting to shared utility"
+    },
+    {
+      "severity": "warning",
+      "category": "duplication",
+      "file": "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner.py",
+      "line": 247,
+      "message": "Duplicate function signature found in 6 locations",
+      "suggestion": "Consider extracting to shared utility"
+    }
+  ],
+  "duplicates": {
+    "export async function generateStaticParams() {": [
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\app\\cities\\[city]\\page.tsx:22",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\app\\gyms\\[slug]\\page.tsx:24",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\app\\specialties\\[specialty]\\page.tsx:19"
+    ],
+    "def main():": [
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\apply_bulk_import.py:11",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_ayia_napa_gyms.py:167",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_larnaca_gyms.py:167",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_limassol_gyms.py:179",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_nicosia_gyms.py:167",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_paphos_gyms.py:167",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_protaras_gyms.py:167",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\check_missing_gyms.py:44",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\code_quality_audit.py:480",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\enrich_gym_details.py:507",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\execute_bulk_import.py:34",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\export_test_gyms.py:53",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\fix_24hour_gym_assignments.py:93",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\fix_truncated_descriptions.py:151",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_ayia_napa_gym_descriptions.py:154",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_bulk_gym_descriptions.py:116",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_enriched_updates_sql.py:45",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_larnaca_gym_descriptions.py:156",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_nicosia_gym_descriptions.py:139",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_paphos_gym_descriptions.py:154",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_protaras_gym_descriptions.py:154",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\inspect_raw_data.py:15",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\process_enriched_gyms.py:585",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\test_gym_import.py:140",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\update_database_with_enriched_data.py:97",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\update_enriched_gyms.py:114",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\update_enriched_gyms_v2.py:64"
+    ],
+    "def _sql_escape(value):": [
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_ayia_napa_gyms.py:32",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_larnaca_gyms.py:32",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_limassol_gyms.py:44",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_nicosia_gyms.py:32",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_paphos_gyms.py:32",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_protaras_gyms.py:32",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\test_gym_import.py:103"
+    ],
+    "def _sql_null(value):": [
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_ayia_napa_gyms.py:41",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_larnaca_gyms.py:41",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_limassol_gyms.py:53",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_nicosia_gyms.py:41",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_paphos_gyms.py:41",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_protaras_gyms.py:41",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\test_gym_import.py:110"
+    ],
+    "def _sql_bool(value):": [
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_ayia_napa_gyms.py:47",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_larnaca_gyms.py:47",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_limassol_gyms.py:59",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_nicosia_gyms.py:47",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_paphos_gyms.py:47",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_protaras_gyms.py:47",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\test_gym_import.py:116"
+    ],
+    "def _sql_int(value):": [
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_ayia_napa_gyms.py:57",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_larnaca_gyms.py:57",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_limassol_gyms.py:69",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_nicosia_gyms.py:57",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_paphos_gyms.py:57",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_protaras_gyms.py:57",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\test_gym_import.py:122"
+    ],
+    "def _sql_numeric(value):": [
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_ayia_napa_gyms.py:66",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_larnaca_gyms.py:66",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_limassol_gyms.py:78",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_nicosia_gyms.py:66",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_paphos_gyms.py:66",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_protaras_gyms.py:66",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\test_gym_import.py:131"
+    ],
+    "def generate_sql_insert(gym_row):": [
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_ayia_napa_gyms.py:75",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_larnaca_gyms.py:75",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_limassol_gyms.py:87",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_nicosia_gyms.py:75",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_paphos_gyms.py:75",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_protaras_gyms.py:75",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\test_gym_import.py:40"
+    ],
+    "def generate_description(gym_row):": [
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_ayia_napa_gym_descriptions.py:59",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_larnaca_gym_descriptions.py:59",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_nicosia_gym_descriptions.py:59",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_paphos_gym_descriptions.py:59",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_protaras_gym_descriptions.py:59"
+    ],
+    "def escape_sql_string(s: str) -> str:": [
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_enriched_updates_sql.py:14",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\update_enriched_gyms_v2.py:15"
+    ],
+    "def format_opening_hours_json(hours: dict) -> str:": [
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_enriched_updates_sql.py:20",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\update_enriched_gyms_v2.py:21"
+    ],
+    "def slugify(text):": [
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner.py:62",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_ayia_napa.py:94",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_larnaca.py:94",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_nicosia.py:92",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_paphos.py:95",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_protaras.py:94"
+    ],
+    "def normalize_phone(phone):": [
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner.py:71",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_ayia_napa.py:103",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_larnaca.py:103",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_nicosia.py:101",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_paphos.py:104",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_protaras.py:103"
+    ],
+    "def validate_url(url):": [
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner.py:92",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_ayia_napa.py:130",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_larnaca.py:130",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_nicosia.py:128",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_paphos.py:131",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_protaras.py:130"
+    ],
+    "def geocode_address(street, city, max_retries=3):": [
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner.py:101",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_ayia_napa.py:139",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_larnaca.py:139",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_nicosia.py:137",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_paphos.py:140",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_protaras.py:139"
+    ],
+    "def map_category_to_specialty(category):": [
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner.py:127",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_ayia_napa.py:165",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_larnaca.py:165",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_nicosia.py:163",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_paphos.py:166",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_protaras.py:165"
+    ],
+    "def clean_data():": [
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner.py:134",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_ayia_napa.py:179",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_larnaca.py:179",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_nicosia.py:177",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_paphos.py:180",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_protaras.py:179"
+    ],
+    "def make_unique_slug(slug):": [
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner.py:216",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_ayia_napa.py:273",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_larnaca.py:271",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_nicosia.py:269",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_paphos.py:274",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_protaras.py:273"
+    ],
+    "def check_24hour_in_name(row):": [
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner.py:247",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_ayia_napa.py:308",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_larnaca.py:302",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_nicosia.py:300",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_paphos.py:309",
+      "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\gym_data_cleaner_protaras.py:308"
+    ]
+  },
+  "undocumented_functions": [
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\utils.ts:4:cn",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\api\\gyms.ts:139:getAllGymsFromDB",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\api\\gyms.ts:177:getGymsByCityFromDB",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\api\\gyms.ts:225:getGymBySlugFromDB",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\api\\gyms.ts:257:getFeaturedGymsFromDB",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\api\\gyms.ts:294:getGymsBySpecialtyFromDB",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\data\\gyms.ts:162:getGymBySlug",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\data\\gyms.ts:172:getGymById",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\data\\gyms.ts:177:getGymsByCity",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\data\\gyms.ts:187:getGymsBySpecialty",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\data\\gyms.ts:199:getFeaturedGyms",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\data\\gyms.ts:209:getAllGyms",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\utils\\schema.ts:3:generateLocalBusinessSchema",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\utils\\schema.ts:79:generateBreadcrumbSchema",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\utils\\schema.ts:92:generateOrganizationSchema",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\utils\\schema.ts:111:generateWebSiteSchema",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\utils\\schema.ts:128:generateCollectionPageSchema",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\lib\\utils\\schema.ts:154:generateFAQPageSchema",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\app\\cities\\[city]\\page.tsx:22:generateStaticParams",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\app\\cities\\[city]\\page.tsx:28:generateMetadata",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\app\\gyms\\[slug]\\page.tsx:24:generateStaticParams",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\app\\gyms\\[slug]\\page.tsx:31:generateMetadata",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\app\\specialties\\[specialty]\\page.tsx:19:generateStaticParams",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\app\\specialties\\[specialty]\\page.tsx:25:generateMetadata",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\apply_bulk_import.py:11:main",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_ayia_napa_gyms.py:167:main",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_larnaca_gyms.py:167:main",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_limassol_gyms.py:179:main",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_nicosia_gyms.py:167:main",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_paphos_gyms.py:167:main",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\bulk_import_protaras_gyms.py:167:main",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\check_missing_gyms.py:44:main",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\code_quality_audit.py:480:main",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\enrich_gym_details.py:507:main",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\execute_bulk_import.py:27:get_supabase_client",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\execute_bulk_import.py:34:main",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\export_test_gyms.py:53:main",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\fix_24hour_gym_assignments.py:93:main",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\fix_truncated_descriptions.py:151:main",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_ayia_napa_gym_descriptions.py:154:main",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_bulk_gym_descriptions.py:116:main",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_larnaca_gym_descriptions.py:156:main",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_nicosia_gym_descriptions.py:139:main",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_paphos_gym_descriptions.py:154:main",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_protaras_gym_descriptions.py:154:main",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\inspect_raw_data.py:15:main",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\process_enriched_gyms.py:224:generate_meta_description",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\process_enriched_gyms.py:309:generate_description",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\process_enriched_gyms.py:445:generate_json_ld_schema",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\test_gym_import.py:140:main",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\update_enriched_gyms.py:114:main"
+  ],
+  "redundant_files": [
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_larnaca_gym_descriptions.py",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_nicosia_gym_descriptions.py",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_protaras_gym_descriptions.py",
+    "C:\\Users\\timom\\Desktop\\Programmierung\\AI_Coding\\new-gym\\scripts\\generate_paphos_gym_descriptions.py"
+  ]
+}

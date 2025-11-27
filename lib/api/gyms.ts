@@ -71,7 +71,7 @@ function transformGymFromDB(dbGym: any, specialties: string[], amenities: string
       }
       
       // Normalize "No sessions" to "Closed" for all days
-      const normalizeClosed = (value: string): string => {
+      const normalizeClosed = (value: string | undefined): string => {
         if (!value) return 'Closed';
         const lower = value.toLowerCase();
         if (lower === 'no sessions' || lower === 'closed') return 'Closed';
@@ -108,6 +108,31 @@ function transformGymFromDB(dbGym: any, specialties: string[], amenities: string
     }
   }
 
+  // Parse social media links if available (stored as JSONB)
+  let socialMedia: { website?: string; instagram?: string; facebook?: string } | undefined = undefined;
+  if (dbGym.social_media) {
+    try {
+      const social = typeof dbGym.social_media === 'string' 
+        ? JSON.parse(dbGym.social_media) 
+        : dbGym.social_media;
+      
+      // Ensure URLs have protocol
+      const ensureProtocol = (url: string | undefined): string | undefined => {
+        if (!url) return undefined;
+        if (url.startsWith('http://') || url.startsWith('https://')) return url;
+        return `https://${url}`;
+      };
+
+      socialMedia = {
+        website: ensureProtocol(social.website),
+        instagram: ensureProtocol(social.instagram),
+        facebook: ensureProtocol(social.facebook),
+      };
+    } catch (e) {
+      // Invalid JSON, leave undefined
+    }
+  }
+
   return {
     id: dbGym.id,
     name: dbGym.name,
@@ -118,6 +143,7 @@ function transformGymFromDB(dbGym: any, specialties: string[], amenities: string
     phone: dbGym.phone || undefined,
     website: website,
     email: dbGym.email || undefined,
+    socialMedia,
     specialties,
     amenities,
     rating: dbGym.rating || 0,

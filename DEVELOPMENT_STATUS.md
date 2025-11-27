@@ -2,7 +2,7 @@
 ## GymNearMe Cyprus - Current Progress & Roadmap
 
 **Last Updated:** November 17, 2025  
-**Project Status:** Phase 5 Complete - SEO Optimization & Content Enhancement | Backend Database Setup Complete | Data Processing Pipeline Operational | Bulk Import Complete (211 Gyms Across 6 Cities) | Data Quality Fixes Applied | Frontend API Integration Complete | Opening Hours System Implemented | Data Enrichment Complete | Social Media Integration Complete
+**Project Status:** Phase 5 Complete - SEO Optimization & Content Enhancement | Backend Database Setup Complete | Data Processing Pipeline Operational | Bulk Import Complete (210 Gyms Across 6 Cities) | Data Quality Fixes Applied | Frontend API Integration Complete | Opening Hours System Implemented | Data Enrichment Complete | Social Media Integration Complete
 
 ---
 
@@ -84,7 +84,7 @@
 ## 📊 Current Status
 
 ### Data & Content
-- **Total Gyms:** 211 gyms in database (all scraped from Google Maps)
+- **Total Gyms:** 210 gyms in database (all scraped from Google Maps)
   - **Limassol:** 50 gyms ✅ Imported
   - **Nicosia:** 71 gyms ✅ Imported
   - **Larnaca:** 43 gyms ✅ Imported
@@ -92,7 +92,7 @@
   - **Ayia Napa:** 6 gyms ✅ Imported
   - **Protaras:** 7 gyms ✅ Imported
 - **Featured Gyms:** 0 featured listings (all unclaimed)
-- **Unclaimed Gyms:** 211 gyms (ready for owner claims)
+- **Unclaimed Gyms:** 210 gyms (ready for owner claims)
 - **Bulk Import:** ✅ Multi-city bulk imports completed and applied to database
   - ✅ 50 Limassol gyms - Imported manually via Supabase Dashboard
   - ✅ 71 Nicosia gyms - Imported manually via Supabase Dashboard
@@ -101,7 +101,8 @@
   - ✅ 6 Ayia Napa gyms - Imported manually via Supabase Dashboard
   - ✅ 7 Protaras gyms - Imported manually via Supabase Dashboard
 - **Cities:** 6 cities (all cities ✅ - Limassol, Nicosia, Paphos, Larnaca, Ayia Napa, Protaras)
-- **Specialties:** 13 specialties in database (11 visible for MVP, 2 hidden: Hotel Gym, Women-Only)
+- **Specialties:** 15 specialties in database (13 visible for MVP, 2 hidden: Hotel Gym, Women-Only)
+  - **New Specialties Added**: "Fitness" and "Gym" for general fitness centers and traditional gyms
 - **Specialty Distribution:**
   - MMA: Multiple gyms across all cities
   - Pilates: Multiple gyms across all cities
@@ -127,18 +128,24 @@
   - Handles both hyphens (-) and em dashes (—) in opening hours for accurate parsing
   - Support for multiple time ranges per day (e.g., "06:30-11:00, 15:30-20:30")
   - "Contact for opening hour details" option for gyms without available hours
-  - Opening hours section automatically hidden when all days are "Closed"
+  - Opening hours section always visible - shows "Contact for opening hour details" when all days are "Closed" (consistent with pricing section UX)
   - Format validation and standardization applied across all gyms
   - Fixed em dash parsing issue that was causing incorrect "Closed" status
 - **Pricing Information:** ✅ Pricing section added to gym detail pages
   - JSONB field in database for structured pricing data
   - Display of pricing information or "Contact for pricing details"
-- **Social Media Integration:** ✅ Facebook and Instagram link detection and display
-  - Automatic detection of Facebook URLs in website field (facebook.com, fb.com)
-  - Automatic detection of Instagram URLs in website field (instagram.com, instagr.am)
+- **Social Media Integration:** ✅ Comprehensive social media integration with structured data support
+  - `social_media` JSONB field in database for separate website, Facebook, and Instagram links
+  - Automatic detection of Facebook URLs in legacy `website` field (backward compatible)
+  - Automatic detection of Instagram URLs in legacy `website` field (backward compatible)
   - Facebook icon and appropriate text ("Facebook" in quick actions, "Visit Facebook" in contact section)
   - Instagram icon and appropriate text ("Instagram" in quick actions, "Visit Instagram" in contact section)
   - Regular website links show with Globe icon and "Visit Website" text
+  - Support for gyms with both main website and social media links (e.g., website + Instagram)
+- **Gym Name Formatting:** ✅ Smart display logic to prevent duplicate city names
+  - Utility function `formatGymNameWithCity()` checks if gym name already contains city name
+  - Prevents duplicate city names in H1 headings, SEO titles, and all display components
+  - Applied consistently across gym cards, maps, listings, and detail pages
 - **Mock/Demo Gyms:** All removed (clean slate for real data)
 
 ### SEO Implementation
@@ -218,7 +225,7 @@
    - ✅ **Frontend API Integration** - Connected to Supabase API
    - ✅ **Unified Data Access Layer** - `lib/data/gyms.ts` with Supabase-first, mock fallback
    - ✅ **Dynamic Counts** - City and specialty counts calculated from database
-   - ✅ **211 gyms imported across 6 cities** - All visible in frontend
+   - ✅ **210 gyms imported across 6 cities** - All visible in frontend
      - ✅ 50 Limassol gyms (imported manually via Supabase Dashboard)
      - ✅ 71 Nicosia gyms (imported manually via Supabase Dashboard)
      - ✅ 43 Larnaca gyms (imported manually via Supabase Dashboard)
@@ -421,7 +428,7 @@
 
 ### Current Metrics
 - **Pages Created:** 20+ pages
-- **Gyms Listed:** 211 gyms in database (all scraped from Google Maps)
+- **Gyms Listed:** 210 gyms in database (all scraped from Google Maps)
   - Limassol: 50 gyms
   - Nicosia: 71 gyms
   - Larnaca: 43 gyms
@@ -430,11 +437,12 @@
   - Protaras: 7 gyms
 - **Featured Gyms:** 0 featured listings (all unclaimed)
 - **Cities Covered:** 6 cities with gyms (all cities ✅ - Limassol, Nicosia, Larnaca, Paphos, Ayia Napa, Protaras)
-- **Specialties:** 13 specialties (11 visible for MVP)
+- **Specialties:** 15 specialties (13 visible for MVP, 2 hidden: Hotel Gym, Women-Only)
+  - **New Specialties Added**: "Fitness" and "Gym" for general fitness centers and traditional gyms
 - **Specialty Distribution:** Multiple gyms across all specialties in all cities
 - **SEO Keywords Targeted:** 30+ keywords
 - **Total Search Volume:** ~20,700+ monthly searches
-- **Database Status:** ✅ Supabase configured and populated (214 real gyms)
+- **Database Status:** ✅ Supabase configured and populated (210 real gyms)
 - **Data Processing:** ✅ Automated pipeline operational for all 6 cities
 - **Data Quality:** ✅ Specialty assignments verified and corrected
 - **Frontend Integration:** ✅ Connected to Supabase API with dynamic counts
@@ -495,14 +503,14 @@
 ---
 
 **Recent Updates (November 17, 2025):**
-- ✅ Bulk import completed: 211 gyms across all 6 cities now in database
+- ✅ Bulk import completed: 210 gyms across all 6 cities now in database
   - ✅ 50 Limassol gyms (imported manually via Supabase Dashboard)
   - ✅ 71 Nicosia gyms (imported manually via Supabase Dashboard)
   - ✅ 43 Larnaca gyms (imported manually via Supabase Dashboard)
   - ✅ 34 Paphos gyms (imported manually via Supabase Dashboard)
   - ✅ 6 Ayia Napa gyms (imported manually via Supabase Dashboard)
   - ✅ 7 Protaras gyms (imported manually via Supabase Dashboard)
-- ✅ Database updated: All 211 gyms are now live in the database and visible on frontend
+- ✅ Database updated: All 210 gyms are now live in the database and visible on frontend
 - ✅ Complete city coverage: All 6 cities now have gyms imported and visible
 - ✅ SEO descriptions: All gyms have SEO-optimized descriptions applied
 - ✅ Data quality fixes: Corrected incorrect "24-hour-gym" specialty assignments
@@ -532,6 +540,26 @@
   - Added email addresses for multiple gyms (The Fitzone By Kondylis, Catman Olympic Boxing Academy, R-Evolution Of Gym)
   - Added amenities for Un1T (Toilets, Showers, Hair Dryers, Free Water, Cafe) and Soul Vibe Space (Cafe, Locker Room, Showers)
   - Added Facebook link for Catman Olympic Boxing Academy
+
+**Recent Updates (Latest):**
+- ✅ **New Specialties Added**: "Fitness" and "Gym" specialties for general fitness centers and traditional gyms
+  - Added to database and TypeScript specialties array
+  - Available in specialty filters and dropdowns
+- ✅ **Opening Hours UX Improvement**: Opening hours section now always visible
+  - Shows "Contact for opening hour details" when all days are "Closed" (consistent with pricing section)
+  - Better user experience - users always see opening hours section
+- ✅ **Gym Name Formatting**: Smart display logic to prevent duplicate city names
+  - Utility function `formatGymNameWithCity()` automatically detects if gym name already contains city name
+  - Prevents duplicate city names in H1 headings, SEO titles, and all display components
+  - Applied consistently across gym cards, maps, listings, and detail pages
+- ✅ **Enhanced Social Media Integration**: Structured social media data support
+  - `social_media` JSONB field in database for separate website, Facebook, and Instagram links
+  - Support for gyms with both main website and social media links
+  - Backward compatible with legacy `website` field (automatic detection)
+- ✅ **Data Enrichment**: Multiple gyms updated with enriched data
+  - Opening hours, emails, social media links, pricing information
+  - Specialty assignments (e.g., Fitness Lab: Crossfit, Fitness, Gym, Personal Trainer)
+  - Comprehensive pricing information for various gyms
 
 **Next Immediate Action:** Implement owner claim system, optimize internal linking, expand gym listings further (see STRATEGIC_ACTION_PLAN.md)
 

@@ -11,6 +11,7 @@ import { Button } from '@/components/shared/Button';
 import { GymMap } from '@/components/gym/GymMapWrapper';
 import { generateLocalBusinessSchema, generateBreadcrumbSchema } from '@/lib/utils/schema';
 import { isGymOpenNow } from '@/lib/utils/opening-hours';
+import { shouldAppendCityName, formatGymNameWithCity } from '@/lib/utils/gym-name';
 
 interface GymPageProps {
   params: {
@@ -42,12 +43,17 @@ export async function generateMetadata({ params }: GymPageProps): Promise<Metada
     ? `https://gymnearme.cy${gym.images[0]}`
     : 'https://gymnearme.cy/logo.png';
 
+  const cityName = city?.name || 'Cyprus';
+  const seoTitle = shouldAppendCityName(gym.name, cityName) 
+    ? `${gym.name} ${cityName}` 
+    : gym.name;
+
   return {
-    title: `${gym.name} - ${city?.name || 'Cyprus'} | Ratings, Reviews, Amenities`,
-    description: `${gym.description.substring(0, 160)}... Located in ${city?.name || 'Cyprus'}. Rating: ${gym.rating}/5 from ${gym.reviewCount} reviews.`,
-    keywords: `${gym.name}, ${city?.name} gym, ${gym.specialties.join(', ')}, fitness center ${city?.name}`,
+    title: seoTitle,
+    description: `${gym.description.substring(0, 160)}... Located in ${cityName}. Rating: ${gym.rating}/5 from ${gym.reviewCount} reviews.`,
+    keywords: `${gym.name}, ${cityName} gym, ${gym.specialties.join(', ')}, fitness center ${cityName}`,
     openGraph: {
-      title: `${gym.name} - ${city?.name || 'Cyprus'}`,
+      title: seoTitle,
       description: gym.description.substring(0, 200),
       url: `https://gymnearme.cy/gyms/${gym.slug}`,
       siteName: 'GymNearMe Cyprus',
@@ -64,7 +70,7 @@ export async function generateMetadata({ params }: GymPageProps): Promise<Metada
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${gym.name} - ${city?.name || 'Cyprus'}`,
+      title: seoTitle,
       description: gym.description.substring(0, 200),
       images: [ogImage],
     },
@@ -103,14 +109,16 @@ export default async function GymPage({ params }: GymPageProps) {
     { day: 'Sunday', hours: gym.openingHours.sunday || 'Closed' },
   ];
   
-  // Check if all days are "Closed" or if opening hours are empty/null
-  // Also check for "Contact for opening hour details" - show section but don't show Open/Closed badge
-  const hasValidOpeningHours = openingHours.some(item => 
-    item.hours && 
-    item.hours.toLowerCase() !== 'closed' && 
-    item.hours.toLowerCase() !== 'no sessions' &&
-    item.hours.trim() !== ''
+  // Check if all days are "Closed" - if so, show "Contact for opening hour details"
+  const allDaysClosed = openingHours.every(item => 
+    !item.hours || 
+    item.hours.toLowerCase() === 'closed' || 
+    item.hours.toLowerCase() === 'no sessions' ||
+    item.hours.trim() === ''
   );
+  
+  // Check if there are valid opening hours (not all "Closed")
+  const hasValidOpeningHours = !allDaysClosed;
   
   // Check if all days are "Contact for opening hour details" (don't show Open/Closed badge)
   const isContactForDetails = openingHours.every(item => 
@@ -129,6 +137,11 @@ export default async function GymPage({ params }: GymPageProps) {
     gym.website.includes('instagram.com') || 
     gym.website.includes('instagr.am')
   );
+
+  // Get social media links (prioritize socialMedia object, fallback to website field)
+  const websiteUrl = gym.socialMedia?.website || (gym.website && !isFacebookUrl && !isInstagramUrl ? gym.website : undefined);
+  const instagramUrl = gym.socialMedia?.instagram || (isInstagramUrl ? gym.website : undefined);
+  const facebookUrl = gym.socialMedia?.facebook || (isFacebookUrl ? gym.website : undefined);
 
   return (
     <>
@@ -158,7 +171,7 @@ export default async function GymPage({ params }: GymPageProps) {
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-3">
                 <h1 className="text-4xl md:text-5xl font-bold text-text-white">
-                  {gym.name}
+                  {formatGymNameWithCity(gym.name, city?.name)}
                 </h1>
                 {gym.featured && <Badge variant="featured">Featured</Badge>}
               </div>
@@ -182,25 +195,27 @@ export default async function GymPage({ params }: GymPageProps) {
                 </Button>
               </a>
             )}
-            {gym.website && (
-              <a href={gym.website} target="_blank" rel="noopener noreferrer">
+            {websiteUrl && (
+              <a href={websiteUrl} target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="sm">
-                  {isFacebookUrl ? (
-                    <>
-                      <Facebook className="w-4 h-4 mr-2" />
-                      Facebook
-                    </>
-                  ) : isInstagramUrl ? (
-                    <>
-                      <Instagram className="w-4 h-4 mr-2" />
-                      Instagram
-                    </>
-                  ) : (
-                    <>
-                      <Globe className="w-4 h-4 mr-2" />
-                      Visit Website
-                    </>
-                  )}
+                  <Globe className="w-4 h-4 mr-2" />
+                  Visit Website
+                </Button>
+              </a>
+            )}
+            {facebookUrl && (
+              <a href={facebookUrl} target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" size="sm">
+                  <Facebook className="w-4 h-4 mr-2" />
+                  Facebook
+                </Button>
+              </a>
+            )}
+            {instagramUrl && (
+              <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" size="sm">
+                  <Instagram className="w-4 h-4 mr-2" />
+                  Instagram
                 </Button>
               </a>
             )}
@@ -298,88 +313,92 @@ export default async function GymPage({ params }: GymPageProps) {
               </div>
             </section>
 
-            {/* Opening Hours - Only show if there are valid opening hours (not all "Closed") */}
-            {hasValidOpeningHours && (
-              <section className="bg-surface-card rounded-card p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-2xl font-bold text-text-white flex items-center gap-2">
-                    <Clock className="w-6 h-6" />
-                    Opening Hours
-                  </h2>
-                  {/* Open/Closed Status Badge - Only show if not "Contact for opening hour details" */}
-                  {!isContactForDetails && (() => {
-                    const isOpen = isGymOpenNow(gym.openingHours);
-                    return (
-                      <Badge 
-                        variant={isOpen ? "rating" : "specialty"}
-                        className={`px-4 py-2 ${
-                          isOpen 
-                            ? 'bg-green-500/20 text-green-400 border-green-500/50' 
-                            : 'bg-red-500/20 text-red-400 border-red-500/50'
-                        }`}
-                      >
-                        {isOpen ? '🟢 Open Now' : '🔴 Closed'}
-                      </Badge>
-                    );
-                  })()}
-                </div>
-                <div className="space-y-3">
-                  {openingHours.map(({ day, hours }) => {
-                    // Check if hours contain newlines (complex format with sessions)
-                    const isComplexFormat = hours && hours.includes('\n');
-                    
-                    return (
-                      <div
-                        key={day}
-                        className="py-2 border-b border-surface-lighter last:border-0"
-                      >
-                        <div className="flex items-start gap-4">
-                          <span className="text-text-light font-medium min-w-[100px]">{day}</span>
-                          <div className="flex-1">
-                            {isComplexFormat ? (
-                              // Complex format: render with line breaks and formatting
-                              <div className="text-text-muted text-sm whitespace-pre-line">
-                                {hours.split('\n').map((line, idx) => {
-                                  // Check if line is a section header (ends with colon)
-                                  if (line.endsWith(':')) {
+            {/* Opening Hours - Always show, display "Contact for opening hour details" if all days are Closed */}
+            <section className="bg-surface-card rounded-card p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-2xl font-bold text-text-white flex items-center gap-2">
+                  <Clock className="w-6 h-6" />
+                  Opening Hours
+                </h2>
+                {/* Open/Closed Status Badge - Only show if not "Contact for opening hour details" and not all days closed */}
+                {!allDaysClosed && !isContactForDetails && (() => {
+                  const isOpen = isGymOpenNow(gym.openingHours);
+                  return (
+                    <Badge 
+                      variant={isOpen ? "rating" : "specialty"}
+                      className={`px-4 py-2 ${
+                        isOpen 
+                          ? 'bg-green-500/20 text-green-400 border-green-500/50' 
+                          : 'bg-red-500/20 text-red-400 border-red-500/50'
+                      }`}
+                    >
+                      {isOpen ? '🟢 Open Now' : '🔴 Closed'}
+                    </Badge>
+                  );
+                })()}
+              </div>
+              {allDaysClosed ? (
+                <p className="text-text-muted">Contact for opening hour details</p>
+              ) : (
+                <>
+                  <div className="space-y-3">
+                    {openingHours.map(({ day, hours }) => {
+                      // Check if hours contain newlines (complex format with sessions)
+                      const isComplexFormat = hours && hours.includes('\n');
+                      
+                      return (
+                        <div
+                          key={day}
+                          className="py-2 border-b border-surface-lighter last:border-0"
+                        >
+                          <div className="flex items-start gap-4">
+                            <span className="text-text-light font-medium min-w-[100px]">{day}</span>
+                            <div className="flex-1">
+                              {isComplexFormat ? (
+                                // Complex format: render with line breaks and formatting
+                                <div className="text-text-muted text-sm whitespace-pre-line">
+                                  {hours.split('\n').map((line, idx) => {
+                                    // Check if line is a section header (ends with colon)
+                                    if (line.endsWith(':')) {
+                                      return (
+                                        <div key={idx} className="font-semibold text-text-light mt-2 first:mt-0">
+                                          {line}
+                                        </div>
+                                      );
+                                    }
+                                    // Check if line is a bullet point
+                                    if (line.trim().startsWith('•')) {
+                                      return (
+                                        <div key={idx} className="ml-4 text-text-muted">
+                                          {line}
+                                        </div>
+                                      );
+                                    }
+                                    // Regular line
                                     return (
-                                      <div key={idx} className="font-semibold text-text-light mt-2 first:mt-0">
+                                      <div key={idx} className="text-text-muted">
                                         {line}
                                       </div>
                                     );
-                                  }
-                                  // Check if line is a bullet point
-                                  if (line.trim().startsWith('•')) {
-                                    return (
-                                      <div key={idx} className="ml-4 text-text-muted">
-                                        {line}
-                                      </div>
-                                    );
-                                  }
-                                  // Regular line
-                                  return (
-                                    <div key={idx} className="text-text-muted">
-                                      {line}
-                                    </div>
-                                  );
-                                })}
-                              </div>
-                            ) : (
-                              // Simple format: single line - normalize "No sessions" to "Closed"
-                              <span className="text-text-muted">
-                                {hours && hours.toLowerCase() !== 'no sessions' 
-                                  ? hours 
-                                  : 'Closed'}
-                              </span>
-                            )}
+                                  })}
+                                </div>
+                              ) : (
+                                // Simple format: single line - normalize "No sessions" to "Closed"
+                                <span className="text-text-muted">
+                                  {hours && hours.toLowerCase() !== 'no sessions' 
+                                    ? hours 
+                                    : 'Closed'}
+                                </span>
+                              )}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </section>
-            )}
+                      );
+                    })}
+                  </div>
+                </>
+              )}
+            </section>
 
             {/* Pricing Section */}
             <section className="bg-surface-card rounded-card p-6">
@@ -484,45 +503,43 @@ export default async function GymPage({ params }: GymPageProps) {
                     </a>
                   </div>
                 )}
-                {gym.website && (
+                {websiteUrl && (
                   <div className="flex items-center gap-3">
-                    {isFacebookUrl ? (
-                      <>
-                        <Facebook className="w-5 h-5 text-primary-blue flex-shrink-0" />
-                        <a
-                          href={gym.website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-text-light hover:text-primary-blue transition-colors"
-                        >
-                          Visit Facebook
-                        </a>
-                      </>
-                    ) : isInstagramUrl ? (
-                      <>
-                        <Instagram className="w-5 h-5 text-primary-blue flex-shrink-0" />
-                        <a
-                          href={gym.website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-text-light hover:text-primary-blue transition-colors"
-                        >
-                          Visit Instagram
-                        </a>
-                      </>
-                    ) : (
-                      <>
-                        <Globe className="w-5 h-5 text-primary-blue flex-shrink-0" />
-                        <a
-                          href={gym.website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-text-light hover:text-primary-blue transition-colors"
-                        >
-                          Visit Website
-                        </a>
-                      </>
-                    )}
+                    <Globe className="w-5 h-5 text-primary-blue flex-shrink-0" />
+                    <a
+                      href={websiteUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-text-light hover:text-primary-blue transition-colors"
+                    >
+                      Visit Website
+                    </a>
+                  </div>
+                )}
+                {facebookUrl && (
+                  <div className="flex items-center gap-3">
+                    <Facebook className="w-5 h-5 text-primary-blue flex-shrink-0" />
+                    <a
+                      href={facebookUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-text-light hover:text-primary-blue transition-colors"
+                    >
+                      Visit Facebook
+                    </a>
+                  </div>
+                )}
+                {instagramUrl && (
+                  <div className="flex items-center gap-3">
+                    <Instagram className="w-5 h-5 text-primary-blue flex-shrink-0" />
+                    <a
+                      href={instagramUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-text-light hover:text-primary-blue transition-colors"
+                    >
+                      Visit Instagram
+                    </a>
                   </div>
                 )}
               </div>

@@ -21,6 +21,11 @@ export interface Gym {
   phone?: string;
   website?: string;
   email?: string;
+  socialMedia?: {
+    website?: string;
+    instagram?: string;
+    facebook?: string;
+  };
   specialties: string[];
   amenities: string[];
   rating: number; // 0-5

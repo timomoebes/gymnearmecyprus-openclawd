@@ -6,6 +6,7 @@ import { Rating } from '@/components/shared/Rating';
 import { Badge } from '@/components/shared/Badge';
 import { getCityById } from '@/lib/data';
 import { isGymOpenNow } from '@/lib/utils/opening-hours';
+import { formatGymNameWithCity } from '@/lib/utils/gym-name';
 
 interface GymCardProps {
   gym: Gym;
@@ -24,7 +25,7 @@ export const GymCard: React.FC<GymCardProps> = ({ gym, showCity = true }) => {
         <div className="flex-1">
           <div className="flex items-center gap-2 mb-2 flex-wrap">
             <h3 className="text-xl font-semibold text-text-white group-hover:text-primary-blue transition-colors">
-              {gym.name}
+              {formatGymNameWithCity(gym.name, city?.name)}
             </h3>
             {gym.featured && (
               <Badge variant="featured">Featured</Badge>

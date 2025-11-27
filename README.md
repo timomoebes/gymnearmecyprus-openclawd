@@ -57,32 +57,21 @@ new-gym/
 │   ├── types/             # TypeScript type definitions
 │   └── utils/             # Utility functions
 │       ├── opening-hours.ts  # Opening hours parsing and timezone handling
-│       └── schema.ts         # Schema.org JSON-LD generation
+│       ├── schema.ts         # Schema.org JSON-LD generation
+│       └── map-icons.ts      # Shared Leaflet map icon definitions
 ├── data/                  # Data processing
 │   ├── raw/               # Raw scraped data (CSV/JSON)
 │   └── clean/             # Cleaned data ready for import
 ├── scripts/               # Data processing scripts
+│   ├── code_quality_audit.py  # Automated code quality audit tool (subagent)
 │   ├── inspect_raw_data.py
 │   ├── gym_data_cleaner.py
-│   ├── gym_data_cleaner_nicosia.py
-│   ├── gym_data_cleaner_larnaca.py
-│   ├── gym_data_cleaner_paphos.py
-│   ├── gym_data_cleaner_ayia_napa.py
-│   ├── gym_data_cleaner_protaras.py
-│   ├── bulk_import_limassol_gyms.py
-│   ├── bulk_import_nicosia_gyms.py
-│   ├── bulk_import_larnaca_gyms.py
-│   ├── bulk_import_paphos_gyms.py
-│   ├── bulk_import_ayia_napa_gyms.py
-│   ├── bulk_import_protaras_gyms.py
-│   ├── generate_bulk_gym_descriptions.py
-│   ├── generate_nicosia_gym_descriptions.py
-│   ├── generate_larnaca_gym_descriptions.py
-│   ├── generate_paphos_gym_descriptions.py
-│   ├── generate_ayia_napa_gym_descriptions.py
-│   ├── generate_protaras_gym_descriptions.py
-│   └── test_gym_import.py
+│   ├── process_enriched_gyms.py
+│   └── [other data processing scripts]
 ├── docs/                  # Documentation
+│   ├── CODEBASE_AUDIT_2025.md      # Comprehensive codebase audit report
+│   ├── AUDIT_SUBAGENT_GUIDE.md     # Guide for using the audit tool
+│   ├── CODE_QUALITY_TOOL.md        # Audit tool documentation
 │   ├── data_mapping.md
 │   └── TEST_IMPORT_REPORT.md
 └── public/                # Static assets
@@ -99,6 +88,26 @@ new-gym/
 - **next/image** - Image optimization
 - **Supabase** - PostgreSQL database backend
 - **Python** - Data processing and cleaning scripts (pandas, geopy, fuzzywuzzy)
+
+## 🔍 Code Quality & Auditing
+
+This project includes an automated **Code Quality Audit Subagent** that continuously monitors code quality:
+
+```bash
+# Run code quality audit
+python scripts/code_quality_audit.py
+
+# Verbose output
+python scripts/code_quality_audit.py --verbose
+```
+
+The audit tool checks for:
+- Code duplication and redundancies
+- Missing documentation (JSDoc/TSDoc)
+- Potential bugs (async/await issues, etc.)
+- Redundant files and scripts
+
+**See:** `docs/AUDIT_SUBAGENT_GUIDE.md` for complete guide.
 
 ## ✨ Features Implemented
 
@@ -137,7 +146,7 @@ new-gym/
   - Support for multiple time ranges per day (e.g., "06:30-11:00, 15:30-20:30")
   - Handles both hyphens (-) and em dashes (—) in opening hours
   - "Contact for opening hour details" option for gyms without available hours
-  - Opening hours section hidden when all days are "Closed"
+  - Opening hours section always visible - shows "Contact for opening hour details" when all days are "Closed" (consistent with pricing section UX)
 - [x] **Social Media Integration** - Facebook and Instagram button detection and display
   - Automatic detection of Facebook URLs in website field
   - Automatic detection of Instagram URLs in website field
@@ -231,7 +240,7 @@ The project uses a custom dark/neon theme with:
 
 #### Backend Database (Supabase) ✅
 - **Database**: Supabase PostgreSQL
-- **Total Gyms**: 211 gyms in database (all scraped from Google Maps)
+- **Total Gyms**: 210 gyms in database (all scraped from Google Maps)
   - Limassol: 50 gyms
   - Nicosia: 71 gyms
   - Larnaca: 43 gyms
@@ -240,7 +249,8 @@ The project uses a custom dark/neon theme with:
   - Protaras: 7 gyms
 - **Featured Gyms**: 0 featured listings (all unclaimed)
 - **Cities**: 6 cities (all cities now have gyms imported)
-- **Specialties**: 13 specialties (11 visible for MVP, 2 hidden: Hotel Gym, Women-Only)
+- **Specialties**: 15 specialties (13 visible for MVP, 2 hidden: Hotel Gym, Women-Only)
+  - **New Specialties Added**: "Fitness" and "Gym" for general fitness centers
 - **Specialty Distribution**: 
   - MMA: Multiple gyms across cities
   - Pilates: Multiple gyms across cities
@@ -258,7 +268,7 @@ The project uses a custom dark/neon theme with:
   - ✅ 34 Paphos gyms imported (manually via Supabase Dashboard)
   - ✅ 6 Ayia Napa gyms imported (manually via Supabase Dashboard)
   - ✅ 7 Protaras gyms imported (manually via Supabase Dashboard)
-- **Database Status**: ✅ All 211 gyms are live in the database and visible on frontend
+- **Database Status**: ✅ All 210 gyms are live in the database and visible on frontend
 - **Data Quality**: ✅ Specialty assignments verified and corrected (removed incorrect "24-hour-gym" tags)
 - **City Assignment Fixes**: ✅ Corrected gym city assignments (e.g., "Bad Dog Bjj" moved from Protaras to Ayia Napa based on address)
 - **Opening Hours**: ✅ Standardized opening hours format across all gyms (HH:MM-HH:MM, 24-hour format)
@@ -268,10 +278,17 @@ The project uses a custom dark/neon theme with:
   - Handles both hyphens (-) and em dashes (—) in opening hours for accurate parsing
   - Support for "Contact for opening hour details" for gyms without available hours
 - **Pricing Information**: ✅ Pricing section added to gym detail pages (JSONB field in database)
-- **Social Media Links**: ✅ Facebook and Instagram URL detection and display with appropriate icons and text
+- **Social Media Links**: ✅ Comprehensive social media integration with separate website, Facebook, and Instagram support
+  - `social_media` JSONB field in database for structured social media data
+  - Separate fields for website, Facebook, and Instagram links
   - Facebook links show Facebook icon and "Visit Facebook" text
   - Instagram links show Instagram icon and "Visit Instagram" text
   - Regular website links show Globe icon and "Visit Website" text
+  - Automatic detection of Facebook/Instagram URLs in legacy `website` field (backward compatible)
+- **Gym Name Formatting**: ✅ Smart gym name display to avoid duplicate city names
+  - Automatically detects if gym name already contains city name
+  - Prevents duplicate city names in H1 headings and SEO titles
+  - Applied across all components (gym cards, maps, listings)
 
 #### Frontend Data Access
 - **Data Layer**: Unified data access layer with Supabase API integration
@@ -337,7 +354,7 @@ The project uses a custom dark/neon theme with:
 ### Current Status
 - **Phase 5 Complete**: SEO optimization and content enhancement
 - **FAQ Schema Implemented**: FAQPage schema + visible FAQ sections on homepage, all city pages, and all specialty pages
-- **Backend Integration**: ✅ Supabase database setup complete with 211 real gyms (all scraped from Google Maps)
+- **Backend Integration**: ✅ Supabase database setup complete with 210 real gyms (all scraped from Google Maps)
 - **Data Processing**: ✅ Automated cleaning pipeline for scraped gym data
 - **Bulk Import**: ✅ Multi-city bulk imports completed and applied to database
   - ✅ 50 Limassol gyms imported - manually via Supabase Dashboard
@@ -346,7 +363,7 @@ The project uses a custom dark/neon theme with:
   - ✅ 34 Paphos gyms imported - manually via Supabase Dashboard
   - ✅ 6 Ayia Napa gyms imported - manually via Supabase Dashboard
   - ✅ 7 Protaras gyms imported - manually via Supabase Dashboard
-- **Database Status**: ✅ All 211 gyms are live and visible on frontend
+- **Database Status**: ✅ All 210 gyms are live and visible on frontend
 - **Data Quality Fixes**: ✅ Corrected incorrect "24-hour-gym" specialty assignments
   - Removed "24-hour-gym" from incorrectly tagged gyms
   - Only "Muscle Factory 24 Hours" verified as 24-hour gym
