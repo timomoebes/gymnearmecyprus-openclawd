@@ -2,7 +2,7 @@
 ## GymNearMe Cyprus - Current Progress & Roadmap
 
 **Last Updated:** January 2025  
-**Project Status:** Phase 5 Complete - SEO Optimization & Content Enhancement | Backend Database Setup Complete | Data Processing Pipeline Operational | Bulk Import Complete (210 Gyms Across 6 Cities) | Data Quality Fixes Applied | Frontend API Integration Complete | Opening Hours System Implemented | Data Enrichment Complete | Social Media Integration Complete | Specialty System Consolidated (9 Specialties)
+**Project Status:** Phase 5 Complete - SEO Optimization & Content Enhancement | Backend Database Setup Complete | Data Processing Pipeline Operational | Bulk Import Complete (210 Gyms Across 6 Cities) | Data Quality Fixes Applied | Frontend API Integration Complete | Opening Hours System Implemented with Current Day Highlighting | Comprehensive Pricing System Implemented | Data Enrichment Ongoing (50+ Gyms Updated) | Social Media Integration Complete | Specialty System Consolidated (9 Specialties) | Specialty Mapping Fixes Applied
 
 ---
 
@@ -141,17 +141,25 @@
 - **Opening Hours:** ✅ Comprehensive opening hours system implemented
   - All 210 gyms have all 7 days (Monday-Sunday) in opening hours
   - Standardized format: HH:MM-HH:MM (24-hour format, always 2 digits, no AM/PM)
-  - 29+ gyms updated with accurate opening hours from verified sources
+  - 50+ gyms updated with accurate opening hours from verified sources
   - Real-time "Open Now" / "Closed" status badge using Cyprus timezone (Europe/Nicosia)
+  - **Current Day Highlighting**: Current day of week highlighted in opening hours display (bold text with tinted background)
   - Handles both hyphens (-) and em dashes (—) in opening hours for accurate parsing
-  - Support for multiple time ranges per day (e.g., "06:30-11:00, 15:30-20:30")
+  - Support for multiple time ranges per day (e.g., "06:30-11:00, 15:30-20:30" or "07:00–10:00, 16:00–20:00")
   - "Contact for opening hour details" option for gyms without available hours
   - Opening hours section always visible - shows "Contact for opening hour details" when all days are "Closed" (consistent with pricing section UX)
   - Format validation and standardization applied across all gyms
   - Fixed em dash parsing issue that was causing incorrect "Closed" status
-- **Pricing Information:** ✅ Pricing section added to gym detail pages
+- **Pricing Information:** ✅ Comprehensive pricing system implemented
   - JSONB field in database for structured pricing data
-  - Display of pricing information or "Contact for pricing details"
+  - Support for detailed pricing plans with structured data:
+    - Plan name, price, currency, validity period
+    - Optional description and included classes/types
+    - Multiple plans per gym (e.g., The Yogi Turtle with 11 pricing plans)
+  - Concise display format showing plan name, validity period, and price
+  - Backward compatible with simple key-value pricing format
+  - React rendering optimized to handle both old and new pricing structures
+  - Multiple gyms updated with detailed pricing information
 - **Social Media Integration:** ✅ Comprehensive social media integration with structured data support
   - `social_media` JSONB field in database for separate website, Facebook, and Instagram links
   - Automatic detection of Facebook URLs in legacy `website` field (backward compatible)
@@ -164,6 +172,22 @@
   - Utility function `formatGymNameWithCity()` checks if gym name already contains city name
   - Prevents duplicate city names in H1 headings, SEO titles, and all display components
   - Applied consistently across gym cards, maps, listings, and detail pages
+- **Data Enrichment:** ✅ Ongoing data quality improvements
+  - 50+ gyms updated with accurate opening hours from verified sources
+  - Specialty assignments updated (add/remove specialties for multiple gyms)
+  - Amenities added to multiple gyms (e.g., Cardio Equipment, Group Classes, Sauna, Showers, Locker Room, Parking, Cafe)
+  - Email addresses added to multiple gyms
+  - Phone numbers added and formatted consistently (no spaces, e.g., +35799431612)
+  - Social media links (Instagram, Facebook) added to multiple gyms
+  - Review counts updated and synchronized with about sections
+  - Pricing information added to gyms with detailed plans
+  - Slug corrections applied (e.g., removed redundant "limassol" from Lumpinee Gym slug)
+  - About section descriptions updated to reflect accurate information
+- **Specialty System Fixes:** ✅ Resolved specialty mapping and display issues
+  - Fixed CrossFit count discrepancy (case-insensitive mapping for "Crossfit" → "CrossFit")
+  - Fixed Swimming & Aquatics page empty results (slug conversion handles special characters like "&")
+  - Improved specialty name mapping utility for better data consistency
+  - Enhanced `getGymsBySpecialty` function to handle both specialty names and slugs correctly
 - **Mock/Demo Gyms:** All removed (clean slate for real data)
 
 ### SEO Implementation
@@ -560,7 +584,31 @@
   - Added amenities for Un1T (Toilets, Showers, Hair Dryers, Free Water, Cafe) and Soul Vibe Space (Cafe, Locker Room, Showers)
   - Added Facebook link for Catman Olympic Boxing Academy
 
-**Recent Updates (Latest):**
+**Recent Updates (Latest - January 2025):**
+- ✅ **Opening Hours Enhancement**: Current day highlighting added to opening hours display
+  - Current day of week shown in bold with tinted background for better UX
+  - Uses Cyprus timezone (Europe/Athens) for accurate day detection
+- ✅ **Pricing System Enhancement**: Comprehensive pricing system with detailed plans
+  - Support for structured pricing plans with name, price, currency, validity, description, and classes
+  - Concise display format for better user experience
+  - Fixed React rendering error for pricing objects
+  - Multiple gyms updated with detailed pricing information (e.g., The Yogi Turtle with 11 plans)
+- ✅ **Data Enrichment**: 50+ gyms updated with comprehensive data
+  - Opening hours updated for gyms across Limassol and Nicosia
+  - Specialties added/removed (e.g., Yoga & Pilates, Personal Training, CrossFit, Strength Training)
+  - Amenities added (Cardio Equipment, Group Classes, Sauna, Showers, Locker Room, Parking, Cafe, etc.)
+  - Email addresses added (e.g., info@ryltoday.com, polycarpou.m@hotmail.com, vkalopetridou@hotmail.com)
+  - Phone numbers added and formatted consistently
+  - Instagram and Facebook links added to multiple gyms
+  - Review counts updated and synchronized (e.g., Dainas Planet Fitness: 15, Target Boxing Club: 22, SavS Gym: 16, Raw Calisthenics Academy: 96)
+  - About section descriptions updated to reflect accurate information
+- ✅ **Specialty System Fixes**: Resolved critical specialty mapping issues
+  - Fixed CrossFit count discrepancy (case-insensitive mapping for "Crossfit" → "CrossFit")
+  - Fixed Swimming & Aquatics page empty results (slug conversion handles "&" character correctly)
+  - Enhanced specialty mapping utility for better data consistency
+- ✅ **Slug Corrections**: Fixed redundant city names in slugs
+  - Lumpinee Gym slug updated (removed redundant "limassol" at end)
+  - 308 permanent redirect implemented for old slug to maintain SEO
 - ✅ **Specialty System Consolidation**: Refactored from 11 to 9 consolidated specialties
   - **New Structure**: Fitness/Gym, CrossFit, Personal Training, Martial Arts & MMA, Boxing, Yoga & Pilates, Dance & Group Fitness, Strength Training, Swimming & Aquatics
   - **Boxing Added**: "Boxing" now a separate specialty (not merged with Martial Arts)

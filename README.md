@@ -291,11 +291,18 @@ The project uses a custom dark/neon theme with:
 - **City Assignment Fixes**: ✅ Corrected gym city assignments (e.g., "Bad Dog Bjj" moved from Protaras to Ayia Napa based on address)
 - **Opening Hours**: ✅ Standardized opening hours format across all gyms (HH:MM-HH:MM, 24-hour format)
   - All 210 gyms have all 7 days (Monday-Sunday) in opening hours
-  - 29+ gyms updated with accurate opening hours from verified sources
+  - 50+ gyms updated with accurate opening hours from verified sources
   - Real-time open/closed status using Cyprus timezone (Europe/Nicosia)
+  - Current day highlighting in opening hours display (bold text with tinted background)
   - Handles both hyphens (-) and em dashes (—) in opening hours for accurate parsing
   - Support for "Contact for opening hour details" for gyms without available hours
-- **Pricing Information**: ✅ Pricing section added to gym detail pages (JSONB field in database)
+  - Support for split time ranges (e.g., "07:00–10:00, 16:00–20:00")
+- **Pricing Information**: ✅ Comprehensive pricing system implemented
+  - JSONB field in database for structured pricing data
+  - Support for detailed pricing plans with name, price, currency, validity, description, and included classes
+  - Concise display format showing plan name, validity, and price
+  - Backward compatible with simple key-value pricing format
+  - Multiple gyms updated with detailed pricing information (e.g., The Yogi Turtle with 11 pricing plans)
 - **Social Media Links**: ✅ Comprehensive social media integration with separate website, Facebook, and Instagram support
   - `social_media` JSONB field in database for structured social media data
   - Separate fields for website, Facebook, and Instagram links
@@ -307,6 +314,19 @@ The project uses a custom dark/neon theme with:
   - Automatically detects if gym name already contains city name
   - Prevents duplicate city names in H1 headings and SEO titles
   - Applied across all components (gym cards, maps, listings)
+- **Data Enrichment**: ✅ Ongoing data quality improvements
+  - 50+ gyms updated with accurate opening hours
+  - Specialty assignments updated (add/remove specialties)
+  - Amenities added to multiple gyms
+  - Email addresses and phone numbers added
+  - Social media links (Instagram, Facebook) integrated
+  - Review counts updated and synchronized with about sections
+  - Pricing information added to gyms with detailed plans
+  - Slug corrections (e.g., removed redundant city names from slugs)
+- **Specialty System Fixes**: ✅ Resolved specialty mapping and display issues
+  - Fixed CrossFit count discrepancy (case-insensitive mapping)
+  - Fixed Swimming & Aquatics page empty results (slug conversion with special characters)
+  - Improved specialty name mapping utility for better data consistency
 
 #### Frontend Data Access
 - **Data Layer**: Unified data access layer with Supabase API integration

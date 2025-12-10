@@ -435,16 +435,47 @@ export default async function GymPage({ params }: GymPageProps) {
                 Pricing
               </h2>
               {gym.pricing && Object.keys(gym.pricing).length > 0 ? (
-                <div className="space-y-3">
-                  {Object.entries(gym.pricing).map(([key, value]) => (
-                    <div
-                      key={key}
-                      className="flex items-center justify-between py-2 border-b border-surface-lighter last:border-0"
-                    >
-                      <span className="text-text-light font-medium">{key}</span>
-                      <span className="text-text-white font-semibold">{value}</span>
-                    </div>
-                  ))}
+                <div className="space-y-2">
+                  {/* Check if pricing has a 'plans' array (new format) */}
+                  {Array.isArray((gym.pricing as any)?.plans) ? (
+                    // New format: plans array - concise display
+                    ((gym.pricing as any).plans as Array<{
+                      name: string;
+                      price: number;
+                      currency: string;
+                      validity?: string;
+                    }>).map((plan, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center justify-between py-2 border-b border-surface-lighter last:border-0"
+                      >
+                        <span className="text-text-light font-medium">
+                          {plan.name}
+                          {plan.validity && (
+                            <span className="text-text-muted text-sm ml-2">
+                              ({plan.validity})
+                            </span>
+                          )}
+                        </span>
+                        <span className="text-text-white font-semibold">
+                          {plan.currency === 'EUR' ? '€' : plan.currency || '€'}{plan.price}
+                        </span>
+                      </div>
+                    ))
+                  ) : (
+                    // Old format: flat object with key-value pairs
+                    Object.entries(gym.pricing).map(([key, value]) => (
+                      <div
+                        key={key}
+                        className="flex items-center justify-between py-2 border-b border-surface-lighter last:border-0"
+                      >
+                        <span className="text-text-light font-medium">{key}</span>
+                        <span className="text-text-white font-semibold">
+                          {typeof value === 'string' ? value : String(value)}
+                        </span>
+                      </div>
+                    ))
+                  )}
                 </div>
               ) : (
                 <p className="text-text-muted">Contact for pricing details</p>
