@@ -22,17 +22,17 @@ export default async function SpecialtiesPage() {
   const visibleSpecialties = specialties.filter(
     specialty => !HIDDEN_FOR_MVP.includes(specialty.slug)
   );
-  // Assign emojis to specialties (matching homepage)
+  // Assign emojis to new consolidated specialties (matching homepage)
   const specialtyEmojis: Record<string, string> = {
+    'fitness-gym': '💪',
     'crossfit': '🔥',
-    'bodybuilding': '💪',
-    'yoga': '🧘',
-    'pilates': '🤸',
-    'mma': '🥊',
-    'boxing': '👊',
-    'swimming': '🏊',
-    'powerlifting': '🏋️',
     'personal-training': '👨‍🏫',
+    'martial-arts-mma': '🥊',
+    'boxing': '👊',
+    'yoga-pilates': '🧘',
+    'dance-group-fitness': '💃',
+    'strength-training': '🏋️',
+    'swimming-aquatics': '🏊',
   };
 
   return (

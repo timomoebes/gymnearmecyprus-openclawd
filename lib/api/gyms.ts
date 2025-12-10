@@ -1,5 +1,6 @@
 import { supabase } from '@/lib/supabase/client';
 import { Gym } from '@/lib/types';
+import { mapSpecialtyNames } from '@/lib/utils/specialty-mapping';
 
 // Transform Supabase gym data to match our Gym interface
 function transformGymFromDB(dbGym: any, specialties: string[], amenities: string[], citySlug?: string): Gym {
@@ -19,6 +20,11 @@ function transformGymFromDB(dbGym: any, specialties: string[], amenities: string
       const hours = typeof dbGym.opening_hours === 'string' 
         ? JSON.parse(dbGym.opening_hours) 
         : dbGym.opening_hours;
+      
+      // Debug logging (remove in production)
+      if (process.env.NODE_ENV === 'development') {
+        console.log('[transformGymFromDB] Opening hours for', dbGym.name, ':', hours);
+      }
       
       // Handle "Monday-Sunday" format (applies to all days)
       if (hours['Monday-Sunday']) {
@@ -188,7 +194,8 @@ export async function getAllGymsFromDB(): Promise<Gym[]> {
 
     // Transform each gym
     return gyms.map((gym: any) => {
-      const specialties = (gym.gym_specialties || []).map((gs: any) => gs.specialty?.name || '').filter(Boolean);
+      const rawSpecialties = (gym.gym_specialties || []).map((gs: any) => gs.specialty?.name || '').filter(Boolean);
+      const specialties = mapSpecialtyNames(rawSpecialties); // Map old names to new ones
       const amenities = (gym.gym_amenities || []).map((ga: any) => ga.amenity?.name || '').filter(Boolean);
       const citySlug = gym.city?.slug;
       return transformGymFromDB(gym, specialties, amenities, citySlug);
@@ -236,7 +243,8 @@ export async function getGymsByCityFromDB(cityId: string): Promise<Gym[]> {
 
     // Transform each gym
     return gyms.map((gym: any) => {
-      const specialties = (gym.gym_specialties || []).map((gs: any) => gs.specialty?.name || '').filter(Boolean);
+      const rawSpecialties = (gym.gym_specialties || []).map((gs: any) => gs.specialty?.name || '').filter(Boolean);
+      const specialties = mapSpecialtyNames(rawSpecialties); // Map old names to new ones
       const amenities = (gym.gym_amenities || []).map((ga: any) => ga.amenity?.name || '').filter(Boolean);
       const citySlug = gym.city?.slug || cityId; // Use cityId as fallback
       return transformGymFromDB(gym, specialties, amenities, citySlug);
@@ -269,7 +277,8 @@ export async function getGymBySlugFromDB(slug: string): Promise<Gym | undefined>
       return undefined;
     }
 
-    const specialties = (gym.gym_specialties || []).map((gs: any) => gs.specialty?.name || '').filter(Boolean);
+    const rawSpecialties = (gym.gym_specialties || []).map((gs: any) => gs.specialty?.name || '').filter(Boolean);
+    const specialties = mapSpecialtyNames(rawSpecialties); // Map old names to new ones
     const amenities = (gym.gym_amenities || []).map((ga: any) => ga.amenity?.name || '').filter(Boolean);
     const citySlug = gym.city?.slug;
     return transformGymFromDB(gym, specialties, amenities, citySlug);

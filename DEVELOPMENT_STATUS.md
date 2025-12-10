@@ -1,8 +1,8 @@
 # Development Status Summary
 ## GymNearMe Cyprus - Current Progress & Roadmap
 
-**Last Updated:** November 17, 2025  
-**Project Status:** Phase 5 Complete - SEO Optimization & Content Enhancement | Backend Database Setup Complete | Data Processing Pipeline Operational | Bulk Import Complete (210 Gyms Across 6 Cities) | Data Quality Fixes Applied | Frontend API Integration Complete | Opening Hours System Implemented | Data Enrichment Complete | Social Media Integration Complete
+**Last Updated:** January 2025  
+**Project Status:** Phase 5 Complete - SEO Optimization & Content Enhancement | Backend Database Setup Complete | Data Processing Pipeline Operational | Bulk Import Complete (210 Gyms Across 6 Cities) | Data Quality Fixes Applied | Frontend API Integration Complete | Opening Hours System Implemented | Data Enrichment Complete | Social Media Integration Complete | Specialty System Consolidated (9 Specialties)
 
 ---
 
@@ -101,17 +101,35 @@
   - ✅ 6 Ayia Napa gyms - Imported manually via Supabase Dashboard
   - ✅ 7 Protaras gyms - Imported manually via Supabase Dashboard
 - **Cities:** 6 cities (all cities ✅ - Limassol, Nicosia, Paphos, Larnaca, Ayia Napa, Protaras)
-- **Specialties:** 15 specialties in database (13 visible for MVP, 2 hidden: Hotel Gym, Women-Only)
-  - **New Specialties Added**: "Fitness" and "Gym" for general fitness centers and traditional gyms
+- **Specialties:** 9 consolidated specialties (reduced from 11 original categories)
+  - **Specialty Structure**: 
+    - Fitness/Gym (consolidated from "Fitness" and "Gym")
+    - CrossFit
+    - Personal Training
+    - Martial Arts & MMA (renamed from "Martial Arts", includes MMA-focused gyms)
+    - Boxing (separate specialty for boxing-only gyms)
+    - Yoga & Pilates (consolidated from "Yoga" and "Pilates")
+    - Dance & Group Fitness
+    - Strength Training (consolidated from "Bodybuilding" and "Powerlifting")
+    - Swimming & Aquatics (renamed from "Swimming")
+  - **Specialty Mapping**: ✅ Automatic conversion of old specialty names to new consolidated names
+    - Old names like "MMA" automatically display as "Martial Arts & MMA" in gym cards
+    - Backward compatible with existing database entries
+    - Mapping utility (`lib/utils/specialty-mapping.ts`) handles all conversions
+    - Applied in API layer before data reaches frontend
+  - **URL Redirects**: ✅ Old specialty URLs redirect to new ones (SEO-friendly 308 redirects)
+    - `/specialties/mma` → `/specialties/martial-arts-mma`
+    - `/specialties/boxing` stays as `/specialties/boxing` (no redirect needed)
+    - Other old specialty slugs redirect to consolidated equivalents
 - **Specialty Distribution:**
-  - MMA: Multiple gyms across all cities
-  - Pilates: Multiple gyms across all cities
-  - Personal Trainer: Multiple gyms across all cities
+  - Martial Arts & MMA: Multiple gyms across all cities
   - Boxing: Multiple gyms across all cities
-  - Yoga: Multiple gyms across all cities
-  - 24 Hour Gym: 1 gym (only verified: "Muscle Factory 24 Hours")
+  - Yoga & Pilates: Multiple gyms across all cities
+  - Personal Training: Multiple gyms across all cities
   - CrossFit: Multiple gyms
-  - General gyms: Many with no specialty (correctly assigned)
+  - Fitness/Gym: Multiple general fitness centers
+  - Strength Training: Multiple gyms
+  - 24 Hour Gym: 1 gym (only verified: "Muscle Factory 24 Hours")
 - **Swimming Gyms:** 0 (will be added in future imports)
 - **Member Count:** 0 gyms have member counts (all unclaimed - no demo data)
 - **Data Quality:** ✅ Specialty assignments verified and corrected
@@ -437,8 +455,9 @@
   - Protaras: 7 gyms
 - **Featured Gyms:** 0 featured listings (all unclaimed)
 - **Cities Covered:** 6 cities with gyms (all cities ✅ - Limassol, Nicosia, Larnaca, Paphos, Ayia Napa, Protaras)
-- **Specialties:** 15 specialties (13 visible for MVP, 2 hidden: Hotel Gym, Women-Only)
-  - **New Specialties Added**: "Fitness" and "Gym" for general fitness centers and traditional gyms
+- **Specialties:** 9 consolidated specialties (reduced from 11 original categories)
+  - **Specialty Structure**: Fitness/Gym, CrossFit, Personal Training, Martial Arts & MMA, Boxing, Yoga & Pilates, Dance & Group Fitness, Strength Training, Swimming & Aquatics
+  - **Specialty Mapping**: Automatic conversion of old names to new consolidated names for backward compatibility
 - **Specialty Distribution:** Multiple gyms across all specialties in all cities
 - **SEO Keywords Targeted:** 30+ keywords
 - **Total Search Volume:** ~20,700+ monthly searches
@@ -542,6 +561,23 @@
   - Added Facebook link for Catman Olympic Boxing Academy
 
 **Recent Updates (Latest):**
+- ✅ **Specialty System Consolidation**: Refactored from 11 to 9 consolidated specialties
+  - **New Structure**: Fitness/Gym, CrossFit, Personal Training, Martial Arts & MMA, Boxing, Yoga & Pilates, Dance & Group Fitness, Strength Training, Swimming & Aquatics
+  - **Boxing Added**: "Boxing" now a separate specialty (not merged with Martial Arts)
+  - **Martial Arts Renamed**: "Martial Arts" renamed to "Martial Arts & MMA" for clarity
+  - **Specialty Mapping Utility**: Created `lib/utils/specialty-mapping.ts` for automatic name conversion
+    - Old database names (e.g., "MMA") automatically display as new names (e.g., "Martial Arts & MMA")
+    - Backward compatible - works even if database migration hasn't been applied
+    - Applied in API layer (`lib/api/gyms.ts`) before data reaches frontend
+  - **URL Redirects**: Old specialty URLs redirect to new ones (308 permanent redirects)
+    - `/specialties/mma` → `/specialties/martial-arts-mma`
+    - `/specialties/boxing` stays as `/specialties/boxing` (no redirect)
+    - Other old slugs redirect to consolidated equivalents
+  - **Database Migration**: Created migration script (`supabase/migrations/007_migrate_specialties_to_consolidated.sql`)
+    - Maps old specialties to new consolidated ones
+    - Handles duplicate specialties (e.g., gym with both MMA and Boxing)
+    - Verification script included for post-migration checks
+  - **Updated Components**: All specialty displays updated (gym cards, specialty pages, filters, emojis)
 - ✅ **New Specialties Added**: "Fitness" and "Gym" specialties for general fitness centers and traditional gyms
   - Added to database and TypeScript specialties array
   - Available in specialty filters and dropdowns

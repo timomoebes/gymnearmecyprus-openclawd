@@ -154,6 +154,12 @@ The audit tool checks for:
   - Instagram icon and "Visit Instagram" text for Instagram links
   - "Facebook"/"Instagram" button in quick actions, "Visit Facebook"/"Visit Instagram" in contact section
   - Regular website links show Globe icon and "Visit Website" text
+- [x] **Specialty System** - Consolidated specialty structure with automatic name mapping
+  - 9 consolidated specialties (reduced from 11 original categories)
+  - Automatic conversion of old specialty names to new consolidated names
+  - Backward compatible with existing database entries
+  - URL redirects for old specialty slugs to new ones (SEO-friendly)
+  - Separate "Boxing" and "Martial Arts & MMA" specialties
 
 ### Phase 4: Owner Experience ✅
 - [x] **Add Gym Form** - Single-page form for gym owners to submit listings
@@ -249,17 +255,29 @@ The project uses a custom dark/neon theme with:
   - Protaras: 7 gyms
 - **Featured Gyms**: 0 featured listings (all unclaimed)
 - **Cities**: 6 cities (all cities now have gyms imported)
-- **Specialties**: 15 specialties (13 visible for MVP, 2 hidden: Hotel Gym, Women-Only)
-  - **New Specialties Added**: "Fitness" and "Gym" for general fitness centers
+- **Specialties**: 9 consolidated specialties (reduced from 11 original categories)
+  - **Specialty Structure**: 
+    - Fitness/Gym (consolidated from "Fitness" and "Gym")
+    - CrossFit
+    - Personal Training
+    - Martial Arts & MMA (renamed from "Martial Arts", includes MMA-focused gyms)
+    - Boxing (separate specialty for boxing-only gyms)
+    - Yoga & Pilates (consolidated from "Yoga" and "Pilates")
+    - Dance & Group Fitness
+    - Strength Training (consolidated from "Bodybuilding" and "Powerlifting")
+    - Swimming & Aquatics (renamed from "Swimming")
+  - **Specialty Mapping**: Automatic conversion of old specialty names to new consolidated names
+    - Old names like "MMA" automatically display as "Martial Arts & MMA"
+    - Backward compatible with existing database entries
 - **Specialty Distribution**: 
-  - MMA: Multiple gyms across cities
-  - Pilates: Multiple gyms across cities
-  - Personal Trainer: Multiple gyms across cities
+  - Martial Arts & MMA: Multiple gyms across cities
   - Boxing: Multiple gyms across cities
-  - Yoga: Multiple gyms across cities
-  - 24 Hour Gym: 1 gym (only verified: "Muscle Factory 24 Hours")
+  - Yoga & Pilates: Multiple gyms across cities
+  - Personal Training: Multiple gyms across cities
   - CrossFit: Multiple gyms
-  - General gyms: Many with no specialty (correctly assigned)
+  - Fitness/Gym: Multiple general fitness centers
+  - Strength Training: Multiple gyms
+  - 24 Hour Gym: 1 gym (only verified: "Muscle Factory 24 Hours")
 - **Member Count System**: Implemented with verification (no member counts set - all unclaimed)
 - **Data Source**: All gyms from Google Maps scrape
   - ✅ 50 Limassol gyms imported (manually via Supabase Dashboard)
@@ -296,7 +314,7 @@ The project uses a custom dark/neon theme with:
 - **API Integration**: ✅ Frontend connected to Supabase API
 - **Dynamic Counts**: ✅ City and specialty counts calculated dynamically from database
 - **Reviews**: Empty (reviews will come from database)
-- **Specialties**: 9 visible specialties for MVP
+- **Specialties**: 9 consolidated specialties (visible for MVP)
 
 **Note:** All mock/demo gyms have been removed. Frontend fetches data from Supabase with fallback to mock data if API fails.
 
@@ -367,7 +385,7 @@ The project uses a custom dark/neon theme with:
 - **Data Quality Fixes**: ✅ Corrected incorrect "24-hour-gym" specialty assignments
   - Removed "24-hour-gym" from incorrectly tagged gyms
   - Only "Muscle Factory 24 Hours" verified as 24-hour gym
-  - Reassigned gyms to correct specialties (MMA, Boxing, CrossFit, Pilates, Personal Trainer)
+  - Reassigned gyms to correct specialties (Martial Arts & MMA, Boxing, CrossFit, Yoga & Pilates, Personal Training)
   - Updated gym descriptions to remove incorrect "24 hour gym" references
 - **Frontend Integration**: ✅ Connected to Supabase API with dynamic counts
 - **Mock Data Cleanup**: ✅ All mock/demo gyms removed (clean slate for real data)

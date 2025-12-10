@@ -1,5 +1,5 @@
 import React from 'react';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getSpecialtyBySlug, getGymsBySpecialty, specialties } from '@/lib/data';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
@@ -13,6 +13,19 @@ interface SpecialtyPageProps {
   };
 }
 
+// Mapping of old specialty slugs to new consolidated ones (for 301 redirects)
+const OLD_TO_NEW_SPECIALTY_MAP: Record<string, string> = {
+  'fitness': 'fitness-gym',
+  'gym': 'fitness-gym',
+  'mma': 'martial-arts-mma',
+  'yoga': 'yoga-pilates',
+  'pilates': 'yoga-pilates',
+  'bodybuilding': 'strength-training',
+  'powerlifting': 'strength-training',
+  'swimming': 'swimming-aquatics',
+  // Note: 'boxing' stays as 'boxing' - no redirect needed
+};
+
 // Enable revalidation so pages update when gym counts change
 export const revalidate = 0; // 0 = always revalidate, or use a number for seconds
 
@@ -23,6 +36,20 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: SpecialtyPageProps): Promise<Metadata> {
+  // Check if this is an old specialty slug that needs redirecting
+  const oldSlug = params.specialty.toLowerCase();
+  if (OLD_TO_NEW_SPECIALTY_MAP[oldSlug]) {
+    // Return metadata for the new specialty (redirect will happen in component)
+    const newSlug = OLD_TO_NEW_SPECIALTY_MAP[oldSlug];
+    const specialty = getSpecialtyBySlug(newSlug);
+    if (specialty) {
+      return {
+        title: `Best ${specialty.name} Gyms in Cyprus`,
+        description: specialty.description,
+      };
+    }
+  }
+
   const specialty = getSpecialtyBySlug(params.specialty);
   
   if (!specialty) {
@@ -46,18 +73,18 @@ export async function generateMetadata({ params }: SpecialtyPageProps): Promise<
     keywords = 'personal trainer nicosia, personal training cyprus, personal trainers limassol, certified personal trainer, fitness trainer cyprus';
   }
   
-  // Swimming - High Volume Quick Win (1,000 + 720 vol, 17 diff)
-  if (specialtySlug === 'swimming') {
+  // Swimming & Aquatics - High Volume Quick Win (1,000 + 720 vol, 17 diff)
+  if (specialtySlug === 'swimming-aquatics') {
     title = 'Gyms with Swimming Pools in Cyprus | Find Pools Near Me | Swimming Facilities';
     description = 'Find gyms with swimming pools in Cyprus. Discover swimming pools in Nicosia, pools in Nicosia, and aquatic fitness facilities. Perfect for lap swimming, water aerobics, and low-impact workouts.';
     keywords = 'swimming pool nicosia, pools in nicosia, gyms with pools cyprus, swimming facilities, aquatic fitness, pool access gyms';
   }
   
-  // Pilates - Quick Win (210 + 170 vol, 10-14 diff)
-  if (specialtySlug === 'pilates') {
-    title = 'Find Pilates Classes Near Me in Cyprus | Reformer Pilates Studios | Pilates Near Me';
-    description = 'Find pilates near me in Cyprus. Discover reformer pilates studios, pilates classes in Nicosia, and pilates instructors. Compare studios and book your class today.';
-    keywords = 'pilates near me, pilates nicosia, reformer pilates near me, pilates reformer nicosia, pilates classes cyprus, pilates studio';
+  // Yoga & Pilates - Quick Win (210 + 170 vol, 10-14 diff)
+  if (specialtySlug === 'yoga-pilates') {
+    title = 'Find Yoga & Pilates Classes Near Me in Cyprus | Reformer Pilates Studios | Yoga Near Me';
+    description = 'Find yoga and pilates near me in Cyprus. Discover reformer pilates studios, yoga classes in Nicosia, and pilates instructors. Compare studios and book your class today.';
+    keywords = 'pilates near me, pilates nicosia, reformer pilates near me, pilates reformer nicosia, pilates classes cyprus, pilates studio, yoga nicosia, yoga cyprus';
   }
   
   // CrossFit - Quick Win (170 vol, 15 diff)
@@ -65,6 +92,41 @@ export async function generateMetadata({ params }: SpecialtyPageProps): Promise<
     title = 'Best CrossFit Gyms in Cyprus | Find CrossFit Near Me | CrossFit Nicosia';
     description = 'Find CrossFit gyms in Cyprus. Discover CrossFit boxes in Nicosia, Limassol, and across Cyprus. High-intensity functional training, expert coaches, and supportive communities.';
     keywords = 'crossfit nicosia, crossfit cyprus, crossfit gyms, crossfit near me, crossfit boxes, functional fitness';
+  }
+  
+  // Fitness/Gym
+  if (specialtySlug === 'fitness-gym') {
+    title = 'Best Fitness Centers & Gyms in Cyprus | Find Gyms Near Me | Fitness Facilities';
+    description = 'Find the best fitness centers and gyms in Cyprus. Discover traditional gyms and fitness facilities in Nicosia, Limassol, and across Cyprus with comprehensive equipment and training options.';
+    keywords = 'gym near me, fitness center cyprus, gyms nicosia, fitness facilities, traditional gyms, workout facilities';
+  }
+  
+  // Martial Arts & MMA
+  if (specialtySlug === 'martial-arts-mma') {
+    title = 'Best Martial Arts & MMA Gyms in Cyprus | MMA Training | Combat Sports';
+    description = 'Find martial arts and MMA gyms in Cyprus. Discover MMA, Brazilian Jiu-Jitsu, Muay Thai, wrestling, and other combat sports training facilities. Train like a fighter with expert coaches.';
+    keywords = 'mma cyprus, martial arts training, combat sports, bjj cyprus, muay thai cyprus, mma gyms nicosia';
+  }
+  
+  // Boxing
+  if (specialtySlug === 'boxing') {
+    title = 'Best Boxing Gyms in Cyprus | Boxing Training | Boxing Clubs';
+    description = 'Find boxing gyms in Cyprus. Discover professional boxing trainers, heavy bags, sparring rings, and boxing clubs. Perfect for fitness and competitive boxing training.';
+    keywords = 'boxing gyms cyprus, boxing nicosia, boxing training, boxing clubs, boxing classes, boxing near me';
+  }
+  
+  // Strength Training
+  if (specialtySlug === 'strength-training') {
+    title = 'Best Strength Training Gyms in Cyprus | Bodybuilding & Powerlifting Facilities';
+    description = 'Find strength training gyms in Cyprus. Discover bodybuilding and powerlifting facilities with professional equipment, squat racks, and competition-grade training areas.';
+    keywords = 'bodybuilding gyms cyprus, powerlifting gyms, strength training facilities, bodybuilding nicosia, powerlifting cyprus';
+  }
+  
+  // Dance & Group Fitness
+  if (specialtySlug === 'dance-group-fitness') {
+    title = 'Dance & Group Fitness Classes in Cyprus | Zumba & Aerobics | Group Workouts';
+    description = 'Find dance studios and group fitness classes in Cyprus. Discover Zumba, aerobics, dance classes, and fun group workout sessions. Social and energetic fitness options.';
+    keywords = 'zumba cyprus, dance classes nicosia, group fitness classes, aerobics cyprus, dance studios';
   }
 
   return {
@@ -75,6 +137,13 @@ export async function generateMetadata({ params }: SpecialtyPageProps): Promise<
 }
 
 export default async function SpecialtyPage({ params }: SpecialtyPageProps) {
+  // Handle redirects for old specialty slugs (308 permanent redirect for SEO)
+  const oldSlug = params.specialty.toLowerCase();
+  if (OLD_TO_NEW_SPECIALTY_MAP[oldSlug]) {
+    const newSlug = OLD_TO_NEW_SPECIALTY_MAP[oldSlug];
+    permanentRedirect(`/specialties/${newSlug}`);
+  }
+
   const specialty = getSpecialtyBySlug(params.specialty);
   
   if (!specialty) {
@@ -82,7 +151,7 @@ export default async function SpecialtyPage({ params }: SpecialtyPageProps) {
   }
 
   const specialtySlug = specialty.slug.toLowerCase();
-  const gyms = await getGymsBySpecialty(specialty.name);
+  const gyms = await getGymsBySpecialty(specialty.slug);
 
   // Generate Schema.org JSON-LD
   const breadcrumbSchema = generateBreadcrumbSchema([
@@ -151,26 +220,31 @@ export default async function SpecialtyPage({ params }: SpecialtyPageProps) {
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-4">
             {(() => {
-              // Assign emojis to specialties (matching homepage)
+              // Assign emojis to new consolidated specialties
               const specialtyEmojis: Record<string, string> = {
+                'fitness-gym': '💪',
                 'crossfit': '🔥',
-                'bodybuilding': '💪',
-                'yoga': '🧘',
-                'pilates': '🤸',
-                'mma': '🥊',
-                'boxing': '👊',
-                'swimming': '🏊',
-                'powerlifting': '🏋️',
                 'personal-training': '👨‍🏫',
+                'martial-arts-mma': '🥊',
+                'boxing': '👊',
+                'yoga-pilates': '🧘',
+                'dance-group-fitness': '💃',
+                'strength-training': '🏋️',
+                'swimming-aquatics': '🏊',
               };
               const emoji = specialtyEmojis[specialty.id] || '💪';
               return <div className="text-5xl">{emoji}</div>;
             })()}
             <h1 className="text-4xl md:text-5xl font-bold text-text-white">
               {specialtySlug === 'personal-training' ? 'Find Personal Trainers in Cyprus' :
-               specialtySlug === 'swimming' ? 'Gyms with Swimming Pools in Cyprus' :
-               specialtySlug === 'pilates' ? 'Find Pilates Classes Near Me in Cyprus' :
+               specialtySlug === 'swimming-aquatics' ? 'Gyms with Swimming Pools in Cyprus' :
+               specialtySlug === 'yoga-pilates' ? 'Find Yoga & Pilates Classes Near Me in Cyprus' :
                specialtySlug === 'crossfit' ? 'Best CrossFit Gyms in Cyprus' :
+               specialtySlug === 'fitness-gym' ? 'Best Fitness Centers & Gyms in Cyprus' :
+               specialtySlug === 'martial-arts-mma' ? 'Best Martial Arts & MMA Gyms in Cyprus' :
+               specialtySlug === 'boxing' ? 'Best Boxing Gyms in Cyprus' :
+               specialtySlug === 'strength-training' ? 'Best Strength Training Gyms in Cyprus' :
+               specialtySlug === 'dance-group-fitness' ? 'Dance & Group Fitness Classes in Cyprus' :
                `Best ${specialty.name} Gyms in Cyprus`}
             </h1>
           </div>
@@ -227,7 +301,7 @@ export default async function SpecialtyPage({ params }: SpecialtyPageProps) {
           </section>
         )}
 
-        {specialtySlug === 'swimming' && (
+        {specialtySlug === 'swimming-aquatics' && (
           <section className="mb-12 bg-surface-card rounded-card p-8">
             <h2 className="text-2xl font-bold text-text-white mb-6">Find Swimming Pools in Nicosia and Across Cyprus</h2>
             <p className="text-text-light mb-6">
@@ -269,11 +343,11 @@ export default async function SpecialtyPage({ params }: SpecialtyPageProps) {
           </section>
         )}
 
-        {specialtySlug === 'pilates' && (
+        {specialtySlug === 'yoga-pilates' && (
           <section className="mb-12 bg-surface-card rounded-card p-8">
-            <h2 className="text-2xl font-bold text-text-white mb-6">Find Pilates Near Me - Reformer Pilates Studios in Cyprus</h2>
+            <h2 className="text-2xl font-bold text-text-white mb-6">Find Yoga & Pilates Near Me - Reformer Pilates Studios in Cyprus</h2>
             <p className="text-text-light mb-6">
-              Searching for pilates near me? Discover pilates classes in Nicosia and across Cyprus. Our directory includes mat pilates studios and reformer pilates facilities. Whether you're looking for pilates reformer nicosia or pilates near me, find the perfect studio for your practice.
+              Searching for yoga or pilates near me? Discover yoga and pilates classes in Nicosia and across Cyprus. Our directory includes mat pilates studios, reformer pilates facilities, and yoga studios. Whether you're looking for pilates reformer nicosia, yoga nicosia, or pilates near me, find the perfect studio for your practice.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div>
@@ -305,7 +379,7 @@ export default async function SpecialtyPage({ params }: SpecialtyPageProps) {
             </div>
             <div className="bg-primary-blue/10 rounded-lg p-6 border border-primary-blue/30">
               <p className="text-text-light">
-                <strong className="text-text-white">Reformer Pilates in Nicosia:</strong> Looking for reformer pilates near me? Many pilates studios in Nicosia offer reformer pilates classes. Reformer pilates uses specialized equipment to provide resistance and support, making it ideal for all fitness levels. Check studio listings for reformer pilates availability.
+                <strong className="text-text-white">Yoga & Reformer Pilates in Nicosia:</strong> Looking for reformer pilates or yoga near me? Many studios in Nicosia offer reformer pilates classes and various yoga styles. Reformer pilates uses specialized equipment to provide resistance and support, making it ideal for all fitness levels. Check studio listings for reformer pilates and yoga class availability.
               </p>
             </div>
           </section>

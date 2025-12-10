@@ -136,11 +136,61 @@ const getGymsBySpecialtyMock = (specialtyName: string): Gym[] => {
     );
   }
   
-  // Special handling for Swimming - check both specialties and amenities (pools)
-  if (specialtyLower === 'swimming') {
+  // Special handling for Swimming & Aquatics - check both specialties and amenities (pools)
+  if (specialtyLower === 'swimming' || specialtyLower === 'swimming-aquatics' || specialtyLower === 'swimming & aquatics') {
     return mockGyms.filter(gym => 
-      gym.specialties.some(s => s.toLowerCase() === 'swimming') ||
+      gym.specialties.some(s => s.toLowerCase().includes('swimming')) ||
       gym.amenities.some(a => a.toLowerCase().includes('pool') || a.toLowerCase().includes('swimming'))
+    );
+  }
+  
+  // Special handling for Fitness/Gym - matches both "Fitness" and "Gym"
+  if (specialtyLower === 'fitness-gym' || specialtyLower === 'fitness/gym' || specialtyLower === 'fitness' || specialtyLower === 'gym') {
+    return mockGyms.filter(gym =>
+      gym.specialties.some(s => {
+        const sLower = s.toLowerCase();
+        return sLower === 'fitness' || sLower === 'gym' || sLower === 'fitness/gym';
+      })
+    );
+  }
+  
+  // Special handling for Martial Arts & MMA - matches MMA only
+  if (specialtyLower === 'martial-arts-mma' || specialtyLower === 'martial arts & mma' || specialtyLower === 'martial arts' || specialtyLower === 'mma') {
+    return mockGyms.filter(gym =>
+      gym.specialties.some(s => {
+        const sLower = s.toLowerCase();
+        return sLower === 'mma' || sLower === 'martial arts' || sLower === 'martial arts & mma';
+      })
+    );
+  }
+  
+  // Special handling for Boxing - matches Boxing only
+  if (specialtyLower === 'boxing') {
+    return mockGyms.filter(gym =>
+      gym.specialties.some(s => {
+        const sLower = s.toLowerCase();
+        return sLower === 'boxing';
+      })
+    );
+  }
+  
+  // Special handling for Yoga & Pilates - matches both Yoga and Pilates
+  if (specialtyLower === 'yoga-pilates' || specialtyLower === 'yoga & pilates' || specialtyLower === 'yoga' || specialtyLower === 'pilates') {
+    return mockGyms.filter(gym =>
+      gym.specialties.some(s => {
+        const sLower = s.toLowerCase();
+        return sLower === 'yoga' || sLower === 'pilates' || sLower === 'yoga & pilates';
+      })
+    );
+  }
+  
+  // Special handling for Strength Training - matches Bodybuilding and Powerlifting
+  if (specialtyLower === 'strength-training' || specialtyLower === 'strength training' || specialtyLower === 'bodybuilding' || specialtyLower === 'powerlifting') {
+    return mockGyms.filter(gym =>
+      gym.specialties.some(s => {
+        const sLower = s.toLowerCase();
+        return sLower === 'bodybuilding' || sLower === 'powerlifting' || sLower === 'strength training';
+      })
     );
   }
   
@@ -184,16 +234,27 @@ export async function getGymsByCity(cityId: string): Promise<Gym[]> {
   return getGymsByCityMock(cityId);
 }
 
-export async function getGymsBySpecialty(specialtyName: string): Promise<Gym[]> {
+export async function getGymsBySpecialty(specialtyNameOrSlug: string): Promise<Gym[]> {
   try {
-    // Convert specialty name to slug
-    const specialtySlug = specialtyName.toLowerCase().replace(/\s+/g, '-');
+    // Convert specialty name to slug (handle both names and slugs)
+    // If it already contains hyphens and no spaces, treat it as a slug
+    let specialtySlug: string;
+    if (specialtyNameOrSlug.includes('-') && !specialtyNameOrSlug.includes(' ')) {
+      // Already a slug format
+      specialtySlug = specialtyNameOrSlug.toLowerCase();
+    } else {
+      // Convert name to slug: lowercase, replace spaces with hyphens, remove special chars like &
+      specialtySlug = specialtyNameOrSlug.toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/&/g, '')
+        .replace(/[^a-z0-9-]/g, '');
+    }
     const gyms = await getGymsBySpecialtyFromDB(specialtySlug);
     if (gyms.length > 0) return gyms;
   } catch (error) {
     console.warn('Supabase fetch failed for getGymsBySpecialty, using mock data:', error);
   }
-  return getGymsBySpecialtyMock(specialtyName);
+  return getGymsBySpecialtyMock(specialtyNameOrSlug);
 }
 
 export async function getFeaturedGyms(): Promise<Gym[]> {

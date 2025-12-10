@@ -1,5 +1,5 @@
 import React from 'react';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import type { Metadata } from 'next';
 import { MapPin, Phone, Globe, Mail, Clock, Users, Calendar, DollarSign, Facebook, Instagram } from 'lucide-react';
 import { getGymBySlug, getCityById, getTopReviews, getGymsByCity, getAllGyms, getReviewsByGymId } from '@/lib/data';
@@ -21,6 +21,9 @@ interface GymPageProps {
 
 // Enable revalidation so pages update when data changes (e.g., when website is added)
 export const revalidate = 0; // 0 = always revalidate, or use a number for seconds
+
+// Force dynamic rendering to prevent static caching
+export const dynamic = 'force-dynamic';
 
 export async function generateStaticParams() {
   const gyms = await getAllGyms();
@@ -78,10 +81,21 @@ export async function generateMetadata({ params }: GymPageProps): Promise<Metada
 }
 
 export default async function GymPage({ params }: GymPageProps) {
+  // Handle redirect for old slug (removed redundant "limassol" at the end)
+  const oldSlug = 'lumpinee-gym-muay-thai-muay-boran-personal-training-fighting-club-limassol-cyprus-limassol';
+  if (params.slug === oldSlug) {
+    permanentRedirect('/gyms/lumpinee-gym-muay-thai-muay-boran-personal-training-fighting-club-limassol-cyprus');
+  }
+
   const gym = await getGymBySlug(params.slug);
   
   if (!gym) {
     notFound();
+  }
+
+  // Debug logging (remove in production)
+  if (process.env.NODE_ENV === 'development') {
+    console.log('[GymPage] Opening hours for', gym.name, ':', gym.openingHours);
   }
 
   const city = getCityById(gym.cityId);
@@ -108,6 +122,11 @@ export default async function GymPage({ params }: GymPageProps) {
     { day: 'Saturday', hours: gym.openingHours.saturday || 'Closed' },
     { day: 'Sunday', hours: gym.openingHours.sunday || 'Closed' },
   ];
+  // Determine current weekday in Cyprus time to highlight in UI
+  const currentWeekday = new Intl.DateTimeFormat('en-US', {
+    weekday: 'long',
+    timeZone: 'Europe/Athens', // Cyprus time
+  }).format(new Date());
   
   // Check if all days are "Closed" - if so, show "Contact for opening hour details"
   const allDaysClosed = openingHours.every(item => 
@@ -338,21 +357,30 @@ export default async function GymPage({ params }: GymPageProps) {
                 })()}
               </div>
               {allDaysClosed ? (
-                <p className="text-text-muted">Contact for opening hour details</p>
+                <p className="text-text-muted">Contact for opening hours details</p>
               ) : (
                 <>
                   <div className="space-y-3">
                     {openingHours.map(({ day, hours }) => {
+                      const isToday = day.toLowerCase() === currentWeekday.toLowerCase();
                       // Check if hours contain newlines (complex format with sessions)
                       const isComplexFormat = hours && hours.includes('\n');
                       
                       return (
                         <div
                           key={day}
-                          className="py-2 border-b border-surface-lighter last:border-0"
+                          className={`py-2 border-b border-surface-lighter last:border-0 px-3 -mx-3 rounded-md ${
+                            isToday ? 'bg-primary-blue/10 border-primary-blue/30' : ''
+                          }`}
                         >
                           <div className="flex items-start gap-4">
-                            <span className="text-text-light font-medium min-w-[100px]">{day}</span>
+                            <span
+                              className={`text-text-light font-medium min-w-[100px] ${
+                                isToday ? 'text-text-white font-semibold' : ''
+                              }`}
+                            >
+                              {day}
+                            </span>
                             <div className="flex-1">
                               {isComplexFormat ? (
                                 // Complex format: render with line breaks and formatting
@@ -384,7 +412,7 @@ export default async function GymPage({ params }: GymPageProps) {
                                 </div>
                               ) : (
                                 // Simple format: single line - normalize "No sessions" to "Closed"
-                                <span className="text-text-muted">
+                                <span className={`text-text-muted ${isToday ? 'text-text-white font-semibold' : ''}`}>
                                   {hours && hours.toLowerCase() !== 'no sessions' 
                                     ? hours 
                                     : 'Closed'}

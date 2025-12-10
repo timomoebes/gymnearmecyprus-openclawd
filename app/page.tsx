@@ -207,16 +207,17 @@ export default async function HomePage() {
           
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mb-8">
             {specialties.filter(s => !['hotel-gym', 'women-only'].includes(s.slug)).map((specialty) => {
-              // Assign emojis to specialties
+              // Assign emojis to new consolidated specialties
               const specialtyEmojis: Record<string, string> = {
+                'fitness-gym': '💪',
                 'crossfit': '🔥',
-                'bodybuilding': '💪',
-                'yoga': '🧘',
-                'pilates': '🤸',
-                'mma': '🥊',
+                'personal-training': '👨‍🏫',
+                'martial-arts-mma': '🥊',
                 'boxing': '👊',
-                'swimming': '🏊',
-                'powerlifting': '🏋️',
+                'yoga-pilates': '🧘',
+                'dance-group-fitness': '💃',
+                'strength-training': '🏋️',
+                'swimming-aquatics': '🏊',
               };
               
               const emoji = specialtyEmojis[specialty.id] || '💪';
