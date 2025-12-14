@@ -315,18 +315,31 @@ The project uses a custom dark/neon theme with:
   - Prevents duplicate city names in H1 headings and SEO titles
   - Applied across all components (gym cards, maps, listings)
 - **Data Enrichment**: ✅ Ongoing data quality improvements
-  - 50+ gyms updated with accurate opening hours
-  - Specialty assignments updated (add/remove specialties)
-  - Amenities added to multiple gyms
-  - Email addresses and phone numbers added
-  - Social media links (Instagram, Facebook) integrated
-  - Review counts updated and synchronized with about sections
-  - Pricing information added to gyms with detailed plans
-  - Slug corrections (e.g., removed redundant city names from slugs)
+  - 100+ gyms updated with comprehensive data across Limassol and Nicosia
+  - Opening hours updated for 50+ gyms with accurate schedules
+  - Specialty assignments updated (add/remove specialties for multiple gyms)
+  - Amenities added to multiple gyms (Cardio Equipment, Group Classes, Sauna, Steam Room, Swimming Pool, Showers, Locker Room, Parking, Cafe, etc.)
+  - Email addresses added to 30+ gyms
+  - Phone numbers added and formatted consistently
+  - Social media links (Instagram, Facebook) integrated for 20+ gyms
+  - Review counts updated and synchronized with about sections (e.g., Anaplasis Gym: 772, Kinetic Fitness Studio: 27, Kinetic Pilates Studio: 17, Ananda Yoga Studio: 44, Aurora Pilates Studio: 11, Target Boxing Club: 22, SavS Gym: 16, Raw Calisthenics Academy: 96, Dainas Planet Fitness: 15, For Me Clinical Physio Pilates Studio: 45, Gabriel Fitness & Boxing Gym: 72, Hupex Fitness: 14, Karma Studio: 30, Old Town Fitness Studio: 69, Fitness Factory: 34, Komanetsi Fitness Center: 179, New Life Health Centre: 168, Olympus Gym: 25, Calisthenics Area: 11, Maxx Fitness: 65, Real Fit: 48, ProFit Center: 59, and more)
+  - Pricing information added to multiple gyms with concise plans and external links
+  - About section descriptions updated for 20+ gyms with detailed, SEO-optimized content
+  - Slug corrections applied (removed redundant city names from slugs with 308 redirects)
+  - Gym deletions: Removed 5 gyms that are no longer operational or outside coverage area
 - **Specialty System Fixes**: ✅ Resolved specialty mapping and display issues
   - Fixed CrossFit count discrepancy (case-insensitive mapping)
   - Fixed Swimming & Aquatics page empty results (slug conversion with special characters)
   - Improved specialty name mapping utility for better data consistency
+- **Pricing System Enhancements**: ✅ Comprehensive pricing display with external links
+  - Added pricing links to pricing sections (e.g., Muscle Factory 24 Hours, Maxx Fitness, Nicosia Gymnastic Center, University Of Nicosia - Ufit Fitness Centre)
+  - Links render as clickable hyperlinks in pricing notes section
+  - Disabled pricing section for specific gyms (e.g., Calisthenics Area Nicosia) via conditional rendering
+- **Slug Management & SEO**: ✅ Improved slug structure and redirect handling
+  - Removed redundant city names from slugs (e.g., "lumpinee-gym-...-limassol-cyprus-limassol" → "lumpinee-gym-...-limassol-cyprus")
+  - Removed redundant words from slugs (e.g., "new-life-health-centre-nicosia-gym-nicosia" → "new-life-health-centre-nicosia")
+  - Implemented 308 permanent redirects for all old slugs to maintain SEO
+  - All internal links automatically use new slugs from database
 
 #### Frontend Data Access
 - **Data Layer**: Unified data access layer with Supabase API integration

@@ -81,13 +81,36 @@ export async function generateMetadata({ params }: GymPageProps): Promise<Metada
 }
 
 export default async function GymPage({ params }: GymPageProps) {
-  // Handle redirect for old slug (removed redundant "limassol" at the end)
+  // Decode URL-encoded slug (handles Greek characters and special characters)
+  const decodedSlug = decodeURIComponent(params.slug);
+  
+  // Handle redirects for old slugs
   const oldSlug = 'lumpinee-gym-muay-thai-muay-boran-personal-training-fighting-club-limassol-cyprus-limassol';
-  if (params.slug === oldSlug) {
+  if (decodedSlug === oldSlug) {
     permanentRedirect('/gyms/lumpinee-gym-muay-thai-muay-boran-personal-training-fighting-club-limassol-cyprus');
   }
+  
+  // Handle redirect for New Life Health Centre old slugs
+  if (decodedSlug === 'new-life-health-centre-nicosia-gym-nicosia' || decodedSlug === 'new-life-health-centre-nicosia-gym') {
+    permanentRedirect('/gyms/new-life-health-centre-nicosia');
+  }
+  
+  // Handle redirect for University Of Nicosia - Ufit Fitness Centre old slug
+  if (decodedSlug === 'university-of-nicosia-ufit-fitness-centre-nicosia') {
+    permanentRedirect('/gyms/university-of-nicosia-ufit-fitness-centre');
+  }
+  
+  // Handle redirects for Greek character slugs (transliterated to Latin)
+  // Only redirect if it's the exact old Greek character slug, not the new transliterated one
+  if (decodedSlug === 'φόρμα-fitness-studio-nicosia' || decodedSlug === '%CF%86%CF%8C%CF%81%CE%BC%CE%B1-fitness-studio-nicosia') {
+    permanentRedirect('/gyms/forma-fitness-studio-nicosia');
+  }
+  // Only redirect exact old Greek slug, not the new transliterated version
+  if (decodedSlug === 'μολων-λαβε-gym-nicosia') {
+    permanentRedirect('/gyms/molon-labe-gym-nicosia');
+  }
 
-  const gym = await getGymBySlug(params.slug);
+  const gym = await getGymBySlug(decodedSlug);
   
   if (!gym) {
     notFound();
@@ -428,59 +451,89 @@ export default async function GymPage({ params }: GymPageProps) {
               )}
             </section>
 
-            {/* Pricing Section */}
-            <section className="bg-surface-card rounded-card p-6">
-              <h2 className="text-2xl font-bold text-text-white mb-4 flex items-center gap-2">
-                <DollarSign className="w-6 h-6" />
-                Pricing
-              </h2>
-              {gym.pricing && Object.keys(gym.pricing).length > 0 ? (
-                <div className="space-y-2">
-                  {/* Check if pricing has a 'plans' array (new format) */}
-                  {Array.isArray((gym.pricing as any)?.plans) ? (
-                    // New format: plans array - concise display
-                    ((gym.pricing as any).plans as Array<{
-                      name: string;
-                      price: number;
-                      currency: string;
-                      validity?: string;
-                    }>).map((plan, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center justify-between py-2 border-b border-surface-lighter last:border-0"
-                      >
-                        <span className="text-text-light font-medium">
-                          {plan.name}
-                          {plan.validity && (
-                            <span className="text-text-muted text-sm ml-2">
-                              ({plan.validity})
+            {/* Pricing Section - Hidden for Calisthenics Area Nicosia */}
+            {gym.slug !== 'calisthenics-area-nicosia' && (
+              <section className="bg-surface-card rounded-card p-6">
+                <h2 className="text-2xl font-bold text-text-white mb-4 flex items-center gap-2">
+                  <DollarSign className="w-6 h-6" />
+                  Pricing
+                </h2>
+                {gym.pricing && Object.keys(gym.pricing).length > 0 ? (
+                  <div className="space-y-3">
+                    {/* Plans list */}
+                    <div className="space-y-2">
+                      {Array.isArray((gym.pricing as any)?.plans) ? (
+                        // New format: plans array - concise display
+                        ((gym.pricing as any).plans as Array<{
+                          name: string;
+                          price: number;
+                          currency: string;
+                          validity?: string;
+                        }>).map((plan, index) => (
+                          <div
+                            key={index}
+                            className="flex items-center justify-between py-2 border-b border-surface-lighter last:border-0"
+                          >
+                            <span className="text-text-light font-medium">
+                              {plan.name}
+                              {plan.validity && (
+                                <span className="text-text-muted text-sm ml-2">
+                                  ({plan.validity})
+                                </span>
+                              )}
                             </span>
-                          )}
-                        </span>
-                        <span className="text-text-white font-semibold">
-                          {plan.currency === 'EUR' ? '€' : plan.currency || '€'}{plan.price}
-                        </span>
+                            <span className="text-text-white font-semibold">
+                              {plan.currency === 'EUR' ? '€' : plan.currency || '€'}
+                              {plan.price}
+                            </span>
+                          </div>
+                        ))
+                      ) : (
+                        // Old format: flat object with key-value pairs
+                        Object.entries(gym.pricing).map(([key, value]) => (
+                          <div
+                            key={key}
+                            className="flex items-center justify-between py-2 border-b border-surface-lighter last:border-0"
+                          >
+                            <span className="text-text-light font-medium">{key}</span>
+                            <span className="text-text-white font-semibold">
+                              {typeof value === 'string' ? value : String(value)}
+                            </span>
+                          </div>
+                        ))
+                      )}
+                    </div>
+
+                    {/* Notes / links */}
+                    {Array.isArray((gym.pricing as any)?.notes) && (gym.pricing as any).notes.length > 0 && (
+                      <div className="pt-2 space-y-1 text-sm text-text-muted">
+                        {(gym.pricing as any).notes.map((note: string, idx: number) => {
+                          const isLink = note.startsWith('http');
+                          return (
+                            <div key={idx}>
+                              {isLink ? (
+                                <a
+                                  href={note}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-primary-blue hover:underline"
+                                >
+                                  {note}
+                                </a>
+                              ) : (
+                                <span>{note}</span>
+                              )}
+                            </div>
+                          );
+                        })}
                       </div>
-                    ))
-                  ) : (
-                    // Old format: flat object with key-value pairs
-                    Object.entries(gym.pricing).map(([key, value]) => (
-                      <div
-                        key={key}
-                        className="flex items-center justify-between py-2 border-b border-surface-lighter last:border-0"
-                      >
-                        <span className="text-text-light font-medium">{key}</span>
-                        <span className="text-text-white font-semibold">
-                          {typeof value === 'string' ? value : String(value)}
-                        </span>
-                      </div>
-                    ))
-                  )}
-                </div>
-              ) : (
-                <p className="text-text-muted">Contact for pricing details</p>
-              )}
-            </section>
+                    )}
+                  </div>
+                ) : (
+                  <p className="text-text-muted">Contact for pricing details</p>
+                )}
+              </section>
+            )}
 
             {/* Top Reviews */}
             {reviews.length > 0 && (

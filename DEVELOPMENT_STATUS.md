@@ -2,7 +2,7 @@
 ## GymNearMe Cyprus - Current Progress & Roadmap
 
 **Last Updated:** January 2025  
-**Project Status:** Phase 5 Complete - SEO Optimization & Content Enhancement | Backend Database Setup Complete | Data Processing Pipeline Operational | Bulk Import Complete (210 Gyms Across 6 Cities) | Data Quality Fixes Applied | Frontend API Integration Complete | Opening Hours System Implemented with Current Day Highlighting | Comprehensive Pricing System Implemented | Data Enrichment Ongoing (50+ Gyms Updated) | Social Media Integration Complete | Specialty System Consolidated (9 Specialties) | Specialty Mapping Fixes Applied
+**Project Status:** Phase 5 Complete - SEO Optimization & Content Enhancement | Backend Database Setup Complete | Data Processing Pipeline Operational | Bulk Import Complete (210 Gyms Across 6 Cities) | Data Quality Fixes Applied | Frontend API Integration Complete | Opening Hours System Implemented with Current Day Highlighting | Comprehensive Pricing System Implemented | Data Enrichment Ongoing (100+ Gyms Updated) | Social Media Integration Complete | Specialty System Consolidated (9 Specialties) | Specialty Mapping Fixes Applied | Slug Management & SEO Redirects Implemented | Pricing Links & Conditional Display Added
 
 ---
 
@@ -588,27 +588,43 @@
 - ✅ **Opening Hours Enhancement**: Current day highlighting added to opening hours display
   - Current day of week shown in bold with tinted background for better UX
   - Uses Cyprus timezone (Europe/Athens) for accurate day detection
-- ✅ **Pricing System Enhancement**: Comprehensive pricing system with detailed plans
+- ✅ **Pricing System Enhancement**: Comprehensive pricing system with detailed plans and external links
   - Support for structured pricing plans with name, price, currency, validity, description, and classes
   - Concise display format for better user experience
   - Fixed React rendering error for pricing objects
   - Multiple gyms updated with detailed pricing information (e.g., The Yogi Turtle with 11 plans)
-- ✅ **Data Enrichment**: 50+ gyms updated with comprehensive data
-  - Opening hours updated for gyms across Limassol and Nicosia
-  - Specialties added/removed (e.g., Yoga & Pilates, Personal Training, CrossFit, Strength Training)
-  - Amenities added (Cardio Equipment, Group Classes, Sauna, Showers, Locker Room, Parking, Cafe, etc.)
-  - Email addresses added (e.g., info@ryltoday.com, polycarpou.m@hotmail.com, vkalopetridou@hotmail.com)
-  - Phone numbers added and formatted consistently
-  - Instagram and Facebook links added to multiple gyms
-  - Review counts updated and synchronized (e.g., Dainas Planet Fitness: 15, Target Boxing Club: 22, SavS Gym: 16, Raw Calisthenics Academy: 96)
-  - About section descriptions updated to reflect accurate information
+  - External pricing page links added to pricing sections (e.g., Muscle Factory 24 Hours, Maxx Fitness, Nicosia Gymnastic Center, University Of Nicosia - Ufit Fitness Centre)
+  - Links render as clickable hyperlinks in pricing notes section
+  - Conditional pricing section hiding implemented for specific gyms (e.g., Calisthenics Area Nicosia)
+- ✅ **Data Enrichment**: 100+ gyms updated with comprehensive data across Limassol and Nicosia
+  - Opening hours updated for 50+ gyms with accurate schedules (e.g., Momentum Fitness & Wellness, Regenesis Gym, Rise Fitness Club, Urban Boutique Gym, Destination Fitness, Ibody Fitness And Dance Studio, Komanetsi Fitness Center, Nicosia Gymnastic Center, Real Fit, Fitness Factory, Renzo Gracie Nicosia, 100% Boxing & Fitness Gym, Maxx Fitness, New Life Health Centre, Olympus Gym, Intense Fitness & Physio Centre, New Body Gym, Oxygen Gym, Eurogym, Figure8Gym, ProFit Center, and many more)
+  - Specialties added/removed for 30+ gyms (e.g., Yoga & Pilates, Personal Training, CrossFit, Strength Training, Martial Arts & MMA, Swimming & Aquatics, Dance & Group Fitness)
+  - Amenities added to 40+ gyms (Cardio Equipment, Group Classes, Sauna, Steam Room, Swimming Pool, Showers, Locker Room, Parking, Cafe, etc.)
+  - Email addresses added to 30+ gyms (e.g., info@ryltoday.com, polycarpou.m@hotmail.com, vkalopetridou@hotmail.com, momentumfitnesswellness@gmail.com, info@regenesisgym.com, info@destinationfitness.fitness, ibodyfitnessstudio@gmail.com, info@komanetsi.com, olympus@spidernet.com.cy, intense.fitnesscy@gmail.com, newbodygym@cytanet.com.cy, oxygengym@primehome.com, eurogymprofitegkomis@gmail.com, figurattefitness@gmail.com, and more)
+  - Phone numbers added and formatted consistently (e.g., +357 99 43 16 12, +357 22 780181)
+  - Instagram and Facebook links added to 20+ gyms
+  - Review counts updated and synchronized for 20+ gyms (e.g., Anaplasis Gym: 772, Kinetic Fitness Studio: 27, Kinetic Pilates Studio: 17, Ananda Yoga Studio: 44, Aurora Pilates Studio: 11, Target Boxing Club: 22, SavS Gym: 16, Raw Calisthenics Academy: 96, Dainas Planet Fitness: 15, For Me Clinical Physio Pilates Studio: 45, Gabriel Fitness & Boxing Gym: 72, Hupex Fitness: 14, Karma Studio: 30, Old Town Fitness Studio: 69, Fitness Factory: 34, Komanetsi Fitness Center: 179, New Life Health Centre: 168, Olympus Gym: 25, Calisthenics Area: 11, Maxx Fitness: 65, Real Fit: 48, ProFit Center: 59, and more)
+  - About section descriptions updated for 20+ gyms with detailed, SEO-optimized content
+  - Pricing information added to multiple gyms (e.g., Regenesis Gym, Destination Fitness, Nicosia Gymnastic Center, Real Fit, Maxx Fitness, 100% Boxing & Fitness Gym, ProFit Center)
+- ✅ **Gym Deletions**: Removed 5 gyms that are no longer operational or outside coverage area
+  - Güralpfit Nicosia
+  - Hellenic Bank Masters Tennis Academy Nicosia
+  - Supernatural Gym Nicosia
+  - Bianco Pool&Bar Lounge Nicosia
+  - Gymac Boutique Fitness & Personal Training Nicosia
+- ✅ **Gym Name Updates**: Updated gym names for accuracy
+  - 100 Boxing & Fitness Gym → 100% Boxing & Fitness Gym Nicosia
+  - New Life Health Centre - Nicosia Gym → New Life Health Centre Nicosia
 - ✅ **Specialty System Fixes**: Resolved critical specialty mapping issues
   - Fixed CrossFit count discrepancy (case-insensitive mapping for "Crossfit" → "CrossFit")
   - Fixed Swimming & Aquatics page empty results (slug conversion handles "&" character correctly)
   - Enhanced specialty mapping utility for better data consistency
-- ✅ **Slug Corrections**: Fixed redundant city names in slugs
+- ✅ **Slug Corrections & SEO**: Fixed redundant city names in slugs with permanent redirects
   - Lumpinee Gym slug updated (removed redundant "limassol" at end)
-  - 308 permanent redirect implemented for old slug to maintain SEO
+  - New Life Health Centre slug updated (removed "gym-nicosia" then "gym" at end)
+  - University Of Nicosia - Ufit Fitness Centre slug updated (removed redundant "nicosia" at end)
+  - 308 permanent redirects implemented for all old slugs to maintain SEO
+  - All internal links automatically use new slugs from database
 - ✅ **Specialty System Consolidation**: Refactored from 11 to 9 consolidated specialties
   - **New Structure**: Fitness/Gym, CrossFit, Personal Training, Martial Arts & MMA, Boxing, Yoga & Pilates, Dance & Group Fitness, Strength Training, Swimming & Aquatics
   - **Boxing Added**: "Boxing" now a separate specialty (not merged with Martial Arts)
@@ -644,6 +660,17 @@
   - Opening hours, emails, social media links, pricing information
   - Specialty assignments (e.g., Fitness Lab: Crossfit, Fitness, Gym, Personal Trainer)
   - Comprehensive pricing information for various gyms
+
+**Recent Session Summary (January 2025):**
+- ✅ **Massive Data Enrichment**: Updated 100+ gyms across Limassol and Nicosia with comprehensive information
+  - Opening hours, emails, phone numbers, social media links
+  - Specialties and amenities added/updated
+  - Review counts synchronized
+  - About sections updated with detailed descriptions
+- ✅ **Pricing System**: Added pricing information to 10+ gyms with concise plans and external links
+- ✅ **Slug Management**: Cleaned up redundant slugs and implemented SEO-friendly redirects
+- ✅ **Gym Maintenance**: Removed 5 inactive gyms and updated gym names for accuracy
+- ✅ **UI Enhancements**: Added conditional pricing section hiding for specific use cases
 
 **Next Immediate Action:** Implement owner claim system, optimize internal linking, expand gym listings further (see STRATEGIC_ACTION_PLAN.md)
 
