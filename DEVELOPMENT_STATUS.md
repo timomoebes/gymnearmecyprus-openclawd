@@ -79,6 +79,11 @@
 - [x] Open Graph and Twitter Card metadata
 - [x] Specialty emojis added to all specialty pages
 
+### Phase 6: UX & Bugfixes ✅
+- [x] **Mobile Navigation Fix:** Resolved a bug where mobile menu links under "Browse Cities" (including "View All Cities" and city entries) did not respond to taps by:
+  - Switching mobile city entries to use Next.js `Link` components for navigation.
+  - Restricting the desktop-only click-outside handler so it no longer intercepts taps on small screens.
+
 ---
 
 ## 📊 Current Status
@@ -674,4 +679,3 @@
 - ✅ **UI Enhancements**: Added conditional pricing section hiding for specific use cases
 
 **Next Immediate Action:** Implement owner claim system, optimize internal linking, expand gym listings further (see STRATEGIC_ACTION_PLAN.md)
-

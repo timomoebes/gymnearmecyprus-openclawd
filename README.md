@@ -205,6 +205,9 @@ The audit tool checks for:
 - [x] **Keyword Strategy** - Based on SEMrush data (30 keywords, ~20,700+ monthly searches)
 - [x] **Content Expansion** - Added 3 new swimming pool gyms (targeting high-volume keywords)
 
+### Phase 6: UX & Bugfixes (Ongoing)
+- [x] **Mobile Navigation Reliability** - Fixed mobile menu "Browse Cities" links (including "View All Cities" and individual city links) so taps correctly trigger navigation instead of being intercepted by the desktop click-outside handler.
+
 ### Navigation & UI Enhancements ✅
 - [x] **Modern Navigation Bar**
   - Dark theme with logo
@@ -402,6 +405,7 @@ The project uses a custom dark/neon theme with:
 - Navigation and UI polish
 - Specialty emojis and visual enhancements
 - Swimming pool gyms added (targeting high-volume keywords)
+- **Mobile navigation bugfix:** Resolved an issue where mobile menu "Browse Cities" links were not clickable by restricting the desktop click-outside handler from running on small screens and switching the mobile city entries to use `Link`-based navigation.
 
 ### Current Status
 - **Phase 5 Complete**: SEO optimization and content enhancement
