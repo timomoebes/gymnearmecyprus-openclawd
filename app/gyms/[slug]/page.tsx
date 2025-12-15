@@ -508,6 +508,12 @@ export default async function GymPage({ params }: GymPageProps) {
                     {Array.isArray((gym.pricing as any)?.notes) && (gym.pricing as any).notes.length > 0 && (
                       <div className="pt-2 space-y-1 text-sm text-text-muted">
                         {(gym.pricing as any).notes.map((note: string, idx: number) => {
+                          // Skip specific URL for Muscle Factory 24 Hours Limassol,
+                          // since we show a nicer dedicated link below
+                          if (note === 'https://www.musclefactory24hrs.com/plans') {
+                            return null;
+                          }
+
                           const isLink = note.startsWith('http');
                           return (
                             <div key={idx}>
@@ -526,6 +532,33 @@ export default async function GymPage({ params }: GymPageProps) {
                             </div>
                           );
                         })}
+                      </div>
+                    )}
+
+                    {/* Gym-specific external pricing page links */}
+                    {(gym.slug === 'destination-fitness' || gym.slug === 'destination-fitness-nicosia') && (
+                      <div className="pt-4 text-sm">
+                        <a
+                          href="https://www.destinationfitnesscy.com/subscriptions"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary-blue hover:underline font-medium"
+                        >
+                          View full membership options on Destination Fitness →
+                        </a>
+                      </div>
+                    )}
+
+                    {gym.slug === 'muscle-factory-24-hours-limassol' && (
+                      <div className="pt-2 text-sm">
+                        <a
+                          href="https://www.musclefactory24hrs.com/plans"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary-blue hover:underline font-medium"
+                        >
+                          View full membership options on Muscle Factory 24 Hours→
+                        </a>
                       </div>
                     )}
                   </div>

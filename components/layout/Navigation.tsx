@@ -14,6 +14,12 @@ export const Navigation: React.FC = () => {
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      // Only apply "click outside" behavior on desktop.
+      // On mobile, this was closing the dropdown before links could navigate.
+      if (typeof window !== 'undefined' && window.innerWidth < 768) {
+        return;
+      }
+
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsCitiesDropdownOpen(false);
       }
@@ -157,13 +163,13 @@ export const Navigation: React.FC = () => {
       {isOpen && (
         <div className="md:hidden border-t border-gray-700 bg-[#1a1a2e]">
           <div className="px-4 pt-4 pb-6 space-y-3">
-            <Link
-              href="/"
-              className="block py-2 text-gray-200 hover:text-white transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Home
-            </Link>
+              <Link
+                href="/"
+                className="block py-2 text-gray-200 hover:text-white transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                Home
+              </Link>
             
             {/* Mobile Browse Cities Dropdown */}
             <div>
@@ -179,7 +185,7 @@ export const Navigation: React.FC = () => {
                 <div className="pl-4 mt-2 space-y-1 border-l-2 border-gray-700">
                   <Link
                     href="/cities"
-                    className="block py-2 text-sm text-blue-400 hover:text-blue-300 transition-colors"
+                    className="block w-full text-left py-2 text-sm text-blue-400 hover:text-blue-300 transition-colors"
                     onClick={() => {
                       setIsOpen(false);
                       setIsCitiesDropdownOpen(false);
@@ -191,7 +197,7 @@ export const Navigation: React.FC = () => {
                     <Link
                       key={city.id}
                       href={`/cities/${city.slug}`}
-                      className="block py-2 text-sm text-gray-300 hover:text-white transition-colors"
+                      className="block w-full text-left py-2 text-sm text-gray-300 hover:text-white transition-colors"
                       onClick={() => {
                         setIsOpen(false);
                         setIsCitiesDropdownOpen(false);

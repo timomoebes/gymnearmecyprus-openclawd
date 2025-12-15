@@ -594,7 +594,8 @@
   - Fixed React rendering error for pricing objects
   - Multiple gyms updated with detailed pricing information (e.g., The Yogi Turtle with 11 plans)
   - External pricing page links added to pricing sections (e.g., Muscle Factory 24 Hours, Maxx Fitness, Nicosia Gymnastic Center, University Of Nicosia - Ufit Fitness Centre)
-  - Links render as clickable hyperlinks in pricing notes section
+  - Cleaned up raw pricing URLs in notes (e.g., Muscle Factory 24 Hours) and replaced them with dedicated CTA links inside the pricing section
+  - Destination Fitness and Muscle Factory 24 Hours now use clear, human‑readable membership CTA links pointing to their external subscription pages
   - Conditional pricing section hiding implemented for specific gyms (e.g., Calisthenics Area Nicosia)
 - ✅ **Data Enrichment**: 100+ gyms updated with comprehensive data across Limassol and Nicosia
   - Opening hours updated for 50+ gyms with accurate schedules (e.g., Momentum Fitness & Wellness, Regenesis Gym, Rise Fitness Club, Urban Boutique Gym, Destination Fitness, Ibody Fitness And Dance Studio, Komanetsi Fitness Center, Nicosia Gymnastic Center, Real Fit, Fitness Factory, Renzo Gracie Nicosia, 100% Boxing & Fitness Gym, Maxx Fitness, New Life Health Centre, Olympus Gym, Intense Fitness & Physio Centre, New Body Gym, Oxygen Gym, Eurogym, Figure8Gym, ProFit Center, and many more)

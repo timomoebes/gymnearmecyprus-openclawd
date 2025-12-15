@@ -333,7 +333,8 @@ The project uses a custom dark/neon theme with:
   - Improved specialty name mapping utility for better data consistency
 - **Pricing System Enhancements**: ✅ Comprehensive pricing display with external links
   - Added pricing links to pricing sections (e.g., Muscle Factory 24 Hours, Maxx Fitness, Nicosia Gymnastic Center, University Of Nicosia - Ufit Fitness Centre)
-  - Links render as clickable hyperlinks in pricing notes section
+  - Cleaned up raw pricing URLs in notes (e.g., Muscle Factory 24 Hours) in favor of human‑readable CTA links inside the pricing card
+  - Gym‑specific CTA links now used for external pricing pages (e.g., Destination Fitness, Muscle Factory 24 Hours)
   - Disabled pricing section for specific gyms (e.g., Calisthenics Area Nicosia) via conditional rendering
 - **Slug Management & SEO**: ✅ Improved slug structure and redirect handling
   - Removed redundant city names from slugs (e.g., "lumpinee-gym-...-limassol-cyprus-limassol" → "lumpinee-gym-...-limassol-cyprus")

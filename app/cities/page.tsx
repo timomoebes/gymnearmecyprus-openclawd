@@ -35,6 +35,19 @@ export default async function CitiesPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {cities.map((city) => {
             const gymCount = cityGymCounts[city.id] || 0;
+
+            // Match homepage: assign a distinctive emoji per city
+            const cityEmojis: Record<string, string> = {
+              limassol: '🌊', // Coastal city
+              nicosia: '🏛️', // Capital city
+              paphos: '🏖️', // Beach / historic
+              larnaca: '✈️', // Airport / travel hub
+              'ayia-napa': '🎉', // Party / nightlife
+              protaras: '🏝️', // Beach resort
+            };
+
+            const emoji = cityEmojis[city.id] || '🏋️';
+
             return (
               <Link
                 key={city.id}
@@ -45,7 +58,9 @@ export default async function CitiesPage() {
                   <h2 className="text-2xl font-bold text-text-white group-hover:text-primary-blue transition-colors">
                     {city.name}
                   </h2>
-                  <MapPin className="w-6 h-6 text-primary-blue" />
+                  <span className="text-3xl" aria-hidden="true">
+                    {emoji}
+                  </span>
                 </div>
                 <p className="text-text-muted mb-4 line-clamp-3">
                   {city.description}
