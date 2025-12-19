@@ -7,6 +7,7 @@ import { Badge } from '@/components/shared/Badge';
 import { getCityById } from '@/lib/data';
 import { isGymOpenNow } from '@/lib/utils/opening-hours';
 import { formatGymNameWithCity } from '@/lib/utils/gym-name';
+import { sortSpecialties } from '@/lib/utils/sort-specialties-amenities';
 
 interface GymCardProps {
   gym: Gym;
@@ -62,7 +63,7 @@ export const GymCard: React.FC<GymCardProps> = ({ gym, showCity = true }) => {
       </p>
 
       <div className="flex flex-wrap gap-2 mb-4">
-        {gym.specialties.slice(0, 3).map((specialty) => (
+        {sortSpecialties(gym.specialties).slice(0, 3).map((specialty) => (
           <Badge key={specialty} variant="specialty">
             {specialty}
           </Badge>

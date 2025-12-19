@@ -10,6 +10,7 @@ import { Rating } from '@/components/shared/Rating';
 import { Badge } from '@/components/shared/Badge';
 import { defaultIcon, featuredIcon } from '@/lib/utils/map-icons';
 import { formatGymNameWithCity } from '@/lib/utils/gym-name';
+import { sortSpecialties } from '@/lib/utils/sort-specialties-amenities';
 
 interface CityMapProps {
   cityId: string;
@@ -58,7 +59,7 @@ export const CityMap: React.FC<CityMapProps> = ({ cityId, gyms }) => {
                 </div>
                 <Rating rating={gym.rating} reviewCount={gym.reviewCount} size="sm" />
                 <div className="mt-2 text-xs text-gray-600">
-                  {gym.specialties.slice(0, 2).join(', ')}
+                  {sortSpecialties(gym.specialties).slice(0, 2).join(', ')}
                 </div>
                 <Link
                   href={`/gyms/${gym.slug}`}

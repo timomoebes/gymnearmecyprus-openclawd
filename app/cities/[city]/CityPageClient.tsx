@@ -6,6 +6,7 @@ import { City, Gym, GymSortOption } from '@/lib/types';
 import { GymCard } from '@/components/gym/GymCard';
 import { FilterSort } from '@/components/shared/FilterSort';
 import { sortGyms } from '@/lib/utils/search';
+import { sortSpecialties } from '@/lib/utils/sort-specialties-amenities';
 
 interface CityPageClientProps {
   city: City;
@@ -17,13 +18,13 @@ export const CityPageClient: React.FC<CityPageClientProps> = ({ city, initialGym
   const [featuredOnly, setFeaturedOnly] = useState(false);
   const [specialtyFilter, setSpecialtyFilter] = useState('');
 
-  // Get all unique specialties from gyms
+  // Get all unique specialties from gyms, sorted by predefined order
   const allSpecialties = useMemo(() => {
     const specialties = new Set<string>();
     initialGyms.forEach(gym => {
       gym.specialties.forEach(s => specialties.add(s));
     });
-    return Array.from(specialties).sort();
+    return sortSpecialties(Array.from(specialties));
   }, [initialGyms]);
 
   // Filter and sort gyms

@@ -139,6 +139,10 @@ The audit tool checks for:
   - Exact matches prioritized over partial matches
   - Redirects to gym page for gym matches, city page for city matches
 - [x] **Filtering & Sorting** - Filter by rating, specialty, amenities; sort by rating, name, featured
+- [x] **Specialty & Amenity Display Ordering** - Consistent, predefined ordering for specialties and amenities across all gym listings
+  - Specialties displayed in priority order (Fitness/Gym → Yoga & Pilates → Boxing → etc.)
+  - Amenities displayed in priority order (Cafe → Group Classes → Showers → etc.)
+  - Applied automatically to all 199+ gyms in directory
 - [x] **Opening Hours System** - Comprehensive opening hours display and management
   - All gyms have all 7 days (Monday-Sunday) in opening hours
   - Standardized format: HH:MM-HH:MM (24-hour format, always 2 digits)
@@ -318,18 +322,19 @@ The project uses a custom dark/neon theme with:
   - Prevents duplicate city names in H1 headings and SEO titles
   - Applied across all components (gym cards, maps, listings)
 - **Data Enrichment**: ✅ Ongoing data quality improvements
-  - 100+ gyms updated with comprehensive data across Limassol and Nicosia
+  - 100+ gyms updated with comprehensive data across Limassol, Nicosia, and Larnaca
   - Opening hours updated for 50+ gyms with accurate schedules
   - Specialty assignments updated (add/remove specialties for multiple gyms)
   - Amenities added to multiple gyms (Cardio Equipment, Group Classes, Sauna, Steam Room, Swimming Pool, Showers, Locker Room, Parking, Cafe, etc.)
   - Email addresses added to 30+ gyms
   - Phone numbers added and formatted consistently
   - Social media links (Instagram, Facebook) integrated for 20+ gyms
-  - Review counts updated and synchronized with about sections (e.g., Anaplasis Gym: 772, Kinetic Fitness Studio: 27, Kinetic Pilates Studio: 17, Ananda Yoga Studio: 44, Aurora Pilates Studio: 11, Target Boxing Club: 22, SavS Gym: 16, Raw Calisthenics Academy: 96, Dainas Planet Fitness: 15, For Me Clinical Physio Pilates Studio: 45, Gabriel Fitness & Boxing Gym: 72, Hupex Fitness: 14, Karma Studio: 30, Old Town Fitness Studio: 69, Fitness Factory: 34, Komanetsi Fitness Center: 179, New Life Health Centre: 168, Olympus Gym: 25, Calisthenics Area: 11, Maxx Fitness: 65, Real Fit: 48, ProFit Center: 59, and more)
-  - Pricing information added to multiple gyms with concise plans and external links
+  - Review counts updated and synchronized with about sections (e.g., Anaplasis Gym: 772, Kinetic Fitness Studio: 27, Kinetic Pilates Studio: 17, Ananda Yoga Studio: 44, Aurora Pilates Studio: 11, Target Boxing Club: 22, SavS Gym: 16, Raw Calisthenics Academy: 96, Dainas Planet Fitness: 15, For Me Clinical Physio Pilates Studio: 45, Gabriel Fitness & Boxing Gym: 72, Hupex Fitness: 14, Karma Studio: 30, Old Town Fitness Studio: 69, Fitness Factory: 34, Komanetsi Fitness Center: 179, New Life Health Centre: 168, Olympus Gym: 25, Calisthenics Area: 11, Maxx Fitness: 65, Real Fit: 48, ProFit Center: 59, Bareknuckle Crossfit: 37, Cyprus Top Team CTT: 56, and more)
+  - Pricing information added to multiple gyms with concise plans and external links (e.g., Combat Fitness, Bareknuckle Crossfit)
   - About section descriptions updated for 20+ gyms with detailed, SEO-optimized content
   - Slug corrections applied (removed redundant city names from slugs with 308 redirects)
   - Gym deletions: Removed 5 gyms that are no longer operational or outside coverage area
+  - **Recent Larnaca Updates**: 8 gyms updated with opening hours, social media links, amenities, specialties, pricing, and review counts
 - **Specialty System Fixes**: ✅ Resolved specialty mapping and display issues
   - Fixed CrossFit count discrepancy (case-insensitive mapping)
   - Fixed Swimming & Aquatics page empty results (slug conversion with special characters)
@@ -344,6 +349,13 @@ The project uses a custom dark/neon theme with:
   - Removed redundant words from slugs (e.g., "new-life-health-centre-nicosia-gym-nicosia" → "new-life-health-centre-nicosia")
   - Implemented 308 permanent redirects for all old slugs to maintain SEO
   - All internal links automatically use new slugs from database
+  - Custom breadcrumb display logic for specific gyms (e.g., Cyprus Top Team CTT shows without city name in breadcrumbs)
+- **Specialty & Amenity Sorting**: ✅ Comprehensive sorting system implemented for consistent display
+  - Created utility functions (`lib/utils/sort-specialties-amenities.ts`) for predefined ordering
+  - Specialties sorted: Fitness/Gym → Yoga & Pilates → Boxing → Martial Arts & MMA → Personal Training → CrossFit → Dance & Group Fitness → Strength Training → Swimming & Aquatics
+  - Amenities sorted: Cafe → Group Classes → Showers → Cardio Equipment → Free Water → Hair Dryers → Locker Room → Sauna → Toilets → WiFi → Parking → Steam Room → Swimming Pool → Kids Friendly → Air Condition
+  - Applied to all display locations: gym detail pages, gym cards, city map popups, city page filters
+  - Automatically applies to all 199+ gyms in directory
 
 #### Frontend Data Access
 - **Data Layer**: Unified data access layer with Supabase API integration

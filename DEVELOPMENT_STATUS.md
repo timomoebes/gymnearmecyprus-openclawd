@@ -678,4 +678,25 @@
 - ✅ **Gym Maintenance**: Removed 5 inactive gyms and updated gym names for accuracy
 - ✅ **UI Enhancements**: Added conditional pricing section hiding for specific use cases
 
+**Recent Session Summary (January 2025 - Today):**
+- ✅ **Specialty & Amenity Sorting System**: Implemented comprehensive sorting functionality for all gym listings
+  - Created utility functions (`lib/utils/sort-specialties-amenities.ts`) to sort specialties and amenities in predefined order
+  - **Specialty Order**: Fitness/Gym → Yoga & Pilates → Boxing → Martial Arts & MMA → Personal Training → CrossFit → Dance & Group Fitness → Strength Training → Swimming & Aquatics
+  - **Amenity Order**: Cafe → Group Classes → Showers → Cardio Equipment → Free Water → Hair Dryers → Locker Room → Sauna → Toilets → WiFi → Parking → Steam Room → Swimming Pool → Kids Friendly → Air Condition
+  - Applied sorting to all display locations: gym detail pages, gym cards, city map popups, and city page filter dropdowns
+  - Automatically applies to all 199+ gyms in the directory
+  - Items not in predefined lists appear at the end
+- ✅ **Larnaca Gym Updates**: Updated 8 gyms in Larnaca with comprehensive data
+  - **A Studio Pilates & Fitness Larnaca**: Opening hours, Instagram link, removed Fitness/Gym specialty, added Group Classes/Showers/Parking amenities
+  - **Athletic Fitness Center**: Opening hours, Facebook/Instagram links, moved Personal Training from amenities to specialties, added Cardio Equipment amenity
+  - **Bareknuckle Crossfit Larnaca**: Review count (37), opening hours, CrossFit specialty, Facebook/Instagram links, email, pricing section with "2 Sessions Per Week €55/month" and CTA link, updated about section
+  - **Boxing Muscle Personal Boxing & Fitness Training Larnaca**: Opening hours (24/7)
+  - **C. Larnaca Red Box**: Name change (added period), opening hours, Facebook/Instagram links, email, Cardio Equipment amenity, CrossFit specialty
+  - **Cyprus Top Team CTT Larnaca**: Name change, slug update (cyprus-top-team-ctt-larnaca), opening hours, Facebook/Instagram links, review count (56), removed Boxing specialty, breadcrumb display fix (shows "Cyprus Top Team CTT" without "Larnaca")
+  - **Combat Fitness Limassol**: Pricing section updated with "Muay Thai €70 per month" and CTA link to pricing page
+- ✅ **Slug & SEO Improvements**: Enhanced slug management and breadcrumb display
+  - Cyprus Top Team CTT Larnaca: Slug changed from "cyprus-top-team-cttmma-kickboxing-muaythaibjj-fitness-gym-larnaca" to "cyprus-top-team-ctt-larnaca"
+  - Added 308 permanent redirect for old slug
+  - Custom breadcrumb display logic to show "Cyprus Top Team CTT" instead of full name in breadcrumbs
+
 **Next Immediate Action:** Implement owner claim system, optimize internal linking, expand gym listings further (see STRATEGIC_ACTION_PLAN.md)

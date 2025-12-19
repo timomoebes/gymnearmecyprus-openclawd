@@ -12,6 +12,7 @@ import { GymMap } from '@/components/gym/GymMapWrapper';
 import { generateLocalBusinessSchema, generateBreadcrumbSchema } from '@/lib/utils/schema';
 import { isGymOpenNow } from '@/lib/utils/opening-hours';
 import { shouldAppendCityName, formatGymNameWithCity } from '@/lib/utils/gym-name';
+import { sortSpecialties, sortAmenities } from '@/lib/utils/sort-specialties-amenities';
 
 interface GymPageProps {
   params: {
@@ -109,6 +110,46 @@ export default async function GymPage({ params }: GymPageProps) {
   if (decodedSlug === 'μολων-λαβε-gym-nicosia') {
     permanentRedirect('/gyms/molon-labe-gym-nicosia');
   }
+  
+  // Handle redirect for Paphos Professional Boxing Gym old slug
+  if (decodedSlug === 'paphos-professional-boxing-gym-paphos') {
+    permanentRedirect('/gyms/paphos-professional-boxing-gym');
+  }
+  
+  // Handle redirect for Paphos Thai Boxing & MMA Fight Club | Old Style Muay Thai old slug
+  if (decodedSlug === 'paphos-thai-boxing-mma-fight-club-old-style-muay-thai-paphos') {
+    permanentRedirect('/gyms/paphos-thai-boxing-mma-fight-club-old-style-muay-thai');
+  }
+  
+  // Handle redirect for Personal Trainer - Paphos Kissonerga & Peyia old slug
+  if (decodedSlug === 'personal-trainer-paphos-kissonerga-peyia-paphos') {
+    permanentRedirect('/gyms/personal-trainer-paphos-kissonerga-peyia');
+  }
+
+  // Handle redirect for Fiit Paphos Training Room old slug
+  if (decodedSlug === 'fiit-paphos-training-room-paphos') {
+    permanentRedirect('/gyms/fiit-paphos-training-room');
+  }
+
+  // Handle redirect for Star Fitness Gym Paphos Cyprus old slug
+  if (decodedSlug === 'star-fitness-gym-paphos-cyprus-paphos') {
+    permanentRedirect('/gyms/star-fitness-gym-paphos-cyprus');
+  }
+
+  // Handle redirect for Aesthetics Fitness Club Paphos old slug
+  if (decodedSlug === 'aesthetics-fitness-club-paphos') {
+    permanentRedirect('/gyms/aesthetics-fitness-club-arc-paphos');
+  }
+
+  // Handle redirect for Soulution Pilates & more Paphos old slug
+  if (decodedSlug === 'soulutionpilatesmore-paphos') {
+    permanentRedirect('/gyms/soulution-pilates-more-paphos');
+  }
+
+  // Handle redirect for Cyprus Top Team CTT Larnaca old slug
+  if (decodedSlug === 'cyprus-top-team-cttmma-kickboxing-muaythaibjj-fitness-gym-larnaca') {
+    permanentRedirect('/gyms/cyprus-top-team-ctt-larnaca');
+  }
 
   const gym = await getGymBySlug(decodedSlug);
   
@@ -132,7 +173,7 @@ export default async function GymPage({ params }: GymPageProps) {
     { name: 'Home', url: 'https://gymnearme.cy' },
     { name: 'Cities', url: 'https://gymnearme.cy/cities' },
     ...(city ? [{ name: city.name, url: `https://gymnearme.cy/cities/${city.slug}` }] : []),
-    { name: gym.name, url: `https://gymnearme.cy/gyms/${gym.slug}` },
+    { name: gym.slug === 'cyprus-top-team-ctt-larnaca' ? 'Cyprus Top Team CTT' : gym.name, url: `https://gymnearme.cy/gyms/${gym.slug}` },
   ]);
 
   // Always show all 7 days - use "Closed" if no hours specified
@@ -203,7 +244,7 @@ export default async function GymPage({ params }: GymPageProps) {
           items={[
             { label: 'Cities', href: '/cities' },
             ...(city ? [{ label: city.name, href: `/cities/${city.slug}` }] : []),
-            { label: gym.name, href: `/gyms/${gym.slug}` },
+            { label: gym.slug === 'cyprus-top-team-ctt-larnaca' ? 'Cyprus Top Team CTT' : gym.name, href: `/gyms/${gym.slug}` },
           ]}
         />
 
@@ -248,16 +289,16 @@ export default async function GymPage({ params }: GymPageProps) {
             {facebookUrl && (
               <a href={facebookUrl} target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="sm">
-                  <Facebook className="w-4 h-4 mr-2" />
-                  Facebook
+                      <Facebook className="w-4 h-4 mr-2" />
+                      Facebook
                 </Button>
               </a>
             )}
             {instagramUrl && (
               <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="sm">
-                  <Instagram className="w-4 h-4 mr-2" />
-                  Instagram
+                      <Instagram className="w-4 h-4 mr-2" />
+                      Instagram
                 </Button>
               </a>
             )}
@@ -335,7 +376,7 @@ export default async function GymPage({ params }: GymPageProps) {
             <section className="bg-surface-card rounded-card p-6">
               <h2 className="text-2xl font-bold text-text-white mb-4">Specialties</h2>
               <div className="flex flex-wrap gap-2 mb-6">
-                {gym.specialties.map((specialty) => (
+                {sortSpecialties(gym.specialties).map((specialty) => (
                   <Badge key={specialty} variant="specialty">
                     {specialty}
                   </Badge>
@@ -343,7 +384,7 @@ export default async function GymPage({ params }: GymPageProps) {
               </div>
               <h2 className="text-2xl font-bold text-text-white mb-4">Amenities</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                {gym.amenities.map((amenity) => (
+                {sortAmenities(gym.amenities).map((amenity) => (
                   <div
                     key={amenity}
                     className="flex items-center text-text-light text-sm"
@@ -356,47 +397,47 @@ export default async function GymPage({ params }: GymPageProps) {
             </section>
 
             {/* Opening Hours - Always show, display "Contact for opening hour details" if all days are Closed */}
-            <section className="bg-surface-card rounded-card p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-2xl font-bold text-text-white flex items-center gap-2">
-                  <Clock className="w-6 h-6" />
-                  Opening Hours
-                </h2>
+              <section className="bg-surface-card rounded-card p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-2xl font-bold text-text-white flex items-center gap-2">
+                    <Clock className="w-6 h-6" />
+                    Opening Hours
+                  </h2>
                 {/* Open/Closed Status Badge - Only show if not "Contact for opening hour details" and not all days closed */}
                 {!allDaysClosed && !isContactForDetails && (() => {
-                  const isOpen = isGymOpenNow(gym.openingHours);
-                  return (
-                    <Badge 
-                      variant={isOpen ? "rating" : "specialty"}
-                      className={`px-4 py-2 ${
-                        isOpen 
-                          ? 'bg-green-500/20 text-green-400 border-green-500/50' 
-                          : 'bg-red-500/20 text-red-400 border-red-500/50'
-                      }`}
-                    >
-                      {isOpen ? '🟢 Open Now' : '🔴 Closed'}
-                    </Badge>
-                  );
-                })()}
-              </div>
+                    const isOpen = isGymOpenNow(gym.openingHours);
+                    return (
+                      <Badge 
+                        variant={isOpen ? "rating" : "specialty"}
+                        className={`px-4 py-2 ${
+                          isOpen 
+                            ? 'bg-green-500/20 text-green-400 border-green-500/50' 
+                            : 'bg-red-500/20 text-red-400 border-red-500/50'
+                        }`}
+                      >
+                        {isOpen ? '🟢 Open Now' : '🔴 Closed'}
+                      </Badge>
+                    );
+                  })()}
+                </div>
               {allDaysClosed ? (
                 <p className="text-text-muted">Contact for opening hours details</p>
               ) : (
                 <>
-                  <div className="space-y-3">
-                    {openingHours.map(({ day, hours }) => {
+                <div className="space-y-3">
+                  {openingHours.map(({ day, hours }) => {
                       const isToday = day.toLowerCase() === currentWeekday.toLowerCase();
-                      // Check if hours contain newlines (complex format with sessions)
-                      const isComplexFormat = hours && hours.includes('\n');
-                      
-                      return (
-                        <div
-                          key={day}
+                    // Check if hours contain newlines (complex format with sessions)
+                    const isComplexFormat = hours && hours.includes('\n');
+                    
+                    return (
+                      <div
+                        key={day}
                           className={`py-2 border-b border-surface-lighter last:border-0 px-3 -mx-3 rounded-md ${
                             isToday ? 'bg-primary-blue/10 border-primary-blue/30' : ''
                           }`}
-                        >
-                          <div className="flex items-start gap-4">
+                      >
+                        <div className="flex items-start gap-4">
                             <span
                               className={`text-text-light font-medium min-w-[100px] ${
                                 isToday ? 'text-text-white font-semibold' : ''
@@ -404,62 +445,62 @@ export default async function GymPage({ params }: GymPageProps) {
                             >
                               {day}
                             </span>
-                            <div className="flex-1">
-                              {isComplexFormat ? (
-                                // Complex format: render with line breaks and formatting
-                                <div className="text-text-muted text-sm whitespace-pre-line">
-                                  {hours.split('\n').map((line, idx) => {
-                                    // Check if line is a section header (ends with colon)
-                                    if (line.endsWith(':')) {
-                                      return (
-                                        <div key={idx} className="font-semibold text-text-light mt-2 first:mt-0">
-                                          {line}
-                                        </div>
-                                      );
-                                    }
-                                    // Check if line is a bullet point
-                                    if (line.trim().startsWith('•')) {
-                                      return (
-                                        <div key={idx} className="ml-4 text-text-muted">
-                                          {line}
-                                        </div>
-                                      );
-                                    }
-                                    // Regular line
+                          <div className="flex-1">
+                            {isComplexFormat ? (
+                              // Complex format: render with line breaks and formatting
+                              <div className="text-text-muted text-sm whitespace-pre-line">
+                                {hours.split('\n').map((line, idx) => {
+                                  // Check if line is a section header (ends with colon)
+                                  if (line.endsWith(':')) {
                                     return (
-                                      <div key={idx} className="text-text-muted">
+                                      <div key={idx} className="font-semibold text-text-light mt-2 first:mt-0">
                                         {line}
                                       </div>
                                     );
-                                  })}
-                                </div>
-                              ) : (
-                                // Simple format: single line - normalize "No sessions" to "Closed"
+                                  }
+                                  // Check if line is a bullet point
+                                  if (line.trim().startsWith('•')) {
+                                    return (
+                                      <div key={idx} className="ml-4 text-text-muted">
+                                        {line}
+                                      </div>
+                                    );
+                                  }
+                                  // Regular line
+                                  return (
+                                    <div key={idx} className="text-text-muted">
+                                      {line}
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            ) : (
+                              // Simple format: single line - normalize "No sessions" to "Closed"
                                 <span className={`text-text-muted ${isToday ? 'text-text-white font-semibold' : ''}`}>
-                                  {hours && hours.toLowerCase() !== 'no sessions' 
-                                    ? hours 
-                                    : 'Closed'}
-                                </span>
-                              )}
-                            </div>
+                                {hours && hours.toLowerCase() !== 'no sessions' 
+                                  ? hours 
+                                  : 'Closed'}
+                              </span>
+                            )}
                           </div>
                         </div>
-                      );
-                    })}
-                  </div>
+                      </div>
+                    );
+                  })}
+                </div>
                 </>
               )}
-            </section>
+              </section>
 
             {/* Pricing Section - Hidden for Calisthenics Area Nicosia */}
             {gym.slug !== 'calisthenics-area-nicosia' && (
-              <section className="bg-surface-card rounded-card p-6">
-                <h2 className="text-2xl font-bold text-text-white mb-4 flex items-center gap-2">
-                  <DollarSign className="w-6 h-6" />
-                  Pricing
-                </h2>
-                {gym.pricing && Object.keys(gym.pricing).length > 0 ? (
-                  <div className="space-y-3">
+            <section className="bg-surface-card rounded-card p-6">
+              <h2 className="text-2xl font-bold text-text-white mb-4 flex items-center gap-2">
+                <DollarSign className="w-6 h-6" />
+                Pricing
+              </h2>
+              {gym.pricing && Object.keys(gym.pricing).length > 0 ? (
+                <div className="space-y-3">
                     {/* Plans list */}
                     <div className="space-y-2">
                       {Array.isArray((gym.pricing as any)?.plans) ? (
@@ -491,11 +532,11 @@ export default async function GymPage({ params }: GymPageProps) {
                       ) : (
                         // Old format: flat object with key-value pairs
                         Object.entries(gym.pricing).map(([key, value]) => (
-                          <div
-                            key={key}
-                            className="flex items-center justify-between py-2 border-b border-surface-lighter last:border-0"
-                          >
-                            <span className="text-text-light font-medium">{key}</span>
+                    <div
+                      key={key}
+                      className="flex items-center justify-between py-2 border-b border-surface-lighter last:border-0"
+                    >
+                      <span className="text-text-light font-medium">{key}</span>
                             <span className="text-text-white font-semibold">
                               {typeof value === 'string' ? value : String(value)}
                             </span>
@@ -561,11 +602,50 @@ export default async function GymPage({ params }: GymPageProps) {
                         </a>
                       </div>
                     )}
-                  </div>
-                ) : (
-                  <p className="text-text-muted">Contact for pricing details</p>
-                )}
-              </section>
+
+                    {gym.slug === 'personal-trainer-paphos-kissonerga-peyia' && (
+                      <div className="pt-4 text-sm">
+                        <a
+                          href="https://www.paphos-training.com/packages-1"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary-blue hover:underline font-medium"
+                        >
+                          View full packages and pricing →
+                        </a>
+                    </div>
+                    )}
+
+                    {gym.slug === 'combat-fitness-limassol' && (
+                      <div className="pt-4 text-sm">
+                        <a
+                          href="https://combatandfitness.com/#pricing"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary-blue hover:underline font-medium"
+                        >
+                          View full membership options on Combat & Fitness →
+                        </a>
+                      </div>
+                    )}
+
+                    {gym.slug === 'bareknuckle-crossfit-larnaca' && (
+                      <div className="pt-4 text-sm">
+                        <a
+                          href="https://bareknucklecrossfit.com/pricing-memberships/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary-blue hover:underline font-medium"
+                        >
+                          View full membership options on Bareknuckle Crossfit →
+                        </a>
+                      </div>
+                    )}
+                </div>
+              ) : (
+                <p className="text-text-muted">Contact for pricing details</p>
+              )}
+            </section>
             )}
 
             {/* Top Reviews */}
@@ -663,28 +743,28 @@ export default async function GymPage({ params }: GymPageProps) {
                 )}
                 {facebookUrl && (
                   <div className="flex items-center gap-3">
-                    <Facebook className="w-5 h-5 text-primary-blue flex-shrink-0" />
-                    <a
+                        <Facebook className="w-5 h-5 text-primary-blue flex-shrink-0" />
+                        <a
                       href={facebookUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-text-light hover:text-primary-blue transition-colors"
-                    >
-                      Visit Facebook
-                    </a>
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-text-light hover:text-primary-blue transition-colors"
+                        >
+                          Visit Facebook
+                        </a>
                   </div>
                 )}
                 {instagramUrl && (
                   <div className="flex items-center gap-3">
-                    <Instagram className="w-5 h-5 text-primary-blue flex-shrink-0" />
-                    <a
+                        <Instagram className="w-5 h-5 text-primary-blue flex-shrink-0" />
+                        <a
                       href={instagramUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-text-light hover:text-primary-blue transition-colors"
-                    >
-                      Visit Instagram
-                    </a>
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-text-light hover:text-primary-blue transition-colors"
+                        >
+                          Visit Instagram
+                        </a>
                   </div>
                 )}
               </div>
