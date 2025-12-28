@@ -151,6 +151,16 @@ export default async function GymPage({ params }: GymPageProps) {
     permanentRedirect('/gyms/cyprus-top-team-ctt-larnaca');
   }
 
+  // Handle redirect for RACK GYM Larnaca old slug
+  if (decodedSlug === 'rack-gym-ltd-larnaca') {
+    permanentRedirect('/gyms/rack-gym-larnaca');
+  }
+
+  // Handle redirect for Functional Training + Yoga Boutique by The Big Gym Larnaca old slug
+  if (decodedSlug === 'the-big-gym-of-functional-training-and-yoga-larnaca') {
+    permanentRedirect('/gyms/functional-training-yoga-boutique-by-the-big-gym-larnaca');
+  }
+
   const gym = await getGymBySlug(decodedSlug);
   
   if (!gym) {
@@ -173,7 +183,7 @@ export default async function GymPage({ params }: GymPageProps) {
     { name: 'Home', url: 'https://gymnearme.cy' },
     { name: 'Cities', url: 'https://gymnearme.cy/cities' },
     ...(city ? [{ name: city.name, url: `https://gymnearme.cy/cities/${city.slug}` }] : []),
-    { name: gym.slug === 'cyprus-top-team-ctt-larnaca' ? 'Cyprus Top Team CTT' : gym.name, url: `https://gymnearme.cy/gyms/${gym.slug}` },
+    { name: gym.slug === 'cyprus-top-team-ctt-larnaca' ? 'Cyprus Top Team CTT' : gym.slug === 'foxteam-taekwondo-larnaca' ? 'FoxTeam Taekwondo' : gym.slug === 'rack-gym-larnaca' ? 'RACK GYM' : gym.slug === 'elit3-fitness-nutrition-larnaca' ? 'ELIT3 Fitness & Nutrition' : gym.slug === 'twp-train-with-passion-larnaca' ? 'TWP-Train With Passion' : gym.name, url: `https://gymnearme.cy/gyms/${gym.slug}` },
   ]);
 
   // Always show all 7 days - use "Closed" if no hours specified
@@ -244,7 +254,7 @@ export default async function GymPage({ params }: GymPageProps) {
           items={[
             { label: 'Cities', href: '/cities' },
             ...(city ? [{ label: city.name, href: `/cities/${city.slug}` }] : []),
-            { label: gym.slug === 'cyprus-top-team-ctt-larnaca' ? 'Cyprus Top Team CTT' : gym.name, href: `/gyms/${gym.slug}` },
+            { label: gym.slug === 'cyprus-top-team-ctt-larnaca' ? 'Cyprus Top Team CTT' : gym.slug === 'foxteam-taekwondo-larnaca' ? 'FoxTeam Taekwondo' : gym.slug === 'rack-gym-larnaca' ? 'RACK GYM' : gym.slug === 'elit3-fitness-nutrition-larnaca' ? 'ELIT3 Fitness & Nutrition' : gym.slug === 'twp-train-with-passion-larnaca' ? 'TWP-Train With Passion' : gym.name, href: `/gyms/${gym.slug}` },
           ]}
         />
 
@@ -492,8 +502,8 @@ export default async function GymPage({ params }: GymPageProps) {
               )}
               </section>
 
-            {/* Pricing Section - Hidden for Calisthenics Area Nicosia */}
-            {gym.slug !== 'calisthenics-area-nicosia' && (
+            {/* Pricing Section - Hidden for Calisthenics Area Nicosia, Outdoor Calisthenics Workout Spot, and Municipality Gym */}
+            {gym.slug !== 'calisthenics-area-nicosia' && gym.slug !== 'outdoor-calisthenics-workout-spot-larnaca' && gym.slug !== 'municipality-gym-paphos' && (
             <section className="bg-surface-card rounded-card p-6">
               <h2 className="text-2xl font-bold text-text-white mb-4 flex items-center gap-2">
                 <DollarSign className="w-6 h-6" />
@@ -638,6 +648,32 @@ export default async function GymPage({ params }: GymPageProps) {
                           className="text-primary-blue hover:underline font-medium"
                         >
                           View full membership options on Bareknuckle Crossfit →
+                        </a>
+                      </div>
+                    )}
+
+                    {gym.slug === 'vital-strength-training-larnaca' && (
+                      <div className="pt-4 text-sm">
+                        <a
+                          href="https://vitalstrength.fit/services"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary-blue hover:underline font-medium"
+                        >
+                          View full services and packages on Vital Strength Training →
+                        </a>
+                      </div>
+                    )}
+
+                    {gym.slug === 'ironsky-fitness-group-personal-training-in-larnaca' && (
+                      <div className="pt-4 text-sm">
+                        <a
+                          href="https://bio.site/ironsky.fitness"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary-blue hover:underline font-medium"
+                        >
+                          View full pricing and membership options on IRONSKY Fitness →
                         </a>
                       </div>
                     )}

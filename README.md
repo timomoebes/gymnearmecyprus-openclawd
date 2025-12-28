@@ -334,7 +334,8 @@ The project uses a custom dark/neon theme with:
   - About section descriptions updated for 20+ gyms with detailed, SEO-optimized content
   - Slug corrections applied (removed redundant city names from slugs with 308 redirects)
   - Gym deletions: Removed 5 gyms that are no longer operational or outside coverage area
-  - **Recent Larnaca Updates**: 8 gyms updated with opening hours, social media links, amenities, specialties, pricing, and review counts
+  - **Recent Larnaca Updates**: 16+ gyms updated with opening hours, social media links, amenities, specialties, pricing, and review counts
+    - **Today's Session**: Updated 8 additional Larnaca gyms (IRONSKY Fitness, Outdoor Calisthenics Workout Spot, Municipality Gym Paphos, 86Seven Fitness Boutique, Body Control Fitness Centre, Reflex Gym, The Big Gym Of Muay Thai And Fitness, TWP-Train With Passion) with comprehensive data including opening hours, social media, emails, postal codes, specialties, amenities, and about sections
 - **Specialty System Fixes**: ✅ Resolved specialty mapping and display issues
   - Fixed CrossFit count discrepancy (case-insensitive mapping)
   - Fixed Swimming & Aquatics page empty results (slug conversion with special characters)

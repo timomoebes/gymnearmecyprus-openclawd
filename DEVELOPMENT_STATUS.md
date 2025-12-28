@@ -699,4 +699,19 @@
   - Added 308 permanent redirect for old slug
   - Custom breadcrumb display logic to show "Cyprus Top Team CTT" instead of full name in breadcrumbs
 
+**Recent Session Summary (Today - January 2025):**
+- ✅ **Larnaca Gym Data Enrichment**: Updated 8 additional gyms in Larnaca with comprehensive information
+  - **IRONSKY Fitness | Group & Personal Training In Larnaca**: Updated about section with detailed description (est. 2019, coaches Constantinos and Phedias, MSc-qualified), name change to "IRONSKY Fitness | Group & Personal Training in Larnaca" (lowercase "in")
+  - **Outdoor Calisthenics Workout Spot Larnaca**: Added opening hours (24/7 - 00:00-23:59), updated about section (free outdoor calisthenics park, 24/7 gym, beach location), hid pricing section (free facility)
+  - **Municipality Gym Paphos**: Updated about section (free outdoor municipal gym, 24/7, sea view), hid pricing section (free facility)
+  - **86Seven Fitness Boutique Larnaca**: Added opening hours (Mon-Fri: 06:00–11:00, 14:00–21:00, Sat: 10:00–13:00, Sun: Closed), updated review count (28), added Facebook/Instagram links, email (Pagonis_minas@hotmail.com), postal code (6042), Cardio Equipment amenity
+  - **Body Control Fitness Centre Larnaca**: Added opening hours (Mon-Fri: 07:00–19:00, Sat-Sun: 10:00–13:00), added Instagram link, email (bodycontrollarnaca@gmail.com), Personal Training specialty, Group Classes and Cardio Equipment amenities
+  - **Reflex Gym Larnaca**: Added opening hours (Mon-Fri: 06:00–21:00, Sat: 08:00–13:00, Sun: Closed), added Facebook/Instagram links, email (reflexgym@cablenet.com.cy), removed Dance & Group Fitness specialty (added as amenity instead), added Personal Training specialty, removed CrossFit specialty, added Group Classes and Cardio Equipment amenities, postal code (6042), updated about section (37 years operation, Cyprus Sports Organization license, ISO 9001 certification)
+  - **The Big Gym Of Muay Thai And Fitness Larnaca**: Added opening hours (Mon-Fri: 07:00–20:00, Sat-Sun: Closed), added Facebook/Instagram links, email (thebiggym.lca@gmail.com), postal code (6025), removed Fitness/Gym specialty, added Martial Arts & MMA specialty, added Personal Training and Boxing specialties, updated review count (37), updated about section (boutique martial arts studio, head coach Josh, nutritionist)
+  - **TWP-Train With Passion Larnaca**: Name change to "TWP-Train With Passion Larnaca", breadcrumb display fix (shows "TWP-Train With Passion" without "Larnaca"), added opening hours (Mon-Fri: 07:00–11:30, 14:00–21:00, Sat: 09:00–12:00, Sun: Closed), added email (twpfitnesshall@gmail.com), added Instagram link, added Personal Training specialty, added Cardio Equipment and Group Classes amenities, updated review count (90), postal code (6057)
+- ✅ **Code Enhancements**: UI improvements for free outdoor gyms
+  - Hid pricing sections for free outdoor facilities (Outdoor Calisthenics Workout Spot Larnaca, Municipality Gym Paphos)
+  - Updated breadcrumb logic to remove redundant city names for TWP-Train With Passion Larnaca
+  - Consistent display logic across all gym listings
+
 **Next Immediate Action:** Implement owner claim system, optimize internal linking, expand gym listings further (see STRATEGIC_ACTION_PLAN.md)
