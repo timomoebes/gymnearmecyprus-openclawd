@@ -714,4 +714,15 @@
   - Updated breadcrumb logic to remove redundant city names for TWP-Train With Passion Larnaca
   - Consistent display logic across all gym listings
 
+**Recent Session Summary (Latest - January 2025):**
+- ✅ **Additional Larnaca Gym Data Enrichment**: Updated 5 more gyms in Larnaca with comprehensive information
+  - **Acceptus Gym Larnaca**: Added opening hours (Mon-Fri: 07:00–13:00, 14:00–21:00, Sat: 08:30–14:00, Sun: Closed), postal code (6013), Facebook/Instagram links, Yoga & Pilates specialty, Cardio Equipment amenity, reviews updated to 38
+  - **Aquagym Larnaca**: Added opening hours (Mon-Fri: 06:30–21:30, Sat: 08:00–15:00, Sun: Closed), postal code (6042), Facebook/Instagram links, email (slimline@cytanet.com.cy), Swimming & Aquatics specialty, Swimming Pool amenity
+  - **It's Time Fitness Center Larnaca**: Name change (fixed apostrophe: "ItS Time" → "It's Time"), breadcrumb display fix (shows "It's Time Fitness Center" without "Larnaca"), opening hours (Mon-Fri: 06:00–21:00, Sat: 08:00–13:00, Sun: Closed), email, postal code (6020), Instagram link, Personal Training specialty, Group Classes and Cardio Equipment amenities, reviews updated to 138
+  - **FiveStar SportCenter Larnaca**: Name change to "FiveStar SportCenter Larnaca" (capitalization), breadcrumb display fix (shows "FiveStar SportCenter" without "Larnaca"), opening hours (Mon-Fri: 06:30–21:30, Sat: 08:00–12:00, Sun: Closed), postal code (6037), email, Instagram link, specialties (Martial Arts & MMA for Muay Thai, Personal Training, Yoga & Pilates, CrossFit), Cardio Equipment amenity, reviews updated to 65
+  - **Arise Active Larnaca**: Added opening hours (Mon-Fri: 06:00–22:00, Sat: 08:00–16:00, Sun: 09:00–13:00), postal code (7101), email (contact@ariseactive.eu), Facebook/Instagram links, Personal Training and Yoga & Pilates specialties, Group Classes, Cardio Equipment, and Cafe amenities, reviews updated to 160, updated about section (founded 2013, 2,500 m² facility, comprehensive wellness services)
+- ✅ **Code Enhancements**: Breadcrumb logic improvements
+  - Added breadcrumb display fix for It's Time Fitness Center (removes "Larnaca" from breadcrumb)
+  - Added breadcrumb display fix for FiveStar SportCenter (removes "Larnaca" from breadcrumb)
+
 **Next Immediate Action:** Implement owner claim system, optimize internal linking, expand gym listings further (see STRATEGIC_ACTION_PLAN.md)

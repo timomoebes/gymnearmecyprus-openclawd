@@ -183,7 +183,7 @@ export default async function GymPage({ params }: GymPageProps) {
     { name: 'Home', url: 'https://gymnearme.cy' },
     { name: 'Cities', url: 'https://gymnearme.cy/cities' },
     ...(city ? [{ name: city.name, url: `https://gymnearme.cy/cities/${city.slug}` }] : []),
-    { name: gym.slug === 'cyprus-top-team-ctt-larnaca' ? 'Cyprus Top Team CTT' : gym.slug === 'foxteam-taekwondo-larnaca' ? 'FoxTeam Taekwondo' : gym.slug === 'rack-gym-larnaca' ? 'RACK GYM' : gym.slug === 'elit3-fitness-nutrition-larnaca' ? 'ELIT3 Fitness & Nutrition' : gym.slug === 'twp-train-with-passion-larnaca' ? 'TWP-Train With Passion' : gym.name, url: `https://gymnearme.cy/gyms/${gym.slug}` },
+    { name: gym.slug === 'cyprus-top-team-ctt-larnaca' ? 'Cyprus Top Team CTT' : gym.slug === 'foxteam-taekwondo-larnaca' ? 'FoxTeam Taekwondo' : gym.slug === 'rack-gym-larnaca' ? 'RACK GYM' : gym.slug === 'elit3-fitness-nutrition-larnaca' ? 'ELIT3 Fitness & Nutrition' : gym.slug === 'twp-train-with-passion-larnaca' ? 'TWP-Train With Passion' : gym.slug === 'its-time-fitness-center-larnaca' ? "It's Time Fitness Center" : gym.slug === 'fivestar-sportcenter-larnaca' ? 'FiveStar SportCenter' : gym.name, url: `https://gymnearme.cy/gyms/${gym.slug}` },
   ]);
 
   // Always show all 7 days - use "Closed" if no hours specified
@@ -254,7 +254,7 @@ export default async function GymPage({ params }: GymPageProps) {
           items={[
             { label: 'Cities', href: '/cities' },
             ...(city ? [{ label: city.name, href: `/cities/${city.slug}` }] : []),
-            { label: gym.slug === 'cyprus-top-team-ctt-larnaca' ? 'Cyprus Top Team CTT' : gym.slug === 'foxteam-taekwondo-larnaca' ? 'FoxTeam Taekwondo' : gym.slug === 'rack-gym-larnaca' ? 'RACK GYM' : gym.slug === 'elit3-fitness-nutrition-larnaca' ? 'ELIT3 Fitness & Nutrition' : gym.slug === 'twp-train-with-passion-larnaca' ? 'TWP-Train With Passion' : gym.name, href: `/gyms/${gym.slug}` },
+            { label: gym.slug === 'cyprus-top-team-ctt-larnaca' ? 'Cyprus Top Team CTT' : gym.slug === 'foxteam-taekwondo-larnaca' ? 'FoxTeam Taekwondo' : gym.slug === 'rack-gym-larnaca' ? 'RACK GYM' : gym.slug === 'elit3-fitness-nutrition-larnaca' ? 'ELIT3 Fitness & Nutrition' : gym.slug === 'twp-train-with-passion-larnaca' ? 'TWP-Train With Passion' : gym.slug === 'its-time-fitness-center-larnaca' ? "It's Time Fitness Center" : gym.slug === 'fivestar-sportcenter-larnaca' ? 'FiveStar SportCenter' : gym.name, href: `/gyms/${gym.slug}` },
           ]}
         />
 
