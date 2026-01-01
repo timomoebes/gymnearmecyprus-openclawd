@@ -111,6 +111,11 @@ export default async function GymPage({ params }: GymPageProps) {
     permanentRedirect('/gyms/molon-labe-gym-nicosia');
   }
   
+  // Handle redirect for Gymland Ματσαγγίδης Larnaca old slug (Greek characters)
+  if (decodedSlug === 'gymland-ματσαγγίδης-larnaca' || params.slug === 'gymland-%CE%BC%CE%B1%CF%84%CF%83%CE%B1%CE%B3%CE%B3%CE%AF%CE%B4%CE%B7%CF%82-larnaca') {
+    permanentRedirect('/gyms/gymland-matsaggides-larnaca');
+  }
+  
   // Handle redirect for Paphos Professional Boxing Gym old slug
   if (decodedSlug === 'paphos-professional-boxing-gym-paphos') {
     permanentRedirect('/gyms/paphos-professional-boxing-gym');
@@ -183,7 +188,7 @@ export default async function GymPage({ params }: GymPageProps) {
     { name: 'Home', url: 'https://gymnearme.cy' },
     { name: 'Cities', url: 'https://gymnearme.cy/cities' },
     ...(city ? [{ name: city.name, url: `https://gymnearme.cy/cities/${city.slug}` }] : []),
-    { name: gym.slug === 'cyprus-top-team-ctt-larnaca' ? 'Cyprus Top Team CTT' : gym.slug === 'foxteam-taekwondo-larnaca' ? 'FoxTeam Taekwondo' : gym.slug === 'rack-gym-larnaca' ? 'RACK GYM' : gym.slug === 'elit3-fitness-nutrition-larnaca' ? 'ELIT3 Fitness & Nutrition' : gym.slug === 'twp-train-with-passion-larnaca' ? 'TWP-Train With Passion' : gym.slug === 'its-time-fitness-center-larnaca' ? "It's Time Fitness Center" : gym.slug === 'fivestar-sportcenter-larnaca' ? 'FiveStar SportCenter' : gym.name, url: `https://gymnearme.cy/gyms/${gym.slug}` },
+    { name: gym.slug === 'cyprus-top-team-ctt-larnaca' ? 'Cyprus Top Team CTT' : gym.slug === 'foxteam-taekwondo-larnaca' ? 'FoxTeam Taekwondo' : gym.slug === 'rack-gym-larnaca' ? 'RACK GYM' : gym.slug === 'elit3-fitness-nutrition-larnaca' ? 'ELIT3 Fitness & Nutrition' : gym.slug === 'twp-train-with-passion-larnaca' ? 'TWP-Train With Passion' : gym.slug === 'its-time-fitness-center-larnaca' ? "It's Time Fitness Center" : gym.slug === 'fivestar-sportcenter-larnaca' ? 'FiveStar SportCenter' : gym.slug === 'getfitgym-elite-larnaca' ? 'GetFitGym Elite' : gym.slug === 'profit-center-larnaca' ? 'Pro.fit Center' : gym.name, url: `https://gymnearme.cy/gyms/${gym.slug}` },
   ]);
 
   // Always show all 7 days - use "Closed" if no hours specified
@@ -254,7 +259,7 @@ export default async function GymPage({ params }: GymPageProps) {
           items={[
             { label: 'Cities', href: '/cities' },
             ...(city ? [{ label: city.name, href: `/cities/${city.slug}` }] : []),
-            { label: gym.slug === 'cyprus-top-team-ctt-larnaca' ? 'Cyprus Top Team CTT' : gym.slug === 'foxteam-taekwondo-larnaca' ? 'FoxTeam Taekwondo' : gym.slug === 'rack-gym-larnaca' ? 'RACK GYM' : gym.slug === 'elit3-fitness-nutrition-larnaca' ? 'ELIT3 Fitness & Nutrition' : gym.slug === 'twp-train-with-passion-larnaca' ? 'TWP-Train With Passion' : gym.slug === 'its-time-fitness-center-larnaca' ? "It's Time Fitness Center" : gym.slug === 'fivestar-sportcenter-larnaca' ? 'FiveStar SportCenter' : gym.name, href: `/gyms/${gym.slug}` },
+            { label: gym.slug === 'cyprus-top-team-ctt-larnaca' ? 'Cyprus Top Team CTT' : gym.slug === 'foxteam-taekwondo-larnaca' ? 'FoxTeam Taekwondo' : gym.slug === 'rack-gym-larnaca' ? 'RACK GYM' : gym.slug === 'elit3-fitness-nutrition-larnaca' ? 'ELIT3 Fitness & Nutrition' : gym.slug === 'twp-train-with-passion-larnaca' ? 'TWP-Train With Passion' : gym.slug === 'its-time-fitness-center-larnaca' ? "It's Time Fitness Center" : gym.slug === 'fivestar-sportcenter-larnaca' ? 'FiveStar SportCenter' : gym.slug === 'getfitgym-elite-larnaca' ? 'GetFitGym Elite' : gym.slug === 'profit-center-larnaca' ? 'Pro.fit Center' : gym.name, href: `/gyms/${gym.slug}` },
           ]}
         />
 

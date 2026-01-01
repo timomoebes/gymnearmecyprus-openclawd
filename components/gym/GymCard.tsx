@@ -5,9 +5,9 @@ import { Gym } from '@/lib/types';
 import { Rating } from '@/components/shared/Rating';
 import { Badge } from '@/components/shared/Badge';
 import { getCityById } from '@/lib/data';
-import { isGymOpenNow } from '@/lib/utils/opening-hours';
 import { formatGymNameWithCity } from '@/lib/utils/gym-name';
 import { sortSpecialties } from '@/lib/utils/sort-specialties-amenities';
+import { GymOpenStatus } from './GymOpenStatus';
 
 interface GymCardProps {
   gym: Gym;
@@ -31,22 +31,8 @@ export const GymCard: React.FC<GymCardProps> = ({ gym, showCity = true }) => {
             {gym.featured && (
               <Badge variant="featured">Featured</Badge>
             )}
-            {/* Open/Closed Status Badge */}
-            {(() => {
-              const isOpen = isGymOpenNow(gym.openingHours);
-              return (
-                <Badge 
-                  variant={isOpen ? "rating" : "specialty"}
-                  className={`text-xs ${
-                    isOpen 
-                      ? 'bg-green-500/20 text-green-400 border-green-500/50' 
-                      : 'bg-red-500/20 text-red-400 border-red-500/50'
-                  }`}
-                >
-                  {isOpen ? '🟢 Open' : '🔴 Closed'}
-                </Badge>
-              );
-            })()}
+            {/* Open/Closed Status Badge - Client-side only to avoid hydration mismatch */}
+            <GymOpenStatus openingHours={gym.openingHours} />
           </div>
           {showCity && city && (
             <div className="flex items-center text-text-muted text-sm mb-2">

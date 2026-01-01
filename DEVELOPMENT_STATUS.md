@@ -725,4 +725,23 @@
   - Added breadcrumb display fix for It's Time Fitness Center (removes "Larnaca" from breadcrumb)
   - Added breadcrumb display fix for FiveStar SportCenter (removes "Larnaca" from breadcrumb)
 
+**Recent Session Summary (Today - January 2025):**
+- ✅ **Critical Bug Fix**: Resolved React hydration error on city pages
+  - **Root Cause**: `isGymOpenNow()` function used `new Date()` which produced different results on server vs client, causing hydration mismatch
+  - **Solution**: Created client-side component `GymOpenStatus.tsx` that calculates open/closed status only after page loads on client
+  - **Impact**: Eliminates hydration errors when timezone differences exist between server and client (e.g., working from different timezone)
+  - **Technical Details**: Component uses `useEffect` to calculate status after mount, returns `null` during initial render to prevent server/client mismatch
+- ✅ **Larnaca Gym Data Enrichment**: Updated 7 additional gyms in Larnaca with comprehensive information
+  - **Diaplasis Premium Fitness Larnaca**: Added opening hours (Mon-Fri: 06:00–22:00, Sat: 08:00–16:00, Sun: Closed), email (costaselia0771@gmail.com), Facebook/Instagram links, Personal Training and Yoga & Pilates specialties, Group Classes amenity, postal code (6052)
+  - **Gymland Ματσαγγίδης Larnaca**: Changed slug from Greek characters (gymland-ματσαγγίδης-larnaca) to transliterated (gymland-matsaggides-larnaca), added 308 permanent redirect for old slug, added opening hours (Mon-Fri: 06:30–21:00, Sat: 06:30–14:00, Sun: Closed), email (costaselia0771@gmail.com), Facebook/Instagram links, Swimming & Aquatics specialty, Cardio Equipment and Swimming Pool amenities, postal code (6016)
+  - **GetFitGym Elite Larnaca**: Name change to "GetFitGym Elite" (capitalization), breadcrumb display fix (shows "GetFitGym Elite" without "Larnaca"), added opening hours (Mon-Fri: 09:00–22:00, Sat: 10:00–17:00, Sun: Closed), email (tziortzis@hotmail.com), Instagram link, Cardio Equipment amenity, postal code (6052)
+  - **Pro.fit Center Larnaca**: Name change to "Pro.fit Center Larnaca" (capitalization), breadcrumb display fix (shows "Pro.fit Center" without "Larnaca"), added opening hours (Mon-Fri: 06:00–22:00, Sat: 08:00–16:00, Sun: Closed), postal code (7102), email (pro.fitnesscenter@outlook.com), Facebook/Instagram links, reviews updated to 45, Group Classes and Cardio Equipment amenities
+  - **TotalFit Larnaca**: Name change to "TotalFit" (capitalization), added opening hours (Mon-Fri: 07:00–21:30, Sat: 08:00–16:00, Sun: Closed), email (info@totalfit.com.cy), Instagram link, Swimming & Aquatics specialty, Group Classes, Swimming Pool, Sauna, and Cafe amenities
+  - **Totalfit Larnaca**: Added opening hours (Mon-Fri: 07:00–21:30, Sat: 08:00–16:00, Sun: Closed), email (info@totalfit.com.cy), Swimming & Aquatics specialty, Group Classes, Swimming Pool, and Sauna amenities
+  - **Temple Fitness Larnaca**: Added opening hours (Mon-Fri: 06:30–22:00, Sat: 09:00–16:00, Sun: Closed), email (Templefitnessclub84@gmail.com), Instagram link, postal code (6057), Cardio Equipment, Group Classes amenities, Yoga & Pilates specialty
+- ✅ **Code Enhancements**: Breadcrumb logic improvements and slug management
+  - Added breadcrumb display fixes for GetFitGym Elite and Pro.fit Center (removes "Larnaca" from breadcrumb)
+  - Implemented slug transliteration for Gymland Ματσαγγίδης (Greek characters to Latin) with permanent redirect
+  - Enhanced redirect handling for Greek character slugs (both decoded and URL-encoded versions)
+
 **Next Immediate Action:** Implement owner claim system, optimize internal linking, expand gym listings further (see STRATEGIC_ACTION_PLAN.md)

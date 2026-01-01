@@ -425,6 +425,11 @@ The project uses a custom dark/neon theme with:
 - **Phase 5 Complete**: SEO optimization and content enhancement
 - **FAQ Schema Implemented**: FAQPage schema + visible FAQ sections on homepage, all city pages, and all specialty pages
 - **Backend Integration**: ✅ Supabase database setup complete with 210 real gyms (all scraped from Google Maps)
+- **Recent Updates (January 2025)**:
+  - ✅ **Critical Bug Fix**: Resolved React hydration error on city pages caused by timezone differences between server and client
+  - ✅ **Larnaca Data Enrichment**: Updated 7 additional gyms with opening hours, social media links, emails, postal codes, specialties, and amenities
+  - ✅ **Slug Management**: Implemented transliteration for Greek character slugs with permanent redirects
+  - ✅ **Breadcrumb Enhancements**: Added custom display logic for cleaner navigation (removes redundant city names)
 - **Data Processing**: ✅ Automated cleaning pipeline for scraped gym data
 - **Bulk Import**: ✅ Multi-city bulk imports completed and applied to database
   - ✅ 50 Limassol gyms imported - manually via Supabase Dashboard
