@@ -58,6 +58,7 @@ new-gym/
 │   └── utils/             # Utility functions
 │       ├── opening-hours.ts  # Opening hours parsing and timezone handling
 │       ├── schema.ts         # Schema.org JSON-LD generation
+│       ├── meta-descriptions.ts  # Centralized meta description generators
 │       └── map-icons.ts      # Shared Leaflet map icon definitions
 ├── data/                  # Data processing
 │   ├── raw/               # Raw scraped data (CSV/JSON)
@@ -72,6 +73,7 @@ new-gym/
 │   ├── CODEBASE_AUDIT_2025.md      # Comprehensive codebase audit report
 │   ├── AUDIT_SUBAGENT_GUIDE.md     # Guide for using the audit tool
 │   ├── CODE_QUALITY_TOOL.md        # Audit tool documentation
+│   ├── META_DESCRIPTION_GUIDE.md   # Meta description system documentation
 │   ├── data_mapping.md
 │   └── TEST_IMPORT_REPORT.md
 └── public/                # Static assets
@@ -142,7 +144,7 @@ The audit tool checks for:
 - [x] **Specialty & Amenity Display Ordering** - Consistent, predefined ordering for specialties and amenities across all gym listings
   - Specialties displayed in priority order (Fitness/Gym → Yoga & Pilates → Boxing → etc.)
   - Amenities displayed in priority order (Cafe → Group Classes → Showers → etc.)
-  - Applied automatically to all 199+ gyms in directory
+  - Applied automatically to all 200 gyms in directory
 - [x] **Opening Hours System** - Comprehensive opening hours display and management
   - All gyms have all 7 days (Monday-Sunday) in opening hours
   - Standardized format: HH:MM-HH:MM (24-hour format, always 2 digits)
@@ -188,6 +190,12 @@ The audit tool checks for:
 - [x] **Enhanced Meta Tags**
   - Open Graph tags for social sharing
   - Twitter Card tags
+  - **Centralized Meta Description System** - SEO-optimized descriptions (150-160 characters)
+    - Structured templates for gym, city, and specialty pages
+    - Smart truncation at word boundaries
+    - Automatic validation and length optimization
+    - Single source of truth in `lib/utils/meta-descriptions.ts`
+    - See `docs/META_DESCRIPTION_GUIDE.md` for complete documentation
   - Dynamic meta descriptions
   - Keyword-rich titles
 - [x] **Sitemap Generation** - Auto-generated sitemap.xml
@@ -253,7 +261,7 @@ The project uses a custom dark/neon theme with:
 
 #### Backend Database (Supabase) ✅
 - **Database**: Supabase PostgreSQL
-- **Total Gyms**: 210 gyms in database (all scraped from Google Maps)
+- **Total Gyms**: 200 gyms in database (all scraped from Google Maps)
   - Limassol: 50 gyms
   - Nicosia: 71 gyms
   - Larnaca: 43 gyms
@@ -293,11 +301,11 @@ The project uses a custom dark/neon theme with:
   - ✅ 34 Paphos gyms imported (manually via Supabase Dashboard)
   - ✅ 6 Ayia Napa gyms imported (manually via Supabase Dashboard)
   - ✅ 7 Protaras gyms imported (manually via Supabase Dashboard)
-- **Database Status**: ✅ All 210 gyms are live in the database and visible on frontend
+- **Database Status**: ✅ All 200 gyms are live in the database and visible on frontend
 - **Data Quality**: ✅ Specialty assignments verified and corrected (removed incorrect "24-hour-gym" tags)
 - **City Assignment Fixes**: ✅ Corrected gym city assignments (e.g., "Bad Dog Bjj" moved from Protaras to Ayia Napa based on address)
 - **Opening Hours**: ✅ Standardized opening hours format across all gyms (HH:MM-HH:MM, 24-hour format)
-  - All 210 gyms have all 7 days (Monday-Sunday) in opening hours
+  - All 200 gyms have all 7 days (Monday-Sunday) in opening hours
   - 50+ gyms updated with accurate opening hours from verified sources
   - Real-time open/closed status using Cyprus timezone (Europe/Nicosia)
   - Current day highlighting in opening hours display (bold text with tinted background)
@@ -374,7 +382,13 @@ The project uses a custom dark/neon theme with:
 - ✅ Schema.org structured data (LocalBusiness, BreadcrumbList, Organization, WebSite, CollectionPage, **FAQPage**)
 - ✅ FAQPage schema on homepage, all city pages, and all specialty pages
 - ✅ Visible FAQ sections targeting "People Also Ask" SERP features
-- ✅ Open Graph and Twitter Card meta tags
+- ✅ **Centralized Meta Description System** - All pages have optimized 150-160 character descriptions
+  - Gym pages: Include name, location, specialty, rating, and review count
+  - City pages: Include city name, gym count, and key benefits
+  - Specialty pages: Custom descriptions for high-value keywords, fallback templates for others
+  - Smart truncation ensures optimal length without cutting words mid-sentence
+  - See `docs/META_DESCRIPTION_GUIDE.md` for templates and maintenance guidelines
+- ✅ Open Graph and Twitter Card meta tags (match meta descriptions)
 - ✅ Auto-generated sitemap.xml
 - ✅ Robots.txt configuration
 - ✅ Semantic HTML5 throughout
@@ -424,7 +438,7 @@ The project uses a custom dark/neon theme with:
 ### Current Status
 - **Phase 5 Complete**: SEO optimization and content enhancement
 - **FAQ Schema Implemented**: FAQPage schema + visible FAQ sections on homepage, all city pages, and all specialty pages
-- **Backend Integration**: ✅ Supabase database setup complete with 210 real gyms (all scraped from Google Maps)
+- **Backend Integration**: ✅ Supabase database setup complete with 200 real gyms (all scraped from Google Maps)
 - **Recent Updates (January 2025)**:
   - ✅ **Critical Bug Fix**: Resolved React hydration error on city pages caused by timezone differences between server and client
   - ✅ **Larnaca Data Enrichment**: Updated 7 additional gyms with opening hours, social media links, emails, postal codes, specialties, and amenities
@@ -484,6 +498,112 @@ The project uses a custom dark/neon theme with:
 
 **See DEVELOPMENT_STATUS.md for detailed progress and roadmap.**
 
+## 🗺️ Product Roadmap
+
+### Overview
+
+Our product roadmap is organized into quarterly themes focusing on revenue generation, SEO optimization, user experience, and platform growth. The roadmap is based on the **PROJECT.md** PRD and aligns with our strategic business goals.
+
+### 2026 Roadmap Summary
+
+#### Q1 2026: Foundation & Revenue Launch
+**Theme:** Activate Monetization & Optimize Core Experience
+
+**Key Initiatives:**
+- Owner claim system implementation
+- Analytics and tracking infrastructure (GA4, Search Console)
+- Internal linking optimization for SEO
+- Data quality improvements and enrichment
+
+**Target Metrics:**
+- 10+ owner claims
+- 3+ featured listing conversions
+- 500+ monthly organic visitors
+- 2+ keywords in top 10 rankings
+- €150+ MRR
+
+#### Q2 2026: Engagement & Growth
+**Theme:** Enhance User Experience & Drive Organic Growth
+
+**Key Initiatives:**
+- Local review system with owner responses
+- Advanced search and filtering capabilities
+- Content marketing launch (blog section)
+- Owner engagement and onboarding features
+
+**Target Metrics:**
+- 1,000+ monthly organic visitors
+- 5+ keywords in top 10 rankings
+- 20+ owner claims
+- 10+ featured listings
+- €500+ MRR
+- 100+ user reviews
+
+#### Q3 2026: Scale & Optimization
+**Theme:** Expand Reach & Optimize Conversion
+
+**Key Initiatives:**
+- Neighborhood pages (Strovolos, Engomi, Aglantzia)
+- Gym comparison tool
+- Enhanced owner analytics dashboard
+- Multi-language support (Greek)
+
+**Target Metrics:**
+- 2,000+ monthly organic visitors
+- 10+ keywords in top 10 rankings
+- 30+ owner claims
+- 20+ featured listings
+- €1,000+ MRR
+- 500+ user reviews
+
+#### Q4 2026: Innovation & Expansion
+**Theme:** Advanced Features & Market Expansion
+
+**Key Initiatives:**
+- User accounts and favorites/bookmarks
+- Mobile app research and planning (or PWA enhancements)
+- Advanced owner tools and marketing features
+- Partnership integrations (Google Business Profile, fitness apps)
+
+**Target Metrics:**
+- 3,000+ monthly organic visitors
+- 15+ keywords in top 10 rankings
+- 50+ owner claims
+- 30+ featured listings
+- €1,500+ MRR
+- 1,000+ user reviews
+- 500+ registered users
+
+### Continuous Improvements
+
+**Ongoing (All Quarters):**
+- Weekly keyword ranking monitoring
+- Monthly SEO content updates
+- Quarterly SEO audits
+- Continuous internal linking improvements
+- Monthly data completeness audits
+- Weekly Lighthouse performance audits
+- Daily traffic and revenue monitoring
+
+### Roadmap Principles
+
+1. **Revenue-First:** Prioritize features that drive owner claims and featured listing conversions
+2. **SEO-Optimized:** All features evaluated for SEO impact and search visibility
+3. **User-Centric:** Enhance discovery, engagement, and conversion experiences
+4. **Data Quality:** Maintain high credibility through verified, owner-provided data
+5. **Scalable Growth:** Build for sustainable expansion and market dominance
+
+### Sprint Structure
+
+- **Sprint Cycle:** 2-week sprints
+- **Sprints per Quarter:** 6 sprints (12 weeks)
+- **Priority Levels:** Critical (🔴), High (🟡), Medium (🟢)
+- **Review Schedule:** Weekly sprint reviews, monthly roadmap adjustments, quarterly strategic reviews
+
+**📖 For the complete detailed roadmap with sprint-by-sprint breakdown, features, technical tasks, dependencies, and success criteria, see [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md)**
+
+**📋 For the comprehensive Product Requirements Document (PRD), see [PROJECT.md](./PROJECT.md)**
+
 ## 🧪 Testing
 
 - Cross-browser compatibility
@@ -493,6 +613,8 @@ The project uses a custom dark/neon theme with:
 
 ## 📚 Documentation
 
+- **PROJECT.md** ⭐ - Product Requirements Document (PRD) - Foundation for all project decisions
+- **PRODUCT_ROADMAP.md** ⭐ - Strategic 12-month product roadmap with quarterly themes and sprint breakdown
 - **PROJECT_PLAN.md** - Comprehensive development plan
 - **TECHNICAL_REFERENCE.md** - Quick reference guide
 - **SEO_ANALYSIS.md** - SEO best practices analysis
@@ -500,11 +622,12 @@ The project uses a custom dark/neon theme with:
 - **SEO_INDEX_ANALYSIS.md** - Homepage SEO analysis and improvements
 - **DEVELOPMENT_STATUS.md** - Current progress and roadmap
 - **MEMBER_COUNT_SPECIFICATION.md** - Member count system implementation specification
-- **STRATEGIC_ACTION_PLAN.md** ⭐ - Comprehensive tactical roadmap from MVP to top-ranking directory
+- **STRATEGIC_ACTION_PLAN.md** - Comprehensive tactical roadmap from MVP to top-ranking directory
 - **DATABASE_MIGRATION_STATUS.md** - Database migration status and results
 - **docs/data_mapping.md** - Apify to Supabase column mapping documentation
 - **docs/TEST_IMPORT_REPORT.md** - Test import results and verification
 - **docs/DATA_PROCESSING_GUIDE.md** - Complete data processing pipeline documentation
+- **docs/META_DESCRIPTION_GUIDE.md** - Meta description system templates, examples, and maintenance guidelines
 
 ## 🎯 Key Features
 
