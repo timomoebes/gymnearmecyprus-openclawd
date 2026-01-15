@@ -277,5 +277,22 @@ export async function getAllGyms(): Promise<Gym[]> {
   return getAllGymsMock();
 }
 
+export async function getGymsBySpecialtyAndCity(specialtySlug: string, cityId: string): Promise<Gym[]> {
+  try {
+    const { getGymsBySpecialtyAndCityFromDB } = await import('@/lib/api/gyms');
+    const gyms = await getGymsBySpecialtyAndCityFromDB(specialtySlug, cityId);
+    if (gyms.length > 0) return gyms;
+  } catch (error) {
+    console.warn('Supabase fetch failed for getGymsBySpecialtyAndCity, using fallback:', error);
+    // Fallback: get all gyms by city, then filter by specialty
+    const cityGyms = await getGymsByCity(cityId);
+    const specialtyGyms = await getGymsBySpecialty(specialtySlug);
+    // Return intersection
+    const cityGymIds = new Set(cityGyms.map(g => g.id));
+    return specialtyGyms.filter(g => cityGymIds.has(g.id));
+  }
+  return [];
+}
+
 // Export mock gyms for backward compatibility (used in data/index.ts)
 export const gyms = mockGyms;

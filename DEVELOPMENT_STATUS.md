@@ -2,7 +2,7 @@
 ## GymNearMe Cyprus - Current Progress & Roadmap
 
 **Last Updated:** January 2025  
-**Project Status:** Phase 5 Complete - SEO Optimization & Content Enhancement | Backend Database Setup Complete | Data Processing Pipeline Operational | Bulk Import Complete (210 Gyms Across 6 Cities) | Data Quality Fixes Applied | Frontend API Integration Complete | Opening Hours System Implemented with Current Day Highlighting | Comprehensive Pricing System Implemented | Data Enrichment Ongoing (100+ Gyms Updated) | Social Media Integration Complete | Specialty System Consolidated (9 Specialties) | Specialty Mapping Fixes Applied | Slug Management & SEO Redirects Implemented | Pricing Links & Conditional Display Added
+**Project Status:** Phase 5 Complete - SEO Optimization & Content Enhancement | Backend Database Setup Complete | Data Processing Pipeline Operational | Bulk Import Complete (199 Gyms Across 6 Cities) | Data Quality Fixes Applied | Frontend API Integration Complete | Opening Hours System Implemented with Current Day Highlighting | Comprehensive Pricing System Implemented | Data Enrichment Ongoing (100+ Gyms Updated) | Social Media Integration Complete | Specialty System Consolidated (9 Specialties) | Specialty Mapping Fixes Applied | Slug Management & SEO Redirects Implemented | Pricing Links & Conditional Display Added
 
 ---
 
@@ -89,15 +89,15 @@
 ## 📊 Current Status
 
 ### Data & Content
-- **Total Gyms:** 210 gyms in database (all scraped from Google Maps)
+- **Total Gyms:** 199 gyms in database (all scraped from Google Maps)
   - **Limassol:** 50 gyms ✅ Imported
   - **Nicosia:** 71 gyms ✅ Imported
   - **Larnaca:** 43 gyms ✅ Imported
   - **Paphos:** 34 gyms ✅ Imported
   - **Ayia Napa:** 6 gyms ✅ Imported
-  - **Protaras:** 7 gyms ✅ Imported
+  - **Paralimni:** 6 gyms ✅ Imported
 - **Featured Gyms:** 0 featured listings (all unclaimed)
-- **Unclaimed Gyms:** 210 gyms (ready for owner claims)
+- **Unclaimed Gyms:** 199 gyms (ready for owner claims)
 - **Bulk Import:** ✅ Multi-city bulk imports completed and applied to database
   - ✅ 50 Limassol gyms - Imported manually via Supabase Dashboard
   - ✅ 71 Nicosia gyms - Imported manually via Supabase Dashboard
@@ -144,7 +144,7 @@
   - SEO-optimized descriptions generated for all imported gyms
   - ✅ City assignment fixes: Corrected gym city assignments based on actual addresses (e.g., "Bad Dog Bjj" moved from Protaras to Ayia Napa)
 - **Opening Hours:** ✅ Comprehensive opening hours system implemented
-  - All 210 gyms have all 7 days (Monday-Sunday) in opening hours
+  - All 199 gyms have all 7 days (Monday-Sunday) in opening hours
   - Standardized format: HH:MM-HH:MM (24-hour format, always 2 digits, no AM/PM)
   - 50+ gyms updated with accurate opening hours from verified sources
   - Real-time "Open Now" / "Closed" status badge using Cyprus timezone (Europe/Nicosia)
@@ -272,7 +272,7 @@
    - ✅ **Frontend API Integration** - Connected to Supabase API
    - ✅ **Unified Data Access Layer** - `lib/data/gyms.ts` with Supabase-first, mock fallback
    - ✅ **Dynamic Counts** - City and specialty counts calculated from database
-   - ✅ **210 gyms imported across 6 cities** - All visible in frontend
+   - ✅ **199 gyms imported across 6 cities** - All visible in frontend
      - ✅ 50 Limassol gyms (imported manually via Supabase Dashboard)
      - ✅ 71 Nicosia gyms (imported manually via Supabase Dashboard)
      - ✅ 43 Larnaca gyms (imported manually via Supabase Dashboard)
@@ -475,7 +475,7 @@
 
 ### Current Metrics
 - **Pages Created:** 20+ pages
-- **Gyms Listed:** 210 gyms in database (all scraped from Google Maps)
+- **Gyms Listed:** 199 gyms in database (all scraped from Google Maps)
   - Limassol: 50 gyms
   - Nicosia: 71 gyms
   - Larnaca: 43 gyms
@@ -551,14 +551,14 @@
 ---
 
 **Recent Updates (November 17, 2025):**
-- ✅ Bulk import completed: 210 gyms across all 6 cities now in database
+- ✅ Bulk import completed: 199 gyms across all 6 cities now in database
   - ✅ 50 Limassol gyms (imported manually via Supabase Dashboard)
   - ✅ 71 Nicosia gyms (imported manually via Supabase Dashboard)
   - ✅ 43 Larnaca gyms (imported manually via Supabase Dashboard)
   - ✅ 34 Paphos gyms (imported manually via Supabase Dashboard)
   - ✅ 6 Ayia Napa gyms (imported manually via Supabase Dashboard)
   - ✅ 7 Protaras gyms (imported manually via Supabase Dashboard)
-- ✅ Database updated: All 210 gyms are now live in the database and visible on frontend
+- ✅ Database updated: All 199 gyms are now live in the database and visible on frontend
 - ✅ Complete city coverage: All 6 cities now have gyms imported and visible
 - ✅ SEO descriptions: All gyms have SEO-optimized descriptions applied
 - ✅ Data quality fixes: Corrected incorrect "24-hour-gym" specialty assignments
@@ -571,7 +571,7 @@
 - ✅ Truncated description fixes: Fixed descriptions ending with "..." for Nicosia gyms
 - ✅ Duplicate removal: Removed duplicate gyms that appeared in multiple city CSVs (3 duplicates removed)
 - ✅ **Opening Hours System:** Comprehensive opening hours implementation
-  - All 210 gyms have all 7 days (Monday-Sunday) in opening hours
+  - All 199 gyms have all 7 days (Monday-Sunday) in opening hours
   - Standardized format: HH:MM-HH:MM (24-hour format, always 2 digits)
   - 29+ gyms updated with accurate opening hours (Peak Condition Cyprus, Gymania Personal Trainer, Iron Fitness, Kinetic Fitness Studio, Kinetic Pilates Studio, Kpk Performance, Limassol Fitness, Lumpinee Gym, No75Space, Piero Judo Academy, Raw Calisthenics Academy, SavS Gym, Target Boxing Club, Vinyasa Yoga Studio, Body Advance, Dainas Planet Fitness, Gymania Fitness Club, Reload Fitness Studio, Bodysense Health&Fitness, Crossfit Limassol, Kalopedi Gym, Team Rogue Forge, The Fitzone By Kondylis, Un1T, Bodyfitness Gym Center, Soul Vibe Space, Catman Olympic Boxing Academy, R-Evolution Of Gym, and more)
   - Real-time "Open Now" / "Closed" status using Cyprus timezone (Europe/Nicosia)

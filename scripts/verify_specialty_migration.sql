@@ -1,5 +1,5 @@
 -- Verification Script: Check Specialty Migration
--- This script verifies that all 210 gyms have valid specialty assignments after migration
+-- This script verifies that all 199 gyms have valid specialty assignments after migration
 -- Run this after applying migration 007_migrate_specialties_to_consolidated.sql
 
 -- Expected new specialty slugs:
@@ -28,7 +28,7 @@ GROUP BY g.id, g.name, g.slug
 HAVING COUNT(gs.specialty_id) = 0
 ORDER BY g.name;
 
--- 3. Verify all 210 gyms have at least one specialty
+-- 3. Verify all 199 gyms have at least one specialty
 SELECT 
   COUNT(*) as total_gyms,
   COUNT(DISTINCT gs.gym_id) as gyms_with_specialties,

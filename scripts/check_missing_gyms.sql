@@ -1,5 +1,5 @@
 -- Check Missing Gyms in Database
--- Expected total: 210 gyms
+-- Expected total: 199 gyms
 -- Generated: 2025-11-15T23:19:11.131030
 
 -- ============================================================================

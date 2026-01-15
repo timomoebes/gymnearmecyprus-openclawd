@@ -139,13 +139,30 @@ function transformGymFromDB(dbGym: any, specialties: string[], amenities: string
     }
   }
 
+  // Parse coordinates - handle both numeric and string types, and null/undefined
+  const parseCoordinate = (coord: any): number | null => {
+    if (coord === null || coord === undefined || coord === '') return null;
+    const parsed = typeof coord === 'string' ? parseFloat(coord) : coord;
+    return isNaN(parsed) ? null : parsed;
+  };
+
+  const latitude = parseCoordinate(dbGym.latitude);
+  const longitude = parseCoordinate(dbGym.longitude);
+  
+  // Only set coordinates if both lat and lng are valid
+  // If invalid, we'll use null and handle it in the component
+  const coordinates: [number, number] | null = 
+    (latitude !== null && longitude !== null) 
+      ? [latitude, longitude] 
+      : null;
+
   return {
     id: dbGym.id,
     name: dbGym.name,
     slug: dbGym.slug,
     cityId: citySlug || dbGym.city?.slug || dbGym.city_id,
     address: dbGym.address || '',
-    coordinates: [dbGym.latitude || 0, dbGym.longitude || 0] as [number, number],
+    coordinates: coordinates || [0, 0] as [number, number], // Fallback for type safety, but we'll check in component
     phone: dbGym.phone || undefined,
     website: website,
     email: dbGym.email || undefined,
@@ -159,7 +176,6 @@ function transformGymFromDB(dbGym: any, specialties: string[], amenities: string
     images: dbGym.cover_image_url ? [dbGym.cover_image_url] : [],
     openingHours,
     pricing,
-    memberCount: dbGym.member_count || undefined,
     yearsInBusiness: dbGym.years_in_business || undefined,
     ownerId: dbGym.owner_id || undefined,
     createdAt: dbGym.created_at || new Date().toISOString(),
@@ -373,6 +389,69 @@ export async function getGymsBySpecialtyFromDB(specialtySlug: string): Promise<G
       });
   } catch (error) {
     console.error('Error in getGymsBySpecialtyFromDB:', error);
+    return [];
+  }
+}
+
+// Fetch gyms by specialty and city
+export async function getGymsBySpecialtyAndCityFromDB(specialtySlug: string, cityId: string): Promise<Gym[]> {
+  try {
+    // First, get the specialty UUID from slug
+    const { data: specialty } = await supabase
+      .from('specialties')
+      .select('id')
+      .eq('slug', specialtySlug)
+      .single();
+
+    if (!specialty) return [];
+
+    // Get the city UUID from slug
+    const { data: city } = await supabase
+      .from('cities')
+      .select('id')
+      .eq('slug', cityId)
+      .single();
+
+    if (!city) return [];
+
+    // Fetch gyms with this specialty in this city
+    const { data: gymSpecialties, error } = await supabase
+      .from('gym_specialties')
+      .select(`
+        gym:gyms!inner (
+          *,
+          city:cities!inner (slug),
+          gym_specialties (
+            specialty:specialties (slug, name)
+          ),
+          gym_amenities (
+            amenity:amenities (name)
+          )
+        )
+      `)
+      .eq('specialty_id', specialty.id)
+      .eq('gym.city_id', city.id);
+
+    if (error) {
+      console.error('Error fetching gyms by specialty and city:', error);
+      return [];
+    }
+
+    if (!gymSpecialties) return [];
+
+    // Transform each gym
+    return gymSpecialties
+      .map((gs: any) => gs.gym)
+      .filter(Boolean)
+      .map((gym: any) => {
+        const rawSpecialties = (gym.gym_specialties || []).map((gs: any) => gs.specialty?.name || '').filter(Boolean);
+        const specialties = mapSpecialtyNames(rawSpecialties); // Map old names to new ones
+        const amenities = (gym.gym_amenities || []).map((ga: any) => ga.amenity?.name || '').filter(Boolean);
+        const citySlug = gym.city?.slug;
+        return transformGymFromDB(gym, specialties, amenities, citySlug);
+      });
+  } catch (error) {
+    console.error('Error in getGymsBySpecialtyAndCityFromDB:', error);
     return [];
   }
 }

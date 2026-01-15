@@ -108,7 +108,7 @@ COMMIT;
 -- HAVING COUNT(gs.specialty_id) = 0
 -- ORDER BY g.name;
 --
--- Verify all 210 gyms have at least one specialty:
+-- Verify all 199 gyms have at least one specialty:
 -- SELECT 
 --   COUNT(*) as total_gyms,
 --   COUNT(DISTINCT gs.gym_id) as gyms_with_specialties,

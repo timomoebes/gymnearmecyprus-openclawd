@@ -76,7 +76,7 @@ The system now uses 8 consolidated specialties:
 ### Verification Scripts
 8. **`scripts/verify_specialty_migration.sql`** - Verification queries
    - Checks gym specialty distribution
-   - Verifies all 210 gyms have specialties
+   - Verifies all 199 gyms have specialties
    - Checks for old specialty assignments
    - Provides sample data for verification
 
@@ -126,7 +126,7 @@ npm run build
 - [x] Specialty matching logic updated in data layer
 - [x] Verification script created
 - [ ] Database migration applied (pending)
-- [ ] All 210 gyms verified to have valid specialties (pending)
+- [ ] All 199 gyms verified to have valid specialties (pending)
 - [ ] Old specialty URLs tested for redirects (pending)
 - [ ] Specialty filters tested on frontend (pending)
 
@@ -160,7 +160,7 @@ If rollback is needed:
 
 - The migration preserves all gym data - only specialty assignments are changed
 - Duplicate specialties (e.g., gym with both MMA and Boxing) are consolidated to single `martial-arts` assignment
-- All 210 gyms should maintain at least one specialty after migration
+- All 199 gyms should maintain at least one specialty after migration
 - Old specialty entries remain in database for potential rollback (commented out deletion in migration)
 
 ## Next Steps

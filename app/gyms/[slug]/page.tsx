@@ -1,18 +1,20 @@
 import React from 'react';
 import { notFound, permanentRedirect } from 'next/navigation';
 import type { Metadata } from 'next';
-import { MapPin, Phone, Globe, Mail, Clock, Users, Calendar, DollarSign, Facebook, Instagram } from 'lucide-react';
-import { getGymBySlug, getCityById, getTopReviews, getGymsByCity, getAllGyms, getReviewsByGymId } from '@/lib/data';
+import { MapPin, Phone, Globe, Mail, Clock, Calendar, DollarSign, Facebook, Instagram } from 'lucide-react';
+import { getGymBySlug, getCityById, getTopReviews, getGymsByCity, getAllGyms, getReviewsByGymId, getGymsBySpecialtyAndCity } from '@/lib/data';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { Rating } from '@/components/shared/Rating';
 import { Badge } from '@/components/shared/Badge';
 import { GymCard } from '@/components/gym/GymCard';
 import { Button } from '@/components/shared/Button';
-import { GymMap } from '@/components/gym/GymMapWrapper';
+import { GymMapWithToggle } from '@/components/gym/GymMapWithToggle';
 import { generateLocalBusinessSchema, generateBreadcrumbSchema } from '@/lib/utils/schema';
 import { isGymOpenNow } from '@/lib/utils/opening-hours';
 import { shouldAppendCityName, formatGymNameWithCity } from '@/lib/utils/gym-name';
 import { sortSpecialties, sortAmenities } from '@/lib/utils/sort-specialties-amenities';
+import { generateGymMetaDescription } from '@/lib/utils/meta-descriptions';
+import { getPrimarySpecialty, formatSpecialtyHeading, getSpecialtySlug } from '@/lib/utils/specialty-heading';
 
 interface GymPageProps {
   params: {
@@ -52,13 +54,16 @@ export async function generateMetadata({ params }: GymPageProps): Promise<Metada
     ? `${gym.name} ${cityName}` 
     : gym.name;
 
+  // Generate optimized meta description using centralized utility
+  const metaDescription = generateGymMetaDescription(gym, city);
+
   return {
     title: seoTitle,
-    description: `${gym.description.substring(0, 160)}... Located in ${cityName}. Rating: ${gym.rating}/5 from ${gym.reviewCount} reviews.`,
+    description: metaDescription,
     keywords: `${gym.name}, ${cityName} gym, ${gym.specialties.join(', ')}, fitness center ${cityName}`,
     openGraph: {
       title: seoTitle,
-      description: gym.description.substring(0, 200),
+      description: metaDescription,
       url: `https://gymnearme.cy/gyms/${gym.slug}`,
       siteName: 'GymNearMe Cyprus',
       images: [
@@ -75,7 +80,7 @@ export async function generateMetadata({ params }: GymPageProps): Promise<Metada
     twitter: {
       card: 'summary_large_image',
       title: seoTitle,
-      description: gym.description.substring(0, 200),
+      description: metaDescription,
       images: [ogImage],
     },
   };
@@ -146,6 +151,11 @@ export default async function GymPage({ params }: GymPageProps) {
     permanentRedirect('/gyms/aesthetics-fitness-club-arc-paphos');
   }
 
+  // Handle redirect for 5 Rounds MMA Limassol old slug (duplicate limassol removed)
+  if (decodedSlug === '5-rounds-mma-limassol-limassol') {
+    permanentRedirect('/gyms/5-rounds-mma-limassol');
+  }
+
   // Handle redirect for Soulution Pilates & more Paphos old slug
   if (decodedSlug === 'soulutionpilatesmore-paphos') {
     permanentRedirect('/gyms/soulution-pilates-more-paphos');
@@ -166,6 +176,26 @@ export default async function GymPage({ params }: GymPageProps) {
     permanentRedirect('/gyms/functional-training-yoga-boutique-by-the-big-gym-larnaca');
   }
 
+  // Handle redirects for all Protaras -> Paralimni gym slugs
+  if (decodedSlug === 'bodyart-fitness-center-protaras') {
+    permanentRedirect('/gyms/bodyart-fitness-center-paralimni');
+  }
+  if (decodedSlug === 'body-shape-gym-protaras') {
+    permanentRedirect('/gyms/body-shape-gym-paralimni');
+  }
+  if (decodedSlug === 'calisthenicsworkout4allcy-protaras') {
+    permanentRedirect('/gyms/calisthenicsworkout4allcy-paralimni');
+  }
+  if (decodedSlug === 'demari-wellness-and-spa-protaras') {
+    permanentRedirect('/gyms/demari-wellness-and-spa-paralimni');
+  }
+  if (decodedSlug === 'mythical-performance-protaras') {
+    permanentRedirect('/gyms/mythical-performance-paralimni');
+  }
+  if (decodedSlug === 'sacred-roots-yoga-massage-protaras') {
+    permanentRedirect('/gyms/sacred-roots-yoga-massage-paralimni');
+  }
+
   const gym = await getGymBySlug(decodedSlug);
   
   if (!gym) {
@@ -180,7 +210,23 @@ export default async function GymPage({ params }: GymPageProps) {
   const city = getCityById(gym.cityId);
   const reviews = getTopReviews(gym.id, 5);
   const allReviews = getReviewsByGymId(gym.id);
-  const cityGyms = (await getGymsByCity(gym.cityId)).filter(g => g.id !== gym.id).slice(0, 3);
+  
+  // Get related gyms by specialty and city
+  const primarySpecialty = getPrimarySpecialty(gym.specialties);
+  const specialtySlug = getSpecialtySlug(primarySpecialty);
+  const relatedGyms = (await getGymsBySpecialtyAndCity(specialtySlug, gym.cityId))
+    .filter(g => g.id !== gym.id)
+    .slice(0, 3);
+  
+  // Fallback to city gyms if no specialty matches found
+  const cityGyms = relatedGyms.length > 0 
+    ? relatedGyms 
+    : (await getGymsByCity(gym.cityId)).filter(g => g.id !== gym.id).slice(0, 3);
+  
+  // Format the heading
+  const relatedGymsHeading = relatedGyms.length > 0
+    ? formatSpecialtyHeading(primarySpecialty, city?.name || 'Cyprus')
+    : `Other Gyms in ${city?.name || 'Cyprus'}`;
 
   // Generate Schema.org JSON-LD
   const localBusinessSchema = generateLocalBusinessSchema(gym, city?.name || 'Cyprus', allReviews);
@@ -188,7 +234,7 @@ export default async function GymPage({ params }: GymPageProps) {
     { name: 'Home', url: 'https://gymnearme.cy' },
     { name: 'Cities', url: 'https://gymnearme.cy/cities' },
     ...(city ? [{ name: city.name, url: `https://gymnearme.cy/cities/${city.slug}` }] : []),
-    { name: gym.slug === 'cyprus-top-team-ctt-larnaca' ? 'Cyprus Top Team CTT' : gym.slug === 'foxteam-taekwondo-larnaca' ? 'FoxTeam Taekwondo' : gym.slug === 'rack-gym-larnaca' ? 'RACK GYM' : gym.slug === 'elit3-fitness-nutrition-larnaca' ? 'ELIT3 Fitness & Nutrition' : gym.slug === 'twp-train-with-passion-larnaca' ? 'TWP-Train With Passion' : gym.slug === 'its-time-fitness-center-larnaca' ? "It's Time Fitness Center" : gym.slug === 'fivestar-sportcenter-larnaca' ? 'FiveStar SportCenter' : gym.slug === 'getfitgym-elite-larnaca' ? 'GetFitGym Elite' : gym.slug === 'profit-center-larnaca' ? 'Pro.fit Center' : gym.name, url: `https://gymnearme.cy/gyms/${gym.slug}` },
+    { name: gym.slug === 'bad-dog-bjj-brazilian-jiu-jitsu-training-club-nickbjj-ayia-napa' ? 'BAD DOG BJJ | Brazilian Jiu-Jitsu Training Club | NICKBJJ' : gym.slug === 'cyprus-top-team-ctt-larnaca' ? 'Cyprus Top Team CTT' : gym.slug === 'foxteam-taekwondo-larnaca' ? 'FoxTeam Taekwondo' : gym.slug === 'rack-gym-larnaca' ? 'RACK GYM' : gym.slug === 'elit3-fitness-nutrition-larnaca' ? 'ELIT3 Fitness & Nutrition' : gym.slug === 'twp-train-with-passion-larnaca' ? 'TWP-Train With Passion' : gym.slug === 'its-time-fitness-center-larnaca' ? "It's Time Fitness Center" : gym.slug === 'fivestar-sportcenter-larnaca' ? 'FiveStar SportCenter' : gym.slug === 'getfitgym-elite-larnaca' ? 'GetFitGym Elite' : gym.slug === 'profit-center-larnaca' ? 'Pro.fit Center' : gym.slug === 'world-gym-ayia-napa' ? 'World Gym' : gym.name, url: `https://gymnearme.cy/gyms/${gym.slug}` },
   ]);
 
   // Always show all 7 days - use "Closed" if no hours specified
@@ -259,7 +305,7 @@ export default async function GymPage({ params }: GymPageProps) {
           items={[
             { label: 'Cities', href: '/cities' },
             ...(city ? [{ label: city.name, href: `/cities/${city.slug}` }] : []),
-            { label: gym.slug === 'cyprus-top-team-ctt-larnaca' ? 'Cyprus Top Team CTT' : gym.slug === 'foxteam-taekwondo-larnaca' ? 'FoxTeam Taekwondo' : gym.slug === 'rack-gym-larnaca' ? 'RACK GYM' : gym.slug === 'elit3-fitness-nutrition-larnaca' ? 'ELIT3 Fitness & Nutrition' : gym.slug === 'twp-train-with-passion-larnaca' ? 'TWP-Train With Passion' : gym.slug === 'its-time-fitness-center-larnaca' ? "It's Time Fitness Center" : gym.slug === 'fivestar-sportcenter-larnaca' ? 'FiveStar SportCenter' : gym.slug === 'getfitgym-elite-larnaca' ? 'GetFitGym Elite' : gym.slug === 'profit-center-larnaca' ? 'Pro.fit Center' : gym.name, href: `/gyms/${gym.slug}` },
+            { label: gym.slug === 'bad-dog-bjj-brazilian-jiu-jitsu-training-club-nickbjj-ayia-napa' ? 'BAD DOG BJJ | Brazilian Jiu-Jitsu Training Club | NICKBJJ' : gym.slug === 'cyprus-top-team-ctt-larnaca' ? 'Cyprus Top Team CTT' : gym.slug === 'foxteam-taekwondo-larnaca' ? 'FoxTeam Taekwondo' : gym.slug === 'rack-gym-larnaca' ? 'RACK GYM' : gym.slug === 'elit3-fitness-nutrition-larnaca' ? 'ELIT3 Fitness & Nutrition' : gym.slug === 'twp-train-with-passion-larnaca' ? 'TWP-Train With Passion' : gym.slug === 'its-time-fitness-center-larnaca' ? "It's Time Fitness Center" : gym.slug === 'fivestar-sportcenter-larnaca' ? 'FiveStar SportCenter' : gym.slug === 'getfitgym-elite-larnaca' ? 'GetFitGym Elite' : gym.slug === 'profit-center-larnaca' ? 'Pro.fit Center' : gym.slug === 'world-gym-ayia-napa' ? 'World Gym' : gym.name, href: `/gyms/${gym.slug}` },
           ]}
         />
 
@@ -317,16 +363,18 @@ export default async function GymPage({ params }: GymPageProps) {
                 </Button>
               </a>
             )}
-            <a
-              href={`https://www.openstreetmap.org/?mlat=${gym.coordinates[0]}&mlon=${gym.coordinates[1]}&zoom=15`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="outline" size="sm">
-                <MapPin className="w-4 h-4 mr-2" />
-                Directions
-              </Button>
-            </a>
+            {gym.coordinates[0] !== 0 && gym.coordinates[1] !== 0 && (
+              <a
+                href={`https://www.openstreetmap.org/?mlat=${gym.coordinates[0]}&mlon=${gym.coordinates[1]}&zoom=15`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="outline" size="sm">
+                  <MapPin className="w-4 h-4 mr-2" />
+                  Directions
+                </Button>
+              </a>
+            )}
           </div>
         </div>
 
@@ -358,15 +406,6 @@ export default async function GymPage({ params }: GymPageProps) {
             <div className="text-2xl font-bold text-text-white">{gym.reviewCount}</div>
             <p className="text-text-muted text-sm mt-2">Reviews</p>
           </div>
-          {gym.memberCount && (
-            <div className="bg-surface-card rounded-card p-4 text-center">
-              <div className="text-2xl font-bold text-text-white flex items-center justify-center gap-1">
-                <Users className="w-5 h-5" />
-                {gym.memberCount.toLocaleString()}
-              </div>
-              <p className="text-text-muted text-sm mt-2">Members</p>
-            </div>
-          )}
           {gym.yearsInBusiness && (
             <div className="bg-surface-card rounded-card p-4 text-center">
               <div className="text-2xl font-bold text-text-white flex items-center justify-center gap-1">
@@ -436,7 +475,25 @@ export default async function GymPage({ params }: GymPageProps) {
                   })()}
                 </div>
               {allDaysClosed ? (
-                <p className="text-text-muted">Contact for opening hours details</p>
+                <>
+                  <p className="text-text-muted">Contact for opening hours details</p>
+                  {/* Add schedule link for BAD DOG BJJ when all days are closed */}
+                  {gym.slug === 'bad-dog-bjj-brazilian-jiu-jitsu-training-club-nickbjj-ayia-napa' && (
+                    <div className="mt-4 pt-4 border-t border-surface-lighter">
+                      <p className="text-text-muted text-sm mb-2">
+                        For the most up-to-date class schedule:
+                      </p>
+                      <a
+                        href="https://www.baddogbjj.com/classschedule"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary-blue hover:text-primary-blue-light underline text-sm font-medium"
+                      >
+                        View Current Class Schedule
+                      </a>
+                    </div>
+                  )}
+                </>
               ) : (
                 <>
                 <div className="space-y-3">
@@ -503,6 +560,23 @@ export default async function GymPage({ params }: GymPageProps) {
                     );
                   })}
                 </div>
+                {/* Add schedule link for BAD DOG BJJ */}
+                {gym.slug === 'bad-dog-bjj-brazilian-jiu-jitsu-training-club-nickbjj-ayia-napa' && (
+                  <div className="mt-4 pt-4 border-t border-surface-lighter">
+                    <p className="text-text-muted text-sm mb-2">
+                      Schedule may vary. For the most up-to-date class schedule:
+                    </p>
+                    <a
+                      href="https://www.baddogbjj.com/classschedule"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary-blue hover:text-primary-blue-light underline text-sm font-medium inline-flex items-center gap-1"
+                    >
+                      View Current Class Schedule
+                      <Globe className="w-4 h-4" />
+                    </a>
+                  </div>
+                )}
                 </>
               )}
               </section>
@@ -812,24 +886,13 @@ export default async function GymPage({ params }: GymPageProps) {
             </div>
 
             {/* Map Section */}
-            <div className="bg-surface-card rounded-card p-6">
-              <h3 className="text-xl font-bold text-text-white mb-4">Location</h3>
-              <GymMap gym={gym} />
-              <a
-                href={`https://www.openstreetmap.org/?mlat=${gym.coordinates[0]}&mlon=${gym.coordinates[1]}&zoom=15`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary-blue hover:underline text-sm mt-4 inline-block"
-              >
-                Open in OpenStreetMap →
-              </a>
-            </div>
+            <GymMapWithToggle gym={gym} />
 
-            {/* Related Gyms */}
+            {/* Related Gyms by Specialty */}
             {cityGyms.length > 0 && (
               <div className="bg-surface-card rounded-card p-6">
                 <h3 className="text-xl font-bold text-text-white mb-4">
-                  Other Gyms in {city?.name}
+                  {relatedGymsHeading}
                 </h3>
                 <div className="space-y-4">
                   {cityGyms.map((relatedGym) => (

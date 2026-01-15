@@ -43,7 +43,7 @@ export default async function CitiesPage() {
               paphos: '🏖️', // Beach / historic
               larnaca: '✈️', // Airport / travel hub
               'ayia-napa': '🎉', // Party / nightlife
-              protaras: '🏝️', // Beach resort
+              paralimni: '🏝️', // Beach resort
             };
 
             const emoji = cityEmojis[city.id] || '🏋️';

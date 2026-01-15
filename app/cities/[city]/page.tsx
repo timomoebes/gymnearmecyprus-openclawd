@@ -9,6 +9,7 @@ import { Badge } from '@/components/shared/Badge';
 import { CityMap } from '@/components/city/CityMapWrapper';
 import { CityPageClient } from './CityPageClient';
 import { generateBreadcrumbSchema, generateCollectionPageSchema, generateFAQPageSchema } from '@/lib/utils/schema';
+import { generateCityMetaDescription } from '@/lib/utils/meta-descriptions';
 
 interface CityPageProps {
   params: {
@@ -44,9 +45,8 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
   const isLarnaca = cityNameLower.includes('larnaca');
   const isPaphos = cityNameLower.includes('paphos');
   
-  // Build keyword-rich title and description
+  // Build keyword-rich title
   let title = `Best Gyms in ${city.name}, Cyprus | Find Gyms Near Me in ${city.name}`;
-  let description = `Find the best gyms in ${city.name}. Search fitness centers, health clubs, and gyms near me in ${city.name}. Compare ratings, reviews, amenities, and find your perfect workout space.`;
   let keywords = `gym ${cityNameLower}, best gym ${cityNameLower}, gyms in ${cityNameLower}, fitness center ${cityNameLower}, gym near me ${cityNameLower}, ${cityNameLower} gyms, cyprus gyms`;
   
   // Add specific keywords for high-volume cities
@@ -63,6 +63,9 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
     title = `Best Gyms in Paphos | Find Gyms Near Me in Paphos, Cyprus | ${gymCount} Gyms`;
     keywords += ', gym paphos';
   }
+
+  // Generate optimized meta description using centralized utility
+  const description = generateCityMetaDescription(city, gymCount);
 
   return {
     title,

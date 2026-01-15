@@ -35,3 +35,4 @@ export const GymOpenStatus: React.FC<GymOpenStatusProps> = ({ openingHours }) =>
   );
 };
 
+

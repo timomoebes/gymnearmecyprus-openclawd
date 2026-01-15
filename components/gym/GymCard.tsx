@@ -61,9 +61,6 @@ export const GymCard: React.FC<GymCardProps> = ({ gym, showCity = true }) => {
 
       <div className="flex items-center justify-between pt-4 border-t border-surface-lighter">
         <div className="flex items-center gap-4 text-sm text-text-muted">
-          {gym.memberCount && (
-            <span>{gym.memberCount.toLocaleString()} members</span>
-          )}
           {gym.yearsInBusiness && (
             <span>{gym.yearsInBusiness} years</span>
           )}

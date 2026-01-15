@@ -503,11 +503,6 @@ new-gym/
 - `description` (text, SEO-rich, 150-300 words)
 - `opening_hours` (jsonb) - {monday, tuesday, ..., sunday}
 - `pricing` (jsonb) - Structured pricing plans
-- `member_count` (integer, nullable)
-- `member_count_source` (text, enum: 'Owner Provided', 'Estimated', 'Demo Data')
-- `member_count_verified` (boolean, default false)
-- `member_count_public` (boolean, default false)
-- `member_count_last_updated` (timestamptz, nullable)
 - `years_in_business` (integer, nullable)
 - `owner_id` (UUID, nullable, foreign key → gym_owners)
 - `created_at` (timestamptz)
@@ -968,8 +963,6 @@ new-gym/
 - **TECHNICAL_REFERENCE.md** - Quick technical reference
 - **KEYWORD_STRATEGY.md** - SEO keyword strategy
 - **STRATEGIC_ACTION_PLAN.md** - Tactical roadmap
-- **MEMBER_COUNT_SPECIFICATION.md** - Member count system spec
-- **DATABASE_MIGRATION_PLAN.md** - Database migration details
 
 ### 13.3 Contact & Support
 

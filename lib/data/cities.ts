@@ -53,13 +53,13 @@ export const cities: City[] = [
     specialties: ['Bodybuilding', 'Yoga', 'CrossFit'],
   },
   {
-    id: 'protaras',
-    name: 'Protaras',
-    slug: 'protaras',
-    description: 'Find excellent gyms in Protaras. Combine your beach vacation with a great workout at modern fitness facilities.',
+    id: 'paralimni',
+    name: 'Paralimni',
+    slug: 'paralimni',
+    description: 'Find excellent gyms in Paralimni. Combine your beach vacation with a great workout at modern fitness facilities.',
     gymCount: 0,
     coordinates: [35.0125, 34.0583],
-    heroImage: '/images/cities/protaras.jpg',
+    heroImage: '/images/cities/paralimni.jpg',
     specialties: ['Yoga', 'Pilates', 'Bodybuilding'],
   },
 ];

@@ -12,11 +12,37 @@ interface GymMapProps {
   gym: Gym;
 }
 
+// Validate coordinates - check if they're valid (not 0,0 and within reasonable bounds)
+const isValidCoordinate = (coords: [number, number]): boolean => {
+  const [lat, lng] = coords;
+  // Check if coordinates are not the default fallback (0, 0)
+  if (lat === 0 && lng === 0) return false;
+  // Check if coordinates are within valid ranges
+  if (lat < -90 || lat > 90 || lng < -180 || lng > 180) return false;
+  // Check if coordinates are valid numbers
+  if (isNaN(lat) || isNaN(lng)) return false;
+  return true;
+};
+
 export const GymMap: React.FC<GymMapProps> = ({ gym }) => {
+  // Validate coordinates before rendering map
+  if (!isValidCoordinate(gym.coordinates)) {
+    return (
+      <div className="w-full h-96 rounded-card bg-surface-card flex items-center justify-center border border-surface-lighter">
+        <div className="text-center">
+          <p className="text-text-muted mb-2">Map location unavailable</p>
+          <p className="text-text-muted text-sm">Coordinates not available for this gym</p>
+        </div>
+      </div>
+    );
+  }
+
+  const [lat, lng] = gym.coordinates;
+
   return (
     <div className="w-full h-96 rounded-card overflow-hidden border border-surface-lighter">
       <MapContainer
-        center={gym.coordinates}
+        center={[lat, lng]}
         zoom={15}
         style={{ height: '100%', width: '100%' }}
         className="z-0"
@@ -26,7 +52,7 @@ export const GymMap: React.FC<GymMapProps> = ({ gym }) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Marker
-          position={gym.coordinates}
+          position={[lat, lng]}
           icon={gym.featured ? featuredIcon : defaultIcon}
         >
           <Popup>
@@ -38,7 +64,7 @@ export const GymMap: React.FC<GymMapProps> = ({ gym }) => {
                 {gym.address}
               </div>
               <a
-                href={`https://www.openstreetmap.org/?mlat=${gym.coordinates[0]}&mlon=${gym.coordinates[1]}&zoom=15`}
+                href={`https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}&zoom=15`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-xs text-primary-blue hover:underline mt-2 inline-block"

@@ -102,7 +102,7 @@ export default async function HomePage() {
               </span>
             </h1>
             <p className="text-xl text-text-light mb-8 max-w-2xl mx-auto">
-              Searching for a gym near me? Our comprehensive directory helps you find the best fitness centers, health clubs, and gyms close to you across Cyprus. Whether you're looking for a 24-hour gym, a nearby fitness center, or a health club with specific amenities, we've got you covered.
+              Searching for a gym near me? Our comprehensive directory helps you find the best fitness centers and gyms close to you across Cyprus. Whether you're looking for a personal trainer in Nicosia, a nearby gym, or a yoga & pilates studio with specific amenities, we've got you covered.
             </p>
             
             {/* Search Bar */}

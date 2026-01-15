@@ -5,6 +5,7 @@ import { getSpecialtyBySlug, getGymsBySpecialty, specialties } from '@/lib/data'
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { SpecialtyPageClient } from './SpecialtyPageClient';
 import { generateBreadcrumbSchema, generateCollectionPageSchema, generateFAQPageSchema } from '@/lib/utils/schema';
+import { generateSpecialtyMetaDescription } from '@/lib/utils/meta-descriptions';
 import { CheckCircle } from 'lucide-react';
 
 interface SpecialtyPageProps {
@@ -43,9 +44,11 @@ export async function generateMetadata({ params }: SpecialtyPageProps): Promise<
     const newSlug = OLD_TO_NEW_SPECIALTY_MAP[oldSlug];
     const specialty = getSpecialtyBySlug(newSlug);
     if (specialty) {
+      // Generate optimized meta description using centralized utility
+      const description = generateSpecialtyMetaDescription(specialty);
       return {
         title: `Best ${specialty.name} Gyms in Cyprus`,
-        description: specialty.description,
+        description,
       };
     }
   }
@@ -58,76 +61,68 @@ export async function generateMetadata({ params }: SpecialtyPageProps): Promise<
     };
   }
 
-  // Custom metadata for high-value keywords
+  // Custom titles and keywords for high-value keywords (maintains SEO strategy)
   const specialtySlug = specialty.slug.toLowerCase();
-  // Note: We'll use a placeholder for title since we need async data
-  // The actual count will be in the page content
   let title = `Best ${specialty.name} Gyms in Cyprus`;
-  let description = specialty.description;
   let keywords = `${specialty.name} gyms cyprus, ${specialty.name} training, ${specialty.name} fitness centers`;
 
   // Personal Training - Quick Win (210 vol, 13 diff)
   if (specialtySlug === 'personal-training') {
     title = 'Find Personal Trainers in Cyprus | Best Personal Training Gyms | Expert Trainers';
-    description = 'Find personal trainers in Cyprus. Discover certified personal trainers in Nicosia, Limassol, and across Cyprus. One-on-one training, customized workout plans, and expert guidance.';
     keywords = 'personal trainer nicosia, personal training cyprus, personal trainers limassol, certified personal trainer, fitness trainer cyprus';
   }
   
   // Swimming & Aquatics - High Volume Quick Win (1,000 + 720 vol, 17 diff)
   if (specialtySlug === 'swimming-aquatics') {
     title = 'Gyms with Swimming Pools in Cyprus | Find Pools Near Me | Swimming Facilities';
-    description = 'Find gyms with swimming pools in Cyprus. Discover swimming pools in Nicosia, pools in Nicosia, and aquatic fitness facilities. Perfect for lap swimming, water aerobics, and low-impact workouts.';
     keywords = 'swimming pool nicosia, pools in nicosia, gyms with pools cyprus, swimming facilities, aquatic fitness, pool access gyms';
   }
   
   // Yoga & Pilates - Quick Win (210 + 170 vol, 10-14 diff)
   if (specialtySlug === 'yoga-pilates') {
     title = 'Find Yoga & Pilates Classes Near Me in Cyprus | Reformer Pilates Studios | Yoga Near Me';
-    description = 'Find yoga and pilates near me in Cyprus. Discover reformer pilates studios, yoga classes in Nicosia, and pilates instructors. Compare studios and book your class today.';
     keywords = 'pilates near me, pilates nicosia, reformer pilates near me, pilates reformer nicosia, pilates classes cyprus, pilates studio, yoga nicosia, yoga cyprus';
   }
   
   // CrossFit - Quick Win (170 vol, 15 diff)
   if (specialtySlug === 'crossfit') {
     title = 'Best CrossFit Gyms in Cyprus | Find CrossFit Near Me | CrossFit Nicosia';
-    description = 'Find CrossFit gyms in Cyprus. Discover CrossFit boxes in Nicosia, Limassol, and across Cyprus. High-intensity functional training, expert coaches, and supportive communities.';
     keywords = 'crossfit nicosia, crossfit cyprus, crossfit gyms, crossfit near me, crossfit boxes, functional fitness';
   }
   
   // Fitness/Gym
   if (specialtySlug === 'fitness-gym') {
     title = 'Best Fitness Centers & Gyms in Cyprus | Find Gyms Near Me | Fitness Facilities';
-    description = 'Find the best fitness centers and gyms in Cyprus. Discover traditional gyms and fitness facilities in Nicosia, Limassol, and across Cyprus with comprehensive equipment and training options.';
     keywords = 'gym near me, fitness center cyprus, gyms nicosia, fitness facilities, traditional gyms, workout facilities';
   }
   
   // Martial Arts & MMA
   if (specialtySlug === 'martial-arts-mma') {
     title = 'Best Martial Arts & MMA Gyms in Cyprus | MMA Training | Combat Sports';
-    description = 'Find martial arts and MMA gyms in Cyprus. Discover MMA, Brazilian Jiu-Jitsu, Muay Thai, wrestling, and other combat sports training facilities. Train like a fighter with expert coaches.';
     keywords = 'mma cyprus, martial arts training, combat sports, bjj cyprus, muay thai cyprus, mma gyms nicosia';
   }
   
   // Boxing
   if (specialtySlug === 'boxing') {
     title = 'Best Boxing Gyms in Cyprus | Boxing Training | Boxing Clubs';
-    description = 'Find boxing gyms in Cyprus. Discover professional boxing trainers, heavy bags, sparring rings, and boxing clubs. Perfect for fitness and competitive boxing training.';
     keywords = 'boxing gyms cyprus, boxing nicosia, boxing training, boxing clubs, boxing classes, boxing near me';
   }
   
   // Strength Training
   if (specialtySlug === 'strength-training') {
     title = 'Best Strength Training Gyms in Cyprus | Bodybuilding & Powerlifting Facilities';
-    description = 'Find strength training gyms in Cyprus. Discover bodybuilding and powerlifting facilities with professional equipment, squat racks, and competition-grade training areas.';
     keywords = 'bodybuilding gyms cyprus, powerlifting gyms, strength training facilities, bodybuilding nicosia, powerlifting cyprus';
   }
   
   // Dance & Group Fitness
   if (specialtySlug === 'dance-group-fitness') {
     title = 'Dance & Group Fitness Classes in Cyprus | Zumba & Aerobics | Group Workouts';
-    description = 'Find dance studios and group fitness classes in Cyprus. Discover Zumba, aerobics, dance classes, and fun group workout sessions. Social and energetic fitness options.';
     keywords = 'zumba cyprus, dance classes nicosia, group fitness classes, aerobics cyprus, dance studios';
   }
+
+  // Generate optimized meta description using centralized utility
+  // This handles all custom descriptions for high-value keywords
+  const description = generateSpecialtyMetaDescription(specialty);
 
   return {
     title,
