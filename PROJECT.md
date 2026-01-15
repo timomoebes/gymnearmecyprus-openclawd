@@ -41,7 +41,7 @@
 ### 1.3 Current Status
 
 - **Phase:** Production-Ready MVP
-- **Database:** 200 gyms across 6 cities (Limassol, Nicosia, Larnaca, Paphos, Ayia Napa, Paralimni)
+- **Database:** 199 gyms across 6 cities (Limassol, Nicosia, Larnaca, Paphos, Ayia Napa, Paralimni)
 - **Frontend:** Fully functional with Supabase backend integration
 - **SEO:** Comprehensive schema markup, FAQ sections, keyword optimization
 - **Revenue Model:** Free listings + Featured subscription tiers (Monthly €49, Yearly €490, Lifetime €999)
@@ -176,7 +176,7 @@ The platform operates on a **freemium model** with free basic listings and premi
 ### 4.3 Revenue Projections
 
 **Assumptions:**
-- 200 gyms in database (all unclaimed initially)
+- 199 gyms in database (all unclaimed initially)
 - Target: 10% conversion to featured listings within 6 months (21 gyms)
 - Mix: 60% Monthly, 30% Yearly, 10% Lifetime
 
@@ -246,7 +246,12 @@ The platform operates on a **freemium model** with free basic listings and premi
 - **Specialties & Amenities:** Sorted by priority order
 - **Top Reviews:** 3-5 reviews (Google Maps or local)
 - **Map Section:** Interactive OpenStreetMap with gym location
-- **Related Gyms:** Same city, same specialty
+- **Related Gyms Section:** Dynamic specialty-based related gyms
+  - Shows "Other [Specialty] in [City]" based on gym's primary specialty
+  - Examples: "Other CrossFit Gyms in Nicosia", "Other Yoga & Pilates Studios in Larnaca", "Other Martial Arts & MMA Gyms in Paphos"
+  - Handles gyms with multiple specialties by prioritizing primary specialty
+  - Falls back to "Other Gyms in [City]" if no specialty matches found
+  - Special formatting for specific specialties (adds "Gyms" or "Studios" as appropriate)
 - **Owner CTA:** "Claim This Listing" for unclaimed gyms
 
 #### 5.1.4 Specialty Pages (`/specialties/[specialty]`)
@@ -368,6 +373,20 @@ The platform operates on a **freemium model** with free basic listings and premi
 - **Current:** Display top 3-5 reviews per gym
 - **Sources:** Google Maps reviews (scraped/imported) or local reviews
 - **Future:** Local review system with owner responses
+
+#### 5.3.5 Dynamic Related Gyms System
+- **Specialty-Based Display:** Related gyms section dynamically shows gyms of the same specialty in the same city
+- **Primary Specialty Selection:** For gyms with multiple specialties, system prioritizes primary specialty using predefined logic
+  - Priority order: Fitness/Gym → Yoga & Pilates → Martial Arts & MMA → Strength Training → Swimming & Aquatics → Dance & Group Fitness → First specialty in list
+- **Heading Formatting:** Special formatting for different specialties
+  - "Other CrossFit Gyms in [City]"
+  - "Other Yoga & Pilates Studios in [City]"
+  - "Other Boxing Gyms in [City]"
+  - "Other Martial Arts & MMA Gyms in [City]"
+  - "Other Fitness/Gyms in [City]"
+  - Generic: "Other [Specialty] in [City]"
+- **Fallback Logic:** If no specialty matches found, shows general city gyms with "Other Gyms in [City]" heading
+- **Implementation:** Utility functions in `lib/utils/specialty-heading.ts` and API function `getGymsBySpecialtyAndCityFromDB` in `lib/api/gyms.ts`
 
 ---
 
@@ -552,17 +571,24 @@ new-gym/
 
 ### 7.2 Current Data Status
 
-- **Total Gyms:** 200 gyms across 6 cities
+- **Total Gyms:** 199 gyms across 6 cities
   - Limassol: 50 gyms
   - Nicosia: 71 gyms
   - Larnaca: 43 gyms
   - Paphos: 34 gyms
   - Ayia Napa: 6 gyms
-  - Paralimni: 7 gyms
+  - Paralimni: 6 gyms (Protaras gyms merged into Paralimni)
 - **Featured Gyms:** 0 (all unclaimed)
 - **Specialties:** 9 consolidated specialties
 - **Data Source:** All gyms scraped from Google Maps
-- **Data Quality:** Ongoing enrichment (opening hours, social media, amenities, pricing)
+- **Data Quality:** Ongoing enrichment (opening hours, social media, amenities, pricing, review counts, specialty assignments)
+  - **Recent Updates (January 2026):**
+    - Review counts updated for 30+ gyms (Gabriel Fitness & Boxing Gym: 73, FUELHOUSE Boutique Fitness Club: 115, Forma Personal Training Studio Gym Paphos: 85, Global Vale Tudo Combat Sports Academy: 27, and more)
+    - Gym names standardized (e.g., FORTIUS BOXING ACADEMY, FUELHOUSE Boutique Fitness Club, EUROGYM)
+    - Specialty assignments refined (removed Fitness/Gym from MMA gyms, removed Strength Training from specific gyms, added Swimming & Aquatics to FiveStar SportCenter)
+    - Social media links added/updated (Fortius Boxing Academy, FUELHOUSE Boutique Fitness Club)
+    - Email addresses added (Gabriel Fitness & Boxing Gym, Energea Fitness Studio)
+    - Amenities added (Swimming Pool to FiveStar SportCenter Larnaca)
 
 ### 7.3 Data Quality Principles
 
@@ -722,10 +748,20 @@ new-gym/
 
 #### Phase 6: Backend Integration
 - ✅ Supabase database setup
-- ✅ 200 gyms imported (all cities)
+- ✅ 199 gyms imported (all cities)
 - ✅ Frontend connected to Supabase API
 - ✅ Dynamic counts from database
 - ✅ Data enrichment (opening hours, social media, amenities, pricing)
+- ✅ Dynamic related gyms system (specialty-based related gyms display)
+- ✅ Recent data updates (January 2026):
+  - Review counts updated for 30+ gyms
+  - Gym names standardized (FORTIUS BOXING ACADEMY, FUELHOUSE Boutique Fitness Club, EUROGYM, EPlarkou Pilates, Energea Fitness Studio - EMS Training & Pilates Reformer)
+  - Specialty assignments refined (removed Fitness/Gym from MMA/Boxing gyms, removed Strength Training from specific gyms, added Swimming & Aquatics)
+  - Social media links added/updated (Fortius Boxing Academy, FUELHOUSE Boutique Fitness Club)
+  - Email addresses added (Gabriel Fitness & Boxing Gym, Energea Fitness Studio)
+  - Amenities added (Swimming Pool to FiveStar SportCenter Larnaca)
+  - Opening hours updated (Demari Wellness And Spa Paralimni)
+  - Postal codes added (Demari Wellness And Spa Paralimni)
 
 ### 10.2 Current Phase: Production Optimization
 

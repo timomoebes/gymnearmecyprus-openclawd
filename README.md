@@ -59,7 +59,11 @@ new-gym/
 │       ├── opening-hours.ts  # Opening hours parsing and timezone handling
 │       ├── schema.ts         # Schema.org JSON-LD generation
 │       ├── meta-descriptions.ts  # Centralized meta description generators
-│       └── map-icons.ts      # Shared Leaflet map icon definitions
+│       ├── map-icons.ts      # Shared Leaflet map icon definitions
+│       ├── specialty-heading.ts  # Specialty-based heading formatting for related gyms sections
+│       └── sort-specialties-amenities.ts  # Predefined ordering for specialties and amenities
+│       ├── specialty-heading.ts  # Specialty-based heading formatting for related gyms sections
+│       └── sort-specialties-amenities.ts  # Predefined ordering for specialties and amenities
 ├── data/                  # Data processing
 │   ├── raw/               # Raw scraped data (CSV/JSON)
 │   └── clean/             # Cleaned data ready for import
@@ -151,6 +155,16 @@ The audit tool checks for:
   - Specialties displayed in priority order (Fitness/Gym → Yoga & Pilates → Boxing → etc.)
   - Amenities displayed in priority order (Cafe → Group Classes → Showers → etc.)
   - Applied automatically to all 199 gyms in directory
+- [x] **Dynamic Related Gyms Section** - Specialty-based related gyms display on gym detail pages
+  - Shows "Other [Specialty] in [City]" section dynamically based on gym's primary specialty
+  - Handles gyms with multiple specialties by prioritizing primary specialty
+  - Falls back to general city gyms if no specialty matches found
+  - Special formatting for specific specialties (e.g., "Other CrossFit Gyms in Nicosia", "Other Yoga & Pilates Studios in Larnaca")
+- [x] **Dynamic Related Gyms Section** - Specialty-based related gyms display on gym detail pages
+  - Shows "Other [Specialty] in [City]" section dynamically based on gym's primary specialty
+  - Handles gyms with multiple specialties by prioritizing primary specialty
+  - Falls back to general city gyms if no specialty matches found
+  - Special formatting for specific specialties (e.g., "Other CrossFit Gyms in Nicosia", "Other Yoga & Pilates Studios in Larnaca")
 - [x] **Opening Hours System** - Comprehensive opening hours display and management
   - All gyms have all 7 days (Monday-Sunday) in opening hours
   - Standardized format: HH:MM-HH:MM (24-hour format, always 2 digits)
@@ -377,6 +391,14 @@ The project uses a custom dark/neon theme with:
   - Amenities sorted: Cafe → Group Classes → Showers → Cardio Equipment → Free Water → Hair Dryers → Locker Room → Sauna → Toilets → WiFi → Parking → Steam Room → Swimming Pool → Kids Friendly → Air Condition
   - Applied to all display locations: gym detail pages, gym cards, city map popups, city page filters
   - Automatically applies to all 199+ gyms in directory
+- **Dynamic Related Gyms Section**: ✅ Specialty-based related gyms display on gym detail pages
+  - Shows "Other [Specialty] in [City]" section at bottom of gym pages
+  - Dynamically adjusts based on gym's primary specialty (e.g., "Other CrossFit Gyms in Nicosia", "Other Yoga & Pilates Studios in Larnaca")
+  - Handles gyms with multiple specialties by prioritizing primary specialty
+  - Falls back to "Other Gyms in [City]" if no specialty matches found
+  - Utility functions in `lib/utils/specialty-heading.ts` for specialty heading formatting
+  - New API function `getGymsBySpecialtyAndCityFromDB` for fetching related gyms
+  - Special formatting for specific specialties (e.g., "CrossFit Gyms", "Boxing Gyms", "Martial Arts & MMA Gyms")
 
 #### Frontend Data Access
 - **Data Layer**: Unified data access layer with Supabase API integration
