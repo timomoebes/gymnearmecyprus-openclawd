@@ -141,10 +141,16 @@ The audit tool checks for:
   - Exact matches prioritized over partial matches
   - Redirects to gym page for gym matches, city page for city matches
 - [x] **Filtering & Sorting** - Filter by rating, specialty, amenities; sort by rating, name, featured
+- [x] **Location Filtering on Specialty Pages** - Filter gyms by city/location on specialty pages (e.g., CrossFit gyms in Nicosia, Personal Training in Limassol)
+  - Location dropdown filter on all specialty pages (`/specialties/[specialty]`)
+  - Dynamically shows only cities that have gyms for the selected specialty
+  - Cities sorted alphabetically for easy navigation
+  - Works seamlessly with existing filters (sorting, featured)
+  - Enhanced user experience for finding specialty gyms in specific locations
 - [x] **Specialty & Amenity Display Ordering** - Consistent, predefined ordering for specialties and amenities across all gym listings
   - Specialties displayed in priority order (Fitness/Gym → Yoga & Pilates → Boxing → etc.)
   - Amenities displayed in priority order (Cafe → Group Classes → Showers → etc.)
-  - Applied automatically to all 200 gyms in directory
+  - Applied automatically to all 199 gyms in directory
 - [x] **Opening Hours System** - Comprehensive opening hours display and management
   - All gyms have all 7 days (Monday-Sunday) in opening hours
   - Standardized format: HH:MM-HH:MM (24-hour format, always 2 digits)
@@ -219,6 +225,11 @@ The audit tool checks for:
 
 ### Phase 6: UX & Bugfixes (Ongoing)
 - [x] **Mobile Navigation Reliability** - Fixed mobile menu "Browse Cities" links (including "View All Cities" and individual city links) so taps correctly trigger navigation instead of being intercepted by the desktop click-outside handler.
+- [x] **Location Filtering Enhancement** - Added city/location filtering to specialty pages for improved navigation
+  - Users can now filter specialty gyms (CrossFit, Personal Training, Fitness/Gym, etc.) by city
+  - Filter appears as a dropdown with MapPin icon in the FilterSort component
+  - Only shows cities that have gyms for the selected specialty
+  - Improves user experience by allowing location-specific searches within specialties
 
 ### Navigation & UI Enhancements ✅
 - [x] **Modern Navigation Bar**
@@ -261,13 +272,13 @@ The project uses a custom dark/neon theme with:
 
 #### Backend Database (Supabase) ✅
 - **Database**: Supabase PostgreSQL
-- **Total Gyms**: 200 gyms in database (all scraped from Google Maps)
+- **Total Gyms**: 199 gyms in database (all scraped from Google Maps)
   - Limassol: 50 gyms
   - Nicosia: 71 gyms
   - Larnaca: 43 gyms
   - Paphos: 34 gyms
   - Ayia Napa: 6 gyms
-  - Protaras: 7 gyms
+  - Paralimni: 6 gyms
 - **Featured Gyms**: 0 featured listings (all unclaimed)
 - **Cities**: 6 cities (all cities now have gyms imported)
 - **Specialties**: 9 consolidated specialties (reduced from 11 original categories)
@@ -300,12 +311,12 @@ The project uses a custom dark/neon theme with:
   - ✅ 43 Larnaca gyms imported (manually via Supabase Dashboard)
   - ✅ 34 Paphos gyms imported (manually via Supabase Dashboard)
   - ✅ 6 Ayia Napa gyms imported (manually via Supabase Dashboard)
-  - ✅ 7 Protaras gyms imported (manually via Supabase Dashboard)
-- **Database Status**: ✅ All 200 gyms are live in the database and visible on frontend
+  - ✅ 6 Paralimni gyms imported (manually via Supabase Dashboard)
+- **Database Status**: ✅ All 199 gyms are live in the database and visible on frontend
 - **Data Quality**: ✅ Specialty assignments verified and corrected (removed incorrect "24-hour-gym" tags)
 - **City Assignment Fixes**: ✅ Corrected gym city assignments (e.g., "Bad Dog Bjj" moved from Protaras to Ayia Napa based on address)
 - **Opening Hours**: ✅ Standardized opening hours format across all gyms (HH:MM-HH:MM, 24-hour format)
-  - All 200 gyms have all 7 days (Monday-Sunday) in opening hours
+  - All 199 gyms have all 7 days (Monday-Sunday) in opening hours
   - 50+ gyms updated with accurate opening hours from verified sources
   - Real-time open/closed status using Cyprus timezone (Europe/Nicosia)
   - Current day highlighting in opening hours display (bold text with tinted background)
@@ -438,8 +449,12 @@ The project uses a custom dark/neon theme with:
 ### Current Status
 - **Phase 5 Complete**: SEO optimization and content enhancement
 - **FAQ Schema Implemented**: FAQPage schema + visible FAQ sections on homepage, all city pages, and all specialty pages
-- **Backend Integration**: ✅ Supabase database setup complete with 200 real gyms (all scraped from Google Maps)
+- **Backend Integration**: ✅ Supabase database setup complete with 199 real gyms (all scraped from Google Maps)
 - **Recent Updates (January 2025)**:
+  - ✅ **Location Filtering on Specialty Pages**: Added city/location filter dropdown to all specialty pages (CrossFit, Personal Training, Fitness/Gym, etc.)
+    - Users can now filter specialty gyms by city for better navigation
+    - Filter dynamically shows only cities with gyms for the selected specialty
+    - Improves user experience by enabling location-specific searches within specialties
   - ✅ **Critical Bug Fix**: Resolved React hydration error on city pages caused by timezone differences between server and client
   - ✅ **Larnaca Data Enrichment**: Updated 7 additional gyms with opening hours, social media links, emails, postal codes, specialties, and amenities
   - ✅ **Slug Management**: Implemented transliteration for Greek character slugs with permanent redirects
@@ -452,7 +467,7 @@ The project uses a custom dark/neon theme with:
   - ✅ 34 Paphos gyms imported - manually via Supabase Dashboard
   - ✅ 6 Ayia Napa gyms imported - manually via Supabase Dashboard
   - ✅ 7 Protaras gyms imported - manually via Supabase Dashboard
-- **Database Status**: ✅ All 210 gyms are live and visible on frontend
+- **Database Status**: ✅ All 199 gyms are live and visible on frontend
 - **Data Quality Fixes**: ✅ Corrected incorrect "24-hour-gym" specialty assignments
   - Removed "24-hour-gym" from incorrectly tagged gyms
   - Only "Muscle Factory 24 Hours" verified as 24-hour gym

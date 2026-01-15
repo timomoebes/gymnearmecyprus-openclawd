@@ -5,6 +5,7 @@ import { Specialty, Gym, GymSortOption } from '@/lib/types';
 import { GymCard } from '@/components/gym/GymCard';
 import { FilterSort } from '@/components/shared/FilterSort';
 import { sortGyms } from '@/lib/utils/search';
+import { cities } from '@/lib/data/cities';
 
 interface SpecialtyPageClientProps {
   specialty: Specialty;
@@ -14,10 +15,32 @@ interface SpecialtyPageClientProps {
 export const SpecialtyPageClient: React.FC<SpecialtyPageClientProps> = ({ specialty, initialGyms }) => {
   const [sortBy, setSortBy] = useState<GymSortOption>('featured');
   const [featuredOnly, setFeaturedOnly] = useState(false);
+  const [cityFilter, setCityFilter] = useState('');
+
+  // Get all unique cities from gyms, sorted by name
+  const availableCities = useMemo(() => {
+    const cityIds = new Set<string>();
+    initialGyms.forEach(gym => {
+      if (gym.cityId) {
+        cityIds.add(gym.cityId);
+      }
+    });
+    
+    // Map cityIds to city objects and sort by name
+    return cities
+      .filter(city => cityIds.has(city.id))
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .map(city => ({ id: city.id, name: city.name }));
+  }, [initialGyms]);
 
   // Filter and sort gyms
   const filteredGyms = useMemo(() => {
     let filtered = [...initialGyms];
+
+    // Filter by city
+    if (cityFilter) {
+      filtered = filtered.filter(gym => gym.cityId === cityFilter);
+    }
 
     // Filter by featured
     if (featuredOnly) {
@@ -26,7 +49,7 @@ export const SpecialtyPageClient: React.FC<SpecialtyPageClientProps> = ({ specia
 
     // Sort
     return sortGyms(filtered, sortBy);
-  }, [initialGyms, featuredOnly, sortBy]);
+  }, [initialGyms, cityFilter, featuredOnly, sortBy]);
 
   const featuredGyms = filteredGyms.filter(gym => gym.featured);
   const standardGyms = filteredGyms.filter(gym => !gym.featured);
@@ -64,6 +87,9 @@ export const SpecialtyPageClient: React.FC<SpecialtyPageClientProps> = ({ specia
           showFeaturedFilter={true}
           featuredOnly={featuredOnly}
           onFeaturedFilterChange={setFeaturedOnly}
+          cityFilter={cityFilter}
+          onCityFilterChange={setCityFilter}
+          cities={availableCities}
         />
 
         {filteredGyms.length === 0 ? (

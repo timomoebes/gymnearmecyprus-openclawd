@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Filter, SortAsc } from 'lucide-react';
+import { Filter, SortAsc, MapPin } from 'lucide-react';
 import { Button } from './Button';
 import { GymSortOption } from '@/lib/types';
 
@@ -14,6 +14,9 @@ interface FilterSortProps {
   specialtyFilter?: string;
   onSpecialtyFilterChange?: (specialty: string) => void;
   specialties?: string[];
+  cityFilter?: string;
+  onCityFilterChange?: (city: string) => void;
+  cities?: Array<{ id: string; name: string }>;
 }
 
 export const FilterSort: React.FC<FilterSortProps> = ({
@@ -25,6 +28,9 @@ export const FilterSort: React.FC<FilterSortProps> = ({
   specialtyFilter,
   onSpecialtyFilterChange,
   specialties = [],
+  cityFilter,
+  onCityFilterChange,
+  cities = [],
 }) => {
   return (
     <div className="flex flex-col sm:flex-row gap-4 mb-6 p-4 bg-surface-card rounded-card">
@@ -42,6 +48,25 @@ export const FilterSort: React.FC<FilterSortProps> = ({
           <option value="name">Name (A-Z)</option>
         </select>
       </div>
+
+      {/* City/Location Filter */}
+      {onCityFilterChange && cities.length > 0 && (
+        <div className="flex items-center gap-2">
+          <MapPin className="w-5 h-5 text-text-muted" />
+          <select
+            value={cityFilter || ''}
+            onChange={(e) => onCityFilterChange(e.target.value)}
+            className="bg-surface-lighter border border-surface-lighter rounded-lg px-4 py-2 text-text-white focus:outline-none focus:ring-2 focus:ring-primary-blue"
+          >
+            <option value="">All Locations</option>
+            {cities.map((city) => (
+              <option key={city.id} value={city.id}>
+                {city.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
 
       {/* Specialty Filter */}
       {onSpecialtyFilterChange && specialties.length > 0 && (
