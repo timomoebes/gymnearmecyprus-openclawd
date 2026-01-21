@@ -1,160 +1,49 @@
 import { supabase } from '@/lib/supabase/client';
 import { Gym } from '@/lib/types';
 import { mapSpecialtyNames } from '@/lib/utils/specialty-mapping';
+import {
+  parseOpeningHours,
+  ensureProtocol,
+  parseCoordinates,
+  parseJSONField,
+} from '@/lib/utils/gym-transformers';
+
+/**
+ * Extract and transform gym data from raw database query result
+ * Handles extraction of specialties and amenities from join tables
+ */
+function transformRawGym(gym: any, citySlugFallback?: string): Gym {
+  const rawSpecialties = (gym.gym_specialties || []).map((gs: any) => gs.specialty?.name || '').filter(Boolean);
+  const specialties = mapSpecialtyNames(rawSpecialties);
+  const amenities = (gym.gym_amenities || []).map((ga: any) => ga.amenity?.name || '').filter(Boolean);
+  const citySlug = gym.city?.slug || citySlugFallback;
+  return transformGymFromDB(gym, specialties, amenities, citySlug);
+}
 
 // Transform Supabase gym data to match our Gym interface
 function transformGymFromDB(dbGym: any, specialties: string[], amenities: string[], citySlug?: string): Gym {
-  // Parse opening hours JSON - ALWAYS include all 7 days
-  let openingHours: Gym['openingHours'] = {
-    monday: 'Closed',
-    tuesday: 'Closed',
-    wednesday: 'Closed',
-    thursday: 'Closed',
-    friday: 'Closed',
-    saturday: 'Closed',
-    sunday: 'Closed',
-  };
-  
-  if (dbGym.opening_hours) {
-    try {
-      const hours = typeof dbGym.opening_hours === 'string' 
-        ? JSON.parse(dbGym.opening_hours) 
-        : dbGym.opening_hours;
-      
-      // Debug logging (remove in production)
-      if (process.env.NODE_ENV === 'development') {
-        console.log('[transformGymFromDB] Opening hours for', dbGym.name, ':', hours);
-      }
-      
-      // Handle "Monday-Sunday" format (applies to all days)
-      if (hours['Monday-Sunday']) {
-        const allWeekHours = hours['Monday-Sunday'];
-        openingHours.monday = allWeekHours;
-        openingHours.tuesday = allWeekHours;
-        openingHours.wednesday = allWeekHours;
-        openingHours.thursday = allWeekHours;
-        openingHours.friday = allWeekHours;
-        openingHours.saturday = allWeekHours;
-        openingHours.sunday = allWeekHours;
-      }
-      // Handle "Monday-Friday" format
-      else if (hours['Monday-Friday']) {
-        const weekDaysHours = hours['Monday-Friday'];
-        openingHours.monday = weekDaysHours;
-        openingHours.tuesday = weekDaysHours;
-        openingHours.wednesday = weekDaysHours;
-        openingHours.thursday = weekDaysHours;
-        openingHours.friday = weekDaysHours;
-        // Saturday and Sunday remain "Closed" unless specified
-        const satValue = hours.saturday || hours.Saturday;
-        const sunValue = hours.sunday || hours.Sunday;
-        openingHours.saturday = satValue && satValue.toLowerCase() !== 'no sessions' ? satValue : 'Closed';
-        openingHours.sunday = sunValue && sunValue.toLowerCase() !== 'no sessions' ? sunValue : 'Closed';
-      }
-      // Handle "Week Days" format
-      else if (hours['Week Days']) {
-        const weekDaysHours = hours['Week Days'];
-        openingHours.monday = weekDaysHours;
-        openingHours.tuesday = weekDaysHours;
-        openingHours.wednesday = weekDaysHours;
-        openingHours.thursday = weekDaysHours;
-        openingHours.friday = weekDaysHours;
-        // Saturday and Sunday remain "Closed" unless specified
-        const satValue = hours.saturday || hours.Saturday;
-        const sunValue = hours.sunday || hours.Sunday;
-        openingHours.saturday = satValue && satValue.toLowerCase() !== 'no sessions' ? satValue : 'Closed';
-        openingHours.sunday = sunValue && sunValue.toLowerCase() !== 'no sessions' ? sunValue : 'Closed';
-      }
-      // Handle individual days
-      else {
-        openingHours.monday = hours.monday || hours.Monday || 'Closed';
-        openingHours.tuesday = hours.tuesday || hours.Tuesday || 'Closed';
-        openingHours.wednesday = hours.wednesday || hours.Wednesday || 'Closed';
-        openingHours.thursday = hours.thursday || hours.Thursday || 'Closed';
-        openingHours.friday = hours.friday || hours.Friday || 'Closed';
-        openingHours.saturday = hours.saturday || hours.Saturday || 'Closed';
-        openingHours.sunday = hours.sunday || hours.Sunday || 'Closed';
-      }
-      
-      // Normalize "No sessions" to "Closed" for all days
-      const normalizeClosed = (value: string | undefined): string => {
-        if (!value) return 'Closed';
-        const lower = value.toLowerCase();
-        if (lower === 'no sessions' || lower === 'closed') return 'Closed';
-        return value;
-      };
-      
-      openingHours.monday = normalizeClosed(openingHours.monday);
-      openingHours.tuesday = normalizeClosed(openingHours.tuesday);
-      openingHours.wednesday = normalizeClosed(openingHours.wednesday);
-      openingHours.thursday = normalizeClosed(openingHours.thursday);
-      openingHours.friday = normalizeClosed(openingHours.friday);
-      openingHours.saturday = normalizeClosed(openingHours.saturday);
-      openingHours.sunday = normalizeClosed(openingHours.sunday);
-    } catch (e) {
-      // Invalid JSON - keep defaults (all "Closed")
-    }
-  }
+  // Parse opening hours
+  const openingHours = parseOpeningHours(dbGym.opening_hours);
 
-  // Ensure website URL has protocol
-  let website = dbGym.website || undefined;
-  if (website && !website.startsWith('http://') && !website.startsWith('https://')) {
-    website = `https://${website}`;
-  }
+  // Parse website URL
+  const website = ensureProtocol(dbGym.website);
 
-  // Parse pricing if available (stored as JSONB or JSON string)
-  let pricing: Record<string, string> | undefined = undefined;
-  if (dbGym.pricing) {
-    try {
-      pricing = typeof dbGym.pricing === 'string' 
-        ? JSON.parse(dbGym.pricing) 
-        : dbGym.pricing;
-    } catch (e) {
-      // Invalid JSON, leave undefined
-    }
-  }
+  // Parse pricing
+  const pricing = parseJSONField<Record<string, string>>(dbGym.pricing);
 
-  // Parse social media links if available (stored as JSONB)
+  // Parse social media links
   let socialMedia: { website?: string; instagram?: string; facebook?: string } | undefined = undefined;
-  if (dbGym.social_media) {
-    try {
-      const social = typeof dbGym.social_media === 'string' 
-        ? JSON.parse(dbGym.social_media) 
-        : dbGym.social_media;
-      
-      // Ensure URLs have protocol
-      const ensureProtocol = (url: string | undefined): string | undefined => {
-        if (!url) return undefined;
-        if (url.startsWith('http://') || url.startsWith('https://')) return url;
-        return `https://${url}`;
-      };
-
-      socialMedia = {
-        website: ensureProtocol(social.website),
-        instagram: ensureProtocol(social.instagram),
-        facebook: ensureProtocol(social.facebook),
-      };
-    } catch (e) {
-      // Invalid JSON, leave undefined
-    }
+  const social = parseJSONField<any>(dbGym.social_media);
+  if (social) {
+    socialMedia = {
+      website: ensureProtocol(social.website),
+      instagram: ensureProtocol(social.instagram),
+      facebook: ensureProtocol(social.facebook),
+    };
   }
 
-  // Parse coordinates - handle both numeric and string types, and null/undefined
-  const parseCoordinate = (coord: any): number | null => {
-    if (coord === null || coord === undefined || coord === '') return null;
-    const parsed = typeof coord === 'string' ? parseFloat(coord) : coord;
-    return isNaN(parsed) ? null : parsed;
-  };
-
-  const latitude = parseCoordinate(dbGym.latitude);
-  const longitude = parseCoordinate(dbGym.longitude);
-  
-  // Only set coordinates if both lat and lng are valid
-  // If invalid, we'll use null and handle it in the component
-  const coordinates: [number, number] | null = 
-    (latitude !== null && longitude !== null) 
-      ? [latitude, longitude] 
-      : null;
+  // Parse coordinates
+  const coordinates = parseCoordinates(dbGym.latitude, dbGym.longitude);
 
   return {
     id: dbGym.id,
@@ -164,7 +53,7 @@ function transformGymFromDB(dbGym: any, specialties: string[], amenities: string
     address: dbGym.address || '',
     coordinates: coordinates || [0, 0] as [number, number], // Fallback for type safety, but we'll check in component
     phone: dbGym.phone || undefined,
-    website: website,
+    website,
     email: dbGym.email || undefined,
     socialMedia,
     specialties,
@@ -209,13 +98,7 @@ export async function getAllGymsFromDB(): Promise<Gym[]> {
     if (!gyms) return [];
 
     // Transform each gym
-    return gyms.map((gym: any) => {
-      const rawSpecialties = (gym.gym_specialties || []).map((gs: any) => gs.specialty?.name || '').filter(Boolean);
-      const specialties = mapSpecialtyNames(rawSpecialties); // Map old names to new ones
-      const amenities = (gym.gym_amenities || []).map((ga: any) => ga.amenity?.name || '').filter(Boolean);
-      const citySlug = gym.city?.slug;
-      return transformGymFromDB(gym, specialties, amenities, citySlug);
-    });
+    return gyms.map((gym: any) => transformRawGym(gym));
   } catch (error) {
     console.error('Error in getAllGymsFromDB:', error);
     return [];
@@ -258,13 +141,7 @@ export async function getGymsByCityFromDB(cityId: string): Promise<Gym[]> {
     if (!gyms) return [];
 
     // Transform each gym
-    return gyms.map((gym: any) => {
-      const rawSpecialties = (gym.gym_specialties || []).map((gs: any) => gs.specialty?.name || '').filter(Boolean);
-      const specialties = mapSpecialtyNames(rawSpecialties); // Map old names to new ones
-      const amenities = (gym.gym_amenities || []).map((ga: any) => ga.amenity?.name || '').filter(Boolean);
-      const citySlug = gym.city?.slug || cityId; // Use cityId as fallback
-      return transformGymFromDB(gym, specialties, amenities, citySlug);
-    });
+    return gyms.map((gym: any) => transformRawGym(gym, cityId));
   } catch (error) {
     console.error('Error in getGymsByCityFromDB:', error);
     return [];
@@ -293,11 +170,7 @@ export async function getGymBySlugFromDB(slug: string): Promise<Gym | undefined>
       return undefined;
     }
 
-    const rawSpecialties = (gym.gym_specialties || []).map((gs: any) => gs.specialty?.name || '').filter(Boolean);
-    const specialties = mapSpecialtyNames(rawSpecialties); // Map old names to new ones
-    const amenities = (gym.gym_amenities || []).map((ga: any) => ga.amenity?.name || '').filter(Boolean);
-    const citySlug = gym.city?.slug;
-    return transformGymFromDB(gym, specialties, amenities, citySlug);
+    return transformRawGym(gym);
   } catch (error) {
     console.error('Error in getGymBySlugFromDB:', error);
     return undefined;
@@ -329,12 +202,7 @@ export async function getFeaturedGymsFromDB(): Promise<Gym[]> {
 
     if (!gyms) return [];
 
-    return gyms.map((gym: any) => {
-      const specialties = (gym.gym_specialties || []).map((gs: any) => gs.specialty?.name || '').filter(Boolean);
-      const amenities = (gym.gym_amenities || []).map((ga: any) => ga.amenity?.name || '').filter(Boolean);
-      const citySlug = gym.city?.slug;
-      return transformGymFromDB(gym, specialties, amenities, citySlug);
-    });
+    return gyms.map((gym: any) => transformRawGym(gym));
   } catch (error) {
     console.error('Error in getFeaturedGymsFromDB:', error);
     return [];
@@ -381,12 +249,7 @@ export async function getGymsBySpecialtyFromDB(specialtySlug: string): Promise<G
     return gymSpecialties
       .map((gs: any) => gs.gym)
       .filter(Boolean)
-      .map((gym: any) => {
-        const specialties = (gym.gym_specialties || []).map((gs: any) => gs.specialty?.name || '').filter(Boolean);
-        const amenities = (gym.gym_amenities || []).map((ga: any) => ga.amenity?.name || '').filter(Boolean);
-        const citySlug = gym.city?.slug;
-        return transformGymFromDB(gym, specialties, amenities, citySlug);
-      });
+      .map((gym: any) => transformRawGym(gym));
   } catch (error) {
     console.error('Error in getGymsBySpecialtyFromDB:', error);
     return [];
@@ -443,13 +306,7 @@ export async function getGymsBySpecialtyAndCityFromDB(specialtySlug: string, cit
     return gymSpecialties
       .map((gs: any) => gs.gym)
       .filter(Boolean)
-      .map((gym: any) => {
-        const rawSpecialties = (gym.gym_specialties || []).map((gs: any) => gs.specialty?.name || '').filter(Boolean);
-        const specialties = mapSpecialtyNames(rawSpecialties); // Map old names to new ones
-        const amenities = (gym.gym_amenities || []).map((ga: any) => ga.amenity?.name || '').filter(Boolean);
-        const citySlug = gym.city?.slug;
-        return transformGymFromDB(gym, specialties, amenities, citySlug);
-      });
+      .map((gym: any) => transformRawGym(gym));
   } catch (error) {
     console.error('Error in getGymsBySpecialtyAndCityFromDB:', error);
     return [];

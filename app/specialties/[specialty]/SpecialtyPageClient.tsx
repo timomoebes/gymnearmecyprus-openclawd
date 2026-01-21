@@ -1,10 +1,8 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
-import { Specialty, Gym, GymSortOption } from '@/lib/types';
-import { GymCard } from '@/components/gym/GymCard';
-import { FilterSort } from '@/components/shared/FilterSort';
-import { sortGyms } from '@/lib/utils/search';
+import React, { useMemo } from 'react';
+import { Specialty, Gym } from '@/lib/types';
+import { GymListPageClient } from '@/components/shared/GymListPageClient';
 import { cities } from '@/lib/data/cities';
 
 interface SpecialtyPageClientProps {
@@ -13,10 +11,6 @@ interface SpecialtyPageClientProps {
 }
 
 export const SpecialtyPageClient: React.FC<SpecialtyPageClientProps> = ({ specialty, initialGyms }) => {
-  const [sortBy, setSortBy] = useState<GymSortOption>('featured');
-  const [featuredOnly, setFeaturedOnly] = useState(false);
-  const [cityFilter, setCityFilter] = useState('');
-
   // Get all unique cities from gyms, sorted by name
   const availableCities = useMemo(() => {
     const cityIds = new Set<string>();
@@ -25,7 +19,7 @@ export const SpecialtyPageClient: React.FC<SpecialtyPageClientProps> = ({ specia
         cityIds.add(gym.cityId);
       }
     });
-    
+
     // Map cityIds to city objects and sort by name
     return cities
       .filter(city => cityIds.has(city.id))
@@ -33,87 +27,16 @@ export const SpecialtyPageClient: React.FC<SpecialtyPageClientProps> = ({ specia
       .map(city => ({ id: city.id, name: city.name }));
   }, [initialGyms]);
 
-  // Filter and sort gyms
-  const filteredGyms = useMemo(() => {
-    let filtered = [...initialGyms];
-
-    // Filter by city
-    if (cityFilter) {
-      filtered = filtered.filter(gym => gym.cityId === cityFilter);
-    }
-
-    // Filter by featured
-    if (featuredOnly) {
-      filtered = filtered.filter(gym => gym.featured);
-    }
-
-    // Sort
-    return sortGyms(filtered, sortBy);
-  }, [initialGyms, cityFilter, featuredOnly, sortBy]);
-
-  const featuredGyms = filteredGyms.filter(gym => gym.featured);
-  const standardGyms = filteredGyms.filter(gym => !gym.featured);
-
   return (
-    <>
-      {/* Featured Gyms Section */}
-      {featuredGyms.length > 0 && (
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold text-text-white mb-6">
-            Featured {specialty.name} Gyms
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredGyms.map((gym) => (
-              <GymCard key={gym.id} gym={gym} />
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* All Gyms Section */}
-      <section className="mb-12">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-text-white">
-            All {specialty.name} Gyms
-          </h2>
-          <span className="text-text-muted">
-            {filteredGyms.length} {filteredGyms.length === 1 ? 'gym' : 'gyms'}
-          </span>
-        </div>
-
-        <FilterSort
-          sortBy={sortBy}
-          onSortChange={setSortBy}
-          showFeaturedFilter={true}
-          featuredOnly={featuredOnly}
-          onFeaturedFilterChange={setFeaturedOnly}
-          cityFilter={cityFilter}
-          onCityFilterChange={setCityFilter}
-          cities={availableCities}
-        />
-
-        {filteredGyms.length === 0 ? (
-          <div className="bg-surface-card rounded-card p-12 text-center">
-            <p className="text-text-muted text-lg">
-              No {specialty.name.toLowerCase()} gyms found matching your filters.
-            </p>
-            <p className="text-text-muted mt-2">
-              Try adjusting your filters or{' '}
-              <a href="/add-gym" className="text-primary-blue hover:underline">
-                list a {specialty.name.toLowerCase()} gym
-              </a>
-              .
-            </p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredGyms.map((gym) => (
-              <GymCard key={gym.id} gym={gym} />
-            ))}
-          </div>
-        )}
-      </section>
-    </>
+    <GymListPageClient
+      entityName={specialty.name}
+      initialGyms={initialGyms}
+      filterType="city"
+      filterOptions={availableCities}
+      showCityInCards={true}
+      featuredTitle={`Featured ${specialty.name} Gyms`}
+      allGymsTitle={`All ${specialty.name} Gyms`}
+    />
   );
 };
 

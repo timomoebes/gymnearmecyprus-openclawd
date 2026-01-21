@@ -133,6 +133,53 @@ function parseTimeToMinutes(timeStr: string): number | null {
 }
 
 /**
+ * Check if current time falls within a time range
+ * Handles overnight hours (e.g., 22:00 - 02:00)
+ */
+function isTimeInRange(currentMinutes: number, startMinutes: number, endMinutes: number): boolean {
+  if (endMinutes < startMinutes) {
+    // Overnight: check if current time is after start OR before end
+    return currentMinutes >= startMinutes || currentMinutes < endMinutes;
+  } else {
+    // Normal hours: check if current time is within range
+    // Note: end time is exclusive (e.g., 14:00 means closed at 14:00)
+    return currentMinutes >= startMinutes && currentMinutes < endMinutes;
+  }
+}
+
+/**
+ * Extract and parse all time ranges from hours string
+ * Returns array of {start, end} minute pairs
+ */
+function extractTimeRanges(hours: string): Array<{start: number; end: number}> {
+  // Normalize em dash to hyphen for consistent parsing
+  const normalizedHours = hours.replace(/[–—]/g, '-');
+  const timeRangePattern = /(\d{1,2}):?(\d{2})?\s*(am|pm)?\s*-\s*(\d{1,2}):?(\d{2})?\s*(am|pm)?/gi;
+  const timeRanges = normalizedHours.match(timeRangePattern);
+
+  if (!timeRanges || timeRanges.length === 0) return [];
+
+  const ranges: Array<{start: number; end: number}> = [];
+
+  for (const range of timeRanges) {
+    const match = range.match(/(\d{1,2}):?(\d{2})?\s*(am|pm)?\s*-\s*(\d{1,2}):?(\d{2})?\s*(am|pm)?/i);
+    if (!match) continue;
+
+    const startTimeStr = `${match[1]}:${match[2] || '00'} ${match[3] || ''}`.trim();
+    const endTimeStr = `${match[4]}:${match[5] || '00'} ${match[6] || ''}`.trim();
+
+    const startMinutes = parseTimeToMinutes(startTimeStr);
+    const endMinutes = parseTimeToMinutes(endTimeStr);
+
+    if (startMinutes !== null && endMinutes !== null) {
+      ranges.push({ start: startMinutes, end: endMinutes });
+    }
+  }
+
+  return ranges;
+}
+
+/**
  * Check if a gym is currently open based on opening hours
  * Uses Cyprus local time (Europe/Nicosia timezone)
  */
@@ -151,58 +198,26 @@ export function isGymOpenNow(openingHours: OpeningHours): boolean {
   const hours = openingHours[currentDayName];
   if (!hours) return false;
 
+  const hoursLower = hours.toLowerCase();
+
   // Check for 24/7
-  if (hours.toLowerCase().includes('24/7') || hours.toLowerCase().includes('24 hours')) {
+  if (hoursLower.includes('24/7') || hoursLower.includes('24 hours')) {
     return true;
   }
 
   // Check for "Closed", "No sessions", or "Contact for opening hour details"
-  if (hours.toLowerCase().includes('closed') || 
-      hours.toLowerCase().includes('no sessions') ||
-      hours.toLowerCase().includes('contact for opening hour details')) {
+  if (hoursLower.includes('closed') ||
+      hoursLower.includes('no sessions') ||
+      hoursLower.includes('contact for opening hour details')) {
     return false;
   }
 
-  // Try to parse time ranges
-  // Format examples: "8:00-21:00", "8:00AM-9:00PM", "06:30 - 22:00", "08:00 am - 14:00 pm", "07:00 – 21:00" (em dash)
-  // Match time ranges with optional AM/PM, handle both hyphen (-) and em dash (—)
-  // Replace em dash with hyphen for consistent parsing
-  const normalizedHours = hours.replace(/[–—]/g, '-');
-  const timeRangePattern = /(\d{1,2}):?(\d{2})?\s*(am|pm)?\s*-\s*(\d{1,2}):?(\d{2})?\s*(am|pm)?/gi;
-  const timeRanges = normalizedHours.match(timeRangePattern);
-  
-  if (!timeRanges || timeRanges.length === 0) {
-    // If we can't parse, assume closed to be safe
-    return false;
-  }
+  // Extract and check time ranges
+  const timeRanges = extractTimeRanges(hours);
+  if (timeRanges.length === 0) return false;
 
-  for (const range of timeRanges) {
-    const match = range.match(/(\d{1,2}):?(\d{2})?\s*(am|pm)?\s*-\s*(\d{1,2}):?(\d{2})?\s*(am|pm)?/i);
-    if (!match) continue;
-
-    const startTimeStr = `${match[1]}:${match[2] || '00'} ${match[3] || ''}`.trim();
-    const endTimeStr = `${match[4]}:${match[5] || '00'} ${match[6] || ''}`.trim();
-    
-    const startMinutes = parseTimeToMinutes(startTimeStr);
-    const endMinutes = parseTimeToMinutes(endTimeStr);
-    
-    if (startMinutes === null || endMinutes === null) continue;
-
-    // Handle overnight hours (e.g., 22:00 - 02:00)
-    if (endMinutes < startMinutes) {
-      // Overnight: check if current time is after start OR before end
-      if (currentTimeMinutes >= startMinutes || currentTimeMinutes < endMinutes) {
-        return true;
-      }
-    } else {
-      // Normal hours: check if current time is within range
-      // Note: end time is exclusive (e.g., 14:00 means closed at 14:00)
-      if (currentTimeMinutes >= startMinutes && currentTimeMinutes < endMinutes) {
-        return true;
-      }
-    }
-  }
-
-  return false;
+  return timeRanges.some(range =>
+    isTimeInRange(currentTimeMinutes, range.start, range.end)
+  );
 }
 

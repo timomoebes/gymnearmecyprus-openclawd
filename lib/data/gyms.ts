@@ -6,6 +6,7 @@ import {
   getGymsBySpecialtyFromDB,
   getFeaturedGymsFromDB,
 } from '@/lib/api/gyms';
+import { filterGymsBySpecialty } from '@/lib/utils/specialty-matcher';
 
 // Mock gym data (fallback only)
 // Only keeping the 5 test-imported gyms - all mock/demo gyms removed
@@ -126,78 +127,7 @@ const getGymsByCityMock = (cityId: string): Gym[] => {
 };
 
 const getGymsBySpecialtyMock = (specialtyName: string): Gym[] => {
-  const specialtyLower = specialtyName.toLowerCase();
-  
-  // Special handling for Personal Training - check both specialties and amenities
-  if (specialtyLower === 'personal training' || specialtyLower === 'personal-training') {
-    return mockGyms.filter(gym => 
-      gym.specialties.some(s => s.toLowerCase().includes('personal training')) ||
-      gym.amenities.some(a => a.toLowerCase().includes('personal training'))
-    );
-  }
-  
-  // Special handling for Swimming & Aquatics - check both specialties and amenities (pools)
-  if (specialtyLower === 'swimming' || specialtyLower === 'swimming-aquatics' || specialtyLower === 'swimming & aquatics') {
-    return mockGyms.filter(gym => 
-      gym.specialties.some(s => s.toLowerCase().includes('swimming')) ||
-      gym.amenities.some(a => a.toLowerCase().includes('pool') || a.toLowerCase().includes('swimming'))
-    );
-  }
-  
-  // Special handling for Fitness/Gym - matches both "Fitness" and "Gym"
-  if (specialtyLower === 'fitness-gym' || specialtyLower === 'fitness/gym' || specialtyLower === 'fitness' || specialtyLower === 'gym') {
-    return mockGyms.filter(gym =>
-      gym.specialties.some(s => {
-        const sLower = s.toLowerCase();
-        return sLower === 'fitness' || sLower === 'gym' || sLower === 'fitness/gym';
-      })
-    );
-  }
-  
-  // Special handling for Martial Arts & MMA - matches MMA only
-  if (specialtyLower === 'martial-arts-mma' || specialtyLower === 'martial arts & mma' || specialtyLower === 'martial arts' || specialtyLower === 'mma') {
-    return mockGyms.filter(gym =>
-      gym.specialties.some(s => {
-        const sLower = s.toLowerCase();
-        return sLower === 'mma' || sLower === 'martial arts' || sLower === 'martial arts & mma';
-      })
-    );
-  }
-  
-  // Special handling for Boxing - matches Boxing only
-  if (specialtyLower === 'boxing') {
-    return mockGyms.filter(gym =>
-      gym.specialties.some(s => {
-        const sLower = s.toLowerCase();
-        return sLower === 'boxing';
-      })
-    );
-  }
-  
-  // Special handling for Yoga & Pilates - matches both Yoga and Pilates
-  if (specialtyLower === 'yoga-pilates' || specialtyLower === 'yoga & pilates' || specialtyLower === 'yoga' || specialtyLower === 'pilates') {
-    return mockGyms.filter(gym =>
-      gym.specialties.some(s => {
-        const sLower = s.toLowerCase();
-        return sLower === 'yoga' || sLower === 'pilates' || sLower === 'yoga & pilates';
-      })
-    );
-  }
-  
-  // Special handling for Strength Training - matches Bodybuilding and Powerlifting
-  if (specialtyLower === 'strength-training' || specialtyLower === 'strength training' || specialtyLower === 'bodybuilding' || specialtyLower === 'powerlifting') {
-    return mockGyms.filter(gym =>
-      gym.specialties.some(s => {
-        const sLower = s.toLowerCase();
-        return sLower === 'bodybuilding' || sLower === 'powerlifting' || sLower === 'strength training';
-      })
-    );
-  }
-  
-  // Standard specialty matching - case-insensitive
-  return mockGyms.filter(gym =>
-    gym.specialties.some(s => s.toLowerCase() === specialtyLower)
-  );
+  return filterGymsBySpecialty(mockGyms, specialtyName);
 };
 
 const getFeaturedGymsMock = (): Gym[] => {
