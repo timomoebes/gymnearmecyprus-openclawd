@@ -661,10 +661,15 @@ Our product roadmap is organized into quarterly themes focusing on revenue gener
 - **MEMBER_COUNT_SPECIFICATION.md** - Member count system implementation specification
 - **STRATEGIC_ACTION_PLAN.md** - Comprehensive tactical roadmap from MVP to top-ranking directory
 - **DATABASE_MIGRATION_STATUS.md** - Database migration status and results
+- **docs/CHANGELOG.md** - Repo-wide change notes (rationale + manual test plan per entry)
 - **docs/data_mapping.md** - Apify to Supabase column mapping documentation
 - **docs/TEST_IMPORT_REPORT.md** - Test import results and verification
 - **docs/DATA_PROCESSING_GUIDE.md** - Complete data processing pipeline documentation
 - **docs/META_DESCRIPTION_GUIDE.md** - Meta description system templates, examples, and maintenance guidelines
+
+## Changelog
+
+See `docs/CHANGELOG.md` for repo-wide change notes, including rationale, touched areas, and a manual test plan for each entry.
 
 ## 🎯 Key Features
 

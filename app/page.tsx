@@ -50,6 +50,25 @@ export default async function HomePage() {
     gym.amenities.some(amenity => amenity.toLowerCase().includes('24') || amenity.toLowerCase().includes('24/7'))
   );
 
+  // Calculate weighted average rating across all reviews
+  const { totalReviews, weightedRatingSum } = allGyms.reduce(
+    (acc, gym) => {
+      const rating = gym.rating ?? 0;
+      const reviewCount = gym.reviewCount ?? 0;
+
+      return {
+        totalReviews: acc.totalReviews + reviewCount,
+        weightedRatingSum: acc.weightedRatingSum + rating * reviewCount,
+      };
+    },
+    { totalReviews: 0, weightedRatingSum: 0 }
+  );
+
+  const averageRating =
+    totalReviews > 0 ? weightedRatingSum / totalReviews : 0;
+  const formattedAverageRating =
+    averageRating > 0 ? averageRating.toFixed(1) : '4.5';
+
   // Calculate actual city gym counts from fetched data
   const cityGymCounts = cities.reduce((acc, city) => {
     acc[city.id] = allGyms.filter(gym => gym.cityId === city.id).length;
@@ -365,7 +384,9 @@ export default async function HomePage() {
               <div className="text-text-light">Free to List</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-primary-purple mb-2">4.5+</div>
+              <div className="text-4xl font-bold text-primary-purple mb-2">
+                {formattedAverageRating}+
+              </div>
               <div className="text-text-light">Average Rating</div>
             </div>
           </div>

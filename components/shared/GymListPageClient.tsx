@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo, ReactNode } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Star } from 'lucide-react';
 import { Gym, GymSortOption } from '@/lib/types';
 import { GymCard } from '@/components/gym/GymCard';
