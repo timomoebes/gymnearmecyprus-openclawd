@@ -1,8 +1,8 @@
 # Product Requirements Document (PRD)
 ## GymNearMe Cyprus - Online Gym Directory
 
-**Version:** 1.0  
-**Last Updated:** January 2026  
+**Version:** 1.1  
+**Last Updated:** February 2026  
 **Status:** Active Development  
 **Document Owner:** Project Team
 
@@ -41,7 +41,7 @@
 ### 1.3 Current Status
 
 - **Phase:** Production-Ready MVP
-- **Database:** 199 gyms across 6 cities (Limassol, Nicosia, Larnaca, Paphos, Ayia Napa, Paralimni)
+- **Database:** 198 gyms across 6 cities (Limassol, Nicosia, Larnaca, Paphos, Ayia Napa, Paralimni) — counts are dynamic from the database
 - **Frontend:** Fully functional with Supabase backend integration
 - **SEO:** Comprehensive schema markup, FAQ sections, keyword optimization
 - **Revenue Model:** Free listings + Featured subscription tiers (Monthly €49, Yearly €490, Lifetime €999)
@@ -176,16 +176,16 @@ The platform operates on a **freemium model** with free basic listings and premi
 ### 4.3 Revenue Projections
 
 **Assumptions:**
-- 199 gyms in database (all unclaimed initially)
-- Target: 10% conversion to featured listings within 6 months (21 gyms)
+- 198 gyms in database (all unclaimed initially; ready for owner claims)
+- Target: 10% conversion to featured listings within 6 months (~20 gyms)
 - Mix: 60% Monthly, 30% Yearly, 10% Lifetime
 
 **6-Month Projection:**
-- Monthly subscribers: 13 × €49 = €637/month
+- Monthly subscribers: 12 × €49 = €588/month
 - Yearly subscribers: 6 × €490/12 = €245/month
 - Lifetime: 2 × €999 (one-time) = €1,998
-- **Monthly Recurring Revenue (MRR):** ~€882/month
-- **Total 6-Month Revenue:** ~€7,290
+- **Monthly Recurring Revenue (MRR):** ~€833/month
+- **Total 6-Month Revenue:** ~€6,990
 
 ### 4.4 Monetization Strategy
 
@@ -213,7 +213,7 @@ The platform operates on a **freemium model** with free basic listings and premi
 - **Hero Section:** Search bar with "Find Gyms Near Me" focus
 - **City Cards:** Visual grid of 6 cities with gym counts
 - **Specialty Cards:** Grid of 9 fitness specialties
-- **Trust Signals:** "200+ Gyms Listed", "Verified Listings"
+- **Trust Signals:** "198 Gyms Listed", "Verified Listings"
 - **Content Sections:**
   - "Find Gyms Near Me in Cyprus"
   - "24 Hour Gyms Near Me"
@@ -326,7 +326,7 @@ The platform operates on a **freemium model** with free basic listings and premi
   - Inquiry sources
 
 #### 5.2.3 Claim System
-- **Unclaimed Listings:** Show "Claim Your Gym" CTAs
+- **Unclaimed Listings:** All 198 gyms in the directory are unclaimed initially; show "Claim Your Gym" CTAs on each gym page. (See §7.2 Current Data Status for database counts.)
 - **Claim Process:**
   1. Owner verifies identity
   2. Claims listing
@@ -566,14 +566,10 @@ new-gym/
 
 ### 7.2 Current Data Status
 
-- **Total Gyms:** 199 gyms across 6 cities
-  - Limassol: 50 gyms
-  - Nicosia: 71 gyms
-  - Larnaca: 43 gyms
-  - Paphos: 34 gyms
-  - Ayia Napa: 6 gyms
-  - Paralimni: 6 gyms (Protaras gyms merged into Paralimni)
-- **Featured Gyms:** 0 (all unclaimed)
+- **Total Gyms:** 198 gyms across 6 cities (counts loaded dynamically from database)
+  - Limassol, Nicosia, Larnaca, Paphos, Ayia Napa, Paralimni (Protaras gyms merged into Paralimni)
+  - Per-city counts are calculated at runtime from the database
+- **Featured Gyms:** 0 (all unclaimed; ready for gym owner claim feature)
 - **Specialties:** 9 consolidated specialties
 - **Data Source:** All gyms scraped from Google Maps
 - **Data Quality:** Ongoing enrichment (opening hours, social media, amenities, pricing, review counts, specialty assignments)
@@ -743,7 +739,7 @@ new-gym/
 
 #### Phase 6: Backend Integration
 - ✅ Supabase database setup
-- ✅ 199 gyms imported (all cities)
+- ✅ 198 gyms in database (all cities)
 - ✅ Frontend connected to Supabase API
 - ✅ Dynamic counts from database
 - ✅ Data enrichment (opening hours, social media, amenities, pricing)
@@ -832,7 +828,7 @@ new-gym/
 
 #### Revenue Metrics
 - **Featured Listings:** Number of paid listings
-- **Monthly Recurring Revenue (MRR):** Target €882/month within 6 months
+- **Monthly Recurring Revenue (MRR):** Target ~€833/month within 6 months (based on 198 gyms, 10% conversion)
 - **Conversion Rate:** Free → Featured conversion rate (target 10%)
 - **Average Revenue Per User (ARPU):** Track per plan type
 - **Churn Rate:** Track subscription cancellations
@@ -978,10 +974,11 @@ new-gym/
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
 | 1.0 | January 2025 | Project Team | Initial PRD creation |
+| 1.1 | February 2026 | Project Team | Updated gym count (199 → 198), clarified dynamic counts from database; aligned revenue projections and data status with current basis for gym owner claim feature |
 
 ---
 
 **This document serves as the foundation for all project decisions. All team members, project managers, and stakeholders should refer to this document for guidance on features, priorities, and principles.**
 
-**Last Updated:** January 2026  
+**Last Updated:** February 2026  
 **Next Review:** Quarterly or upon major feature releases
