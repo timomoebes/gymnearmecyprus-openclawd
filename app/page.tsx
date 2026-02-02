@@ -181,7 +181,7 @@ export default async function HomePage() {
           )}
           
           <div className="text-center">
-            <Link href="/cities">
+            <Link href="/gyms?amenity=24-hour">
               <Button variant="outline" size="lg">
                 View All 24 Hour Gyms
                 <span className="ml-2">→</span>

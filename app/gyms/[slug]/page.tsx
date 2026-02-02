@@ -1,7 +1,7 @@
 import React from 'react';
 import { notFound, permanentRedirect } from 'next/navigation';
 import type { Metadata } from 'next';
-import { MapPin, Phone, Globe, Mail, Clock, Calendar, DollarSign, Facebook, Instagram } from 'lucide-react';
+import { MapPin, Phone, Globe, Mail, Clock, DollarSign, Facebook, Instagram } from 'lucide-react';
 import { getGymBySlug, getCityById, getTopReviews, getGymsByCity, getAllGyms, getReviewsByGymId, getGymsBySpecialtyAndCity } from '@/lib/data';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { Rating } from '@/components/shared/Rating';
@@ -406,15 +406,6 @@ export default async function GymPage({ params }: GymPageProps) {
             <div className="text-2xl font-bold text-text-white">{gym.reviewCount}</div>
             <p className="text-text-muted text-sm mt-2">Reviews</p>
           </div>
-          {gym.yearsInBusiness && (
-            <div className="bg-surface-card rounded-card p-4 text-center">
-              <div className="text-2xl font-bold text-text-white flex items-center justify-center gap-1">
-                <Calendar className="w-5 h-5" />
-                {gym.yearsInBusiness}
-              </div>
-              <p className="text-text-muted text-sm mt-2">Years</p>
-            </div>
-          )}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

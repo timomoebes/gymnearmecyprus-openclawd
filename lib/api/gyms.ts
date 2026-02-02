@@ -65,7 +65,6 @@ function transformGymFromDB(dbGym: any, specialties: string[], amenities: string
     images: dbGym.cover_image_url ? [dbGym.cover_image_url] : [],
     openingHours,
     pricing,
-    yearsInBusiness: dbGym.years_in_business || undefined,
     ownerId: dbGym.owner_id || undefined,
     createdAt: dbGym.created_at || new Date().toISOString(),
     updatedAt: dbGym.updated_at || new Date().toISOString(),

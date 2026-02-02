@@ -7,6 +7,7 @@ export interface SearchFilters {
   specialty?: string;
   minRating?: number;
   featured?: boolean;
+  amenity?: string; // Filter by amenity (e.g., "24-hour", "24/7", "pool", etc.)
 }
 
 /**
@@ -47,6 +48,22 @@ export const searchGyms = async (filters: SearchFilters): Promise<Gym[]> => {
   // Filter by featured
   if (filters.featured !== undefined) {
     results = results.filter(gym => gym.featured === filters.featured);
+  }
+
+  // Filter by amenity
+  if (filters.amenity) {
+    const amenityQuery = filters.amenity.toLowerCase();
+    results = results.filter(gym =>
+      gym.amenities.some(amenity => {
+        const amenityLower = amenity.toLowerCase();
+        // Handle various 24-hour formats: "24-hour", "24/7", "24 hour", etc.
+        if (amenityQuery.includes('24') || amenityQuery.includes('24/7') || amenityQuery.includes('24-hour')) {
+          // Match any amenity that contains "24" or "24/7"
+          return amenityLower.includes('24') || amenityLower.includes('24/7') || amenityLower.includes('access');
+        }
+        return amenityLower.includes(amenityQuery);
+      })
+    );
   }
 
   // Search by query (name, address, specialties)

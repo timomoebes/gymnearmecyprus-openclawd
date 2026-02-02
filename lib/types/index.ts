@@ -43,7 +43,6 @@ export interface Gym {
     sunday?: string;
   };
   pricing?: Record<string, string>; // Pricing information (e.g., { "Monthly": "€25", "Day Pass": "€6" })
-  yearsInBusiness?: number;
   ownerId?: string;
   createdAt: string;
   updatedAt: string;

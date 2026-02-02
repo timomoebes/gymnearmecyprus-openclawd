@@ -60,11 +60,6 @@ export const GymCard: React.FC<GymCardProps> = ({ gym, showCity = true }) => {
       </div>
 
       <div className="flex items-center justify-between pt-4 border-t border-surface-lighter">
-        <div className="flex items-center gap-4 text-sm text-text-muted">
-          {gym.yearsInBusiness && (
-            <span>{gym.yearsInBusiness} years</span>
-          )}
-        </div>
         <span className="text-primary-blue text-sm font-medium group-hover:underline">
           View Details →
         </span>
