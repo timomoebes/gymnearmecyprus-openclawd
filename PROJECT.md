@@ -955,10 +955,9 @@ new-gym/
 ### 13.2 Related Documents
 
 - **README.md** - Project setup and development guide
-- **PROJECT_PLAN.md** - Detailed development plan
 - **TECHNICAL_REFERENCE.md** - Quick technical reference
 - **KEYWORD_STRATEGY.md** - SEO keyword strategy
-- **STRATEGIC_ACTION_PLAN.md** - Tactical roadmap
+- **docs/archive/** - Archived planning docs (PROJECT_PLAN.md, STRATEGIC_ACTION_PLAN.md)
 
 ### 13.3 Contact & Support
 

@@ -1078,7 +1078,6 @@ This roadmap outlines the strategic development plan for GymNearMe Cyprus over t
 ## 📚 Related Documents
 
 - **PROJECT.md** - Product Requirements Document (PRD)
-- **STRATEGIC_ACTION_PLAN.md** - Tactical action plan
 - **KEYWORD_STRATEGY.md** - SEO keyword strategy
 - **TECHNICAL_REFERENCE.md** - Technical reference guide
 

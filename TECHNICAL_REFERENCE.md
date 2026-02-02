@@ -349,5 +349,5 @@ export const getTopReviews = (gymId: string, limit: number = 5): Review[] => { .
 
 ---
 
-**This document serves as a quick reference during development. Refer to PROJECT_PLAN.md for detailed specifications.**
+**This document serves as a quick reference during development. Refer to PROJECT.md and PRODUCT_ROADMAP.md for current specifications.**
 

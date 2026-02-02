@@ -215,7 +215,7 @@
 
 ## 🎯 What's Next - Immediate Priorities
 
-**See STRATEGIC_ACTION_PLAN.md for comprehensive tactical roadmap**
+**See PRODUCT_ROADMAP.md and PROJECT.md for current priorities**
 
 ### Phase 6: Enhanced SEO & Schema (Next Up) ⭐ Critical
 1. **FAQ Schema Markup** 🔴 Critical
@@ -534,19 +534,19 @@
 - All specialty pages are functional and optimized
 - **Hybrid seeding strategy:** From public data, then owner-claim enrichment
 - **Member count protocol:** Only display demo numbers for pre-claim, require owner verification for real data
-- **See STRATEGIC_ACTION_PLAN.md for comprehensive tactical roadmap**
+- **See PRODUCT_ROADMAP.md and PROJECT.md for current priorities**
 
 ---
 
 ## 📚 Documentation
 
-- **PROJECT_PLAN.md** - Comprehensive development plan
 - **TECHNICAL_REFERENCE.md** - Quick reference guide
+- **PRODUCT_ROADMAP.md** - Product roadmap and priorities
 - **SEO_ANALYSIS.md** - SEO best practices analysis
 - **KEYWORD_STRATEGY.md** - SEO keyword strategy based on SEMrush data
 - **SEO_INDEX_ANALYSIS.md** - Homepage SEO analysis and improvements
 - **MEMBER_COUNT_SPECIFICATION.md** - Member count system implementation spec
-- **STRATEGIC_ACTION_PLAN.md** ⭐ - Comprehensive tactical roadmap and implementation guide
+- **docs/archive/** - Archived planning docs (PROJECT_PLAN.md, STRATEGIC_ACTION_PLAN.md)
 
 ---
 
@@ -744,4 +744,4 @@
   - Implemented slug transliteration for Gymland Ματσαγγίδης (Greek characters to Latin) with permanent redirect
   - Enhanced redirect handling for Greek character slugs (both decoded and URL-encoded versions)
 
-**Next Immediate Action:** Implement owner claim system, optimize internal linking, expand gym listings further (see STRATEGIC_ACTION_PLAN.md)
+**Next Immediate Action:** Implement owner claim system, optimize internal linking, expand gym listings further (see PRODUCT_ROADMAP.md)
