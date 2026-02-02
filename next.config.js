@@ -8,6 +8,8 @@ const nextConfig = {
       },
     ],
   },
+  // Avoid bundling Supabase into vendor chunks (fixes MODULE_NOT_FOUND for vendor-chunks on server)
+  serverExternalPackages: ['@supabase/ssr', '@supabase/supabase-js'],
 }
 
 module.exports = nextConfig

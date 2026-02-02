@@ -9,6 +9,8 @@ import { Badge } from '@/components/shared/Badge';
 import { GymCard } from '@/components/gym/GymCard';
 import { Button } from '@/components/shared/Button';
 import { GymMapWithToggle } from '@/components/gym/GymMapWithToggle';
+import { GymOwnerBanner } from '@/components/gym/GymOwnerBanner';
+import { getCurrentUserId } from '@/lib/supabase/server';
 import { generateLocalBusinessSchema, generateBreadcrumbSchema } from '@/lib/utils/schema';
 import { isGymOpenNow } from '@/lib/utils/opening-hours';
 import { shouldAppendCityName, formatGymNameWithCity } from '@/lib/utils/gym-name';
@@ -208,9 +210,10 @@ export default async function GymPage({ params }: GymPageProps) {
   }
 
   const city = getCityById(gym.cityId);
+  const currentUserId = await getCurrentUserId();
   const reviews = getTopReviews(gym.id, 5);
   const allReviews = getReviewsByGymId(gym.id);
-  
+
   // Get related gyms by specialty and city
   const primarySpecialty = getPrimarySpecialty(gym.specialties);
   const specialtySlug = getSpecialtySlug(primarySpecialty);
@@ -376,6 +379,9 @@ export default async function GymPage({ params }: GymPageProps) {
               </a>
             )}
           </div>
+
+          {/* Owner / Claim banner: Your gym, Claim this gym, or Claimed by other */}
+          <GymOwnerBanner gym={gym} currentUserId={currentUserId} />
         </div>
 
         {/* Image Gallery */}

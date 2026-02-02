@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { 
   BarChart3, 
   Eye, 
@@ -10,35 +11,75 @@ import {
   TrendingUp, 
   Edit, 
   Image as ImageIcon,
-  Settings,
   Crown,
-  Zap
+  Zap,
+  Building2
 } from 'lucide-react';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { Button } from '@/components/shared/Button';
 import { Badge } from '@/components/shared/Badge';
 import { Rating } from '@/components/shared/Rating';
 import { GymCard } from '@/components/gym/GymCard';
-import { gyms } from '@/lib/data/gyms';
+import { getMyGymsAction } from '@/lib/actions/dashboard';
+import type { Gym } from '@/lib/types';
 
-// Mock data - in real app, this would come from API
-const mockGym = gyms[0];
-const mockStats = {
-  views: 1247,
-  clicks: 342,
-  inquiries: 28,
-  rating: 4.5,
-  reviewCount: 127,
+const placeholderStats = {
+  views: 0,
+  clicks: 0,
+  inquiries: 0,
+  rating: 0,
+  reviewCount: 0,
   plan: 'free' as const,
 };
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState<'overview' | 'listing' | 'analytics'>('overview');
+  const [myGyms, setMyGyms] = useState<Gym[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getMyGymsAction().then(({ gyms }) => {
+      setMyGyms(gyms);
+      setLoading(false);
+    });
+  }, []);
+
+  const mockStats = placeholderStats;
+  const mockGym = myGyms[0];
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background-dark">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <Breadcrumbs items={[{ label: 'Dashboard', href: '/dashboard' }]} />
+          <div className="animate-pulse text-text-muted">Loading dashboard…</div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <Breadcrumbs items={[{ label: 'Dashboard', href: '/dashboard' }]} />
+
+        {/* No gyms yet: claim CTA */}
+        {myGyms.length === 0 && (
+          <div className="mb-8 rounded-card border border-primary-blue/30 bg-primary-blue/10 p-6">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <Building2 className="h-8 w-8 text-primary-blue flex-shrink-0" />
+                <div>
+                  <h2 className="text-xl font-bold text-text-white">You haven&apos;t claimed any gyms yet</h2>
+                  <p className="text-text-light mt-1">Claim your gym to manage your listing, add photos, and upgrade to featured.</p>
+                </div>
+              </div>
+              <Button variant="primary" asChild>
+                <Link href="/gyms">Browse gyms and claim</Link>
+              </Button>
+            </div>
+          </div>
+        )}
 
         {/* Header */}
         <div className="mb-8">
@@ -156,16 +197,23 @@ export default function DashboardPage() {
             </div>
 
             {/* Current Listing Preview */}
-            <div className="bg-surface-card rounded-card p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold text-text-white">Your Listing</h2>
-                <Button variant="outline" size="sm" onClick={() => setActiveTab('listing')}>
-                  <Edit className="w-4 h-4 mr-2" />
-                  Edit
-                </Button>
+            {mockGym ? (
+              <div className="bg-surface-card rounded-card p-6">
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-2xl font-bold text-text-white">Your Listing</h2>
+                  <Button variant="outline" size="sm" onClick={() => setActiveTab('listing')}>
+                    <Edit className="w-4 h-4 mr-2" />
+                    Edit
+                  </Button>
+                </div>
+                <GymCard gym={mockGym} showCity={true} />
               </div>
-              <GymCard gym={mockGym} showCity={true} />
-            </div>
+            ) : (
+              <div className="bg-surface-card rounded-card p-6 text-center text-text-muted">
+                <p>Claim a gym to see your listing here.</p>
+                <Link href="/gyms" className="text-primary-blue hover:underline mt-2 inline-block">Browse gyms</Link>
+              </div>
+            )}
 
             {/* Quick Actions */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -205,28 +253,32 @@ export default function DashboardPage() {
         {activeTab === 'listing' && (
           <div className="bg-surface-card rounded-card p-8">
             <h2 className="text-2xl font-bold text-text-white mb-6">Edit Your Listing</h2>
-            <div className="space-y-6">
-              <div>
-                <label className="block text-text-white font-semibold mb-2">Gym Name</label>
-                <input
-                  type="text"
-                  defaultValue={mockGym.name}
-                  className="w-full px-4 py-3 bg-surface-lighter border border-surface-lighter rounded-lg text-text-white focus:outline-none focus:ring-2 focus:ring-primary-blue"
-                />
+            {mockGym ? (
+              <div className="space-y-6">
+                <div>
+                  <label className="block text-text-white font-semibold mb-2">Gym Name</label>
+                  <input
+                    type="text"
+                    defaultValue={mockGym.name}
+                    className="w-full px-4 py-3 bg-surface-lighter border border-surface-lighter rounded-lg text-text-white focus:outline-none focus:ring-2 focus:ring-primary-blue"
+                  />
+                </div>
+                <div>
+                  <label className="block text-text-white font-semibold mb-2">Description</label>
+                  <textarea
+                    rows={5}
+                    defaultValue={mockGym.description}
+                    className="w-full px-4 py-3 bg-surface-lighter border border-surface-lighter rounded-lg text-text-white focus:outline-none focus:ring-2 focus:ring-primary-blue"
+                  />
+                </div>
+                <div className="flex gap-4">
+                  <Button variant="primary">Save Changes</Button>
+                  <Button variant="outline">Cancel</Button>
+                </div>
               </div>
-              <div>
-                <label className="block text-text-white font-semibold mb-2">Description</label>
-                <textarea
-                  rows={5}
-                  defaultValue={mockGym.description}
-                  className="w-full px-4 py-3 bg-surface-lighter border border-surface-lighter rounded-lg text-text-white focus:outline-none focus:ring-2 focus:ring-primary-blue"
-                />
-              </div>
-              <div className="flex gap-4">
-                <Button variant="primary">Save Changes</Button>
-                <Button variant="outline">Cancel</Button>
-              </div>
-            </div>
+            ) : (
+              <p className="text-text-muted">Claim a gym first to edit your listing.</p>
+            )}
           </div>
         )}
 

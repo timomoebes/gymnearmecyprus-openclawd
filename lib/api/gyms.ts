@@ -312,3 +312,35 @@ export async function getGymsBySpecialtyAndCityFromDB(specialtySlug: string, cit
   }
 }
 
+// Fetch gyms owned by the given user (owner_id = userId)
+export async function getMyGymsFromDB(userId: string): Promise<Gym[]> {
+  try {
+    const { data: gyms, error } = await supabase
+      .from('gyms')
+      .select(`
+        *,
+        city:cities (slug),
+        gym_specialties (
+          specialty:specialties (slug, name)
+        ),
+        gym_amenities (
+          amenity:amenities (name)
+        )
+      `)
+      .eq('owner_id', userId)
+      .order('name');
+
+    if (error) {
+      console.error('Error fetching my gyms:', error);
+      return [];
+    }
+
+    if (!gyms) return [];
+
+    return gyms.map((gym: any) => transformRawGym(gym));
+  } catch (error) {
+    console.error('Error in getMyGymsFromDB:', error);
+    return [];
+  }
+}
+
