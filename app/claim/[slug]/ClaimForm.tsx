@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { submitClaimRequest } from '@/lib/actions/claim';
 import { Button } from '@/components/shared/Button';
+import { createClient } from '@/lib/supabase/browser';
 
 interface ClaimFormProps {
   gymId: string;
@@ -14,6 +15,13 @@ interface ClaimFormProps {
 export function ClaimForm({ gymId, gymName, gymSlug }: ClaimFormProps) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState<string>('');
+  const [hasSession, setHasSession] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    createClient()
+      .auth.getSession()
+      .then(({ data: { session } }) => setHasSession(!!session));
+  }, [status]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,6 +32,7 @@ export function ClaimForm({ gymId, gymName, gymSlug }: ClaimFormProps) {
 
     if (result.ok) {
       setStatus('success');
+      setHasSession(true); // We just submitted, so we had a session
     } else {
       setStatus('error');
       setErrorMessage(result.error);
@@ -31,15 +40,30 @@ export function ClaimForm({ gymId, gymName, gymSlug }: ClaimFormProps) {
   };
 
   if (status === 'success') {
+    const dashboardHref = '/dashboard';
+    const signInHref = `/login?redirectTo=${encodeURIComponent(dashboardHref)}`;
+    const showSignInFallback = hasSession === false;
+
     return (
       <div className="bg-surface-card rounded-card p-6 border border-secondary-green/30">
         <p className="text-text-light mb-4">
           Your claim request has been submitted. We will verify your identity and get back to you
           within 24–48 hours.
         </p>
-        <Link href="/dashboard">
-          <Button variant="primary">Go to dashboard</Button>
-        </Link>
+        {showSignInFallback ? (
+          <>
+            <p className="text-text-muted text-sm mb-4">
+              Open this page in the same browser where you confirmed your email, or sign in below to reach your dashboard.
+            </p>
+            <Link href={signInHref}>
+              <Button variant="primary">Sign in to go to dashboard</Button>
+            </Link>
+          </>
+        ) : (
+          <Link href={dashboardHref}>
+            <Button variant="primary">Go to dashboard</Button>
+          </Link>
+        )}
       </div>
     );
   }

@@ -39,3 +39,20 @@ export async function getCurrentUserId(): Promise<string | null> {
   const { data: { user } } = await supabase.auth.getUser();
   return user?.id ?? null;
 }
+
+/**
+ * Current user { id, email } or null. Use when you need email (e.g. admin checks).
+ */
+export async function getCurrentUser(): Promise<{ id: string; email?: string } | null> {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return null;
+  return { id: user.id, email: user.email ?? undefined };
+}
+
+/** Comma-separated list of emails that can access /admin. Set ADMIN_EMAILS in .env.local. */
+export function isAdminEmail(email: string | undefined): boolean {
+  if (!email) return false;
+  const list = process.env.ADMIN_EMAILS ?? '';
+  return list.split(',').map((e) => e.trim().toLowerCase()).includes(email.toLowerCase());
+}

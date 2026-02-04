@@ -24,9 +24,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
+# local env files (never commit; contains secrets e.g. ADMIN_EMAILS, Supabase keys)
 .env*.local
 .env
+.env.local
 
 # vercel
 .vercel
@@ -37,7 +38,6 @@ next-env.d.ts
 
 # IDE/Editor config (project-specific)
 .claude/
-.cursor/agents/
-.cursor/skills/
+.cursor/
 .vscode/
 

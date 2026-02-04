@@ -34,6 +34,7 @@ export async function updateSession(request: NextRequest) {
   // Protect dashboard: redirect unauthenticated users to login
   const isDashboard = request.nextUrl.pathname.startsWith('/dashboard');
   const isAuthCallback = request.nextUrl.pathname.startsWith('/auth/callback');
+  const isAdmin = request.nextUrl.pathname.startsWith('/admin');
 
   if (isDashboard && !isAuthCallback) {
     const { data: { user } } = await supabase.auth.getUser();
@@ -42,6 +43,25 @@ export async function updateSession(request: NextRequest) {
       url.pathname = '/login';
       url.searchParams.set('redirectTo', request.nextUrl.pathname);
       return NextResponse.redirect(url);
+    }
+  }
+
+  // Protect admin: only allow emails listed in ADMIN_EMAILS (comma-separated)
+  if (isAdmin) {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      const url = request.nextUrl.clone();
+      url.pathname = '/login';
+      url.searchParams.set('redirectTo', request.nextUrl.pathname);
+      return NextResponse.redirect(url);
+    }
+    const adminEmails = (process.env.ADMIN_EMAILS ?? '')
+      .split(',')
+      .map((e) => e.trim().toLowerCase())
+      .filter(Boolean);
+    const email = user.email?.trim().toLowerCase();
+    if (!email || adminEmails.length === 0 || !adminEmails.includes(email)) {
+      return NextResponse.redirect(new URL('/', request.url));
     }
   }
 

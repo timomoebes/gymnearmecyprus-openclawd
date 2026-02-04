@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/dashboard', '/api/'],
+        disallow: ['/dashboard', '/admin', '/api/'],
       },
     ],
     sitemap: 'https://gymnearme.cy/sitemap.xml',

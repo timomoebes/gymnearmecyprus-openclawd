@@ -8,10 +8,13 @@ import { NextResponse, type NextRequest } from 'next/server';
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = request.nextUrl;
   const code = searchParams.get('code');
-  const redirectTo = searchParams.get('redirectTo') ?? '/dashboard';
+  // Supabase uses 'next'; we also support 'redirectTo'
+  const redirectTo = searchParams.get('redirectTo') ?? searchParams.get('next') ?? '/dashboard';
+  // Only allow same-origin paths (no open redirect)
+  const path = redirectTo.startsWith('/') ? redirectTo : '/dashboard';
 
   if (code) {
-    const response = NextResponse.redirect(`${origin}${redirectTo}`);
+    const response = NextResponse.redirect(`${origin}${path}`);
 
     const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,

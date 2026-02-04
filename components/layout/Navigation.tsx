@@ -3,13 +3,31 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { Menu, X, ChevronDown, LayoutDashboard, LogOut } from 'lucide-react';
 import { cities } from '@/lib/data';
+import { createClient } from '@/lib/supabase/browser';
 
 export const Navigation: React.FC = () => {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isCitiesDropdownOpen, setIsCitiesDropdownOpen] = useState(false);
+  const [user, setUser] = useState<{ id: string; email?: string } | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase.auth.getSession().then(({ data: { session } }) => setUser(session?.user ?? null));
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleSignOut = async () => {
+    await createClient().auth.signOut();
+    router.refresh();
+  };
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -130,22 +148,41 @@ export const Navigation: React.FC = () => {
             </Link>
           </div>
 
-          {/* Right Side: Login/Signup Buttons */}
+          {/* Right Side: Auth – Dashboard + Sign out when logged in, else Log In / Sign Up */}
           <div className="hidden md:flex items-center space-x-4 flex-shrink-0 ml-auto">
-            {/* Log In Link */}
-            <Link
-              href="/login"
-              className="text-gray-200 hover:text-white transition-colors text-sm font-medium"
-            >
-              Log In
-            </Link>
-            
-            {/* Sign Up Button - Solid blue with glow */}
-            <Link href="/signup">
-              <button className="px-5 py-2.5 bg-blue-500 text-white font-semibold rounded-full text-sm hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/50">
-                Sign Up
-              </button>
-            </Link>
+            {user ? (
+              <>
+                <Link
+                  href="/dashboard"
+                  className="flex items-center gap-1.5 text-gray-200 hover:text-white transition-colors text-sm font-medium"
+                >
+                  <LayoutDashboard className="w-4 h-4" aria-hidden />
+                  Dashboard
+                </Link>
+                <button
+                  type="button"
+                  onClick={handleSignOut}
+                  className="flex items-center gap-1.5 px-4 py-2.5 text-gray-200 hover:text-white transition-colors text-sm font-medium rounded-full border border-gray-600 hover:border-gray-500"
+                >
+                  <LogOut className="w-4 h-4" aria-hidden />
+                  Sign out
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/login"
+                  className="text-gray-200 hover:text-white transition-colors text-sm font-medium"
+                >
+                  Log In
+                </Link>
+                <Link href="/signup">
+                  <button className="px-5 py-2.5 bg-blue-500 text-white font-semibold rounded-full text-sm hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/50">
+                    Sign Up
+                  </button>
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -242,22 +279,46 @@ export const Navigation: React.FC = () => {
                   + Add Your Gym
                 </button>
               </Link>
-              <Link
-                href="/login"
-                className="block py-2 text-gray-200 hover:text-white transition-colors text-center"
-                onClick={() => setIsOpen(false)}
-              >
-                Log In
-              </Link>
-              <Link
-                href="/signup"
-                className="block"
-                onClick={() => setIsOpen(false)}
-              >
-                <button className="w-full px-5 py-2.5 bg-blue-500 text-white font-semibold rounded-full text-sm shadow-lg shadow-blue-500/50">
-                  Sign Up
-                </button>
-              </Link>
+              {user ? (
+                <>
+                  <Link
+                    href="/dashboard"
+                    className="flex items-center gap-2 py-2 text-gray-200 hover:text-white transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <LayoutDashboard className="w-4 h-4" /> Dashboard
+                  </Link>
+                  <button
+                    type="button"
+                    className="w-full flex items-center justify-center gap-2 py-2.5 text-gray-200 hover:text-white transition-colors text-sm font-medium rounded-full border border-gray-600"
+                    onClick={() => {
+                      handleSignOut();
+                      setIsOpen(false);
+                    }}
+                  >
+                    <LogOut className="w-4 h-4" /> Sign out
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/login"
+                    className="block py-2 text-gray-200 hover:text-white transition-colors text-center"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Log In
+                  </Link>
+                  <Link
+                    href="/signup"
+                    className="block"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <button className="w-full px-5 py-2.5 bg-blue-500 text-white font-semibold rounded-full text-sm shadow-lg shadow-blue-500/50">
+                      Sign Up
+                    </button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>
