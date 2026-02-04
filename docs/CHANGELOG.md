@@ -15,6 +15,28 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 
 ## Unreleased
 
+- **Date**: 2026-02-04  
+  **Area**: `app`, `lib`, `components`, `docs`  
+  **Summary**: Claim flow, admin claims page, auth-aware nav, and docs for managing/approving gym claims.  
+  **Rationale**: Let users claim gyms (sign in → submit request); let admins approve or reject from `/admin/claims`; show Dashboard/Sign out in nav when logged in; document admin workflow and Supabase approval options without committing personal data.  
+  **Files changed**:
+  - `app/auth/callback/route.ts` (support Supabase `next` param, safe redirect)
+  - `app/claim/[slug]/ClaimForm.tsx` (session-aware “Go to dashboard” / sign-in fallback)
+  - `app/login/LoginForm.tsx` (full-page redirect after login so admin/claims receives cookie)
+  - `app/login/page.tsx` (dashboard redirect copy when `redirectTo=/dashboard`)
+  - `app/admin/claims/page.tsx` (pending claims list, Approve/Reject)
+  - `app/robots.ts` (disallow `/admin`)
+  - `components/layout/Navigation.tsx` (auth state: Dashboard + Sign out when logged in)
+  - `lib/supabase/middleware.ts` (protect `/admin` by `ADMIN_EMAILS`, trim/filter admin list)
+  - `lib/supabase/server.ts` (`getCurrentUser`, `isAdminEmail`)
+  - `lib/actions/admin-claims.ts` (get pending claims, approve, reject)
+  - `docs/ADMIN_CLAIMS.md`, `docs/APPROVE_CLAIM_SUPABASE.md`
+  - `scripts/approve_claim_by_slug_and_email.sql` (placeholders only)
+  - `.gitignore` (env files, `.cursor/`), `README.md` (claim flow, doc links)
+  **Manual test plan**:
+  - Sign in; confirm nav shows Dashboard and Sign out. Open `/admin/claims` as non-admin → redirect to `/`. Set `ADMIN_EMAILS` in `.env.local`, restart dev server, sign in as admin → open `/admin/claims`, see pending claims, Approve and Reject one each; confirm list updates and approved user sees gym in Dashboard.
+  - Submit a claim (same browser), confirm “Go to dashboard” or “Sign in to go to dashboard” as appropriate; after login with `redirectTo=/admin/claims`, confirm full redirect to admin page.
+
 - **Date**: 2026-01-28  
   **Area**: `scripts`, `data`, `supabase`  
   **Summary**: Geocoded gyms and refreshed ratings/review counts from Google for all gyms, plus manual data corrections.  

@@ -1,0 +1,14 @@
+---
+description: Update changelog before every git push
+alwaysApply: true
+---
+
+# Changelog before push
+
+Before committing and pushing to git:
+
+1. **Update `docs/CHANGELOG.md`** with an entry under **Unreleased** that describes the changes in this push.
+2. Use the existing entry template in the changelog (Date, Area, Summary, Rationale, Files changed, Manual test plan).
+3. Only then run `git add`, `git commit`, and `git push`.
+
+Do not push without adding a corresponding changelog entry for the changes being committed.
