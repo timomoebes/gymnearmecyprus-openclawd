@@ -16,6 +16,13 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-04  
+  **Area**: `docs`  
+  **Summary**: Remove German from README (HCAPTCHA_SETUP line: "Site anlegen, Keys in" → "set up site, add keys to").  
+  **Rationale**: Keep all user-facing and doc text in English.  
+  **Files changed**: `README.md`  
+  **Manual test plan**: Skim README docs section; confirm HCAPTCHA_SETUP line is in English.
+
+- **Date**: 2026-02-04  
   **Area**: `app`, `lib`, `docs`  
   **Summary**: Fix “captcha verification process failed” on login/signup; disable captcha on localhost and pass token to Supabase when enabled.  
   **Rationale**: The error came from Supabase Auth (project had “Enable CAPTCHA protection” on) while the app did not send a captcha token. On localhost we now never show or verify captcha (runtime hostname check) and never call the verify action; when captcha is enabled we pass the hCaptcha token to `signInWithPassword`/`signUp` so production works. Server action skips verification when `NODE_ENV=development`. Docs explain turning off Supabase CAPTCHA for local dev.  

@@ -140,7 +140,7 @@ new-gym/
 - **docs/CHANGELOG.md** - Repo-wide change notes
 - **docs/ADMIN_CLAIMS.md** - How to manage claim requests as an admin (approve/reject)
 - **docs/APPROVE_CLAIM_SUPABASE.md** - Full reference: in-app admin, Supabase Table Editor, and SQL approval scripts
-- **docs/HCAPTCHA_SETUP.md** - hCaptcha (Claim, Login, Signup): Site anlegen, Keys in `.env.local`
+- **docs/HCAPTCHA_SETUP.md** - hCaptcha (Claim, Login, Signup): set up site, add keys to `.env.local`
 - **docs/META_DESCRIPTION_GUIDE.md** - Meta description system documentation
 - **docs/DATA_PROCESSING_GUIDE.md** - Data processing pipeline documentation
 
