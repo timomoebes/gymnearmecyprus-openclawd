@@ -2,14 +2,23 @@
 
 import { createClient } from '@/lib/supabase/server';
 import { revalidatePath } from 'next/cache';
+import { verifyHcaptchaToken } from '@/lib/hcaptcha';
 
 export type SubmitClaimResult = { ok: true } | { ok: false; error: string };
 
 /**
- * Submit a claim request for a gym. User must be authenticated.
+ * Submit a claim request for a gym. User must be authenticated and pass hCaptcha.
  * Inserts into gym_claim_requests with status 'pending'; admin approves later.
  */
-export async function submitClaimRequest(gymId: string): Promise<SubmitClaimResult> {
+export async function submitClaimRequest(
+  gymId: string,
+  hcaptchaToken: string | null
+): Promise<SubmitClaimResult> {
+  const captcha = await verifyHcaptchaToken(hcaptchaToken);
+  if (!captcha.success) {
+    return { ok: false, error: captcha.error };
+  }
+
   const supabase = await createClient();
 
   const { data: { user }, error: authError } = await supabase.auth.getUser();

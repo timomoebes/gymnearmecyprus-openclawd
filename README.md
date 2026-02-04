@@ -140,6 +140,7 @@ new-gym/
 - **docs/CHANGELOG.md** - Repo-wide change notes
 - **docs/ADMIN_CLAIMS.md** - How to manage claim requests as an admin (approve/reject)
 - **docs/APPROVE_CLAIM_SUPABASE.md** - Full reference: in-app admin, Supabase Table Editor, and SQL approval scripts
+- **docs/HCAPTCHA_SETUP.md** - hCaptcha (Claim, Login, Signup): Site anlegen, Keys in `.env.local`
 - **docs/META_DESCRIPTION_GUIDE.md** - Meta description system documentation
 - **docs/DATA_PROCESSING_GUIDE.md** - Data processing pipeline documentation
 
@@ -147,7 +148,7 @@ new-gym/
 
 - **Users:** Sign in (or sign up and confirm email), go to a gym page → “Claim this gym” → submit request. After admin approval, the gym appears in **Dashboard**.
 - **Admins:** Set `ADMIN_EMAILS` in `.env.local` (never commit it), sign in with one of those emails, open **/admin/claims** to approve or reject pending claims. See **docs/ADMIN_CLAIMS.md** and **docs/APPROVE_CLAIM_SUPABASE.md** for full instructions.
-- **Security:** `.env.local` and `.env` are in `.gitignore`; do not commit env files or real emails.
+- **Security:** `.env.local` and `.env` are in `.gitignore`; do not commit env files or real emails. For captcha (claim/login/signup), set `NEXT_PUBLIC_HCAPTCHA_SITEKEY` and `HCAPTCHA_SECRET` — see **docs/HCAPTCHA_SETUP.md**.
 
 ## Changelog
 

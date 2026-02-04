@@ -10,8 +10,14 @@ export async function GET(request: NextRequest) {
   const code = searchParams.get('code');
   // Supabase uses 'next'; we also support 'redirectTo'
   const redirectTo = searchParams.get('redirectTo') ?? searchParams.get('next') ?? '/dashboard';
-  // Only allow same-origin paths (no open redirect)
-  const path = redirectTo.startsWith('/') ? redirectTo : '/dashboard';
+  // Only allow relative paths: single leading /, no protocol-relative (//) or backslashes
+  const path =
+    typeof redirectTo === 'string' &&
+    redirectTo.startsWith('/') &&
+    !redirectTo.startsWith('//') &&
+    !redirectTo.includes('\\')
+      ? redirectTo
+      : '/dashboard';
 
   if (code) {
     const response = NextResponse.redirect(`${origin}${path}`);

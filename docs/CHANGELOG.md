@@ -16,6 +16,21 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-04  
+  **Area**: `app`, `lib`, `docs`  
+  **Summary**: Fix “captcha verification process failed” on login/signup; disable captcha on localhost and pass token to Supabase when enabled.  
+  **Rationale**: The error came from Supabase Auth (project had “Enable CAPTCHA protection” on) while the app did not send a captcha token. On localhost we now never show or verify captcha (runtime hostname check) and never call the verify action; when captcha is enabled we pass the hCaptcha token to `signInWithPassword`/`signUp` so production works. Server action skips verification when `NODE_ENV=development`. Docs explain turning off Supabase CAPTCHA for local dev.  
+  **Files changed**:
+  - `app/login/LoginForm.tsx` (localhost check, needCaptcha, pass captchaToken to Supabase, “Captcha disabled for development” message)
+  - `app/signup/SignupForm.tsx` (same + dev message)
+  - `app/claim/[slug]/ClaimPageAuth.tsx` (localhost/needCaptcha, pass captchaToken to signIn/signUp)
+  - `lib/actions/verify-captcha.ts` (isCaptchaDisabledOnServer: NODE_ENV=development first, then env flags)
+  - `next.config.js` (env: NEXT_PUBLIC_DISABLE_HCAPTCHA)
+  - `docs/HCAPTCHA_SETUP.md` (Supabase: disable CAPTCHA for local dev, checklist)
+  **Manual test plan**:
+  - On localhost with `NEXT_PUBLIC_DISABLE_HCAPTCHA=true`: restart dev server, hard-refresh `/login` and `/signup`; confirm “Captcha disabled for development” and no widget; sign in (or sign up) and confirm no “captcha verification process failed” (if it appears, turn off “Enable CAPTCHA protection” in Supabase Dashboard → Authentication → Protection).
+  - With Supabase CAPTCHA on (production): ensure hCaptcha widget is shown, complete it, sign in/sign up; confirm auth succeeds with token passed to Supabase.
+
+- **Date**: 2026-02-04  
   **Area**: `app`, `lib`, `components`, `docs`  
   **Summary**: Claim flow, admin claims page, auth-aware nav, and docs for managing/approving gym claims.  
   **Rationale**: Let users claim gyms (sign in → submit request); let admins approve or reject from `/admin/claims`; show Dashboard/Sign out in nav when logged in; document admin workflow and Supabase approval options without committing personal data.  
