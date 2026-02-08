@@ -176,6 +176,45 @@ Gym Pages → Related Gyms (same city/specialty)
 
 ---
 
+## 5. Visitor UX Internationalization (Planned) ⭐ Medium Priority
+
+### Language Support Strategy
+- [ ] **Initial Target Languages**
+  - English (default)
+  - Greek
+  - Russian
+- [ ] **Scope for First Release**
+  - Navigation chrome (header, footer, primary CTAs, key labels)
+  - Critical trust/UI elements (badges, filters, map controls where feasible)
+  - Core SEO content remains English-first initially (to avoid duplicate-content issues until a full multilingual SEO strategy is defined)
+
+### UX & Interaction Design
+- [ ] **Language Switcher Placement**
+  - Persistent controls in the main navigation bar
+  - Three compact buttons with **national flags + 2-letter code**:
+    - 🇬🇧 `EN`
+    - 🇬🇷 `EL`
+    - 🇷🇺 `RU`
+  - Visible on all pages (desktop + mobile nav)
+- [ ] **Interaction Rules**
+  - Single click/tap instantly switches the UI language (no modal or extra confirmation)
+  - Remember language preference via cookie/local storage so returning visitors see their last-selected language
+  - Do **not** auto-switch based on IP; only offer a subtle suggestion banner if browser language is Greek or Russian
+  - When a language is active, its button is visually highlighted and the **other two flags remain available** (e.g., if Greek is active, show Russian and British flag buttons as alternatives; if Russian is active, show Greek and British; if English is active, show Greek and Russian)
+
+### Technical/SEO Considerations (High-Level Only)
+- [ ] Use a proper i18n layer (e.g. Next.js i18n routing or library-based) with:
+  - Centralized translation dictionaries for UI strings
+  - Stable translation keys to avoid regressions
+- [ ] Plan URL structure **before** implementation:
+  - Either language subpaths (`/el/...`, `/ru/...`) or domain-level strategy
+  - Ensure only production-ready translated pages are indexable (others `noindex`)
+- [ ] Define content translation backlog:
+  - Prioritize: homepage, city pages, top gym pages, key specialty pages
+  - Ensure legal/privacy pages are covered before enabling public language switching
+
+---
+
 ## 5. Engineering Milestones ⭐ Critical
 
 ### Backend Migration Preparation

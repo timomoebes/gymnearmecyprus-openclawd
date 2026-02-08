@@ -2,16 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap');
-
+/* Base styles – fonts come from next/font in layout (Inter, Poppins) */
 @layer base {
   body {
     @apply bg-background-dark text-text-white antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+    font-family: var(--font-poppins), 'Poppins', 'Inter', system-ui, sans-serif;
     @apply font-bold;
   }
 }

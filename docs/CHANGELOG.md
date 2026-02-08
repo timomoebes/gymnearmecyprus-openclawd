@@ -15,6 +15,19 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 
 ## Unreleased
 
+- **Date**: 2026-02-08  
+  **Area**: `components`, `lib`, `app`  
+  **Summary**: Add full i18n (EN/EL) for landing page and fix desktop language dropdown so it opens on click.  
+  **Rationale**: Users can switch language on mobile (working) but the desktop nav language button did nothing because both a native click listener and React onClick fired, double-toggling the dropdown. Single handler (React only) with explicit open/close callbacks fixes desktop; mobile unchanged.  
+  **Files changed**:
+  - `components/layout/Navigation.tsx` (desktop: remove native listener, add openLangDropdown/closeLangDropdown, single onClick; mobile language selector unchanged)
+  - `lib/i18n/translations.ts`, `components/providers/LocaleProvider.tsx` (locale state, t(), EN/EL strings)
+  - `components/icons/FlagIcons.tsx` (FlagGB, FlagGR, LanguageFlag)
+  - `components/home/HomeHero.tsx`, `SearchBar.tsx`, `CityCardGrid.tsx`, `SpecialtyCardGrid.tsx`, `Home24HourSection.tsx`, `HomeBenefitsSection.tsx`, `HomeGuideSection.tsx`, `HomeTrustSection.tsx`, `FAQSection.tsx` (client components using useLocale/t)
+  - `lib/data/faq.ts` (FAQ data for server schema; moved out of client component)
+  - `app/page.tsx`, `app/layout.tsx`, `app/globals.css`, `tailwind.config.ts` (LocaleProvider, viewport, font vars, safelist)
+  **Manual test plan**: Desktop: click language button (flag + chevron) in nav → dropdown opens; select Greek/English → language and dropdown close. Mobile: open menu → change language via flags → text updates. No 404s for `_next/static` chunks (run dev, check Network).
+
 - **Date**: 2026-02-04  
   **Area**: `docs`  
   **Summary**: Remove German from README (HCAPTCHA_SETUP line: "Site anlegen, Keys in" → "set up site, add keys to").  

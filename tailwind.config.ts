@@ -2,9 +2,15 @@ import type { Config } from 'tailwindcss'
 
 const config: Config = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './lib/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  // Ensure critical layout utilities are always generated
+  safelist: [
+    'flex', 'hidden', 'md:flex', 'md:hidden', 'items-center', 'justify-between',
+    'max-w-7xl', 'mx-auto', 'px-4', 'py-2', 'sticky', 'top-0', 'z-50',
   ],
   theme: {
     extend: {

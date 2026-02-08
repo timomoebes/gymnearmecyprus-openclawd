@@ -3,6 +3,7 @@ import { Inter, Poppins } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { LocaleProvider } from '@/components/providers/LocaleProvider';
 import { generateOrganizationSchema, generateWebSiteSchema } from '@/lib/utils/schema';
 
 const inter = Inter({
@@ -24,6 +25,8 @@ export const metadata: Metadata = {
   keywords: 'gyms cyprus, fitness centers cyprus, limassol gyms, nicosia gyms, paphos gyms',
 };
 
+export const viewport = { width: 'device-width', initialScale: 1 };
+
 export default function RootLayout({
   children,
 }: {
@@ -33,8 +36,13 @@ export default function RootLayout({
   const websiteSchema = generateWebSiteSchema();
 
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="en" className={`${inter.variable} ${poppins.variable}`} suppressHydrationWarning>
       <body className="bg-background-dark text-text-white antialiased">
+        {/* Critical fallback so page is readable if Tailwind is delayed or fails */}
+        <style dangerouslySetInnerHTML={{ __html: `
+          body{background-color:#0A0E27;color:#fff;}
+          .min-h-screen{min-height:100vh;}
+        ` }} />
         {/* Schema.org JSON-LD */}
         <script
           type="application/ld+json"
@@ -44,11 +52,13 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
-        <Header />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
+        <LocaleProvider>
+          <Header />
+          <main className="min-h-screen">
+            {children}
+          </main>
+          <Footer />
+        </LocaleProvider>
       </body>
     </html>
   );

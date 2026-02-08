@@ -1,6 +1,9 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/shared/Button';
+import { useLocale } from '@/components/providers/LocaleProvider';
 import { Specialty } from '@/lib/types';
 
 interface SpecialtyCardGridProps {
@@ -24,7 +27,7 @@ export const SpecialtyCardGrid: React.FC<SpecialtyCardGridProps> = ({
   specialties,
   specialtyGymCounts,
 }) => {
-  // Filter out hidden specialties
+  const { t } = useLocale();
   const visibleSpecialties = specialties.filter(
     (s) => !['hotel-gym', 'women-only'].includes(s.slug)
   );
@@ -34,10 +37,10 @@ export const SpecialtyCardGrid: React.FC<SpecialtyCardGridProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-text-white mb-4">
-            Fitness Specialties Available at Cyprus Gyms
+            {t('specialties.heading')}
           </h2>
           <p className="text-lg text-text-light max-w-3xl mx-auto">
-            Explore gyms by specialty. Find the perfect training style that matches your fitness goals, from high-intensity workouts to mindful practices.
+            {t('specialties.description')}
           </p>
         </div>
 
@@ -61,7 +64,7 @@ export const SpecialtyCardGrid: React.FC<SpecialtyCardGridProps> = ({
                   </h3>
                   <p className="text-text-muted text-sm">
                     {specialtyGymCounts[specialty.id] || 0}{' '}
-                    {(specialtyGymCounts[specialty.id] || 0) === 1 ? 'gym' : 'gyms'}
+                    {(specialtyGymCounts[specialty.id] || 0) === 1 ? t('specialties.gym') : t('specialties.gyms')}
                   </p>
                 </div>
               </Link>
@@ -73,7 +76,7 @@ export const SpecialtyCardGrid: React.FC<SpecialtyCardGridProps> = ({
         <div className="text-center">
           <Link href="/specialties">
             <Button variant="outline" size="lg">
-              View All Specialties
+              {t('specialties.viewAllSpecialties')}
               <span className="ml-2">→</span>
             </Button>
           </Link>

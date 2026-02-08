@@ -4,6 +4,7 @@ import React, { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { Search } from 'lucide-react';
 import { Button } from '@/components/shared/Button';
+import { useLocale } from '@/components/providers/LocaleProvider';
 import type { Gym } from '@/lib/types';
 import type { City } from '@/lib/types';
 
@@ -13,6 +14,7 @@ interface SearchBarProps {
 }
 
 export const SearchBar: React.FC<SearchBarProps> = ({ gyms, cities }) => {
+  const { t } = useLocale();
   const [query, setQuery] = useState('');
   const router = useRouter();
 
@@ -86,12 +88,12 @@ export const SearchBar: React.FC<SearchBarProps> = ({ gyms, cities }) => {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search by city or gym name..."
+            placeholder={t('search.placeholder')}
             className="w-full pl-12 pr-4 py-3 bg-surface-card border border-surface-lighter rounded-lg text-text-white placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary-blue"
           />
         </div>
         <Button variant="primary" size="lg" type="submit" className="whitespace-nowrap">
-          Search Gyms
+          {t('search.button')}
         </Button>
       </div>
     </form>
