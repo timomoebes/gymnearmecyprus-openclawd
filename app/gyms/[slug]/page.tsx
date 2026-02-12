@@ -334,22 +334,6 @@ export default async function GymPage({ params }: GymPageProps) {
 
           {/* Quick Actions */}
           <div className="flex flex-wrap gap-4 mb-6">
-            {gym.phone && (
-              <a href={`tel:${gym.phone}`}>
-                <Button variant="outline" size="sm">
-                  <Phone className="w-4 h-4 mr-2" />
-                  Call
-                </Button>
-              </a>
-            )}
-            {websiteUrl && (
-              <a href={websiteUrl} target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="sm">
-                  <Globe className="w-4 h-4 mr-2" />
-                  Visit Website
-                </Button>
-              </a>
-            )}
             {facebookUrl && (
               <a href={facebookUrl} target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="sm">
@@ -363,6 +347,22 @@ export default async function GymPage({ params }: GymPageProps) {
                 <Button variant="outline" size="sm">
                       <Instagram className="w-4 h-4 mr-2" />
                       Instagram
+                </Button>
+              </a>
+            )}
+            {websiteUrl && (
+              <a href={websiteUrl} target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" size="sm">
+                  <Globe className="w-4 h-4 mr-2" />
+                  Website
+                </Button>
+              </a>
+            )}
+            {gym.phone && (
+              <a href={`tel:${gym.phone}`}>
+                <Button variant="outline" size="sm">
+                  <Phone className="w-4 h-4 mr-2" />
+                  Call
                 </Button>
               </a>
             )}

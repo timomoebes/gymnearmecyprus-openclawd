@@ -69,6 +69,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...cityPages, ...specialtyPages, ...gymPages];
+  // SEO Guides (Content Department)
+  const guideSlugs = [
+    '5-best-gyms-cyprus',
+    'best-gyms-limassol-2026',
+    'best-gyms-larnaca-2026',
+    'best-gyms-nicosia-2026',
+    'best-gyms-paphos-2026',
+    'best-gyms-ayia-napa-2026',
+    'best-gyms-paralimni-2026'
+  ];
+
+  const guidePages: MetadataRoute.Sitemap = guideSlugs.map((slug) => ({
+    url: `${baseUrl}/guides/${slug}`, // Adjusting to the logical public route
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.9, // High priority for our authority pieces
+  }));
+
+  return [...staticPages, ...cityPages, ...specialtyPages, ...gymPages, ...guidePages];
 }
 

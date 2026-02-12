@@ -10,6 +10,17 @@
 
 import { Gym, City, Specialty } from '@/lib/types';
 
+// Load custom descriptions from SEO content department
+// In production, this would be a static JSON import or DB fetch
+const CUSTOM_DESCRIPTIONS: Record<string, string> = {
+  "limassol": "Best gyms in Limassol 2026: Iron Fitness & elite facilities with expert coaching. Transform in Cyprus's fastest-growing gym scene. Compare verified reviews.",
+  "larnaca": "Best gyms in Larnaca: Samtsihara Fight System (439 reviews) leads elite facilities. World-class coaching & proven results. Start your transformation now.",
+  "nicosia": "Best gyms in Nicosia with expert coaching & verified reviews. Gabriel Fitness, Old Town Studio & more. Join Cyprus's fitness revolution with results.",
+  "paphos": "Best gyms in Paphos: Elite martial arts, boxing & strength training. Expert coaching, premium facilities, proven transformations. Start your fitness journey.",
+  "ayia-napa": "Best gyms in Ayia Napa: World Gym (1,266 reviews) & elite facilities with expert coaching. International community. Start your transformation today.",
+  "paralimni": "Best gyms in Paralimni: Bodyart Fitness Center (154 reviews) & elite facilities. Premium coaching, verified results. Find your transformation center."
+};
+
 /**
  * Optimal meta description length range (SEO best practice)
  */
@@ -230,8 +241,16 @@ export function generateGymMetaDescription(gym: Gym, city: City | null): string 
  */
 export function generateCityMetaDescription(city: City, gymCount: number): string {
   const cityName = city.name;
-  
-  // Build gym count text
+  const citySlug = city.slug.toLowerCase();
+
+  // 1. Check for custom SEO department descriptions first
+  // Note: We use a placeholder [COUNT] to inject the real-time number
+  if (CUSTOM_DESCRIPTIONS[citySlug]) {
+    const dynamicDesc = CUSTOM_DESCRIPTIONS[citySlug].replace('198+', `${gymCount}+`);
+    return truncateToOptimalLength(dynamicDesc, MAX_LENGTH);
+  }
+
+  // 2. Fallback to dynamic template if no custom description exists
   const countText = gymCount > 0 
     ? `${gymCount}+ fitness centers` 
     : 'top-rated fitness centers';

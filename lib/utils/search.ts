@@ -68,13 +68,19 @@ export const searchGyms = async (filters: SearchFilters): Promise<Gym[]> => {
 
   // Search by query (name, address, specialties)
   if (filters.query) {
-    const query = filters.query.toLowerCase();
-    results = results.filter(gym =>
-      gym.name.toLowerCase().includes(query) ||
-      gym.address.toLowerCase().includes(query) ||
-      gym.specialties.some(s => s.toLowerCase().includes(query)) ||
-      gym.description.toLowerCase().includes(query)
-    );
+    const query = filters.query.toLowerCase().trim().replace(/['’]/g, '');
+    results = results.filter(gym => {
+      const name = gym.name.toLowerCase().replace(/['’]/g, '');
+      const address = gym.address.toLowerCase().replace(/['’]/g, '');
+      const description = gym.description.toLowerCase().replace(/['’]/g, '');
+      
+      return (
+        name.includes(query) ||
+        address.includes(query) ||
+        description.includes(query) ||
+        gym.specialties.some(s => s.toLowerCase().replace(/['’]/g, '').includes(query))
+      );
+    });
   }
 
   return results;
