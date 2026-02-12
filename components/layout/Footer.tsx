@@ -95,6 +95,14 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2">
               <li>
                 <Link
+                  href="/guides"
+                  className="text-text-muted hover:text-primary-blue transition-colors text-sm font-semibold"
+                >
+                  Expert Fitness Guides
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/add-gym"
                   className="text-text-muted hover:text-primary-blue transition-colors text-sm"
                 >
