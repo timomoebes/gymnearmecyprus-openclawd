@@ -14,7 +14,7 @@ interface GuidePageProps {
   };
 }
 
-const GUIDES_PATH = path.join(process.cwd(), 'docs');
+const GUIDES_PATH = path.join(process.cwd(), 'docs/guides');
 
 export async function generateMetadata({ params }: GuidePageProps): Promise<Metadata> {
   const filePath = path.join(GUIDES_PATH, `${params.slug}.md`);
