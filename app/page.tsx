@@ -16,33 +16,41 @@ import { generateFAQPageSchema } from '@/lib/utils/schema';
 // Enable revalidation so homepage updates when gym counts change
 export const revalidate = 0; // 0 = always revalidate, or use a number for seconds
 
-export const metadata: Metadata = {
-  title: 'Gym Near Me in Cyprus | Find Best Fitness Centers & Health Clubs | 50+ Gyms',
-  description: 'Find gyms near me in Cyprus. Search 50+ fitness centers, health clubs, and 24-hour gyms. Compare ratings, reviews, and amenities. List your gym for free.',
-  keywords: 'gym near me, fitness near me, gym close to me, nearby gym, fitness center, health club, fitness club, gym cyprus, 24 hour gym near me, 24 7 gym near me, gym limassol, gym nicosia, gym larnaca, gym paphos',
-  openGraph: {
-    title: 'Gym Near Me in Cyprus | Find Best Fitness Centers & Health Clubs',
-    description: 'Find gyms near me in Cyprus. Search 50+ fitness centers, health clubs, and 24-hour gyms. Compare ratings, reviews, and amenities.',
-    url: 'https://gymnearme.cy',
-    siteName: 'GymNearMe Cyprus',
-    images: [
-      {
-        url: 'https://gymnearme.cy/logo.png',
-        width: 1200,
-        height: 630,
-        alt: 'GymNearMe Cyprus - Find Gyms Near Me',
-      },
-    ],
-    locale: 'en_US',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Gym Near Me in Cyprus | Find Best Fitness Centers & Health Clubs',
-    description: 'Find gyms near me in Cyprus. Search 50+ fitness centers, health clubs, and 24-hour gyms.',
-    images: ['https://gymnearme.cy/logo.png'],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const allGyms = await getAllGyms();
+  const totalGyms = allGyms.length;
+  
+  const title = `${totalGyms}+ Best Gyms in Cyprus | Find Top Fitness Centers & Health Clubs`;
+  const description = `Find the best gyms in Cyprus. Compare ${totalGyms}+ verified fitness centers, health clubs, and 24-hour facilities. Ratings, reviews, and amenities included. Find your perfect workout space today.`;
+
+  return {
+    title,
+    description,
+    keywords: 'gym near me, fitness near me, gym close to me, nearby gym, fitness center, health club, fitness club, gym cyprus, 24 hour gym near me, 24 7 gym near me, gym limassol, gym nicosia, gym larnaca, gym paphos',
+    openGraph: {
+      title,
+      description,
+      url: 'https://gymnearme.cy',
+      siteName: 'GymNearMe Cyprus',
+      images: [
+        {
+          url: 'https://gymnearme.cy/logo.png',
+          width: 1200,
+          height: 630,
+          alt: 'GymNearMe Cyprus - Find Gyms Near Me',
+        },
+      ],
+      locale: 'en_US',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ['https://gymnearme.cy/logo.png'],
+    },
+  };
+}
 
 export default async function HomePage() {
   const allGyms = await getAllGyms();
