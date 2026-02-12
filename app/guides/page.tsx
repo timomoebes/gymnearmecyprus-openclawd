@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: 'Discover the best gyms, training tips, and fitness locations in Cyprus with our expert-curated guides.',
 };
 
-const GUIDES_PATH = path.join(process.cwd(), '../seo-content');
+const GUIDES_PATH = path.join(process.cwd(), 'docs');
 
 export default function GuidesIndex() {
   const files = fs.readdirSync(GUIDES_PATH).filter(f => f.endsWith('.md') && !f.startsWith('INTERNAL') && !f.startsWith('image-'));
