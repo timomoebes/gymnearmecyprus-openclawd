@@ -20,12 +20,12 @@ export const GymCard: React.FC<GymCardProps> = ({ gym, showCity = true }) => {
   return (
     <Link
       href={`/gyms/${gym.slug}`}
-      className="group block bg-surface-card rounded-card p-6 hover:bg-surface-lighter transition-all duration-200 hover:shadow-card-hover"
+      className="group block bg-surface-card rounded-card p-6 hover:bg-surface-lighter transition-all duration-200 hover:shadow-card-hover overflow-hidden"
     >
-      <div className="flex items-start justify-between mb-4">
-        <div className="flex-1">
+      <div className="flex items-start justify-between gap-3 mb-4 min-w-0">
+        <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-2 flex-wrap">
-            <h3 className="text-xl font-semibold text-text-white group-hover:text-primary-blue transition-colors">
+            <h3 className="text-xl font-semibold text-text-white group-hover:text-primary-blue transition-colors break-words min-w-0">
               {formatGymNameWithCity(gym.name, city?.name)}
             </h3>
             {gym.featured && (
@@ -41,7 +41,9 @@ export const GymCard: React.FC<GymCardProps> = ({ gym, showCity = true }) => {
             </div>
           )}
         </div>
-        <Rating rating={gym.rating} reviewCount={gym.reviewCount} size="sm" />
+        <div className="flex-shrink-0">
+          <Rating rating={gym.rating} reviewCount={gym.reviewCount} size="sm" />
+        </div>
       </div>
 
       <p className="text-text-muted text-sm mb-4 line-clamp-2">
