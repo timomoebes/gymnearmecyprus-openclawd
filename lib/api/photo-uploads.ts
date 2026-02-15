@@ -1,6 +1,9 @@
-import { createClient as createServerClient } from '@/lib/supabase/server';
 import { supabase } from '@/lib/supabase/client';
-import { getCurrentUserId } from '@/lib/supabase/server';
+import {
+  saveFeaturedImagesToGymAction,
+  deletePhotoFromStorageAction,
+  getFeaturedImagesForGym,
+} from './photo-uploads-actions';
 
 const STORAGE_BUCKET = 'gym-photos';
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
@@ -99,192 +102,11 @@ export async function uploadPhotoToStorage(
 /**
  * Server action: Save featured images URLs to gym profile
  */
-export async function saveFeaturedImagesToGymAction(
-  gymId: string,
-  imageUrls: string[]
-): Promise<{ success: boolean; error?: string; featured_images?: string[] }> {
-  const userId = await getCurrentUserId();
-  if (!userId) {
-    return {
-      success: false,
-      error: 'You must be signed in to upload photos.',
-    };
-  }
 
-  // Validate number of images
-  if (imageUrls.length > MAX_IMAGES_PER_GYM) {
-    return {
-      success: false,
-      error: `Maximum ${MAX_IMAGES_PER_GYM} images allowed per gym.`,
-    };
-  }
 
-  try {
-    const serverSupabase = await createServerClient();
-
-    // Verify ownership: check that user owns this gym
-    const { data: gym, error: gymError } = await serverSupabase
-      .from('gyms')
-      .select('owner_id')
-      .eq('id', gymId)
-      .single();
-
-    if (gymError || !gym) {
-      return {
-        success: false,
-        error: 'Gym not found.',
-      };
-    }
-
-    if (gym.owner_id !== userId) {
-      return {
-        success: false,
-        error: 'You do not own this gym.',
-      };
-    }
-
-    // Update gym with featured images
-    const { data, error } = await serverSupabase
-      .from('gyms')
-      .update({
-        featured_images: imageUrls,
-        updated_at: new Date().toISOString(),
-      })
-      .eq('id', gymId)
-      .eq('owner_id', userId)
-      .select('featured_images')
-      .single();
-
-    if (error) {
-      return {
-        success: false,
-        error: `Failed to save images: ${error.message}`,
-      };
-    }
-
-    return {
-      success: true,
-      featured_images: data?.featured_images || imageUrls,
-    };
-  } catch (err: any) {
-    return {
-      success: false,
-      error: `Error: ${err?.message || 'Unknown error occurred'}`,
-    };
-  }
-}
-
-/**
- * Delete a photo from storage
- */
-export async function deletePhotoFromStorageAction(
-  gymId: string,
-  photoUrl: string
-): Promise<{ success: boolean; error?: string }> {
-  const userId = await getCurrentUserId();
-  if (!userId) {
-    return {
-      success: false,
-      error: 'You must be signed in to delete photos.',
-    };
-  }
-
-  try {
-    const serverSupabase = await createServerClient();
-
-    // Verify ownership
-    const { data: gym, error: gymError } = await serverSupabase
-      .from('gyms')
-      .select('owner_id, featured_images')
-      .eq('id', gymId)
-      .single();
-
-    if (gymError || !gym) {
-      return {
-        success: false,
-        error: 'Gym not found.',
-      };
-    }
-
-    if (gym.owner_id !== userId) {
-      return {
-        success: false,
-        error: 'You do not own this gym.',
-      };
-    }
-
-    // Extract file path from URL
-    // URL format: https://bucket.supabase.co/storage/v1/object/public/gym-photos/gyms/...
-    const urlParts = photoUrl.split(`${STORAGE_BUCKET}/`);
-    if (urlParts.length < 2) {
-      return {
-        success: false,
-        error: 'Invalid photo URL.',
-      };
-    }
-
-    const filePath = urlParts[1];
-
-    // Delete from storage
-    const { error: deleteError } = await serverSupabase.storage
-      .from(STORAGE_BUCKET)
-      .remove([filePath]);
-
-    if (deleteError) {
-      return {
-        success: false,
-        error: `Failed to delete photo: ${deleteError.message}`,
-      };
-    }
-
-    // Update gym: remove URL from featured_images array
-    const updatedImages = (gym.featured_images || []).filter(
-      (url: string) => url !== photoUrl
-    );
-
-    const { error: updateError } = await serverSupabase
-      .from('gyms')
-      .update({
-        featured_images: updatedImages,
-        updated_at: new Date().toISOString(),
-      })
-      .eq('id', gymId)
-      .eq('owner_id', userId);
-
-    if (updateError) {
-      return {
-        success: false,
-        error: `Photo deleted from storage but failed to update gym: ${updateError.message}`,
-      };
-    }
-
-    return { success: true };
-  } catch (err: any) {
-    return {
-      success: false,
-      error: `Error: ${err?.message || 'Unknown error occurred'}`,
-    };
-  }
-}
-
-/**
- * Get featured images for a gym
- */
-export async function getFeaturedImagesForGym(gymId: string): Promise<string[]> {
-  try {
-    const { data, error } = await supabase
-      .from('gyms')
-      .select('featured_images')
-      .eq('id', gymId)
-      .single();
-
-    if (error || !data) {
-      return [];
-    }
-
-    return data.featured_images || [];
-  } catch (err) {
-    console.error('Error fetching featured images:', err);
-    return [];
-  }
-}
+// Server actions (re-exported from photo-uploads-actions.ts)
+export {
+  saveFeaturedImagesToGymAction,
+  deletePhotoFromStorageAction,
+  getFeaturedImagesForGym,
+} from './photo-uploads-actions';
