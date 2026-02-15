@@ -80,7 +80,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ gyms, cities }) => {
   };
 
   return (
-    <form onSubmit={handleSearch} className="max-w-2xl mx-auto mb-8">
+    <form onSubmit={handleSearch} className="max-w-2xl mx-auto mb-2">
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="flex-1 relative">
           <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted w-5 h-5" />

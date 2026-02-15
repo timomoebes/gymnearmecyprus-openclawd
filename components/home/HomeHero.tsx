@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Button } from '@/components/shared/Button';
 import { SearchBar } from '@/components/home/SearchBar';
 import { useLocale } from '@/components/providers/LocaleProvider';
 import type { Gym } from '@/lib/types';
@@ -39,22 +38,25 @@ export function HomeHero({ gyms, cities }: HomeHeroProps) {
             {dynamicSubtitle}
           </p>
 
-          <div className="pt-4">
+          <div className="pt-2">
             <SearchBar gyms={gyms} cities={cities} />
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Link href="/cities">
-              <Button variant="primary" size="lg" className="px-8 font-semibold">
-                {t('hero.exploreGyms')}
-              </Button>
+          <p className="text-text-muted text-sm pt-2 pb-2">
+            <Link
+              href="/cities"
+              className="text-primary-blue hover:text-primary-blue-light transition-colors font-medium hover:underline underline-offset-2"
+            >
+              {t('hero.exploreGyms')}
             </Link>
-            <Link href="/add-gym">
-              <Button variant="outline" size="lg" className="px-8 font-semibold">
-                {t('hero.listYourGymFree')}
-              </Button>
+            <span className="mx-2" aria-hidden>·</span>
+            <Link
+              href="/add-gym"
+              className="text-primary-blue hover:text-primary-blue-light transition-colors font-medium hover:underline underline-offset-2"
+            >
+              {t('hero.listYourGymFree')}
             </Link>
-          </div>
+          </p>
         </div>
       </div>
     </section>
