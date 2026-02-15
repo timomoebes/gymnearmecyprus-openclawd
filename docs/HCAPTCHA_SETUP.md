@@ -80,9 +80,32 @@ When your site has a live domain:
    - `HCAPTCHA_SECRET` = your Secret
 4. Redeploy. The claim form (and login/signup) will show the captcha widget and verify on the server.
 
+**Important:** Add **every** domain where the app runs, e.g. `your-app.vercel.app` and your custom domain (if any). If the hostname is missing, hCaptcha will reject the token and you’ll see “Captcha verification failed”.
+
 ---
 
-## 5. Development (localhost)
+## 5. Test on live (after deploying to Vercel)
+
+Use this checklist to verify hCaptcha on your live app:
+
+1. **Vercel env**
+   - `NEXT_PUBLIC_HCAPTCHA_SITEKEY` and `HCAPTCHA_SECRET` are set.
+   - **Do not** set `NEXT_PUBLIC_DISABLE_HCAPTCHA` in Vercel (or set it to `false`). If it’s `true`, the widget won’t show and captcha is skipped.
+
+2. **hCaptcha Dashboard**
+   - [hCaptcha Dashboard](https://dashboard.hcaptcha.com/sites) → your site → **Hostnames**.
+   - Add your live URL hostname(s), e.g. `your-app.vercel.app`, `www.yourdomain.com`. Save.
+
+3. **Redeploy** (if you changed env or hostnames), then test:
+   - **Claim:** Open a gym → “Claim this gym” → sign in if needed → complete the captcha → submit. You should see a success message and the request in admin.
+   - **Login:** Go to `/login` → complete captcha → sign in.
+   - **Signup:** Go to `/signup` → complete captcha → create account.
+
+If you see “Captcha verification failed”, the domain you’re on is not in the hCaptcha site hostnames — add it and try again.
+
+---
+
+## 6. Development (localhost)
 
 The hCaptcha dashboard often does **not** allow `localhost` (or `127.0.0.1`) as a hostname. To avoid “captcha verification failed” when testing locally:
 
@@ -99,7 +122,7 @@ Use only for local development; do **not** set in production.
 
 ---
 
-## 6. Checklist
+## 7. Checklist
 
 - [ ] Created a **site** in the hCaptcha dashboard
 - [ ] Set **hostnames** when you deploy (production domain); optional for local dev (verification is skipped in development)
@@ -112,7 +135,7 @@ Use only for local development; do **not** set in production.
 
 ---
 
-## 7. Technical details
+## 8. Technical details
 
 - **Client:** [@hcaptcha/react-hcaptcha](https://github.com/hCaptcha/react-hcaptcha) — widget with `sitekey`, `onVerify`, `theme="dark"`.
 - **Server:** Token verification via `https://hcaptcha.com/siteverify` (see `lib/hcaptcha.ts`). The claim action and auth verify use this check before running the actual operation. Verification is skipped when `NODE_ENV=development` or `HCAPTCHA_SKIP_VERIFY_IN_DEV=true` (see Development section) so localhost works without a hostname in hCaptcha.
