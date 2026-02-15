@@ -16,6 +16,16 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-15  
+  **Area**: `components`, `app`, `docs`  
+  **Summary**: Footer label "Privacy"; claim form works with DISABLE_HCAPTCHA (no keys); HCAPTCHA_SETUP doc: going live, claim form, renumbered sections.  
+  **Rationale**: Shorten footer link to "Privacy". Claim page previously required sitekey even when captcha was disabled; now DISABLE_HCAPTCHA allows claim form without any hCaptcha keys and shows a dev notice. Docs clarify going-live steps and that claim form respects DISABLE_HCAPTCHA.  
+  **Files changed**:
+  - `components/layout/Footer.tsx` (Privacy Policy → Privacy)
+  - `app/claim/[slug]/ClaimForm.tsx` (canShowForm = DISABLE_HCAPTCHA || HCAPTCHA_SITEKEY; dev notice when disabled)
+  - `docs/HCAPTCHA_SETUP.md` (turn off section, claim form note, new "Going live" section, sections 4–7 renumbered)
+  **Manual test plan**: Footer shows "Privacy" linking to /privacy. With NEXT_PUBLIC_DISABLE_HCAPTCHA=true, claim page shows form and "Captcha disabled for development" notice; without keys and without DISABLE_HCAPTCHA, claim page shows config message. Skim HCAPTCHA_SETUP.md for going-live steps.
+
+- **Date**: 2026-02-15  
   **Area**: `app`  
   **Summary**: Add Privacy Policy page at `/privacy` so footer link works on live site.  
   **Rationale**: Footer linked to `/privacy` but the page was only added locally and never committed; Vercel builds from the repo, so the live site returned 404. Committing the page fixes the 404.  

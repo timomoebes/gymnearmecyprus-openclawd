@@ -147,7 +147,7 @@ export const Footer: React.FC = () => {
               href="/privacy"
               className="text-text-muted hover:text-primary-blue transition-colors text-sm"
             >
-              Privacy Policy
+              Privacy
             </Link>
             <Link
               href="/terms"

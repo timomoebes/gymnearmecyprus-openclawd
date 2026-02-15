@@ -4,15 +4,15 @@ hCaptcha protects the app from bots on claim requests, login, and signup. You ne
 
 ---
 
-## Turn off hCaptcha (e.g. localhost or while testing)
+## Turn off hCaptcha (e.g. localhost or until the site is live)
 
-To **disable hCaptcha completely** so login, signup, and claim work without the widget or verification, add to `.env.local`:
+To **disable hCaptcha completely** so login, signup, and **claim** work without the widget or any keys, add to `.env.local`:
 
 ```env
 NEXT_PUBLIC_DISABLE_HCAPTCHA=true
 ```
 
-Restart the dev server. The captcha widget will not appear and the server will not verify. **Do not set this in production.** When you deploy, remove this line (or set it to `false`) and add your production domain in the hCaptcha site hostnames.
+Restart the dev server. The claim form will show and work without `NEXT_PUBLIC_HCAPTCHA_SITEKEY` or `HCAPTCHA_SECRET`. **Do not set this in production.** When you go live, remove this (or set to `false`) and follow **Going live** below.
 
 ### Supabase: disable CAPTCHA protection for local development
 
@@ -65,11 +65,24 @@ Restart the dev server after changing `.env.local` (`npm run dev`).
 | **Signup** | On signup the captcha is verified before creating the account. |
 | **Claim page (sign-in/sign-up)** | The inline auth form on the claim page uses the same verification. |
 
-If **neither** variable is set, the **claim page** shows a notice that captcha is not configured; login and signup then run without captcha (for local testing only).
+If **neither** variable is set, the **claim page** shows a notice. Set `NEXT_PUBLIC_DISABLE_HCAPTCHA=true` to use the claim form without any hCaptcha keys (dev only). Login and signup can run without captcha when disabled.
 
 ---
 
-## 4. Development (localhost)
+## 4. Going live (enable hCaptcha for production)
+
+When your site has a live domain:
+
+1. **Remove** `NEXT_PUBLIC_DISABLE_HCAPTCHA` from production env (or set to `false`).
+2. In the [hCaptcha Dashboard](https://dashboard.hcaptcha.com/sites) → your site → **Hostnames**, add your **production domain** (e.g. `gymnearme.com` or `www.gymnearme.com`). Save.
+3. In your hosting env (e.g. Vercel), set:
+   - `NEXT_PUBLIC_HCAPTCHA_SITEKEY` = your Site Key
+   - `HCAPTCHA_SECRET` = your Secret
+4. Redeploy. The claim form (and login/signup) will show the captcha widget and verify on the server.
+
+---
+
+## 5. Development (localhost)
 
 The hCaptcha dashboard often does **not** allow `localhost` (or `127.0.0.1`) as a hostname. To avoid “captcha verification failed” when testing locally:
 
@@ -86,7 +99,7 @@ Use only for local development; do **not** set in production.
 
 ---
 
-## 5. Checklist
+## 6. Checklist
 
 - [ ] Created a **site** in the hCaptcha dashboard
 - [ ] Set **hostnames** when you deploy (production domain); optional for local dev (verification is skipped in development)
@@ -99,7 +112,7 @@ Use only for local development; do **not** set in production.
 
 ---
 
-## 6. Technical details
+## 7. Technical details
 
 - **Client:** [@hcaptcha/react-hcaptcha](https://github.com/hCaptcha/react-hcaptcha) — widget with `sitekey`, `onVerify`, `theme="dark"`.
 - **Server:** Token verification via `https://hcaptcha.com/siteverify` (see `lib/hcaptcha.ts`). The claim action and auth verify use this check before running the actual operation. Verification is skipped when `NODE_ENV=development` or `HCAPTCHA_SKIP_VERIFY_IN_DEV=true` (see Development section) so localhost works without a hostname in hCaptcha.

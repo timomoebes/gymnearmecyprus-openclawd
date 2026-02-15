@@ -85,11 +85,13 @@ export function ClaimForm({ gymId, gymName, gymSlug }: ClaimFormProps) {
     );
   }
 
-  if (!HCAPTCHA_SITEKEY) {
+  // Require either: captcha disabled (dev) or sitekey set (production). When disabled, form works without any hCaptcha keys.
+  const canShowForm = DISABLE_HCAPTCHA || HCAPTCHA_SITEKEY;
+  if (!canShowForm) {
     return (
       <div className="bg-surface-card rounded-card p-6 border border-amber-500/30">
         <p className="text-amber-200 text-sm">
-          Captcha is not configured. Set <code className="bg-black/30 px-1 rounded">NEXT_PUBLIC_HCAPTCHA_SITEKEY</code> and <code className="bg-black/30 px-1 rounded">HCAPTCHA_SECRET</code> in your environment to enable claim requests.
+          Captcha is not configured. Set <code className="bg-black/30 px-1 rounded">NEXT_PUBLIC_HCAPTCHA_SITEKEY</code> and <code className="bg-black/30 px-1 rounded">HCAPTCHA_SECRET</code> in your environment to enable claim requests, or set <code className="bg-black/30 px-1 rounded">NEXT_PUBLIC_DISABLE_HCAPTCHA=true</code> for local development.
         </p>
       </div>
     );
@@ -97,6 +99,11 @@ export function ClaimForm({ gymId, gymName, gymSlug }: ClaimFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="bg-surface-card rounded-card p-6 border border-primary-blue/30">
+      {DISABLE_HCAPTCHA && (
+        <p className="text-amber-200/90 text-sm mb-4" role="status">
+          Captcha disabled for development. Do not use in production.
+        </p>
+      )}
       <p className="text-text-light mb-6">
         By submitting, you confirm that you are the owner or authorized to manage <strong className="text-text-white">{gymName}</strong>.
         We will verify and approve your claim.
