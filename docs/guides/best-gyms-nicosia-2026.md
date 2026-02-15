@@ -19,19 +19,19 @@ Ready to level up? Here are the five best gyms in Nicosia for 2026:
 
 ---
 
-## 1. **Gabriel Fitness & Boxing Gym** ⭐ 5.0 (78 reviews)
+## 1. **[Gabriel Fitness & Boxing Gym](/gyms/gabriel-fitness-boxing-gym)** ⭐ 5.0 (78 reviews)
 The gold standard in Nicosia boxing and combat fitness. Gabriel Fitness & Boxing Gym combines specialized martial arts training with modern strength development. A community where champions are built through discipline, technique, and relentless commitment.
 
-## 2. **Old Town Fitness Studio** ⭐ 5.0 (69 reviews)
+## 2. **[Old Town Fitness Studio](/gyms/old-town-fitness-studio)** ⭐ 5.0 (69 reviews)
 Professional training infrastructure in Nicosia's vibrant core. Old Town Fitness Studio delivers modern programming with authentic gym culture. The kind of facility where consistency meets expertise and bodies transform predictably.
 
-## 3. **For Me Clinical Physio Pilates Studio** ⭐ 5.0 (47 reviews)
+## 3. **[For Me Clinical Physio Pilates Studio](/gyms/for-me-clinical-physio-pilates-studio)** ⭐ 5.0 (47 reviews)
 Specialized movement and rehabilitation excellence. For Me Clinical Physio Pilates Studio bridges fitness and injury prevention with professional clinical expertise. Essential for athletes who understand that longevity matters as much as performance.
 
-## 4. **Cocoon Wellness Centre** ⭐ 5.0 (32 reviews)
+## 4. **[Cocoon Wellness Centre](/gyms/cocoon-wellness-centre)** ⭐ 5.0 (32 reviews)
 Holistic fitness and recovery mastery. Cocoon Wellness Centre understands that transformation requires proper recovery infrastructure. World-class training paired with superior recovery systems equals accelerated results.
 
-## 5. **Uppercut Team Cyprus Boxing** ⭐ 5.0 (32 reviews)
+## 5. **[Uppercut Team Cyprus Boxing](/gyms/uppercut-team-cyprus-boxing-kickboxing-school-in-strovolos-nicosia)** ⭐ 5.0 (32 reviews)
 Elite boxing and combat training at the highest level. Uppercut Team Cyprus Boxing attracts serious competitors and fitness enthusiasts who demand world-class coaching and authentic fight culture. Where boxing excellence is non-negotiable.
 
 ---

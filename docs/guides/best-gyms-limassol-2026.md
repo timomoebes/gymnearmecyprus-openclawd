@@ -21,19 +21,19 @@ The competitive landscape keeps gyms sharp. In Limassol, mediocrity doesn't surv
 
 ---
 
-## 1. **Iron Fitness** ⭐ 5.0 (234 reviews)
+## 1. **[Iron Fitness](/gyms/iron-fitness)** ⭐ 5.0 (234 reviews)
 The undisputed heavyweight champion of Limassol fitness. Iron Fitness has earned its dominant position through relentless commitment to equipment quality, professional coaching, and a community culture that's authentically invested in transformation. With 234 verified reviews and a perfect 5-star rating, this is where serious athletes come to build unstoppable strength and physique.
 
-## 2. **Piero Judo Academy** ⭐ 5.0 (122 reviews)
+## 2. **[Piero Judo Academy](/gyms/piero-judo-academy)** ⭐ 5.0 (122 reviews)
 Specialized martial arts and combat training with facility excellence. Piero Judo Academy combines technical expertise with modern training infrastructure. Perfect for athletes seeking martial arts mastery combined with strength development.
 
-## 3. **Raw Calisthenics Academy** ⭐ 5.0 (96 reviews)
+## 3. **[Raw Calisthenics Academy](/gyms/raw-calisthenics-academy)** ⭐ 5.0 (96 reviews)
 Functional strength and bodyweight mastery at the highest level. Raw Calisthenics Academy is engineered for athletes who understand that movement quality and bodyweight command create transformation that transfers to real life. Zero compromise on technique.
 
-## 4. **Grind Fitness** ⭐ 5.0 (74 reviews)
+## 4. **[Grind Fitness](/gyms/grind-fitness)** ⭐ 5.0 (74 reviews)
 Results-obsessed training facility built for serious transformations. Grind Fitness lives up to its name—a hardcore training environment where elite programming meets dedicated community. The kind of gym where mediocrity gets left at the door.
 
-## 5. **Dreamchasers Fitness Studio** ⭐ 5.0 (57 reviews)
+## 5. **[Dreamchasers Fitness Studio](/gyms/dreamchasers-fitness-studio)** ⭐ 5.0 (57 reviews)
 Community-driven excellence with personalized attention. Dreamchasers Fitness Studio proves that the best gyms aren't necessarily the biggest—they're the ones where coaches know your name, understand your goals, and engineer your transformation systematically.
 
 ---

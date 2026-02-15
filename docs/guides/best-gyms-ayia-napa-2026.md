@@ -19,19 +19,19 @@ Ayia Napa's best gyms have specialized in programming that works across differen
 
 ---
 
-## 1. **BAD DOG BJJ** ⭐ 5.0 (103 reviews)
+## 1. **[BAD DOG BJJ](/gyms/bad-dog-bjj-brazilian-jiu-jitsu-training-club-nickbjj)** ⭐ 5.0 (103 reviews)
 Elite Brazilian Jiu Jitsu and combat mastery in Ayia Napa. BAD DOG BJJ combines world-class grappling instruction with modern strength training. With 103 verified 5-star reviews, this is the premier martial arts facility in the city. A community where discipline, technique, and transformation are non-negotiable.
 
-## 2. **Datiki Diet** ⭐ 5.0 (11 reviews)
+## 2. **[Datiki Diet](/gyms/datiki-diet)** ⭐ 5.0 (11 reviews)
 Specialized nutrition science meets training support. Datiki Diet understands that training is only half the equation—nutrition engineering is what turns effort into visible results. Expert dietary coaching paired with training guidance creates accelerated transformation.
 
-## 3. **World Gym Ayia Napa** ⭐ 4.9 (1266 reviews)
+## 3. **[World Gym Ayia Napa](/gyms/world-gym-ayia-napa)** ⭐ 4.9 (1266 reviews)
 The mega-facility with massive community verification. World Gym Ayia Napa's 4.9-star rating across 1,266 reviews proves one thing: consistency and quality at scale work. World-class equipment, diverse programming, professional staff, and an international community of serious athletes. This is infrastructure that delivers.
 
-## 4. **Return Rehabilitation & Fitness Recovery Centre** ⭐ 4.5 (60 reviews)
+## 4. **[Return Rehabilitation & Fitness Recovery Centre](/gyms/return-rehabilitation-fitness-recovery-centre)** ⭐ 4.5 (60 reviews)
 Professional recovery and rehabilitation expertise. Return bridges the gap between high-intensity training and intelligent recovery. Essential infrastructure for athletes who understand that longevity requires serious recovery systems.
 
-## 5. **Overall Magic Fitness Center** ⭐ 4.1 (43 reviews)
+## 5. **[Overall Magic Fitness Center](/gyms/overall-magic-fitness-center)** ⭐ 4.1 (43 reviews)
 Accessible training facility with broad-spectrum programming. Overall Magic Fitness Center serves the wider Ayia Napa community with equipment, classes, and coaching designed to make fitness accessible while maintaining quality standards.
 
 ---

@@ -19,19 +19,19 @@ The best part? You get premium quality without the premium price tag. Paralimni 
 
 ---
 
-## 1. **Bodyart Fitness Center** ⭐ 5.0 (154 reviews)
+## 1. **[Bodyart Fitness Center](/gyms/bodyart-fitness-center)** ⭐ 5.0 (154 reviews)
 The clear leader in Paralimni with dominant community verification. Bodyart Fitness Center's 154 verified 5-star reviews tell the story: this is a facility built on results, consistency, and member satisfaction. World-class equipment combined with professional programming creates an environment where transformation is predictable.
 
-## 2. **Sacred Roots Yoga & Massage** ⭐ 5.0 (72 reviews)
+## 2. **[Sacred Roots Yoga & Massage](/gyms/sacred-roots-yoga-massage)** ⭐ 5.0 (72 reviews)
 Holistic wellness and recovery excellence. Sacred Roots Yoga & Massage understands that true transformation requires balance between intense training and intelligent recovery. Expert instruction combined with massage therapy creates the complete recovery ecosystem.
 
-## 3. **CalisthenicsWorkout4allcy** ⭐ 5.0 (39 reviews)
+## 3. **[CalisthenicsWorkout4allcy](/gyms/calisthenicsworkout4allcy)** ⭐ 5.0 (39 reviews)
 The bodyweight and functional strength specialist. CalisthenicsWorkout4allcy is engineered for athletes focused on functional strength, movement quality, and bodyweight mastery. Perfect for athletes who understand that strength without coordination is incomplete.
 
-## 4. **Mythical Performance** ⭐ 4.7 (45 reviews)
+## 4. **[Mythical Performance](/gyms/mythical-performance)** ⭐ 4.7 (45 reviews)
 Elite athletic performance training. Mythical Performance specializes in taking athletes to competitive levels. Programming designed for serious competitors who demand world-class coaching and scientifically-optimized periodization.
 
-## 5. **BODY SHAPE GYM** ⭐ 4.5 (35 reviews)
+## 5. **[BODY SHAPE GYM](/gyms/body-shape-gym)** ⭐ 4.5 (35 reviews)
 Body composition transformation focus. BODY SHAPE GYM specializes in aesthetic goals with programming engineered for lean muscle gain and fat loss. The kind of facility where visible physical transformation is the primary objective.
 
 ---

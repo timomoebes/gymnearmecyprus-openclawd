@@ -19,19 +19,19 @@ Whether you're chasing muscle gain, fat loss, strength improvement, or athletic 
 
 ---
 
-## 1. **Kings Brazilian Jiu Jitsu** ⭐ 5.0 (67 reviews)
+## 1. **[Kings Brazilian Jiu Jitsu](/gyms/kings-brazilian-jiu-jitsu)** ⭐ 5.0 (67 reviews)
 Elite martial arts and combat training in Paphos. Kings Brazilian Jiu Jitsu combines world-class grappling instruction with modern strength training infrastructure. A premier facility for serious martial artists and athletes seeking technical mastery paired with physical transformation.
 
-## 2. **Paphos Professional Boxing Gym** ⭐ 5.0 (40 reviews)
+## 2. **[Paphos Professional Boxing Gym](/gyms/paphos-professional-boxing-gym)** ⭐ 5.0 (40 reviews)
 Professional boxing training at the highest level. Paphos Professional Boxing Gym delivers authentic boxing culture with expert coaching. Built for serious fighters and fitness enthusiasts who respect the sweet science.
 
-## 3. **Furious Fighters** ⭐ 5.0 (35 reviews)
+## 3. **[Furious Fighters](/gyms/furious-fighters)** ⭐ 5.0 (35 reviews)
 Raw combat training energy with modern fitness infrastructure. Furious Fighters combines fight training with comprehensive strength development. An authentic hardcore facility where transformation is the only acceptable outcome.
 
-## 4. **Johnny's Personal Training Paphos** ⭐ 5.0 (27 reviews)
+## 4. **[Johnny's Personal Training Paphos](/gyms/johnnys-personal-training)** ⭐ 5.0 (27 reviews)
 Premium personalized coaching for results-driven athletes. Johnny's Personal Training Paphos specializes in one-on-one coaching excellence. Perfect for athletes who demand individualized programming engineered specifically for their goals.
 
-## 5. **The Hood Fitness House** ⭐ 5.0 (24 reviews)
+## 5. **[The Hood Fitness House](/gyms/the-hood-fitness-house)** ⭐ 5.0 (24 reviews)
 Authentic hardcore training culture with community at its core. The Hood Fitness House is where egos check at the door and actual strength and transformation matter. A facility built on respect for the grind.
 
 ---

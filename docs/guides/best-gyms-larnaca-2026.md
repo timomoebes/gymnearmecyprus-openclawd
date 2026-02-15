@@ -17,19 +17,19 @@ The competitive landscape here means innovation isn't optional. Gyms in Larnaca 
 
 ---
 
-## 1. **Samtsihara Fight System Global Academy** ⭐ 5.0 (439 reviews)
+## 1. **[Samtsihara Fight System Global Academy](/gyms/samtsihara-fight-system-global-academy)** ⭐ 5.0 (439 reviews)
 The undisputed champion in Larnaca—and Cyprus's highest-ranked facility by review volume. Samtsihara Fight System Global Academy combines elite martial arts instruction with world-class strength training infrastructure. 439 verified 5-star reviews tell the story: this is where serious athletes transform. The training systems here are scientifically designed, the coaching is world-class, and the community is genuinely invested in your success.
 
-## 2. **Legacy - Chris Antoniou Training** ⭐ 5.0 (86 reviews)
+## 2. **[Legacy - Chris Antoniou Training](/gyms/legacy-chris-antoniou-training)** ⭐ 5.0 (86 reviews)
 Premium personalized coaching from a legendary trainer. Legacy represents the pinnacle of one-on-one coaching excellence in Larnaca. If you're serious about specific goals—strength, body composition, athletic performance—Chris Antoniou's expertise is second to none.
 
-## 3. **RACK GYM Larnaca** ⭐ 5.0 (72 reviews)
+## 3. **[RACK GYM Larnaca](/gyms/rack-gym-ltd)** ⭐ 5.0 (72 reviews)
 Built by strength athletes, for strength athletes. RACK GYM specializes in serious strength training with equipment and programming that respects the iron discipline. A facility where powerlifters and strength enthusiasts know they're home.
 
-## 4. **Cyprus Top Team CTT Larnaca** ⭐ 5.0 (58 reviews)
+## 4. **[Cyprus Top Team CTT Larnaca](/gyms/cyprus-top-team-cttmma-kickboxing-muaythaibjj-fitness-gym)** ⭐ 5.0 (58 reviews)
 Elite combat training meets strength development. Cyprus Top Team CTT brings world-class martial arts instruction combined with modern fitness infrastructure. A premier facility for fighters and athletes seeking competitive-level training.
 
-## 5. **Live Studio Mike** ⭐ 5.0 (48 reviews)
+## 5. **[Live Studio Mike](/gyms/live-studio-mike)** ⭐ 5.0 (48 reviews)
 Dynamic training programming with community focus. Live Studio Mike delivers diverse fitness options with professional coaching and an atmosphere built on member transformation and accountability.
 
 ---
