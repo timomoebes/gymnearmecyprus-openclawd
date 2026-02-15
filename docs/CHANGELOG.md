@@ -15,6 +15,15 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 
 ## Unreleased
 
+- **Date**: 2026-02-16  
+  **Area**: `app`, `components`  
+  **Summary**: Contact Us page at `/contact` with email, quick contact form, FAQ, and CTAs.  
+  **Rationale**: Nav already linked to `/contact` but the page was missing. Added a full contact page inspired by Scratch & Dent Locator: hero, “Ways to Reach Us” (email info@gymnearme.cy), Quick Contact Form (client form that opens mailto with pre-filled subject/body), FAQ (add gym, free to use, updates, report errors), and “Help Us Grow” CTAs (Suggest a Gym mailto, Browse Directory). No backend email required—form uses mailto.  
+  **Files changed**:
+  - `app/contact/page.tsx` (new)
+  - `components/contact/ContactForm.tsx` (new, client form with mailto submit)
+  **Manual test plan**: Open `/contact`; confirm email link and “Suggest a Gym” open mail client. Submit Quick Contact Form and confirm mailto opens with correct subject/body. Check FAQ and “Browse Directory” link. Verify nav Contact link goes to `/contact`.
+
 - **Date**: 2026-02-15  
   **Area**: `app`, `docs`  
   **Summary**: Forgot password and reset-password flow; admin/auth doc; claim feature test plan for live app.  
