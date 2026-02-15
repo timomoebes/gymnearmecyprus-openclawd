@@ -29,7 +29,7 @@ export default function ImprintPage() {
               <br />
               Timo Möbes
               <br />
-              Freelancer / Operator
+              Freelancer / Technical Consultant
             </p>
             <p className="mt-3">
               <strong>Address:</strong>
@@ -48,7 +48,15 @@ export default function ImprintPage() {
                 info@gymnearme.cy
               </a>
               <br />
-              Website: gymnearme.cy
+              Website:{' '}
+              <a
+                href="https://gymnearme.cy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary-blue hover:underline"
+              >
+                gymnearme.cy
+              </a>
             </p>
           </section>
 
