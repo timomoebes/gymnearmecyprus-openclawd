@@ -58,7 +58,7 @@ export const cities: City[] = [
     slug: 'paralimni',
     description: 'Find excellent gyms in Paralimni. Combine your beach vacation with a great workout at modern fitness facilities.',
     gymCount: 0,
-    coordinates: [35.0125, 34.0583],
+    coordinates: [35.039, 33.984], // Paralimni town center (was Protaras 35.0125, 34.0583)
     heroImage: '/images/cities/paralimni.jpg',
     specialties: ['Yoga', 'Pilates', 'Bodybuilding'],
   },
