@@ -33,6 +33,7 @@ export interface Gym {
   featured: boolean;
   description: string;
   images: string[];
+  featuredImages?: string[]; // Owner-uploaded photos from Supabase Storage
   openingHours: {
     monday?: string;
     tuesday?: string;

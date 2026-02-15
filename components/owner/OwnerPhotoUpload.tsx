@@ -1,0 +1,398 @@
+'use client';
+
+import React, { useState, useRef, useCallback, useEffect } from 'react';
+import {
+  Upload,
+  X,
+  AlertCircle,
+  CheckCircle,
+  Loader,
+  Image as ImageIcon,
+} from 'lucide-react';
+import {
+  uploadPhotoToStorage,
+  validatePhotoFile,
+  saveFeaturedImagesToGymAction,
+  deletePhotoFromStorageAction,
+  getFeaturedImagesForGym,
+  PhotoUploadResult,
+} from '@/lib/api/photo-uploads';
+import { Button } from '@/components/shared/Button';
+
+interface OwnerPhotoUploadProps {
+  gymId: string;
+  onSuccess?: (imageUrls: string[]) => void;
+}
+
+export function OwnerPhotoUpload({ gymId, onSuccess }: OwnerPhotoUploadProps) {
+  const [images, setImages] = useState<string[]>([]);
+  const [uploadQueue, setUploadQueue] = useState<File[]>([]);
+  const [isUploading, setIsUploading] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<{
+    type: 'success' | 'error' | 'info';
+    text: string;
+  } | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [loadingInitial, setLoadingInitial] = useState(true);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Load existing images on mount
+  useEffect(() => {
+    (async () => {
+      try {
+        const existingImages = await getFeaturedImagesForGym(gymId);
+        setImages(existingImages);
+      } catch (err) {
+        console.error('Failed to load existing images:', err);
+      } finally {
+        setLoadingInitial(false);
+      }
+    })();
+  }, [gymId]);
+
+  // Handle file validation
+  const handleFileSelect = useCallback(
+    (files: FileList | null) => {
+      if (!files) return;
+
+      const newFiles: File[] = [];
+      const errors: string[] = [];
+
+      Array.from(files).forEach((file) => {
+        const validation = validatePhotoFile(file);
+        if (validation.valid) {
+          newFiles.push(file);
+        } else {
+          errors.push(`${file.name}: ${validation.error}`);
+        }
+      });
+
+      if (errors.length > 0) {
+        setStatusMessage({
+          type: 'error',
+          text: errors.join('\n'),
+        });
+      }
+
+      // Check total images wouldn't exceed limit
+      const totalImages = images.length + newFiles.length + uploadQueue.length;
+      if (totalImages > 5) {
+        setStatusMessage({
+          type: 'error',
+          text: `You can upload a maximum of 5 images total. You have ${images.length} existing and ${uploadQueue.length} pending.`,
+        });
+        return;
+      }
+
+      if (newFiles.length > 0) {
+        setUploadQueue((prev) => [...prev, ...newFiles]);
+        setStatusMessage({
+          type: 'info',
+          text: `${newFiles.length} file(s) added to queue.`,
+        });
+      }
+
+      // Reset file input
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+    },
+    [images, uploadQueue]
+  );
+
+  // Drag and drop handlers
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+    handleFileSelect(e.dataTransfer.files);
+  };
+
+  // Upload files
+  const handleUpload = async () => {
+    if (uploadQueue.length === 0) {
+      setStatusMessage({
+        type: 'error',
+        text: 'No files to upload.',
+      });
+      return;
+    }
+
+    setIsUploading(true);
+    setStatusMessage(null);
+
+    try {
+      const uploadedUrls: string[] = [];
+
+      for (const file of uploadQueue) {
+        try {
+          const result: PhotoUploadResult = await uploadPhotoToStorage(
+            file,
+            gymId
+          );
+          uploadedUrls.push(result.url);
+        } catch (err: any) {
+          setStatusMessage({
+            type: 'error',
+            text: `Failed to upload ${file.name}: ${err.message}`,
+          });
+          setIsUploading(false);
+          return;
+        }
+      }
+
+      // Save all URLs to gym profile
+      const allImages = [...images, ...uploadedUrls];
+      const saveResult = await saveFeaturedImagesToGymAction(gymId, allImages);
+
+      if (!saveResult.success) {
+        setStatusMessage({
+          type: 'error',
+          text: saveResult.error || 'Failed to save images to gym profile.',
+        });
+        setIsUploading(false);
+        return;
+      }
+
+      // Update local state
+      setImages(saveResult.featured_images || allImages);
+      setUploadQueue([]);
+      setStatusMessage({
+        type: 'success',
+        text: `Successfully uploaded ${uploadedUrls.length} image(s)!`,
+      });
+
+      if (onSuccess) {
+        onSuccess(saveResult.featured_images || allImages);
+      }
+    } catch (err: any) {
+      setStatusMessage({
+        type: 'error',
+        text: `Upload error: ${err.message}`,
+      });
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  // Remove from queue
+  const removeFromQueue = (index: number) => {
+    setUploadQueue((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  // Delete uploaded image
+  const handleDeleteImage = async (imageUrl: string) => {
+    try {
+      const result = await deletePhotoFromStorageAction(gymId, imageUrl);
+
+      if (result.success) {
+        setImages((prev) => prev.filter((img) => img !== imageUrl));
+        setStatusMessage({
+          type: 'success',
+          text: 'Image deleted successfully.',
+        });
+
+        if (onSuccess) {
+          onSuccess(images.filter((img) => img !== imageUrl));
+        }
+      } else {
+        setStatusMessage({
+          type: 'error',
+          text: result.error || 'Failed to delete image.',
+        });
+      }
+    } catch (err: any) {
+      setStatusMessage({
+        type: 'error',
+        text: `Error: ${err.message}`,
+      });
+    }
+  };
+
+  if (loadingInitial) {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <div className="text-text-muted">Loading photos...</div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-6">
+      {/* Status Messages */}
+      {statusMessage && (
+        <div
+          className={`flex items-start gap-3 p-4 rounded-lg ${
+            statusMessage.type === 'success'
+              ? 'bg-secondary-green/20 border border-secondary-green/50'
+              : statusMessage.type === 'error'
+                ? 'bg-secondary-coral/20 border border-secondary-coral/50'
+                : 'bg-primary-blue/20 border border-primary-blue/50'
+          }`}
+        >
+          {statusMessage.type === 'success' && (
+            <CheckCircle className="w-5 h-5 text-secondary-green flex-shrink-0 mt-0.5" />
+          )}
+          {statusMessage.type === 'error' && (
+            <AlertCircle className="w-5 h-5 text-secondary-coral flex-shrink-0 mt-0.5" />
+          )}
+          {statusMessage.type === 'info' && (
+            <ImageIcon className="w-5 h-5 text-primary-blue flex-shrink-0 mt-0.5" />
+          )}
+          <div className="text-text-light whitespace-pre-wrap text-sm">
+            {statusMessage.text}
+          </div>
+        </div>
+      )}
+
+      {/* Existing Images */}
+      {images.length > 0 && (
+        <div>
+          <h3 className="text-lg font-semibold text-text-white mb-4">
+            Your Photos ({images.length}/5)
+          </h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+            {images.map((imageUrl, index) => (
+              <div
+                key={imageUrl}
+                className="relative group aspect-square rounded-lg overflow-hidden bg-surface-lighter border border-surface-lighter hover:border-primary-blue transition-colors"
+              >
+                <img
+                  src={imageUrl}
+                  alt={`Gym photo ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
+                <button
+                  onClick={() => handleDeleteImage(imageUrl)}
+                  disabled={isUploading}
+                  className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-50"
+                >
+                  <X className="w-6 h-6 text-white" />
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Upload Area */}
+      <div>
+        <h3 className="text-lg font-semibold text-text-white mb-4">
+          {images.length === 0 ? 'Upload Your First Photos' : 'Add More Photos'}
+        </h3>
+
+        {/* Drag and Drop Zone */}
+        <div
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
+          className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
+            isDragging
+              ? 'border-primary-blue bg-primary-blue/10'
+              : 'border-surface-lighter hover:border-primary-blue hover:bg-primary-blue/5'
+          }`}
+        >
+          <Upload className="w-12 h-12 text-primary-blue mx-auto mb-3" />
+          <p className="text-text-white font-semibold mb-1">
+            Drag and drop your images here
+          </p>
+          <p className="text-text-muted text-sm mb-4">
+            or click to browse (JPG or PNG, max 5MB each)
+          </p>
+          <input
+            ref={fileInputRef}
+            type="file"
+            multiple
+            accept="image/jpeg,image/png"
+            onChange={(e) => handleFileSelect(e.target.files)}
+            className="hidden"
+            disabled={isUploading}
+          />
+          <Button
+            variant="primary"
+            size="sm"
+            onClick={() => fileInputRef.current?.click()}
+            disabled={isUploading}
+          >
+            Choose Files
+          </Button>
+        </div>
+
+        {/* Upload Queue */}
+        {uploadQueue.length > 0 && (
+          <div className="mt-6">
+            <h4 className="text-text-white font-semibold mb-3">
+              Ready to upload ({uploadQueue.length})
+            </h4>
+            <div className="space-y-2 mb-4">
+              {uploadQueue.map((file, index) => (
+                <div
+                  key={`${file.name}-${index}`}
+                  className="flex items-center justify-between p-3 bg-surface-lighter rounded-lg"
+                >
+                  <div className="flex items-center gap-2 min-w-0">
+                    <ImageIcon className="w-5 h-5 text-primary-blue flex-shrink-0" />
+                    <div className="min-w-0">
+                      <p className="text-text-light text-sm truncate">
+                        {file.name}
+                      </p>
+                      <p className="text-text-muted text-xs">
+                        {(file.size / 1024 / 1024).toFixed(2)} MB
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => removeFromQueue(index)}
+                    disabled={isUploading}
+                    className="text-text-muted hover:text-text-light disabled:opacity-50"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex gap-3">
+              <Button
+                variant="primary"
+                onClick={handleUpload}
+                disabled={isUploading}
+              >
+                {isUploading && (
+                  <Loader className="w-4 h-4 mr-2 animate-spin" />
+                )}
+                {isUploading ? 'Uploading...' : 'Upload Now'}
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => setUploadQueue([])}
+                disabled={isUploading}
+              >
+                Clear Queue
+              </Button>
+            </div>
+          </div>
+        )}
+
+        {/* Image Limit Info */}
+        <div className="mt-4 p-3 bg-surface-lighter rounded-lg">
+          <p className="text-text-muted text-sm">
+            ℹ️ You can upload a maximum of 5 images per gym. Currently:{' '}
+            <span className="text-text-light font-semibold">
+              {images.length}
+            </span>
+            /5
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}

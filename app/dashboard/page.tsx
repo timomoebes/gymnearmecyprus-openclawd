@@ -21,6 +21,7 @@ import { Badge } from '@/components/shared/Badge';
 import { Rating } from '@/components/shared/Rating';
 import { GymCard } from '@/components/gym/GymCard';
 import { getMyGymsAction } from '@/lib/actions/dashboard';
+import { OwnerPhotoUpload } from '@/components/owner/OwnerPhotoUpload';
 import type { Gym } from '@/lib/types';
 
 const placeholderStats = {
@@ -33,7 +34,7 @@ const placeholderStats = {
 };
 
 export default function DashboardPage() {
-  const [activeTab, setActiveTab] = useState<'overview' | 'listing' | 'analytics'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'listing' | 'photos' | 'analytics'>('overview');
   const [myGyms, setMyGyms] = useState<Gym[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -120,10 +121,11 @@ export default function DashboardPage() {
         )}
 
         {/* Tabs */}
-        <div className="flex gap-4 mb-8 border-b border-surface-lighter">
+        <div className="flex gap-4 mb-8 border-b border-surface-lighter overflow-x-auto">
           {[
             { id: 'overview', label: 'Overview', icon: BarChart3 },
             { id: 'listing', label: 'My Listing', icon: Edit },
+            { id: 'photos', label: 'Photos', icon: ImageIcon },
             { id: 'analytics', label: 'Analytics', icon: TrendingUp },
           ].map((tab) => {
             const Icon = tab.icon;
@@ -230,7 +232,7 @@ export default function DashboardPage() {
                 <ImageIcon className="w-8 h-8 text-primary-purple mb-4" />
                 <h3 className="text-xl font-bold text-text-white mb-2">Upload Photos</h3>
                 <p className="text-text-muted mb-4">Add more photos to showcase your gym.</p>
-                <Button variant="outline" size="sm">
+                <Button variant="outline" size="sm" onClick={() => setActiveTab('photos')}>
                   Upload
                 </Button>
               </div>
@@ -278,6 +280,30 @@ export default function DashboardPage() {
               </div>
             ) : (
               <p className="text-text-muted">Claim a gym first to edit your listing.</p>
+            )}
+          </div>
+        )}
+
+        {/* Photos Tab */}
+        {activeTab === 'photos' && (
+          <div className="bg-surface-card rounded-card p-8">
+            <h2 className="text-2xl font-bold text-text-white mb-6">Manage Your Gym Photos</h2>
+            {mockGym ? (
+              <OwnerPhotoUpload
+                gymId={mockGym.id}
+                onSuccess={(images) => {
+                  // Update gym with new images if needed
+                  setMyGyms((prevGyms) =>
+                    prevGyms.map((gym) =>
+                      gym.id === mockGym.id
+                        ? { ...gym, images }
+                        : gym
+                    )
+                  );
+                }}
+              />
+            ) : (
+              <p className="text-text-muted">Claim a gym first to upload photos.</p>
             )}
           </div>
         )}

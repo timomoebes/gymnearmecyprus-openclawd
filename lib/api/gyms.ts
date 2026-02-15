@@ -63,6 +63,7 @@ function transformGymFromDB(dbGym: any, specialties: string[], amenities: string
     featured: dbGym.is_featured || false,
     description: dbGym.description || '',
     images: dbGym.cover_image_url ? [dbGym.cover_image_url] : [],
+    featuredImages: dbGym.featured_images || [],
     openingHours,
     pricing,
     ownerId: dbGym.owner_id || undefined,
