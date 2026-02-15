@@ -60,9 +60,9 @@ export default async function GuidePage({ params }: GuidePageProps) {
           ]}
         />
 
-        <article className="mt-10 space-y-8">
+        <article className="mt-12 sm:mt-16 space-y-12 sm:space-y-16">
           {/* Hero Section with Enhanced Title */}
-          <div className="bg-gradient-to-r from-primary-600/10 via-primary-500/5 to-blue-600/10 border border-primary-500/20 rounded-2xl p-8 sm:p-12 backdrop-blur-sm shadow-2xl">
+          <div className="bg-gradient-to-r from-primary-600/10 via-primary-500/5 to-blue-600/10 border border-primary-500/20 rounded-2xl p-10 sm:p-16 backdrop-blur-sm shadow-2xl">
             <style>{`
               .guide-content h1 {
                 @apply text-4xl sm:text-5xl font-bold text-white mb-4 leading-tight;
@@ -73,11 +73,15 @@ export default async function GuidePage({ params }: GuidePageProps) {
               }
 
               .guide-content h2 {
-                @apply text-2xl sm:text-3xl font-bold text-white mt-12 mb-6 pb-3 border-b border-primary-500/30;
+                @apply text-2xl sm:text-3xl font-bold text-white mt-16 sm:mt-20 mb-8 sm:mb-10 pb-4 border-b border-primary-500/30;
               }
 
               .guide-content h3 {
-                @apply text-xl sm:text-2xl font-bold text-white mt-8 mb-4 flex items-center gap-3;
+                @apply text-xl sm:text-2xl font-bold text-white mt-10 sm:mt-12 mb-6 sm:mb-8 flex items-center gap-3;
+              }
+
+              .guide-content h4 {
+                @apply text-lg sm:text-xl font-semibold text-primary-300 mt-8 mb-5 sm:mb-6;
               }
 
               .guide-content h3::before {
@@ -86,24 +90,27 @@ export default async function GuidePage({ params }: GuidePageProps) {
               }
 
               .guide-content p {
-                @apply text-gray-200 leading-relaxed text-base sm:text-lg mb-4;
+                @apply text-gray-200 text-base sm:text-lg mb-6 sm:mb-8;
+                line-height: 1.85;
+                letter-spacing: 0.3px;
               }
 
               .guide-content strong {
-                @apply text-primary-300 font-semibold;
+                @apply text-primary-300 font-semibold tracking-wide;
               }
 
               .guide-content em {
-                @apply italic text-primary-200;
+                @apply italic text-primary-200 tracking-wide;
               }
 
               .guide-content ul, .guide-content ol {
-                @apply space-y-3 mb-6;
+                @apply space-y-4 sm:space-y-5 mb-8 sm:mb-10;
               }
 
               .guide-content li {
-                @apply text-gray-200 leading-relaxed;
-                @apply pl-6 relative;
+                @apply text-gray-200 pl-6 sm:pl-7 relative;
+                line-height: 1.75;
+                letter-spacing: 0.3px;
               }
 
               .guide-content ul > li::before {
@@ -116,7 +123,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
               }
 
               .guide-content hr {
-                @apply border-primary-500/20 my-8;
+                @apply border-primary-500/20 my-12 sm:my-16;
               }
 
               .guide-content a {
@@ -124,7 +131,8 @@ export default async function GuidePage({ params }: GuidePageProps) {
               }
 
               .guide-content blockquote {
-                @apply border-l-4 border-primary-500 pl-6 italic text-gray-300 my-6 py-3;
+                @apply border-l-4 border-primary-500 pl-6 sm:pl-8 italic text-gray-300 my-8 sm:my-10 py-4 sm:py-5;
+                line-height: 1.8;
               }
             `}</style>
             <div
