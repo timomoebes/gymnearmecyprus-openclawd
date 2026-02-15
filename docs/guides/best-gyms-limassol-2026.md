@@ -1,3 +1,8 @@
+---
+title: "Best Gyms in Limassol 2026 | Top 10 Fitness Centers & Reviews"
+description: "Find the best gyms in Limassol. Compare 10 top-rated fitness centers with verified reviews, pricing, specialties. Iron Fitness, Grind Fitness & more."
+---
+
 # Top 5 Gyms in Limassol: Your 2026 Guide
 
 ## Limassol's Fitness Explosion: The Mediterranean's Fastest-Growing Gym Scene

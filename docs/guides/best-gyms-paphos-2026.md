@@ -1,3 +1,8 @@
+---
+title: "Best Gyms in Paphos 2026 | Top-Rated Fitness Centers & Pricing"
+description: "Discover the best gyms in Paphos. Kings BJJ, Poseidonio Health Spa & more. Compare facilities, pricing, reviews. Find your perfect gym near you."
+---
+
 # Top 5 Gyms in Paphos: Your 2026 Guide
 
 ## Paphos's Hidden Fitness Gem: Where Dedication Meets Scenic Beauty

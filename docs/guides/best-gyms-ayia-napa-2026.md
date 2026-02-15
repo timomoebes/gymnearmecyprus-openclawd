@@ -1,3 +1,8 @@
+---
+title: "Best Gyms in Ayia Napa 2026 | World Gym & Top Fitness Centers"
+description: "Find the best gyms in Ayia Napa. World Gym (4.9★, 1,266 reviews), premium facilities, tourist-friendly. Compare fitness centers near you."
+---
+
 # Top 5 Gyms in Ayia Napa: Your 2026 Guide
 
 ## Ayia Napa Beyond the Beach: Serious Fitness in the Party Capital

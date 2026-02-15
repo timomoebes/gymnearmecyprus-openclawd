@@ -1,3 +1,8 @@
+---
+title: "Best Gyms in Paralimni 2026 | Top Fitness Centers in East Cyprus"
+description: "Discover the best gyms in Paralimni. Bodyart Fitness (5.0★), complete facilities, all fitness levels. Find your gym in Eastern Cyprus."
+---
+
 # Top 5 Gyms in Paralimni: Your 2026 Guide
 
 ## Paralimni's Fitness Renaissance: Quality Over Quantity, Results Over Noise

@@ -1,0 +1,58 @@
+{
+  "guides": {
+    "5-best-gyms-cyprus": {
+      "title": "Best Gyms in Cyprus: City Champions 2026 | Top-Rated Fitness Centers",
+      "description": "Discover the #1 gym in each Cyprus city. 5-star rated, verified reviews, expert training. Find your champion gym near you in Limassol, Paphos, Nicosia & more.",
+      "keywords": "best gyms cyprus, top gyms cyprus, fitness centers cyprus, gym near me cyprus",
+      "url": "/guides/best-gyms-cyprus"
+    },
+    "best-gyms-limassol-2026": {
+      "title": "Best Gyms in Limassol 2026 | Top 10 Fitness Centers & Reviews",
+      "description": "Find the best gyms in Limassol. Compare 10 top-rated fitness centers with verified reviews, pricing, specialties. Iron Fitness, Grind Fitness & more.",
+      "keywords": "best gyms limassol, gym limassol, fitness center limassol, bodybuilding gym limassol",
+      "url": "/guides/best-gyms-limassol"
+    },
+    "best-gyms-paphos-2026": {
+      "title": "Best Gyms in Paphos 2026 | Top-Rated Fitness Centers & Pricing",
+      "description": "Discover the best gyms in Paphos. Kings BJJ, Poseidonio Health Spa & more. Compare facilities, pricing, reviews. Find your perfect gym near you.",
+      "keywords": "best gyms paphos, gym paphos, fitness center paphos, bjj paphos",
+      "url": "/guides/best-gyms-paphos"
+    },
+    "best-gyms-nicosia-2026": {
+      "title": "Best Gyms in Nicosia 2026 | Top Fitness Centers in Cyprus Capital",
+      "description": "Find the best gyms in Nicosia. Gabriel Fitness, Maxx Fitness & more. Expert reviews, pricing, specialties. Your guide to fitness in Cyprus capital.",
+      "keywords": "best gyms nicosia, gym nicosia, fitness center nicosia, boxing gym nicosia",
+      "url": "/guides/best-gyms-nicosia"
+    },
+    "best-gyms-larnaca-2026": {
+      "title": "Best Gyms in Larnaca 2026 | Top-Rated Fitness & Combat Sports Centers",
+      "description": "Explore the best gyms in Larnaca. Samtsihara Fight System (5.0★), CrossFit, MMA & more. Find top-rated fitness centers with verified reviews.",
+      "keywords": "best gyms larnaca, gym larnaca, mma larnaca, combat sports larnaca",
+      "url": "/guides/best-gyms-larnaca"
+    },
+    "best-gyms-ayia-napa-2026": {
+      "title": "Best Gyms in Ayia Napa 2026 | World Gym & Top Fitness Centers",
+      "description": "Find the best gyms in Ayia Napa. World Gym (4.9★, 1,266 reviews), premium facilities, tourist-friendly. Compare fitness centers near you.",
+      "keywords": "best gyms ayia napa, gym ayia napa, world gym ayia napa, fitness ayia napa",
+      "url": "/guides/best-gyms-ayia-napa"
+    },
+    "best-gyms-paralimni-2026": {
+      "title": "Best Gyms in Paralimni 2026 | Top Fitness Centers in East Cyprus",
+      "description": "Discover the best gyms in Paralimni. Bodyart Fitness (5.0★), complete facilities, all fitness levels. Find your gym in Eastern Cyprus.",
+      "keywords": "best gyms paralimni, gym paralimni, fitness center paralimni, east cyprus gym",
+      "url": "/guides/best-gyms-paralimni"
+    }
+  },
+  "pages": {
+    "home": {
+      "title": "Gym Near Me Cyprus | Find the Best Fitness Centers in Cyprus 2026",
+      "description": "Find the best gyms near you in Cyprus. Compare 50+ fitness centers across Limassol, Paphos, Nicosia, Larnaca, Ayia Napa. Verified reviews & pricing.",
+      "keywords": "gym near me cyprus, best gyms cyprus, fitness centers cyprus, gym cyprus"
+    },
+    "about": {
+      "title": "About Gym Near Me Cyprus | Your Complete Cyprus Fitness Directory",
+      "description": "Gym Near Me Cyprus helps you find verified, top-rated fitness centers across the island. Honest reviews, accurate pricing, expert recommendations.",
+      "keywords": "cyprus gym directory, fitness guide cyprus, gym reviews cyprus"
+    }
+  }
+}

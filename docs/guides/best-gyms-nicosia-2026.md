@@ -1,3 +1,8 @@
+---
+title: "Best Gyms in Nicosia 2026 | Top Fitness Centers in Cyprus Capital"
+description: "Find the best gyms in Nicosia. Gabriel Fitness, Maxx Fitness & more. Expert reviews, pricing, specialties. Your guide to fitness in Cyprus capital."
+---
+
 # Top 5 Gyms in Nicosia: Your 2026 Guide
 
 ## Nicosia's Fitness Renaissance: Where Transformation Meets Determination

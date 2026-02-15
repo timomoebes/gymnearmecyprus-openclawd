@@ -1,3 +1,8 @@
+---
+title: "Best Gyms in Larnaca 2026 | Top-Rated Fitness & Combat Sports Centers"
+description: "Explore the best gyms in Larnaca. Samtsihara Fight System (5.0★), CrossFit, MMA & more. Find top-rated fitness centers with verified reviews."
+---
+
 # Top 5 Gyms in Larnaca: Your 2026 Guide
 
 ## Larnaca's Coastal Fitness Culture: Strength Meets Seaside Discipline
