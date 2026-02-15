@@ -27,7 +27,7 @@ If you see **"captcha verification process failed"** on login or signup even wit
 1. Open the [hCaptcha Dashboard](https://dashboard.hcaptcha.com/sites) and sign in.
 2. Click **Sites** (or **Add Site** on the overview).
 3. **Add Site**:
-   - **Site name:** e.g. `GymNearMe Cyprus` or `gymnearme-local`
+   - **Site name:** e.g. `Gym Near Me Cyprus` or `gymnearme-local`
    - **Hostnames:** Add the host(s) where the app runs. Many dashboards do **not** accept `localhost`; you can leave hostnames blank for development (see “Development (localhost)” below) or add only your **production domain** (e.g. `gymnearme.com`) when you deploy.
    - Save.
 

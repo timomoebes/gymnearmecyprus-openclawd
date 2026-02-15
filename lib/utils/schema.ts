@@ -93,7 +93,7 @@ export function generateOrganizationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'GymNearMe Cyprus',
+    name: 'Gym Near Me Cyprus',
     url: 'https://gymnearme.cy',
     logo: 'https://gymnearme.cy/logo.png',
     description: 'Find the best gyms and fitness centers in Cyprus. Your ultimate fitness directory.',
@@ -112,7 +112,7 @@ export function generateWebSiteSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'GymNearMe Cyprus',
+    name: 'Gym Near Me Cyprus',
     url: 'https://gymnearme.cy',
     potentialAction: {
       '@type': 'SearchAction',

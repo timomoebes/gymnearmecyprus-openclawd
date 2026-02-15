@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: GuidePageProps): Promise<Meta
   const title = data.title || content.split('\n')[0].replace('# ', '').trim();
 
   return {
-    title: `${title} | GymNearMe Cyprus`,
+    title: `${title} | Gym Near Me Cyprus`,
     description: data.description || `Read our expert guide: ${title}. Discover the best fitness options in Cyprus.`,
   };
 }

@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 
 export const metadata = {
-  title: 'Terms of Service | GymNearMe Cyprus',
-  description: 'Terms of service for GymNearMe Cyprus. Rules for using our gym directory, listing or claiming gyms, and advertising.',
+  title: 'Terms of Service | Gym Near Me Cyprus',
+  description: 'Terms of service for Gym Near Me Cyprus. Rules for using our gym directory, listing or claiming gyms, and advertising.',
   keywords: 'terms of service, gym directory cyprus, terms and conditions',
 };
 
@@ -23,7 +23,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-semibold text-text-white mb-3">1. Agreement to terms</h2>
             <p>
-              By accessing or using the website and services of <strong>GymNearMe Cyprus</strong> (“we,” “us,” or “our”),
+              By accessing or using the website and services of <strong>Gym Near Me Cyprus</strong> (“we,” “us,” or “our”),
               you agree to be bound by these Terms of Service (“Terms”). If you do not agree to these Terms,
               please do not use our website or services. These Terms apply to all users, including visitors
               browsing the directory, gym owners who list or claim gyms, advertisers, and anyone who signs up
@@ -33,7 +33,7 @@ export default function TermsPage() {
 
           <section>
             <h2 className="text-xl font-semibold text-text-white mb-3">2. Services offered</h2>
-            <p>GymNearMe Cyprus provides a gym and fitness directory for Cyprus, including:</p>
+            <p>Gym Near Me Cyprus provides a gym and fitness directory for Cyprus, including:</p>
             <ul className="list-disc pl-6 space-y-2 mt-2">
               <li>
                 <strong>Directory</strong> — Browse gyms and fitness centers by city, specialty, and other
@@ -108,7 +108,7 @@ export default function TermsPage() {
             <h2 className="text-xl font-semibold text-text-white mb-3">5. Intellectual property</h2>
             <p>
               <strong>Our content:</strong> All content on this website that we create—including text,
-              graphics, logos, and the design and structure of the site—is the property of GymNearMe
+              graphics, logos, and the design and structure of the site—is the property of Gym Near Me
               Cyprus or its licensors and is protected by copyright and other intellectual property laws.
             </p>
             <p className="mt-3">
@@ -222,7 +222,7 @@ export default function TermsPage() {
               <Link href="/privacy" className="text-primary-blue hover:underline">
                 Privacy Policy
               </Link>
-              , constitute the entire agreement between you and GymNearMe Cyprus regarding your use of
+              , constitute the entire agreement between you and Gym Near Me Cyprus regarding your use of
               our website and services and supersede all prior agreements and understandings.
             </p>
           </section>

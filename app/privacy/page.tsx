@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 
 export const metadata = {
-  title: 'Privacy Policy | GymNearMe Cyprus',
-  description: 'Privacy policy for GymNearMe Cyprus. How we collect, use, and protect your data when you use our gym directory and list or claim gyms.',
+  title: 'Privacy Policy | Gym Near Me Cyprus',
+  description: 'Privacy policy for Gym Near Me Cyprus. How we collect, use, and protect your data when you use our gym directory and list or claim gyms.',
   keywords: 'privacy policy, gym directory cyprus, data protection',
 };
 
@@ -23,7 +23,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-xl font-semibold text-text-white mb-3">1. Who we are</h2>
             <p>
-              This website is operated by <strong>GymNearMe Cyprus</strong> (the data controller).
+              This website is operated by <strong>Gym Near Me Cyprus</strong> (the data controller).
               For privacy-related requests you can reach us at{' '}
               <a href="mailto:info@gymnearme.cy" className="text-primary-blue hover:underline">
                 info@gymnearme.cy

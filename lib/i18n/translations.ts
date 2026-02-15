@@ -49,7 +49,7 @@ export const translations = {
       viewAll: 'View All 24 Hour Gyms',
     },
     benefits: {
-      heading: 'Why Use GymNearMe Cyprus to Find Your Perfect Gym',
+      heading: 'Why Use Gym Near Me Cyprus to Find Your Perfect Gym',
       description: 'Discover why thousands of people use our directory to find gyms near me, fitness centers, and health clubs across Cyprus.',
       findGymsTitle: 'Find Gyms Near Me',
       findGymsText: 'Search for gyms close to me, nearby gyms, and fitness centers in your area. Our location-based search helps you find the perfect gym location near you.',
@@ -168,7 +168,7 @@ export const translations = {
       viewAll: 'Όλα τα Γυμναστήρια 24 Ωρών',
     },
     benefits: {
-      heading: 'Γιατί να Χρησιμοποιήσετε το GymNearMe Cyprus για το Ιδανικό σας Γυμναστήριο',
+      heading: 'Γιατί να Χρησιμοποιήσετε το Gym Near Me Cyprus για το Ιδανικό σας Γυμναστήριο',
       description: 'Ανακαλύψτε γιατί χιλιάδες άνθρωποι χρησιμοποιούν τον οδηγό μας για γυμναστήρια, κέντρα fitness και health clubs σε όλη την Κύπρο.',
       findGymsTitle: 'Βρείτε Γυμναστήρια Κοντά Μου',
       findGymsText: 'Αναζητήστε γυμναστήρια κοντά σας και κέντρα fitness στην περιοχή σας. Η αναζήτηση με τοποθεσία σας βοηθά να βρείτε το ιδανικό γυμναστήριο.',

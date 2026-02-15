@@ -1,4 +1,4 @@
-// Core type definitions for GymNearMe Cyprus
+// Core type definitions for Gym Near Me Cyprus
 
 export interface City {
   id: string;

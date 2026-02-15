@@ -1,4 +1,4 @@
-# GymNearMe Cyprus Directory — Development Plan
+# Gym Near Me Cyprus Directory — Development Plan
 
 ## 🎯 Project Overview
 
@@ -194,7 +194,7 @@ new-gym/
    - Contact info
 
 **SEO**:
-- H1: "Find the Best Gyms in Cyprus | GymNearMe"
+- H1: "Find the Best Gyms in Cyprus | Gym Near Me"
 - Meta description: Keyword-rich, compelling
 - Schema: Organization, WebSite
 
@@ -311,7 +311,7 @@ new-gym/
 
 **Structure**:
 1. **Hero**
-   - "Get Featured on GymNearMe"
+   - "Get Featured on Gym Near Me"
    - Value proposition
 
 2. **Pricing Tiers**
@@ -331,7 +331,7 @@ new-gym/
 5. **FAQ Section**
 
 **SEO**:
-- H1: "Gym Listing Pricing | List Your Gym on GymNearMe"
+- H1: "Gym Listing Pricing | List Your Gym on Gym Near Me"
 - Meta: Pricing-focused keywords
 
 ---

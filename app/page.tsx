@@ -32,13 +32,13 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       url: 'https://gymnearme.cy',
-      siteName: 'GymNearMe Cyprus',
+      siteName: 'Gym Near Me Cyprus',
       images: [
         {
           url: 'https://gymnearme.cy/logo.png',
           width: 1200,
           height: 630,
-          alt: 'GymNearMe Cyprus - Find Gyms Near Me',
+          alt: 'Gym Near Me Cyprus - Find Gyms Near Me',
         },
       ],
       locale: 'en_US',

@@ -20,7 +20,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'GymNearMe Cyprus | Find the Best Gyms in Cyprus',
+  title: 'Gym Near Me Cyprus | Find the Best Gyms in Cyprus',
   description: 'Discover the best gyms and fitness centers in Cyprus. Browse by city, specialty, ratings, and reviews. List your gym for free.',
   keywords: 'gyms cyprus, fitness centers cyprus, limassol gyms, nicosia gyms, paphos gyms',
 };

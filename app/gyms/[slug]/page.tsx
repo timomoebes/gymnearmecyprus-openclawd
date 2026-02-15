@@ -67,7 +67,7 @@ export async function generateMetadata({ params }: GymPageProps): Promise<Metada
       title: seoTitle,
       description: metaDescription,
       url: `https://gymnearme.cy/gyms/${gym.slug}`,
-      siteName: 'GymNearMe Cyprus',
+      siteName: 'Gym Near Me Cyprus',
       images: [
         {
           url: ogImage,

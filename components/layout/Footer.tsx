@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
             <Link href="/" className="flex items-center mb-4 hover:opacity-80 transition-opacity">
               <Image
                 src="/logo1.png"
-                alt="GymNearMe Cyprus Logo"
+                alt="Gym Near Me Cyprus Logo"
                 width={400}
                 height={200}
                 className="h-20 w-auto object-contain"
@@ -140,7 +140,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="mt-8 pt-8 border-t border-surface-card flex flex-col md:flex-row justify-between items-center">
           <p className="text-text-muted text-sm">
-            © {new Date().getFullYear()} GymNearMe Cyprus. All rights reserved.
+            © {new Date().getFullYear()} Gym Near Me Cyprus. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link

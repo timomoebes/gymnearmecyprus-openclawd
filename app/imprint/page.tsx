@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 
 export const metadata = {
-  title: 'Imprint | GymNearMe Cyprus',
-  description: 'Imprint and legal information for GymNearMe Cyprus. Operator details, responsible for content, and disclaimer.',
+  title: 'Imprint | Gym Near Me Cyprus',
+  description: 'Imprint and legal information for Gym Near Me Cyprus. Operator details, responsible for content, and disclaimer.',
   keywords: 'imprint, legal notice, gym directory cyprus',
 };
 
@@ -25,7 +25,7 @@ export default function ImprintPage() {
               Information according to § 5 TMG
             </h2>
             <p>
-              <strong>GymNearMe Cyprus</strong>
+              <strong>Gym Near Me Cyprus</strong>
               <br />
               Timo Möbes
               <br />

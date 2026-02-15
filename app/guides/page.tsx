@@ -8,7 +8,7 @@ import { Metadata } from 'next';
 import { ChevronRight, BookOpen } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Expert Cyprus Fitness Guides | GymNearMe',
+  title: 'Expert Cyprus Fitness Guides | Gym Near Me',
   description: 'Discover the best gyms, training tips, and fitness locations in Cyprus with our expert-curated guides.',
 };
 

@@ -12,7 +12,7 @@
 2. **CityCardGrid** – "Gyms in Cyprus by City" + city cards + View All Cities
 3. **SpecialtyCardGrid** – "Fitness Specialties" + specialty cards + View All Specialties
 4. **Home24HourSection** – "24 Hour Gyms" + up to 6 gym cards + View All
-5. **HomeBenefitsSection** – "Why Use GymNearMe" with 6 benefit cards
+5. **HomeBenefitsSection** – "Why Use Gym Near Me" with 6 benefit cards
 6. **HomeGuideSection** – "Complete Guide" (Tips + Types of Gyms + Pro tip, two columns)
 7. **FAQSection** – 4 Q&As (with FAQ schema)
 8. **HomeTrustSection** – 3 stats (gyms listed, free to list, average rating)

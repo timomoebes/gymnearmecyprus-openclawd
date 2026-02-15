@@ -1,4 +1,4 @@
-# GymNearMe Cyprus Directory
+# Gym Near Me Cyprus Directory
 
 A high-credibility, visually stunning gym directory for Cyprus SEO optimized for Google Page 1 rankings.
 

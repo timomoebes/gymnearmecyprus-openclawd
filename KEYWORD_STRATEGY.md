@@ -1,4 +1,4 @@
-# SEO Keyword Strategy - GymNearMe Cyprus
+# SEO Keyword Strategy - Gym Near Me Cyprus
 ## Based on SEMrush Keyword Planner Data
 
 ### 📊 Keyword Analysis Summary

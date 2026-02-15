@@ -1,5 +1,5 @@
 # Strategic Action Plan
-## GymNearMe Cyprus - From MVP to Top-Ranking Directory
+## Gym Near Me Cyprus - From MVP to Top-Ranking Directory
 
 **Last Updated:** November 11, 2025  
 **Status:** Active Roadmap  

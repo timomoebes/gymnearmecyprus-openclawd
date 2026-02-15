@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide documents the centralized meta description system for GymNearMe Cyprus. All meta descriptions are generated using utility functions in `lib/utils/meta-descriptions.ts` to ensure consistency, SEO optimization, and maintainability.
+This guide documents the centralized meta description system for Gym Near Me Cyprus. All meta descriptions are generated using utility functions in `lib/utils/meta-descriptions.ts` to ensure consistency, SEO optimization, and maintainability.
 
 ## Key Principles
 

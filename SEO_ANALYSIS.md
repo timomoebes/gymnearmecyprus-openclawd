@@ -42,7 +42,7 @@
 - **Category Links**: Direct links to specialty pages
 - **Breadcrumbs**: Clear navigation hierarchy
 
-## Recommendations for GymNearMe Cyprus
+## Recommendations for Gym Near Me Cyprus
 
 ### Immediate Improvements:
 1. ✅ Add statistics to homepage (gym count, city count)

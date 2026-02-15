@@ -1,5 +1,5 @@
 # Product Requirements Document (PRD)
-## GymNearMe Cyprus - Online Gym Directory
+## Gym Near Me Cyprus - Online Gym Directory
 
 **Version:** 1.1  
 **Last Updated:** February 2026  
@@ -29,7 +29,7 @@
 
 ### 1.1 Project Overview
 
-**GymNearMe Cyprus** is a high-credibility, visually stunning online directory for fitness centers, gyms, and health clubs across Cyprus. The platform serves as the definitive resource for individuals seeking gym facilities and provides gym owners with a powerful marketing and discovery tool.
+**Gym Near Me Cyprus** is a high-credibility, visually stunning online directory for fitness centers, gyms, and health clubs across Cyprus. The platform serves as the definitive resource for individuals seeking gym facilities and provides gym owners with a powerful marketing and discovery tool.
 
 ### 1.2 Key Objectives
 

@@ -5,7 +5,7 @@ import { Button } from '@/components/shared/Button';
 import { Badge } from '@/components/shared/Badge';
 
 export const metadata = {
-  title: 'Gym Listing Pricing | List Your Gym on GymNearMe',
+  title: 'Gym Listing Pricing | List Your Gym on Gym Near Me',
   description: 'Choose the perfect plan for your gym listing. Free basic listings or upgrade to featured for maximum visibility. Transparent pricing, no hidden fees.',
   keywords: 'gym listing pricing, featured gym listing, list gym free, gym directory pricing',
 };

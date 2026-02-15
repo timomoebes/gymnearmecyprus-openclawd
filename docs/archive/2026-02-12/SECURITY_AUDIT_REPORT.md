@@ -1,7 +1,7 @@
 # Security Audit Report
 
 **Date:** 2026-02-04  
-**Scope:** new-gym codebase (GymNearMe Cyprus)  
+**Scope:** new-gym codebase (Gym Near Me Cyprus)  
 **Method:** Security-audit subagent workflow (RLS, API, auth, env, input validation, Supabase advisors, npm audit)
 
 ---

@@ -1,5 +1,5 @@
 # Product Roadmap
-## GymNearMe Cyprus - Strategic Development Plan
+## Gym Near Me Cyprus - Strategic Development Plan
 
 **Version:** 1.0  
 **Last Updated:** January 2026  
@@ -10,7 +10,7 @@
 
 ## 📋 Executive Summary
 
-This roadmap outlines the strategic development plan for GymNearMe Cyprus over the next 12 months, organized into quarterly themes that balance revenue generation, user experience, SEO optimization, and platform growth.
+This roadmap outlines the strategic development plan for Gym Near Me Cyprus over the next 12 months, organized into quarterly themes that balance revenue generation, user experience, SEO optimization, and platform growth.
 
 ### Strategic Priorities
 

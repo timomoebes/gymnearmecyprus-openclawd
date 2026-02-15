@@ -7,7 +7,7 @@ import { Badge } from '@/components/shared/Badge';
 import { getAllGyms, cities } from '@/lib/data';
 
 export const metadata: Metadata = {
-  title: 'Advertise Your Gym | Get More Members with Featured Listings | GymNearMe Cyprus',
+  title: 'Advertise Your Gym | Get More Members with Featured Listings | Gym Near Me Cyprus',
   description: 'Join Cyprus\'s #1 gym directory. Get featured placement, 5x more visibility, and qualified leads. Start free, upgrade when ready. Most gyms see results within 48 hours.',
   keywords: 'advertise gym cyprus, gym marketing, featured gym listing, gym directory advertising, list gym cyprus',
 };
