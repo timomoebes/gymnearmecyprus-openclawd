@@ -1,6 +1,6 @@
 ---
 title: "Best Gyms in Cyprus: City Champions 2026 | Top-Rated Fitness Centers"
-description: "Discover the #1 gym in each Cyprus city. 5-star rated, verified reviews, expert training. Find your champion gym near you in Limassol, Paphos, Nicosia & more."
+description: "Discover the 6 best gyms across Cyprus—the #1 gym in each major city. 5-star rated, verified reviews, expert training. Find your champion gym in Limassol, Paphos, Nicosia, Larnaca, Paralimni, and Ayia Napa."
 ---
 
 # Best Gyms in Cyprus: City Champions 2026

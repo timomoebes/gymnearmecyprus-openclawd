@@ -209,7 +209,7 @@ export default function PrivacyPage() {
             href="/terms"
             className="text-text-muted hover:text-primary-blue transition-colors text-sm"
           >
-            Terms of Service
+            Terms
           </Link>
         </div>
       </div>

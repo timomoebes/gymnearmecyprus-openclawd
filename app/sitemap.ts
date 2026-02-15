@@ -71,7 +71,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // SEO Guides (Content Department)
   const guideSlugs = [
-    '5-best-gyms-cyprus',
+    '6-best-gyms-cyprus',
     'best-gyms-limassol-2026',
     'best-gyms-larnaca-2026',
     'best-gyms-nicosia-2026',
