@@ -21,6 +21,197 @@
   }
 }
 
+/* ========================================
+   Guide Content Styles
+   ======================================== */
+
+.guide-content h1 {
+  @apply text-4xl font-bold text-text-white mb-8 leading-tight;
+  background: linear-gradient(135deg, #00D9FF 0%, #6C5CE7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (min-width: 640px) {
+  .guide-content h1 {
+    @apply text-5xl mb-10;
+  }
+}
+
+.guide-content h2 {
+  @apply text-2xl font-bold text-text-white pb-4;
+  margin-top: 3.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid rgba(0, 217, 255, 0.25);
+}
+
+@media (min-width: 640px) {
+  .guide-content h2 {
+    @apply text-3xl;
+    margin-top: 4.5rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+.guide-content h3 {
+  @apply text-xl font-bold text-text-white;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.guide-content h3::before {
+  content: '★';
+  color: #FFD700;
+  font-size: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .guide-content h3 {
+    @apply text-2xl;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.guide-content h4 {
+  @apply font-semibold;
+  font-size: 1.125rem;
+  color: #00D9FF;
+  margin-top: 2rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .guide-content h4 {
+    font-size: 1.25rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.guide-content p {
+  color: #E0E0E0;
+  font-size: 1rem;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .guide-content p {
+    font-size: 1.125rem;
+    line-height: 2;
+    margin-bottom: 2rem;
+  }
+}
+
+.guide-content strong {
+  color: #00D9FF;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.guide-content em {
+  font-style: italic;
+  color: rgba(0, 217, 255, 0.8);
+  letter-spacing: 0.02em;
+}
+
+.guide-content ul,
+.guide-content ol {
+  margin-bottom: 2rem;
+  padding-left: 0;
+  list-style: none;
+}
+
+@media (min-width: 640px) {
+  .guide-content ul,
+  .guide-content ol {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.guide-content li {
+  color: #E0E0E0;
+  padding-left: 1.75rem;
+  position: relative;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.875rem;
+}
+
+@media (min-width: 640px) {
+  .guide-content li {
+    margin-bottom: 1.125rem;
+    line-height: 1.85;
+  }
+}
+
+.guide-content ul > li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: #00D9FF;
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+.guide-content ol > li {
+  list-style: decimal;
+  list-style-position: inside;
+}
+
+.guide-content hr {
+  border: none;
+  border-top: 1px solid rgba(0, 217, 255, 0.15);
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 640px) {
+  .guide-content hr {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+}
+
+.guide-content a {
+  color: #00D9FF;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(0, 217, 255, 0.4);
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.guide-content a:hover {
+  color: #6C5CE7;
+  text-decoration-color: rgba(108, 92, 231, 0.6);
+}
+
+.guide-content blockquote {
+  border-left: 4px solid #00D9FF;
+  padding-left: 1.5rem;
+  font-style: italic;
+  color: #9CA3AF;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  line-height: 1.85;
+}
+
+@media (min-width: 640px) {
+  .guide-content blockquote {
+    padding-left: 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
 /* Leaflet map styles */
 .leaflet-container {
   @apply bg-background-dark-gray;
