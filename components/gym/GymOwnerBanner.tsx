@@ -4,6 +4,7 @@ import { ShieldCheck, Building2 } from 'lucide-react';
 import type { Gym } from '@/lib/types';
 import { Button } from '@/components/shared/Button';
 import { Badge } from '@/components/shared/Badge';
+import { isNoOwnerGym } from '@/lib/constants/no-owner-gyms';
 
 interface GymOwnerBannerProps {
   gym: Gym;
@@ -13,8 +14,13 @@ interface GymOwnerBannerProps {
 /**
  * Presentational banner: Your gym / Claim this gym / Claimed by other.
  * Auth is resolved on the server (gym page passes currentUserId); no client-side Supabase.
+ * Not rendered for no-owner gyms (municipal/free outdoor – claim option hidden).
  */
 export function GymOwnerBanner({ gym, currentUserId }: GymOwnerBannerProps) {
+  if (isNoOwnerGym(gym.slug)) {
+    return null;
+  }
+
   const isOwner = Boolean(currentUserId && gym.ownerId === currentUserId);
   const isUnclaimed = !gym.ownerId;
 

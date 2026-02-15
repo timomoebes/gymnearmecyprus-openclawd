@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { getGymBySlug } from '@/lib/data';
+import { isNoOwnerGym } from '@/lib/constants/no-owner-gyms';
 import { ClaimForm } from './ClaimForm';
 import { ClaimPageAuth } from './ClaimPageAuth';
 import { getCurrentUserId } from '@/lib/supabase/server';
@@ -15,7 +16,7 @@ export default async function ClaimPage({ params }: ClaimPageProps) {
   const decodedSlug = decodeURIComponent(params.slug);
   const gym = await getGymBySlug(decodedSlug);
 
-  if (!gym) {
+  if (!gym || isNoOwnerGym(gym.slug)) {
     notFound();
   }
 
