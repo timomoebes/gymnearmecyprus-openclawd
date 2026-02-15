@@ -16,6 +16,13 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-15  
+  **Area**: `components`  
+  **Summary**: Footer privacy link: add aria-label and ensure visible label is "Privacy" (trigger redeploy so live site shows it).  
+  **Rationale**: Repo already had "Privacy" but live site still showed "Privacy Policy"; add aria-label for accessibility and push to trigger a fresh Vercel deploy.  
+  **Files changed**: `components/layout/Footer.tsx`  
+  **Manual test plan**: After deploy, open https://gymnearmecyprus-openclawd.vercel.app and /guides; confirm footer shows "Privacy" (not "Privacy Policy"). Hard refresh or incognito if needed.
+
+- **Date**: 2026-02-15  
   **Area**: `components`, `app`, `docs`  
   **Summary**: Footer label "Privacy"; claim form works with DISABLE_HCAPTCHA (no keys); HCAPTCHA_SETUP doc: going live, claim form, renumbered sections.  
   **Rationale**: Shorten footer link to "Privacy". Claim page previously required sitekey even when captcha was disabled; now DISABLE_HCAPTCHA allows claim form without any hCaptcha keys and shows a dev notice. Docs clarify going-live steps and that claim form respects DISABLE_HCAPTCHA.  
