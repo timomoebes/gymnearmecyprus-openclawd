@@ -16,6 +16,13 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-15  
+  **Area**: `lib`  
+  **Summary**: Fix Vercel build: use valid `weekday` option in `toLocaleDateString` and lowercase result for opening-hours key.  
+  **Rationale**: Build failed with "Type '"lowercase"' is not assignable to type '"long" | "short" | "narrow"'". `DateTimeFormatOptions.weekday` does not support `'lowercase'`; use `weekday: 'long'` and `.toLowerCase()` so day keys (e.g. "monday") still match `openingHours`.  
+  **Files changed**: `lib/utils/search.ts`  
+  **Manual test plan**: Run `npm run build` locally; push and confirm Vercel build succeeds. Optional: filter/sort gyms by "Still Open" and confirm open/closed logic still works.
+
+- **Date**: 2026-02-15  
   **Area**: `components`  
   **Summary**: Footer privacy link: add aria-label and ensure visible label is "Privacy" (trigger redeploy so live site shows it).  
   **Rationale**: Repo already had "Privacy" but live site still showed "Privacy Policy"; add aria-label for accessibility and push to trigger a fresh Vercel deploy.  

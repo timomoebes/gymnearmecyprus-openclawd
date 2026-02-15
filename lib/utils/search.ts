@@ -7,7 +7,7 @@ import { getAllGyms } from '@/lib/data';
  */
 export const isGymOpen = (gym: Gym): boolean => {
   const now = new Date();
-  const dayOfWeek = now.toLocaleDateString('en-US', { weekday: 'lowercase' });
+  const dayOfWeek = now.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
   const dayKey = dayOfWeek as keyof typeof gym.openingHours;
   
   const hours = gym.openingHours[dayKey];
