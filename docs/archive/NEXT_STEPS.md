@@ -152,4 +152,3 @@ Then proceed with Option 2 (Frontend connection) once you have more real data to
 ---
 
 **Questions?** Review the data processing guide: `docs/DATA_PROCESSING_GUIDE.md`
-

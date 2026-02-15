@@ -179,4 +179,3 @@ interface OpeningHours {
 - When you need booking/availability features
 - When you want to filter by session types
 - When you have resources for migration
-
