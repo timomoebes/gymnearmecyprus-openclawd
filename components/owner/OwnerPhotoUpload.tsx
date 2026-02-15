@@ -151,19 +151,10 @@ export function OwnerPhotoUpload({ gymId, onSuccess }: OwnerPhotoUploadProps) {
 
       // Save all URLs to gym profile
       const allImages = [...images, ...uploadedUrls];
-      const saveResult = await saveFeaturedImagesToGymAction(gymId, allImages);
+      await saveFeaturedImagesToGymAction(gymId, allImages);
 
-      if (!saveResult.success) {
-        setStatusMessage({
-          type: 'error',
-          text: saveResult.error || 'Failed to save images to gym profile.',
-        });
-        setIsUploading(false);
-        return;
-      }
-
-      // Update local state
-      setImages(saveResult.featured_images || allImages);
+      // Update local state (action returns { success: true } on success, throws on failure)
+      setImages(allImages);
       setUploadQueue([]);
       setStatusMessage({
         type: 'success',
@@ -171,7 +162,7 @@ export function OwnerPhotoUpload({ gymId, onSuccess }: OwnerPhotoUploadProps) {
       });
 
       if (onSuccess) {
-        onSuccess(saveResult.featured_images || allImages);
+        onSuccess(allImages);
       }
     } catch (err: any) {
       setStatusMessage({
@@ -191,23 +182,15 @@ export function OwnerPhotoUpload({ gymId, onSuccess }: OwnerPhotoUploadProps) {
   // Delete uploaded image
   const handleDeleteImage = async (imageUrl: string) => {
     try {
-      const result = await deletePhotoFromStorageAction(gymId, imageUrl);
-
-      if (result.success) {
-        setImages((prev) => prev.filter((img) => img !== imageUrl));
-        setStatusMessage({
-          type: 'success',
-          text: 'Image deleted successfully.',
-        });
-
-        if (onSuccess) {
-          onSuccess(images.filter((img) => img !== imageUrl));
-        }
-      } else {
-        setStatusMessage({
-          type: 'error',
-          text: result.error || 'Failed to delete image.',
-        });
+      await deletePhotoFromStorageAction(gymId, imageUrl);
+      const newImages = images.filter((img) => img !== imageUrl);
+      setImages(newImages);
+      setStatusMessage({
+        type: 'success',
+        text: 'Image deleted successfully.',
+      });
+      if (onSuccess) {
+        onSuccess(newImages);
       }
     } catch (err: any) {
       setStatusMessage({

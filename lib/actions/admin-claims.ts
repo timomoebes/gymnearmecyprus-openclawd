@@ -128,6 +128,20 @@ export async function approveClaimAction(
 }
 
 /**
+ * Form-compatible wrapper for approveClaimAction. Use as form action so return type is void.
+ */
+export async function approveClaimFormAction(formData: FormData): Promise<void> {
+  await approveClaimAction(formData);
+}
+
+/**
+ * Form-compatible wrapper for rejectClaimAction. Use as form action so return type is void.
+ */
+export async function rejectClaimFormAction(formData: FormData): Promise<void> {
+  await rejectClaimAction(formData);
+}
+
+/**
  * Reject a claim: set claim status to rejected. Request disappears from pending list. Admin only.
  */
 export async function rejectClaimAction(

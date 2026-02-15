@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { SignupForm } from './SignupForm';
 
@@ -14,7 +14,9 @@ export default function SignupPage() {
             Sign up to claim your gym and manage your listing.
           </p>
 
-          <SignupForm />
+          <Suspense fallback={<div className="text-text-muted">Loading...</div>}>
+            <SignupForm />
+          </Suspense>
         </div>
       </div>
     </div>

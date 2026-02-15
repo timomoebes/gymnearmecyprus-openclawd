@@ -15,6 +15,21 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 
 ## Unreleased
 
+- **Date**: 2026-02-15  
+  **Area**: `app`, `lib`, `components`, `scripts`  
+  **Summary**: Fix Vercel build: form action types, photo-upload client/actions, Supabase server client await, script types, signup Suspense.  
+  **Rationale**: Build failed on type errors and prerender. React form `action` must be `(FormData) => void | Promise<void>`; admin claim actions returned `ApproveClaimResult`. Added form-only wrappers. Photo upload actions return `{ success: true }` and throw on error—component assumed `error`/`featured_images`. Server `createClient()` is async and was not awaited. Scripts had implicit `any`/index errors. Signup uses `useSearchParams()` and required a Suspense boundary for static export.  
+  **Files changed**:
+  - `lib/actions/admin-claims.ts` (approveClaimFormAction, rejectClaimFormAction wrappers; existing approve/reject kept for programmatic use)
+  - `app/admin/claims/page.tsx` (use form actions for Approve/Reject)
+  - `app/gyms/[slug]/page.tsx` (generateGymMetaDescription(gym, city ?? null))
+  - `components/owner/OwnerPhotoUpload.tsx` (save: await action, use allImages; delete: await action, no result.error)
+  - `lib/api/photo-uploads-actions.ts` (await createClient(); import createClient from server)
+  - `scripts/add-seo-frontmatter.ts` (guides as keyof typeof metaData)
+  - `scripts/rank-gyms.ts` (results as Record<string, unknown>)
+  - `app/signup/page.tsx` (Suspense around SignupForm)
+  **Manual test plan**: Run `npm run build` locally; confirm it completes. Deploy to Vercel and confirm build succeeds. Smoke: open `/admin/claims` as admin, Approve/Reject a claim; owner dashboard photo upload and delete; `/signup` loads without prerender error.
+
 - **Date**: 2026-02-08  
   **Area**: `components`, `lib`, `app`  
   **Summary**: Add full i18n (EN/EL) for landing page and fix desktop language dropdown so it opens on click.  

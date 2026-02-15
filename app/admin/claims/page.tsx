@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { getCurrentUser, isAdminEmail } from '@/lib/supabase/server';
-import { getPendingClaimsAction, approveClaimAction, rejectClaimAction } from '@/lib/actions/admin-claims';
+import { getPendingClaimsAction, approveClaimFormAction, rejectClaimFormAction } from '@/lib/actions/admin-claims';
 import { Button } from '@/components/shared/Button';
 
 export default async function AdminClaimsPage() {
@@ -84,14 +84,14 @@ export default async function AdminClaimsPage() {
                     </td>
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-2">
-                        <form action={approveClaimAction} className="inline">
+                        <form action={approveClaimFormAction} className="inline">
                           <input type="hidden" name="gym_id" value={c.gymId} />
                           <input type="hidden" name="user_id" value={c.userId} />
                           <Button type="submit" variant="primary" className="!py-1.5 !text-sm">
                             Approve
                           </Button>
                         </form>
-                        <form action={rejectClaimAction} className="inline">
+                        <form action={rejectClaimFormAction} className="inline">
                           <input type="hidden" name="gym_id" value={c.gymId} />
                           <input type="hidden" name="user_id" value={c.userId} />
                           <Button type="submit" variant="outline" className="!py-1.5 !text-sm">

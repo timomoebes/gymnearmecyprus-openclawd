@@ -21,7 +21,7 @@ async function run() {
   const { data: cities } = await supabase.from('cities').select('id, name');
   if (!cities) return;
 
-  const results = {};
+  const results: Record<string, unknown> = {};
 
   for (const city of cities) {
     const { data: gyms } = await supabase

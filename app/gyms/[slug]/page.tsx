@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: GymPageProps): Promise<Metada
     : gym.name;
 
   // Generate optimized meta description using centralized utility
-  const metaDescription = generateGymMetaDescription(gym, city);
+  const metaDescription = generateGymMetaDescription(gym, city ?? null);
 
   return {
     title: seoTitle,

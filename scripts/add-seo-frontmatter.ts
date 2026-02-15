@@ -36,7 +36,7 @@ const metaData = {
 };
 
 async function addFrontmatter() {
-  const guides = Object.keys(metaData);
+  const guides = Object.keys(metaData) as (keyof typeof metaData)[];
 
   for (const slug of guides) {
     const filePath = path.join(GUIDES_PATH, `${slug}.md`);

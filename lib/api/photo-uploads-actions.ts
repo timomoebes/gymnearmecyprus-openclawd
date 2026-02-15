@@ -1,6 +1,6 @@
 'use server';
 
-import { createClient as createServerClient } from '@/lib/supabase/server';
+import { createClient } from '@/lib/supabase/server';
 import { getCurrentUserId } from '@/lib/supabase/server';
 
 const STORAGE_BUCKET = 'gym-photos';
@@ -15,7 +15,7 @@ export async function saveFeaturedImagesToGymAction(
       throw new Error('Unauthorized');
     }
 
-    const supabase = createServerClient();
+    const supabase = await createClient();
     
     // Verify ownership
     const { data: gym, error: gymError } = await supabase
@@ -53,7 +53,7 @@ export async function deletePhotoFromStorageAction(
       throw new Error('Unauthorized');
     }
 
-    const supabase = createServerClient();
+    const supabase = await createClient();
     
     // Verify ownership
     const { data: gym, error: gymError } = await supabase
@@ -82,7 +82,7 @@ export async function deletePhotoFromStorageAction(
 
 export async function getFeaturedImagesForGym(gymId: string) {
   try {
-    const supabase = createServerClient();
+    const supabase = await createClient();
     
     const { data: gym, error } = await supabase
       .from('gyms')
