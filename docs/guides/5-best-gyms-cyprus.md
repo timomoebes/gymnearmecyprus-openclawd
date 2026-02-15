@@ -26,7 +26,7 @@ This is the geographic approach to fitness excellence. Pick your city. Find your
 ## The City Champions
 
 ### 1. Limassol: Iron Fitness — The Bodybuilding Powerhouse
-**⭐ 5.0/5.0** | **234 Reviews** | [See Limassol Guide](./best-gyms-limassol-2026.md)
+**⭐ 5.0/5.0** | **234 Reviews** | [See Limassol Guide](/guides/best-gyms-limassol-2026)
 
 **Why It Wins:** Perfect 5.0 rating with 234 reviews in a competitive market. Iron Fitness dominates strength training and bodybuilding in Southern Cyprus.
 
@@ -41,7 +41,7 @@ This is the geographic approach to fitness excellence. Pick your city. Find your
 ---
 
 ### 2. Larnaca: Samtsihara Fight System Global Academy — The Elite Combat Gym
-**⭐ 5.0/5.0** | **439 Reviews** | [See Larnaca Guide](./best-gyms-larnaca-2026.md)
+**⭐ 5.0/5.0** | **439 Reviews** | [See Larnaca Guide](/guides/best-gyms-larnaca-2026)
 
 **Why It Wins:** Perfect 5.0 rating across 439 reviews—nearly impossible to achieve. Samtsihara has done it by building a world-class combat sports academy that refuses to compromise.
 
@@ -56,7 +56,7 @@ This is the geographic approach to fitness excellence. Pick your city. Find your
 ---
 
 ### 3. Nicosia: Gabriel Fitness & Boxing Gym — The Central Cyprus Champion
-**⭐ 5.0/5.0** | **78 Reviews** | [See Nicosia Guide](./best-gyms-nicosia-2026.md)
+**⭐ 5.0/5.0** | **78 Reviews** | [See Nicosia Guide](/guides/best-gyms-nicosia-2026)
 
 **Why It Wins:** In the heart of Cyprus, Gabriel Fitness has built the region's most respected training environment. Perfect rating with 78 verified reviews in a competitive central market.
 
@@ -71,7 +71,7 @@ This is the geographic approach to fitness excellence. Pick your city. Find your
 ---
 
 ### 4. Paphos: Kings Brazilian Jiu Jitsu — The Western Cyprus Specialist
-**⭐ 5.0/5.0** | **67 Reviews** | [See Paphos Guide](./best-gyms-paphos-2026.md)
+**⭐ 5.0/5.0** | **67 Reviews** | [See Paphos Guide](/guides/best-gyms-paphos-2026)
 
 **Why It Wins:** Western Cyprus now has access to elite-level BJJ training. Kings Brazilian Jiu Jitsu has achieved perfect 5.0 rating by focusing on technical excellence and community.
 
@@ -86,7 +86,7 @@ This is the geographic approach to fitness excellence. Pick your city. Find your
 ---
 
 ### 5. Paralimni: Bodyart Fitness Center — The Eastern Cyprus Hub
-**⭐ 5.0/5.0** | **154 Reviews** | [See Paralimni Guide](./best-gyms-paralimni-2026.md)
+**⭐ 5.0/5.0** | **154 Reviews** | [See Paralimni Guide](/guides/best-gyms-paralimni-2026)
 
 **Why It Wins:** 154 five-star reviews in a smaller city means Bodyart is serving their community exceptionally well. This is the region's fitness leader.
 
@@ -101,7 +101,7 @@ This is the geographic approach to fitness excellence. Pick your city. Find your
 ---
 
 ### 6. Ayia Napa: World Gym Ayia Napa — The Volume Leader
-**⭐ 4.9/5.0** | **1,266 Reviews** | [See Ayia Napa Guide](./best-gyms-ayia-napa-2026.md)
+**⭐ 4.9/5.0** | **1,266 Reviews** | [See Ayia Napa Guide](/guides/best-gyms-ayia-napa-2026)
 
 **Why It Wins:** When over 1,200 people leave reviews and the rating is still 4.9, you're witnessing the most consistent gym operation in Cyprus. World Gym Ayia Napa has proven scalability without sacrificing quality.
 
@@ -155,9 +155,9 @@ Visit the gym in your region. Tour the facility. Talk to members. Feel the cultu
 **Keywords Optimized For:** Best Gyms in Cyprus | Top Fitness Centers Cyprus | Where to Workout in Cyprus | Cyprus Gym Guide 2026 | Elite Gyms Cyprus | City Gyms Cyprus
 
 **Internal Links:**
-- [Best Gyms in Limassol](./best-gyms-limassol-2026.md)
-- [Best Gyms in Larnaca](./best-gyms-larnaca-2026.md)
-- [Best Gyms in Nicosia](./best-gyms-nicosia-2026.md)
-- [Best Gyms in Paphos](./best-gyms-paphos-2026.md)
-- [Best Gyms in Paralimni](./best-gyms-paralimni-2026.md)
-- [Best Gyms in Ayia Napa](./best-gyms-ayia-napa-2026.md)
+- [Best Gyms in Limassol](/guides/best-gyms-limassol-2026)
+- [Best Gyms in Larnaca](/guides/best-gyms-larnaca-2026)
+- [Best Gyms in Nicosia](/guides/best-gyms-nicosia-2026)
+- [Best Gyms in Paphos](/guides/best-gyms-paphos-2026)
+- [Best Gyms in Paralimni](/guides/best-gyms-paralimni-2026)
+- [Best Gyms in Ayia Napa](/guides/best-gyms-ayia-napa-2026)

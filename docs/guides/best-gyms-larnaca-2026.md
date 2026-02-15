@@ -54,11 +54,11 @@ Find your gym. Start your transformation. The Mediterranean isn't going anywhere
 
 ## Discover Cyprus's Best Gyms Across All Cities
 
-Looking for options beyond Larnaca? **[View the absolute top-rated gyms across all of Cyprus here](./5-best-gyms-cyprus.md)** — our flagship City Champions guide showcases the #1 elite gym in each major region, strategically selected for geographic diversity and verified results.
+Looking for options beyond Larnaca? **[View the absolute top-rated gyms across all of Cyprus here](/guides/5-best-gyms-cyprus)** — our flagship City Champions guide showcases the #1 elite gym in each major region, strategically selected for geographic diversity and verified results.
 
 ### Nearby Fitness Destinations
 
-Heading inland to the capital? Discover [top gyms in Nicosia](./best-gyms-nicosia-2026.md) for the beating heart of Cyprus's fitness revolution and elite training infrastructure.
+Heading inland to the capital? Discover [top gyms in Nicosia](/guides/best-gyms-nicosia-2026) for the beating heart of Cyprus's fitness revolution and elite training infrastructure.
 
 ---
 

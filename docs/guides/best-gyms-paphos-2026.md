@@ -54,11 +54,11 @@ Your transformation is waiting. The question is: which gym will be your launchin
 
 ## Discover Cyprus's Best Gyms Across All Cities
 
-Looking for options beyond Paphos? **[View the absolute top-rated gyms across all of Cyprus here](./5-best-gyms-cyprus.md)** — our flagship City Champions guide showcases the #1 elite gym in each major region, strategically selected for geographic diversity and verified results.
+Looking for options beyond Paphos? **[View the absolute top-rated gyms across all of Cyprus here](/guides/5-best-gyms-cyprus)** — our flagship City Champions guide showcases the #1 elite gym in each major region, strategically selected for geographic diversity and verified results.
 
 ### Nearby Fitness Destinations
 
-Heading east toward Southern Cyprus? Check out [top gyms in Limassol](./best-gyms-limassol-2026.md) for the Mediterranean's fastest-growing gym scene and premium training infrastructure.
+Heading east toward Southern Cyprus? Check out [top gyms in Limassol](/guides/best-gyms-limassol-2026) for the Mediterranean's fastest-growing gym scene and premium training infrastructure.
 
 ---
 

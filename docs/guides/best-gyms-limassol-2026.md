@@ -58,11 +58,11 @@ The best time to start was yesterday. The second-best time is today. Your transf
 
 ## Discover Cyprus's Best Gyms Across All Cities
 
-Looking for options beyond Limassol? **[View the absolute top-rated gyms across all of Cyprus here](./5-best-gyms-cyprus.md)** — our flagship City Champions guide showcases the #1 elite gym in each major region, strategically selected for geographic diversity and verified results.
+Looking for options beyond Limassol? **[View the absolute top-rated gyms across all of Cyprus here](/guides/5-best-gyms-cyprus)** — our flagship City Champions guide showcases the #1 elite gym in each major region, strategically selected for geographic diversity and verified results.
 
 ### Nearby Fitness Destinations
 
-Heading west toward the coast? Explore [top gyms in Paphos](./best-gyms-paphos-2026.md) for specialized training facilities in Western Cyprus's growing fitness scene.
+Heading west toward the coast? Explore [top gyms in Paphos](/guides/best-gyms-paphos-2026) for specialized training facilities in Western Cyprus's growing fitness scene.
 
 ---
 
