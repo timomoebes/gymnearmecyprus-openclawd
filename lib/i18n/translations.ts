@@ -63,6 +63,13 @@ export const translations = {
       access24Text: 'Find 24 hour gyms and 24 7 gyms near me for maximum flexibility. Perfect for early birds, night owls, or anyone with an unpredictable schedule.',
       accurateTitle: 'Accurate Information',
       accurateText: 'Get up-to-date information on opening hours, amenities, contact details, and locations. All verified and regularly updated to ensure accuracy.',
+      // Condensed 3-card version for landing page
+      benefit1Title: 'Find Gyms Near Me & Save Time',
+      benefit1Text: 'Search for gyms close to me, nearby gyms, and fitness centers in your area. No more endless searches for "gym near me"—find amenities, hours, and specialties in one place.',
+      benefit2Title: 'Compare Ratings & Discover Specialties',
+      benefit2Text: 'Read authentic reviews and compare ratings from real members. Find gyms by specialty: CrossFit, yoga, pilates, MMA, fitness studios, and health clubs.',
+      benefit3Title: '24/7 Access & Accurate Info',
+      benefit3Text: 'Find 24 hour gyms and 24 7 gyms near me for flexible schedules. Get up-to-date opening hours, contact details, and locations—all verified and regularly updated.',
     },
     guide: {
       heading: 'Complete Guide to Finding the Best Gyms in Cyprus',
@@ -175,6 +182,12 @@ export const translations = {
       access24Text: 'Βρείτε γυμναστήρια 24 ωρών για μέγιστη ευελιξία. Ιδανικά για πρωινά πουλιά, νυχτερινά ή απρόβλεπτο πρόγραμμα.',
       accurateTitle: 'Αξιόπιστες Πληροφορίες',
       accurateText: 'Ενημερωμένες πληροφορίες για ώρες λειτουργίας, παροχές, επικοινωνία και τοποθεσία. Επαληθευμένες και τακτικά ενημερωμένες.',
+      benefit1Title: 'Βρείτε Γυμναστήρια & Εξοικονομήστε Χρόνο',
+      benefit1Text: 'Αναζητήστε γυμναστήρια κοντά σας και κέντρα fitness. Όχι άλλες ατελείωτες αναζητήσεις—βρείτε παροχές, ώρες και ειδικότητες σε ένα σημείο.',
+      benefit2Title: 'Συγκρίνετε Βαθμολογίες & Ειδικότητες',
+      benefit2Text: 'Διαβάστε αληθινές κριτικές και συγκρίνετε βαθμολογίες. Βρείτε γυμναστήρια ανά ειδικότητα: CrossFit, γιόγκα, πιλάτες, MMA, fitness studios και health clubs.',
+      benefit3Title: 'Πρόσβαση 24/7 & Αξιόπιστες Πληροφορίες',
+      benefit3Text: 'Βρείτε γυμναστήρια 24 ωρών για ευέλικτο πρόγραμμα. Ενημερωμένες ώρες λειτουργίας, επικοινωνία και τοποθεσία—επαληθευμένες και τακτικά ενημερωμένες.',
     },
     guide: {
       heading: 'Πλήρης Οδηγός για τα Καλύτερα Γυμναστήρια στην Κύπρο',

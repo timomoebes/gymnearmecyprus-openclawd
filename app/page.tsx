@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { cities, getAllGyms } from '@/lib/data';
 import { specialties } from '@/lib/data';
 import { HomeHero } from '@/components/home/HomeHero';
+import { HeroTrustBar } from '@/components/home/HeroTrustBar';
 import { CityCardGrid } from '@/components/home/CityCardGrid';
 import { SpecialtyCardGrid } from '@/components/home/SpecialtyCardGrid';
 import { Home24HourSection } from '@/components/home/Home24HourSection';
@@ -104,6 +105,7 @@ export default async function HomePage() {
       />
       <div className="min-h-screen">
       <HomeHero gyms={allGyms} cities={cities} />
+      <HeroTrustBar totalGyms={totalGyms} formattedAverageRating={formattedAverageRating} />
 
       {/* City Cards Grid */}
       <CityCardGrid cities={cities} cityGymCounts={cityGymCounts} />

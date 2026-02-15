@@ -23,10 +23,10 @@ const CITY_EMOJIS: Record<string, string> = {
 export const CityCardGrid: React.FC<CityCardGridProps> = ({ cities, cityGymCounts }) => {
   const { t } = useLocale();
   return (
-    <section className="py-16 bg-background-dark-gray">
+    <section id="cities" className="py-16 bg-background-dark-gray" aria-labelledby="cities-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-text-white mb-4">
+          <h2 id="cities-heading" className="text-3xl md:text-4xl font-bold text-text-white mb-4">
             {t('cities.heading')}
           </h2>
           <p className="text-lg text-text-light max-w-3xl mx-auto">

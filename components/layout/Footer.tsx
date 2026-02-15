@@ -157,6 +157,13 @@ export const Footer: React.FC = () => {
             >
               Terms
             </Link>
+            <Link
+              href="/imprint"
+              className="text-text-muted hover:text-primary-blue transition-colors text-sm"
+              aria-label="Imprint"
+            >
+              Imprint
+            </Link>
           </div>
         </div>
       </div>

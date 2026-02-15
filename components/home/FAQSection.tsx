@@ -14,10 +14,10 @@ export const FAQSection: React.FC = () => {
   const { t } = useLocale();
 
   return (
-    <section className="py-16 bg-background-dark-gray">
+    <section id="faq" className="py-16 bg-background-dark-gray" aria-labelledby="faq-heading">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-text-white mb-4">
+          <h2 id="faq-heading" className="text-3xl md:text-4xl font-bold text-text-white mb-4">
             {t('faq.heading')}
           </h2>
         </div>

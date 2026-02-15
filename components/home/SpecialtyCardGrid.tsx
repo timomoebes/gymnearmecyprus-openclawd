@@ -33,10 +33,10 @@ export const SpecialtyCardGrid: React.FC<SpecialtyCardGridProps> = ({
   );
 
   return (
-    <section className="py-16 bg-background-dark">
+    <section id="specialties" className="py-16 bg-background-dark" aria-labelledby="specialties-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-text-white mb-4">
+          <h2 id="specialties-heading" className="text-3xl md:text-4xl font-bold text-text-white mb-4">
             {t('specialties.heading')}
           </h2>
           <p className="text-lg text-text-light max-w-3xl mx-auto">

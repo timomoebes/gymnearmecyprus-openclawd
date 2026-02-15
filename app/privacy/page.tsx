@@ -211,6 +211,12 @@ export default function PrivacyPage() {
           >
             Terms
           </Link>
+          <Link
+            href="/imprint"
+            className="text-text-muted hover:text-primary-blue transition-colors text-sm"
+          >
+            Imprint
+          </Link>
         </div>
       </div>
     </div>
