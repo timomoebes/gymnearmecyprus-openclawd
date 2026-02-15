@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mail, Phone } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { cities } from '@/lib/data';
 import { specialties } from '@/lib/data';
 
@@ -31,10 +31,6 @@ export const Footer: React.FC = () => {
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4" />
                 <span>info@gymnearme.cy</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Phone className="w-4 h-4" />
-                <span>+357 XX XXX XXX</span>
               </div>
             </div>
           </div>
