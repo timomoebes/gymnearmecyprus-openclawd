@@ -19,7 +19,7 @@ export const translations = {
       titleBefore: 'Find Gyms Near Me in ',
       titleCyprus: 'Cyprus',
       subtitle:
-        "Discover verified gyms and fitness centers across Cyprus. Find your perfect gym, compare ratings, read real reviews, and start your fitness journey today.",
+        "Find the best gym near me in Cyprus. Search 200+ gyms in Limassol, Nicosia, Paphos & more. Compare ratings, amenities, hours. Pilates, CrossFit, 24-hour gyms, fitness centers—your perfect fit is here.",
       exploreGyms: 'Explore Gyms',
       listYourGymFree: 'List Your Gym Free',
     },
