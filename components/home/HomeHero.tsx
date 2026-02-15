@@ -15,6 +15,10 @@ interface HomeHeroProps {
 
 export function HomeHero({ gyms, cities }: HomeHeroProps) {
   const { t } = useLocale();
+  const gymCount = gyms.length;
+
+  // Dynamic subtitle with gym count
+  const dynamicSubtitle = `Find the best gym near me in Cyprus. Search ${gymCount}+ gyms in Limassol, Nicosia, Paphos & more. Compare ratings, amenities, hours. Pilates, CrossFit, 24-hour gyms, fitness centers—your perfect fit is here.`;
 
   return (
     <section className="relative bg-gradient-to-br from-background-dark via-background-dark-gray to-background-dark py-24 lg:py-40 overflow-hidden">
@@ -32,7 +36,7 @@ export function HomeHero({ gyms, cities }: HomeHeroProps) {
           </h1>
           
           <p className="text-lg text-text-light max-w-3xl mx-auto leading-relaxed font-light opacity-90 px-4">
-            {t('hero.subtitle')}
+            {dynamicSubtitle}
           </p>
 
           <div className="pt-4">
