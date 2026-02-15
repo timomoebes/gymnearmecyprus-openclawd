@@ -82,7 +82,7 @@ export interface Owner {
 }
 
 // Utility types
-export type GymSortOption = 'rating' | 'name' | 'featured' | 'reviews';
+export type GymSortOption = 'rating' | 'name' | 'featured' | 'reviews' | 'open';
 export type FilterOption = {
   specialty?: string;
   city?: string;
