@@ -16,6 +16,19 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-15  
+  **Area**: `app`, `docs`  
+  **Summary**: Forgot password and reset-password flow; admin/auth doc; claim feature test plan for live app.  
+  **Rationale**: Users who forget their password (or never got a confirmation email) need a way to get back in. Added /forgot-password (request reset email) and /reset-password (set new password from email link). Login page has "Forgot password?" link. Docs: ADMIN_AND_AUTH explains admin = ADMIN_EMAILS in env (not in DB), forgot password, and Supabase redirect URLs (localhost, Vercel live, gymnearme.cy). CLAIM_FEATURE_TEST_PLAN gives step-by-step test for gym owner claim and admin approve on live app and when switching to gymnearme.cy.  
+  **Files changed**:
+  - `app/login/LoginForm.tsx` (Forgot password? link)
+  - `app/forgot-password/page.tsx`, `app/forgot-password/ForgotPasswordForm.tsx` (new)
+  - `app/reset-password/page.tsx`, `app/reset-password/ResetPasswordForm.tsx` (new)
+  - `docs/ADMIN_AND_AUTH.md` (new)
+  - `docs/CLAIM_FEATURE_TEST_PLAN.md` (new)
+  - `README.md` (links to new docs)
+  **Manual test plan**: Login → "Forgot password?" → enter email → check inbox → open reset link → set new password → sign in. Add http://localhost:3000/reset-password (and live URL) to Supabase Redirect URLs first. Follow CLAIM_FEATURE_TEST_PLAN on live app (claim as owner, approve as admin).
+
+- **Date**: 2026-02-15  
   **Area**: `lib`  
   **Summary**: Fix Vercel build: use valid `weekday` option in `toLocaleDateString` and lowercase result for opening-hours key.  
   **Rationale**: Build failed with "Type '"lowercase"' is not assignable to type '"long" | "short" | "narrow"'". `DateTimeFormatOptions.weekday` does not support `'lowercase'`; use `weekday: 'long'` and `.toLowerCase()` so day keys (e.g. "monday") still match `openingHours`.  

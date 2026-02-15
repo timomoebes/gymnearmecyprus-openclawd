@@ -139,7 +139,9 @@ new-gym/
 - **TECHNICAL_REFERENCE.md** - Quick reference guide
 - **docs/CHANGELOG.md** - Repo-wide change notes
 - **docs/ADMIN_CLAIMS.md** - How to manage claim requests as an admin (approve/reject)
+- **docs/CLAIM_FEATURE_TEST_PLAN.md** - Test plan: gym owner claim flow + admin approve (live app)
 - **docs/APPROVE_CLAIM_SUPABASE.md** - Full reference: in-app admin, Supabase Table Editor, and SQL approval scripts
+- **docs/ADMIN_AND_AUTH.md** - Admin = `ADMIN_EMAILS` in env (not in DB); forgot password and Supabase redirect URL
 - **docs/HCAPTCHA_SETUP.md** - hCaptcha (Claim, Login, Signup): set up site, add keys to `.env.local`
 - **docs/META_DESCRIPTION_GUIDE.md** - Meta description system documentation
 - **docs/DATA_PROCESSING_GUIDE.md** - Data processing pipeline documentation

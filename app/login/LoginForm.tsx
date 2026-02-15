@@ -138,6 +138,12 @@ export function LoginForm() {
         </p>
       )}
 
+      <p className="text-sm text-text-muted text-right">
+        <Link href="/forgot-password" className="text-primary-blue hover:underline">
+          Forgot password?
+        </Link>
+      </p>
+
       <Button
         type="submit"
         variant="primary"
