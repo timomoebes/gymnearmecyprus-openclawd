@@ -19,7 +19,7 @@ The best part? You get premium quality without the premium price tag. Paralimni 
 
 ---
 
-## 1. **[Bodyart Fitness Center](/gyms/bodyart-fitness-center)** ⭐ 5.0 (154 reviews)
+## 1. **[Bodyart Fitness Center](/gyms/bodyart-fitness-center-paralimni)** ⭐ 5.0 (154 reviews)
 The clear leader in Paralimni with dominant community verification. Bodyart Fitness Center's 154 verified 5-star reviews tell the story: this is a facility built on results, consistency, and member satisfaction. World-class equipment combined with professional programming creates an environment where transformation is predictable.
 
 ## 2. **[Sacred Roots Yoga & Massage](/gyms/sacred-roots-yoga-massage)** ⭐ 5.0 (72 reviews)

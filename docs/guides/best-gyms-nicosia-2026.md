@@ -19,7 +19,7 @@ Ready to level up? Here are the five best gyms in Nicosia for 2026:
 
 ---
 
-## 1. **[Gabriel Fitness & Boxing Gym](/gyms/gabriel-fitness-boxing-gym)** ⭐ 5.0 (78 reviews)
+## 1. **[Gabriel Fitness & Boxing Gym](/gyms/gabriel-fitness-boxing-gym-nicosia)** ⭐ 5.0 (78 reviews)
 The gold standard in Nicosia boxing and combat fitness. Gabriel Fitness & Boxing Gym combines specialized martial arts training with modern strength development. A community where champions are built through discipline, technique, and relentless commitment.
 
 ## 2. **[Old Town Fitness Studio](/gyms/old-town-fitness-studio)** ⭐ 5.0 (69 reviews)

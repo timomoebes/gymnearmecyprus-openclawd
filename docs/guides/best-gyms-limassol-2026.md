@@ -21,7 +21,7 @@ The competitive landscape keeps gyms sharp. In Limassol, mediocrity doesn't surv
 
 ---
 
-## 1. **[Iron Fitness](/gyms/iron-fitness)** ⭐ 5.0 (234 reviews)
+## 1. **[Iron Fitness](/gyms/iron-fitness-limassol)** ⭐ 5.0 (234 reviews)
 The undisputed heavyweight champion of Limassol fitness. Iron Fitness has earned its dominant position through relentless commitment to equipment quality, professional coaching, and a community culture that's authentically invested in transformation. With 234 verified reviews and a perfect 5-star rating, this is where serious athletes come to build unstoppable strength and physique.
 
 ## 2. **[Piero Judo Academy](/gyms/piero-judo-academy)** ⭐ 5.0 (122 reviews)

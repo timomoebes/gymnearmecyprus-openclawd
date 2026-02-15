@@ -19,7 +19,7 @@ Whether you're chasing muscle gain, fat loss, strength improvement, or athletic 
 
 ---
 
-## 1. **[Kings Brazilian Jiu Jitsu](/gyms/kings-brazilian-jiu-jitsu)** ⭐ 5.0 (67 reviews)
+## 1. **[Kings Brazilian Jiu Jitsu](/gyms/kings-brazilian-jiu-jitsu-paphos)** ⭐ 5.0 (67 reviews)
 Elite martial arts and combat training in Paphos. Kings Brazilian Jiu Jitsu combines world-class grappling instruction with modern strength training infrastructure. A premier facility for serious martial artists and athletes seeking technical mastery paired with physical transformation.
 
 ## 2. **[Paphos Professional Boxing Gym](/gyms/paphos-professional-boxing-gym)** ⭐ 5.0 (40 reviews)

@@ -17,7 +17,7 @@ The competitive landscape here means innovation isn't optional. Gyms in Larnaca 
 
 ---
 
-## 1. **[Samtsihara Fight System Global Academy](/gyms/samtsihara-fight-system-global-academy)** ⭐ 5.0 (439 reviews)
+## 1. **[Samtsihara Fight System Global Academy](/gyms/samtsihara-fight-system-global-academy-larnaca)** ⭐ 5.0 (439 reviews)
 The undisputed champion in Larnaca—and Cyprus's highest-ranked facility by review volume. Samtsihara Fight System Global Academy combines elite martial arts instruction with world-class strength training infrastructure. 439 verified 5-star reviews tell the story: this is where serious athletes transform. The training systems here are scientifically designed, the coaching is world-class, and the community is genuinely invested in your success.
 
 ## 2. **[Legacy - Chris Antoniou Training](/gyms/legacy-chris-antoniou-training)** ⭐ 5.0 (86 reviews)

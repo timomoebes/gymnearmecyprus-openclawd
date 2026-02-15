@@ -29,7 +29,7 @@ This is the geographic approach to fitness excellence. Pick your city. Find your
 
 ## The City Champions
 
-### 1. Limassol: [Iron Fitness](/gyms/iron-fitness) — The Bodybuilding Powerhouse
+### 1. Limassol: [Iron Fitness](/gyms/iron-fitness-limassol) — The Bodybuilding Powerhouse
 
 **⭐ 5.0/5.0** | **234 Reviews** | [See Limassol Guide](/guides/best-gyms-limassol-2026)
 
@@ -50,7 +50,7 @@ Bodybuilders, powerlifters, strength athletes, and anyone chasing performance me
 
 ---
 
-### 2. Larnaca: [Samtsihara Fight System Global Academy](/gyms/samtsihara-fight-system-global-academy) — The Elite Combat Gym
+### 2. Larnaca: [Samtsihara Fight System Global Academy](/gyms/samtsihara-fight-system-global-academy-larnaca) — The Elite Combat Gym
 
 **⭐ 5.0/5.0** | **439 Reviews** | [See Larnaca Guide](/guides/best-gyms-larnaca-2026)
 
@@ -71,7 +71,7 @@ Combat sports athletes, martial artists, or anyone seeking fighter-level intensi
 
 ---
 
-### 3. Nicosia: [Gabriel Fitness & Boxing Gym](/gyms/gabriel-fitness-boxing-gym) — The Central Cyprus Champion
+### 3. Nicosia: [Gabriel Fitness & Boxing Gym](/gyms/gabriel-fitness-boxing-gym-nicosia) — The Central Cyprus Champion
 
 **⭐ 5.0/5.0** | **78 Reviews** | [See Nicosia Guide](/guides/best-gyms-nicosia-2026)
 
@@ -92,7 +92,7 @@ Anyone in central Cyprus seeking serious training. Boxers, fitness enthusiasts, 
 
 ---
 
-### 4. Paphos: [Kings Brazilian Jiu Jitsu](/gyms/kings-brazilian-jiu-jitsu) — The Western Cyprus Specialist
+### 4. Paphos: [Kings Brazilian Jiu Jitsu](/gyms/kings-brazilian-jiu-jitsu-paphos) — The Western Cyprus Specialist
 
 **⭐ 5.0/5.0** | **67 Reviews** | [See Paphos Guide](/guides/best-gyms-paphos-2026)
 
@@ -113,7 +113,7 @@ Anyone interested in learning Brazilian Jiu Jitsu—from complete beginners to a
 
 ---
 
-### 5. Paralimni: [Bodyart Fitness Center](/gyms/bodyart-fitness-center) — The Eastern Cyprus Hub
+### 5. Paralimni: [Bodyart Fitness Center](/gyms/bodyart-fitness-center-paralimni) — The Eastern Cyprus Hub
 
 **⭐ 5.0/5.0** | **154 Reviews** | [See Paralimni Guide](/guides/best-gyms-paralimni-2026)
 
@@ -173,11 +173,11 @@ Thousands of reviews, all positive. This isn't marketing hype—it's proven perf
 
 ## Your Framework: Pick Your City, Pick Your Goal
 
-- **Southern/Strength Focus** — [Iron Fitness](/gyms/iron-fitness) (Limassol)
-- **Combat Sports/Elite Training** — [Samtsihara Fight System](/gyms/samtsihara-fight-system-global-academy) (Larnaca)
-- **Central Cyprus/Boxing** — [Gabriel Fitness & Boxing Gym](/gyms/gabriel-fitness-boxing-gym) (Nicosia)
-- **Western Cyprus/BJJ** — [Kings Brazilian Jiu Jitsu](/gyms/kings-brazilian-jiu-jitsu) (Paphos)
-- **Eastern Cyprus/Complete Fitness** — [Bodyart Fitness Center](/gyms/bodyart-fitness-center) (Paralimni)
+- **Southern/Strength Focus** — [Iron Fitness](/gyms/iron-fitness-limassol) (Limassol)
+- **Combat Sports/Elite Training** — [Samtsihara Fight System](/gyms/samtsihara-fight-system-global-academy-larnaca) (Larnaca)
+- **Central Cyprus/Boxing** — [Gabriel Fitness & Boxing Gym](/gyms/gabriel-fitness-boxing-gym-nicosia) (Nicosia)
+- **Western Cyprus/BJJ** — [Kings Brazilian Jiu Jitsu](/gyms/kings-brazilian-jiu-jitsu-paphos) (Paphos)
+- **Eastern Cyprus/Complete Fitness** — [Bodyart Fitness Center](/gyms/bodyart-fitness-center-paralimni) (Paralimni)
 - **Coastal/International Standards** — [World Gym Ayia Napa](/gyms/world-gym-ayia-napa)
 
 ---
