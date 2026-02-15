@@ -16,6 +16,15 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-15  
+  **Area**: `app`  
+  **Summary**: Add Privacy Policy page at `/privacy` so footer link works on live site.  
+  **Rationale**: Footer linked to `/privacy` but the page was only added locally and never committed; Vercel builds from the repo, so the live site returned 404. Committing the page fixes the 404.  
+  **Files changed**:
+  - `app/privacy/page.tsx` (new)
+  - `docs/CHANGELOG.md` (this entry)
+  **Manual test plan**: After push, open https://gymnearmecyprus-openclawd.vercel.app/privacy and confirm the Privacy Policy page loads; click “Privacy Policy” in the footer and confirm it navigates to the same page.
+
+- **Date**: 2026-02-15  
   **Area**: `app`, `lib`, `components`, `scripts`  
   **Summary**: Fix Vercel build: form action types, photo-upload client/actions, Supabase server client await, script types, signup Suspense.  
   **Rationale**: Build failed on type errors and prerender. React form `action` must be `(FormData) => void | Promise<void>`; admin claim actions returned `ApproveClaimResult`. Added form-only wrappers. Photo upload actions return `{ success: true }` and throw on error—component assumed `error`/`featured_images`. Server `createClient()` is async and was not awaited. Scripts had implicit `any`/index errors. Signup uses `useSearchParams()` and required a Suspense boundary for static export.  
