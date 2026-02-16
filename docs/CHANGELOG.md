@@ -16,6 +16,15 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-16  
+  **Area**: `components`, `app`  
+  **Summary**: Simplify admin nav and dashboard: single “Dashboard” link when logged in as admin (removed duplicate “Admin” link); single Admin Dashboard header with one subtitle and Administrator badge (removed redundant banner and second heading).  
+  **Rationale**: Nav showed both “Admin” and “Dashboard” for admins; dashboard showed “Admin Dashboard” twice with two subtitles. Now admins see one Dashboard link and one clear header on the admin page.  
+  **Files changed**:
+  - `components/layout/Navigation.tsx` (removed separate Admin link for admins; Dashboard only, points to /admin for admins; removed Shield import)
+  - `app/admin/page.tsx` (replaced banner + duplicate header with single header: title, one subtitle, Administrator badge)
+  **Manual test plan**: Sign in as admin → nav shows only “Dashboard” (no “Admin”). Open /admin → one “Admin Dashboard” heading with one subtitle and Administrator badge on the right.
+
+- **Date**: 2026-02-16  
   **Area**: `app`, `components`, `lib`  
   **Summary**: Admin dashboard: when signed in with admin email, redirect to Admin Dashboard at `/admin`; show latest 3 pending claims with Approve/Reject on the dashboard; make admin identity clear and keep owner dashboard separate.  
   **Rationale**: Admins were seeing the same owner dashboard as gym owners. Now admins are sent to `/admin`, see a clear “Admin Dashboard” banner, and get the latest 3 pending claims with inline Approve/Reject. Visiting `/dashboard` as admin redirects to `/admin`; nav “Dashboard” for admins links to `/admin`.  

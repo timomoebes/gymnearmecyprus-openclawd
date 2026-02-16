@@ -50,31 +50,20 @@ export default async function AdminDashboardPage() {
           ]}
         />
 
-        {/* Clear Admin Identity Banner */}
-        <div className="mb-6 rounded-card border border-primary-blue/40 bg-gradient-to-r from-primary-blue/15 via-primary-purple/10 to-primary-blue/15 px-4 py-3 flex items-center gap-3">
-          <div className="p-2 bg-primary-blue/25 rounded-lg">
-            <Shield className="w-5 h-5 text-primary-blue" aria-hidden />
-          </div>
-          <div className="flex-1">
-            <p className="text-sm font-semibold text-text-white">Admin Dashboard</p>
-            <p className="text-xs text-text-muted">You are signed in as an administrator. Approve or reject gym ownership claims below.</p>
-          </div>
-          <span className="hidden sm:inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary-blue/25 text-primary-blue border border-primary-blue/40">
-            Administrator
-          </span>
-        </div>
-
-        {/* Header */}
-        <div className="mb-6">
-          <div className="flex items-center gap-3 mb-4">
+        {/* Single header: title + subtitle + badge */}
+        <div className="mb-8 flex flex-wrap items-center gap-3">
+          <div className="flex items-center gap-3">
             <div className="p-3 bg-gradient-to-br from-primary-blue/20 to-primary-purple/20 rounded-card border border-primary-blue/30">
               <Shield className="w-8 h-8 text-primary-blue" />
             </div>
             <div>
-              <h1 className="text-4xl font-bold text-text-white mb-2">Admin Dashboard</h1>
-              <p className="text-text-light">Manage gym claims and oversee platform operations</p>
+              <h1 className="text-3xl font-bold text-text-white">Admin Dashboard</h1>
+              <p className="text-text-muted text-sm mt-0.5">Approve or reject gym ownership claims below.</p>
             </div>
           </div>
+          <span className="ml-auto inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary-blue/25 text-primary-blue border border-primary-blue/40">
+            Administrator
+          </span>
         </div>
 
         {/* Pending claims right in your face – latest 3 with actions */}

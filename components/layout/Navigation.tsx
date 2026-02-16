@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
-import { Menu, X, ChevronDown, LayoutDashboard, LogOut, Shield } from 'lucide-react';
+import { Menu, X, ChevronDown, LayoutDashboard, LogOut } from 'lucide-react';
 import { cities } from '@/lib/data';
 import { createClient } from '@/lib/supabase/browser';
 import { LanguageFlag } from '@/components/icons/FlagIcons';
@@ -281,21 +281,12 @@ export const Navigation: React.FC = () => {
             </div>
             {user ? (
               <>
-                {isAdmin && (
-                  <Link
-                    href="/admin"
-                    className="flex items-center gap-1.5 text-gray-200 hover:text-white transition-colors text-sm font-medium"
-                  >
-                    <Shield className="w-4 h-4" aria-hidden />
-                    Admin
-                  </Link>
-                )}
                 <Link
                   href={isAdmin ? '/admin' : '/dashboard'}
                   className="flex items-center gap-1.5 text-gray-200 hover:text-white transition-colors text-sm font-medium"
                 >
                   <LayoutDashboard className="w-4 h-4" aria-hidden />
-                  {isAdmin ? 'Dashboard' : t('nav.dashboard')}
+                  {t('nav.dashboard')}
                 </Link>
                 <button
                   type="button"
@@ -437,21 +428,12 @@ export const Navigation: React.FC = () => {
               </div>
               {user ? (
                 <>
-                  {isAdmin && (
-                    <Link
-                      href="/admin"
-                      className="flex items-center gap-2 py-2 text-gray-200 hover:text-white transition-colors"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <Shield className="w-4 h-4" /> Admin Dashboard
-                    </Link>
-                  )}
                   <Link
                     href={isAdmin ? '/admin' : '/dashboard'}
                     className="flex items-center gap-2 py-2 text-gray-200 hover:text-white transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
-                    <LayoutDashboard className="w-4 h-4" /> {isAdmin ? 'Dashboard' : t('nav.dashboard')}
+                    <LayoutDashboard className="w-4 h-4" /> {t('nav.dashboard')}
                   </Link>
                   <button
                     type="button"
