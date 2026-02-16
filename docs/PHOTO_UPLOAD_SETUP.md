@@ -269,6 +269,14 @@ Track uploads in Supabase:
 2. Monitor file sizes and counts
 3. Check storage usage in project settings
 
+## Troubleshooting
+
+### "new row violates row-level security policy" on upload
+
+- **Cause:** The upload request was not sent as an authenticated user, so Storage treated it as `anon`. Your INSERT policy allows only `authenticated` users.
+- **Fix in app:** The upload must use the **browser** Supabase client (session in cookies), not the plain anon client. The code in `lib/api/photo-uploads.ts` uses `createClient()` from `@/lib/supabase/browser` so the user's JWT is sent with the request.
+- **Policy check:** For the INSERT policy, set the **WITH CHECK** expression to `(bucket_id = 'gym-photos')`. In the Supabase Storage policy UI, use the "WITH CHECK expression" field (not only "USING"). Target role: `authenticated`.
+
 ## References
 
 - [Supabase Storage Docs](https://supabase.com/docs/guides/storage)

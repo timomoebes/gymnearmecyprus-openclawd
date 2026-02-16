@@ -16,6 +16,15 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-16  
+  **Area**: `lib`, `docs`  
+  **Summary**: Fix gym photo upload RLS error: use browser Supabase client so uploads send the user session and Storage allows INSERT.  
+  **Rationale**: Uploads were using the plain anon client, so Storage saw requests as anonymous and rejected them with “new row violates row-level security policy”. The browser client sends the logged-in user’s JWT so the authenticated INSERT policy applies.  
+  **Files changed**:
+  - `lib/api/photo-uploads.ts` (use createClient from `@/lib/supabase/browser` for uploads)
+  - `docs/PHOTO_UPLOAD_SETUP.md` (USING expression note for Policy 1; Troubleshooting for RLS upload error and WITH CHECK for INSERT)
+  **Manual test plan**: Sign in as gym owner with claimed gym → Dashboard → Photos → upload a JPG/PNG (max 5MB). Upload should succeed; image appears in gallery and in Supabase Storage bucket `gym-photos`.
+
+- **Date**: 2026-02-16  
   **Area**: `components`, `app`  
   **Summary**: Simplify admin nav and dashboard: single “Dashboard” link when logged in as admin (removed duplicate “Admin” link); single Admin Dashboard header with one subtitle and Administrator badge (removed redundant banner and second heading).  
   **Rationale**: Nav showed both “Admin” and “Dashboard” for admins; dashboard showed “Admin Dashboard” twice with two subtitles. Now admins see one Dashboard link and one clear header on the admin page.  

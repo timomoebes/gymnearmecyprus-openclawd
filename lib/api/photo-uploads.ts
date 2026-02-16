@@ -1,4 +1,4 @@
-import { supabase } from '@/lib/supabase/client';
+import { createClient } from '@/lib/supabase/browser';
 import {
   saveFeaturedImagesToGymAction,
   deletePhotoFromStorageAction,
@@ -67,7 +67,8 @@ export async function uploadPhotoToStorage(
   const fileName = `${gymId}-${timestamp}.${ext}`;
   const filePath = `gyms/${gymId}/photos/${fileName}`;
 
-  // Upload to storage
+  // Use browser client so the user's session (JWT) is sent; otherwise Storage sees anon and RLS blocks INSERT
+  const supabase = createClient();
   const { data, error } = await supabase.storage
     .from(STORAGE_BUCKET)
     .upload(filePath, file, {
