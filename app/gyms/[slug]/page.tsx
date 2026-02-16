@@ -47,8 +47,10 @@ export async function generateMetadata({ params }: GymPageProps): Promise<Metada
   }
 
   const city = getCityById(gym.cityId);
-  const ogImage = gym.images.length > 0 
-    ? `https://gymnearme.cy${gym.images[0]}`
+  const firstImage =
+    gym.featuredImages?.[0] ?? (gym.images?.length ? gym.images[0] : null);
+  const ogImage = firstImage
+    ? (firstImage.startsWith('http') ? firstImage : `https://gymnearme.cy${firstImage}`)
     : 'https://gymnearme.cy/logo.png';
 
   const cityName = city?.name || 'Cyprus';
@@ -231,6 +233,12 @@ export default async function GymPage({ params }: GymPageProps) {
     ? formatSpecialtyHeading(primarySpecialty, city?.name || 'Cyprus')
     : `Other Gyms in ${city?.name || 'Cyprus'}`;
 
+  // Photos to show on the listing: owner-uploaded (featuredImages) take priority, then legacy images
+  const displayImages =
+    gym.featuredImages && gym.featuredImages.length > 0
+      ? gym.featuredImages
+      : gym.images || [];
+
   // Generate Schema.org JSON-LD
   const localBusinessSchema = generateLocalBusinessSchema(gym, city?.name || 'Cyprus', allReviews);
   const breadcrumbSchema = generateBreadcrumbSchema([
@@ -384,22 +392,26 @@ export default async function GymPage({ params }: GymPageProps) {
           <GymOwnerBanner gym={gym} currentUserId={currentUserId} />
         </div>
 
-        {/* Image Gallery */}
-        {gym.images.length > 0 && (
-          <div className="mb-12">
+        {/* Image Gallery: owner-uploaded photos (featuredImages) or legacy images */}
+        {displayImages.length > 0 && (
+          <section className="mb-12" aria-label="Gym photos">
+            <h2 className="sr-only">Photos</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {gym.images.slice(0, 3).map((image, index) => (
+              {displayImages.slice(0, 6).map((imageUrl, index) => (
                 <div
                   key={index}
-                  className="relative h-64 bg-surface-card rounded-card overflow-hidden"
+                  className="relative aspect-[4/3] bg-surface-card rounded-card overflow-hidden"
                 >
-                  <div className="w-full h-full bg-gradient-to-br from-primary-blue/20 to-primary-purple/20 flex items-center justify-center">
-                    <span className="text-text-muted">Image {index + 1}</span>
-                  </div>
+                  <img
+                    src={imageUrl}
+                    alt={`${gym.name} photo ${index + 1}`}
+                    className="w-full h-full object-cover"
+                    loading={index < 3 ? 'eager' : 'lazy'}
+                  />
                 </div>
               ))}
             </div>
-          </div>
+          </section>
         )}
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
