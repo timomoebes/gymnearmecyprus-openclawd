@@ -402,18 +402,6 @@ export default async function GymPage({ params }: GymPageProps) {
           </div>
         )}
 
-        {/* Key Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-          <div className="bg-surface-card rounded-card p-4 text-center">
-            <Rating rating={gym.rating} showCount={false} size="md" />
-            <p className="text-text-muted text-sm mt-2">Rating</p>
-          </div>
-          <div className="bg-surface-card rounded-card p-4 text-center">
-            <div className="text-2xl font-bold text-text-white">{gym.reviewCount}</div>
-            <p className="text-text-muted text-sm mt-2">Reviews</p>
-          </div>
-        </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">

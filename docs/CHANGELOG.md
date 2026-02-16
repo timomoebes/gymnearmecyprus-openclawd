@@ -17,6 +17,14 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 
 - **Date**: 2026-02-16  
   **Area**: `app`  
+  **Summary**: Removed redundant Key Stats section on gym detail pages that duplicated rating and review count.  
+  **Rationale**: Rating and reviews were displayed twice on gym detail pages—once in the hero section and again in separate Key Stats cards. Removed the redundant Key Stats section to eliminate duplication, reduce visual clutter, and improve UX clarity. Rating/reviews now appear only once in the hero section where users expect them.  
+  **Files changed**:
+  - `app/gyms/[slug]/page.tsx` (removed Key Stats section with Rating and Reviews cards)
+  **Manual test plan**: Open any gym detail page (e.g., `/gyms/aurora-pilates-studio-nicosia`); verify rating and reviews appear only once in the hero section below the gym name, not duplicated in cards below.
+
+- **Date**: 2026-02-16  
+  **Area**: `app`  
   **Summary**: Updated About section text formatting on gym detail pages to match guide styling for consistent readability.  
   **Rationale**: Improved text formatting consistency across the app. Updated About, Specialties, and Amenities section headings and body text to match the guide styling (font sizes, line-height, letter-spacing, colors) for better readability and consistent quality. Removed horizontal border lines from headings per user preference.  
   **Files changed**:
