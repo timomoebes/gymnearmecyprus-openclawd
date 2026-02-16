@@ -277,6 +277,11 @@ Track uploads in Supabase:
 - **Fix in app:** The upload must use the **browser** Supabase client (session in cookies), not the plain anon client. The code in `lib/api/photo-uploads.ts` uses `createClient()` from `@/lib/supabase/browser` so the user's JWT is sent with the request.
 - **Policy check:** For the INSERT policy, set the **WITH CHECK** expression to `(bucket_id = 'gym-photos')`. In the Supabase Storage policy UI, use the "WITH CHECK expression" field (not only "USING"). Target role: `authenticated`.
 
+### Photo uploads succeed but images don’t save to the gym (DB update fails)
+
+- **Cause:** The app treats ownership as **`gyms.owner_id = auth.uid()`** (set when an admin approves a claim). If your **gyms** table RLS UPDATE policy only allows updates via **gym_owners** or **user_profiles.role = 'admin'**, claimed owners (with `owner_id` set) are blocked from updating `featured_images`.
+- **Fix:** Allow updates when **`gyms.owner_id = auth.uid()`** as well. Run the migration **`supabase/migrations/014_gyms_update_policy_owner_id.sql`** in the Supabase SQL Editor (or `supabase db push`). It replaces the "Gym owners can update their gyms" policy so that either `gyms.owner_id = auth.uid()`, or a row in **gym_owners**, or an admin in **user_profiles** can update.
+
 ## References
 
 - [Supabase Storage Docs](https://supabase.com/docs/guides/storage)
