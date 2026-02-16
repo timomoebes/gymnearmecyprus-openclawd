@@ -1,6 +1,7 @@
 import { createServerClient } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 import type { EmailOtpType } from '@supabase/supabase-js';
+import { isAdminEmail } from '@/lib/supabase/server';
 
 /**
  * Supabase auth callback: exchange code/token_hash for session and redirect.
@@ -79,6 +80,10 @@ export async function GET(request: NextRequest) {
           console.error('[auth/callback] Session not created after exchangeCodeForSession:', sessionError);
           return NextResponse.redirect(`${origin}/login?error=session_not_created`);
         }
+        // Check if user is admin and redirect to admin dashboard if defaulting to dashboard
+        if (path === '/dashboard' && session.user.email && isAdminEmail(session.user.email)) {
+          return NextResponse.redirect(`${origin}/admin`);
+        }
         return response;
       }
       console.error('[auth/callback] exchangeCodeForSession error:', error);
@@ -119,10 +124,18 @@ export async function GET(request: NextRequest) {
       if (!session.user.email_confirmed_at) {
         console.warn('[auth/callback] Session created but email_confirmed_at is null - this may be a timing issue');
         // Still redirect - the email should be confirmed, user can sign in
+        // Check if user is admin and redirect to admin dashboard if defaulting to dashboard
+        if (path === '/dashboard' && session.user.email && isAdminEmail(session.user.email)) {
+          return NextResponse.redirect(`${origin}/admin`);
+        }
         return response;
       }
 
       // Success: session created and email confirmed
+      // Check if user is admin and redirect to admin dashboard if defaulting to dashboard
+      if (path === '/dashboard' && session.user.email && isAdminEmail(session.user.email)) {
+        return NextResponse.redirect(`${origin}/admin`);
+      }
       console.log('[auth/callback] Email confirmed successfully, redirecting to:', path);
       return response;
     }

@@ -38,11 +38,16 @@ export default async function AdminClaimsPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <Breadcrumbs
           items={[
-            { label: 'Admin', href: '/admin/claims' },
+            { label: 'Admin', href: '/admin' },
             { label: 'Pending claims', href: '/admin/claims' },
           ]}
         />
-        <h1 className="text-3xl font-bold text-text-white mt-4 mb-2">Pending claims</h1>
+        <div className="flex items-center justify-between mt-4 mb-2">
+          <h1 className="text-3xl font-bold text-text-white">Pending claims</h1>
+          <Button variant="outline" size="sm" asChild>
+            <Link href="/admin">← Back to Dashboard</Link>
+          </Button>
+        </div>
         <p className="text-text-light mb-8">
           Approve a claim to make the user the owner of the gym. They will then see it in their dashboard.
         </p>

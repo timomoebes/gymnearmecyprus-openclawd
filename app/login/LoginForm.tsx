@@ -7,6 +7,7 @@ import HCaptcha from '@hcaptcha/react-hcaptcha';
 import { createClient } from '@/lib/supabase/browser';
 import { Button } from '@/components/shared/Button';
 import { verifyCaptchaForAuth } from '@/lib/actions/verify-captcha';
+import { checkAdminStatus } from '@/lib/actions/auth';
 
 const HCAPTCHA_SITEKEY = process.env.NEXT_PUBLIC_HCAPTCHA_SITEKEY ?? '';
 const DISABLE_HCAPTCHA = ['true', '1', 'yes', 'on'].includes(
@@ -97,7 +98,10 @@ export function LoginForm() {
       return;
     }
 
-    window.location.href = redirectTo;
+    // Check if user is admin and redirect accordingly
+    const { isAdmin } = await checkAdminStatus();
+    const finalRedirect = isAdmin && redirectTo === '/dashboard' ? '/admin' : redirectTo;
+    window.location.href = finalRedirect;
   };
 
   return (

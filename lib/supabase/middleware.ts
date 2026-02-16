@@ -44,6 +44,15 @@ export async function updateSession(request: NextRequest) {
       url.searchParams.set('redirectTo', request.nextUrl.pathname);
       return NextResponse.redirect(url);
     }
+    // Send admins to the admin dashboard instead of the owner dashboard
+    const adminEmails = (process.env.ADMIN_EMAILS ?? '')
+      .split(',')
+      .map((e: string) => e.trim().toLowerCase())
+      .filter(Boolean);
+    const email = user.email?.trim().toLowerCase();
+    if (email && adminEmails.length > 0 && adminEmails.includes(email)) {
+      return NextResponse.redirect(new URL('/admin', request.url));
+    }
   }
 
   // Protect admin: only allow emails listed in ADMIN_EMAILS (comma-separated)

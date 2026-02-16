@@ -4,11 +4,12 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
-import { Menu, X, ChevronDown, LayoutDashboard, LogOut } from 'lucide-react';
+import { Menu, X, ChevronDown, LayoutDashboard, LogOut, Shield } from 'lucide-react';
 import { cities } from '@/lib/data';
 import { createClient } from '@/lib/supabase/browser';
 import { LanguageFlag } from '@/components/icons/FlagIcons';
 import { useLocale } from '@/components/providers/LocaleProvider';
+import { checkAdminStatus } from '@/lib/actions/auth';
 
 const LANGUAGES = [
   { code: 'en' as const, label: 'English' },
@@ -23,6 +24,7 @@ export const Navigation: React.FC = () => {
   const [isCitiesDropdownOpen, setIsCitiesDropdownOpen] = useState(false);
   const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
   const [user, setUser] = useState<{ id: string; email?: string } | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const langDropdownRef = useRef<HTMLDivElement>(null);
   const langTriggerRef = useRef<HTMLButtonElement>(null);
@@ -31,9 +33,22 @@ export const Navigation: React.FC = () => {
 
   useEffect(() => {
     const supabase = createClient();
-    supabase.auth.getSession().then(({ data: { session } }) => setUser(session?.user ?? null));
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null);
+      if (session?.user) {
+        checkAdminStatus().then(({ isAdmin }) => setIsAdmin(isAdmin));
+      } else {
+        setIsAdmin(false);
+      }
+    });
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      setUser(session?.user ?? null);
+      if (session?.user) {
+        const { isAdmin: adminStatus } = await checkAdminStatus();
+        setIsAdmin(adminStatus);
+      } else {
+        setIsAdmin(false);
+      }
     });
     return () => subscription.unsubscribe();
   }, []);
@@ -266,12 +281,21 @@ export const Navigation: React.FC = () => {
             </div>
             {user ? (
               <>
+                {isAdmin && (
+                  <Link
+                    href="/admin"
+                    className="flex items-center gap-1.5 text-gray-200 hover:text-white transition-colors text-sm font-medium"
+                  >
+                    <Shield className="w-4 h-4" aria-hidden />
+                    Admin
+                  </Link>
+                )}
                 <Link
-                  href="/dashboard"
+                  href={isAdmin ? '/admin' : '/dashboard'}
                   className="flex items-center gap-1.5 text-gray-200 hover:text-white transition-colors text-sm font-medium"
                 >
                   <LayoutDashboard className="w-4 h-4" aria-hidden />
-                  {t('nav.dashboard')}
+                  {isAdmin ? 'Dashboard' : t('nav.dashboard')}
                 </Link>
                 <button
                   type="button"
@@ -413,12 +437,21 @@ export const Navigation: React.FC = () => {
               </div>
               {user ? (
                 <>
+                  {isAdmin && (
+                    <Link
+                      href="/admin"
+                      className="flex items-center gap-2 py-2 text-gray-200 hover:text-white transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Shield className="w-4 h-4" /> Admin Dashboard
+                    </Link>
+                  )}
                   <Link
-                    href="/dashboard"
+                    href={isAdmin ? '/admin' : '/dashboard'}
                     className="flex items-center gap-2 py-2 text-gray-200 hover:text-white transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
-                    <LayoutDashboard className="w-4 h-4" /> {t('nav.dashboard')}
+                    <LayoutDashboard className="w-4 h-4" /> {isAdmin ? 'Dashboard' : t('nav.dashboard')}
                   </Link>
                   <button
                     type="button"

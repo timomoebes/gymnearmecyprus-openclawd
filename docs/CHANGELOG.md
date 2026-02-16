@@ -15,6 +15,20 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 
 ## Unreleased
 
+- **Date**: 2026-02-16  
+  **Area**: `app`, `components`, `lib`  
+  **Summary**: Admin dashboard: when signed in with admin email, redirect to Admin Dashboard at `/admin`; show latest 3 pending claims with Approve/Reject on the dashboard; make admin identity clear and keep owner dashboard separate.  
+  **Rationale**: Admins were seeing the same owner dashboard as gym owners. Now admins are sent to `/admin`, see a clear “Admin Dashboard” banner, and get the latest 3 pending claims with inline Approve/Reject. Visiting `/dashboard` as admin redirects to `/admin`; nav “Dashboard” for admins links to `/admin`.  
+  **Files changed**:
+  - `app/admin/page.tsx` (new: admin dashboard with identity banner, pending claims block with actions, stats, quick actions)
+  - `app/admin/claims/page.tsx` (breadcrumb to Admin, “Back to Dashboard” link)
+  - `app/auth/callback/route.ts` (admin redirect to `/admin` when default redirect is `/dashboard`)
+  - `app/login/LoginForm.tsx` (admin redirect to `/admin` after login when redirectTo is `/dashboard`; uses `checkAdminStatus`)
+  - `components/layout/Navigation.tsx` (Dashboard link points to `/admin` for admins; Admin link and `checkAdminStatus`)
+  - `lib/supabase/middleware.ts` (redirect `/dashboard` to `/admin` for admin users)
+  - `lib/actions/auth.ts` (new: `checkAdminStatus` server action)
+  **Manual test plan**: Set `ADMIN_EMAILS` in `.env.local` and sign in with that email. Confirm redirect to `/admin` and “Admin Dashboard” banner. Open `/dashboard` → should redirect to `/admin`. In nav, “Dashboard” and “Admin” should go to `/admin`. On admin dashboard, verify “Pending claims to review” shows latest 3 with Approve/Reject; use “View all” to open `/admin/claims`. Sign in with a non-admin email and confirm “Dashboard” goes to owner dashboard at `/dashboard`.
+
 - **Date**: 2026-02-15  
   **Area**: `components`  
   **Summary**: Improve logout redirect: users logging out from claim pages are now redirected to the gym listing page instead of staying on the claim page.  
