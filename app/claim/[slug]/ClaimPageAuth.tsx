@@ -79,9 +79,11 @@ export function ClaimPageAuth({ gymSlug }: ClaimPageAuthProps) {
       return;
     }
 
+    // For PKCE flow, emailRedirectTo should be the final destination path (not the callback URL)
+    // The email template will construct the callback URL using {{ .SiteURL }}/auth/callback?token_hash=...&redirectTo={{ .RedirectTo }}
     const emailRedirectTo =
       typeof window !== 'undefined'
-        ? `${window.location.origin}/auth/callback?redirectTo=${encodeURIComponent(`/claim/${gymSlug}`)}`
+        ? `${window.location.origin}/claim/${gymSlug}`
         : undefined;
     const { data, error } = await supabase.auth.signUp({
       email,

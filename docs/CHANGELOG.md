@@ -15,6 +15,15 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 
 ## Unreleased
 
+- **Date**: 2026-02-15  
+  **Area**: `app`  
+  **Summary**: Fix "Email not confirmed" error after clicking email confirmation link. Improved session handling and error messages in auth callback.  
+  **Rationale**: After clicking the email confirmation link, users were seeing "Email not confirmed" errors even though `verifyOtp` succeeded. The callback route now properly verifies session creation after email confirmation, handles cases where verification succeeds but no session is created (redirects to login with success message), and displays clear error/success messages on the login page.  
+  **Files changed**:
+  - `app/auth/callback/route.ts` (enhanced session verification after verifyOtp, better error handling)
+  - `app/login/LoginForm.tsx` (added error/success message display from URL parameters)
+  **Manual test plan**: Sign up as a new gym owner → check email → click confirmation link → should either be automatically logged in and redirected OR see success message on login page and be able to sign in. The "Email not confirmed" error should no longer appear after clicking the confirmation link.
+
 - **Date**: 2026-02-16  
   **Area**: `app`  
   **Summary**: Fix email confirmation redirect: signup now redirects to `/auth/callback` instead of root with code.  

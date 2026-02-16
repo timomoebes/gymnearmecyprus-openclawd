@@ -17,14 +17,33 @@ const CAPTCHA_ENABLED_INIT = Boolean(HCAPTCHA_SITEKEY && !DISABLE_HCAPTCHA);
 export function LoginForm() {
   const searchParams = useSearchParams();
   const redirectTo = searchParams.get('redirectTo') ?? '/dashboard';
+  const errorParam = searchParams.get('error');
+  const messageParam = searchParams.get('message');
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
   const [hcaptchaToken, setHcaptchaToken] = useState<string | null>(null);
   const captchaRef = useRef<HCaptcha>(null);
   const [captchaEnabled, setCaptchaEnabled] = useState(CAPTCHA_ENABLED_INIT);
+
+  // Show error/success messages from URL params
+  useEffect(() => {
+    if (errorParam === 'auth_callback') {
+      setErrorMessage('Authentication failed. Please try signing in again.');
+    } else if (errorParam === 'email_not_confirmed') {
+      setErrorMessage('Email not confirmed. Please check your email and click the confirmation link.');
+    } else if (errorParam === 'token_verification_failed') {
+      setErrorMessage('Email confirmation link is invalid or expired. Please request a new one.');
+    } else if (errorParam === 'session_not_created') {
+      setErrorMessage('Session could not be created. Please try signing in.');
+    }
+    if (messageParam === 'email_confirmed') {
+      setSuccessMessage('Email confirmed successfully! You can now sign in.');
+    }
+  }, [errorParam, messageParam]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -129,6 +148,12 @@ export function LoginForm() {
       {!CAPTCHA_ENABLED && (
         <p className="text-text-muted text-xs" aria-hidden="true">
           Captcha disabled for development.
+        </p>
+      )}
+
+      {successMessage && (
+        <p className="text-green-400 text-sm" role="alert">
+          {successMessage}
         </p>
       )}
 

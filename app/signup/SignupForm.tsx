@@ -63,9 +63,11 @@ export function SignupForm() {
     }
 
     const supabase = createClient();
+    // For PKCE flow, emailRedirectTo should be the final destination path (not the callback URL)
+    // The email template will construct the callback URL using {{ .SiteURL }}/auth/callback?token_hash=...&redirectTo={{ .RedirectTo }}
     const emailRedirectTo =
       typeof window !== 'undefined'
-        ? `${window.location.origin}/auth/callback?redirectTo=${encodeURIComponent(redirectTo)}`
+        ? `${window.location.origin}${redirectTo}`
         : undefined;
     const { data, error } = await supabase.auth.signUp({
       email,
