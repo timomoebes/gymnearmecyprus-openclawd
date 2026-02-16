@@ -16,6 +16,16 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-16  
+  **Area**: `components`, `app`, `lib`  
+  **Summary**: Updated footer and metadata descriptions to new tagline "The #1 fitness directory for the best gyms across Cyprus."  
+  **Rationale**: Unified brand messaging across the app. Updated footer description, organization schema description, and main layout metadata to use the new concise tagline instead of the previous longer description.  
+  **Files changed**:
+  - `components/layout/Footer.tsx` (footer description text)
+  - `lib/utils/schema.ts` (Organization schema description)
+  - `app/layout.tsx` (metadata description)
+  **Manual test plan**: Check footer on any page; verify it shows "The #1 fitness directory for the best gyms across Cyprus." Check page source metadata tags to confirm updated description.
+
+- **Date**: 2026-02-16  
   **Area**: `components`  
   **Summary**: Changed filter option text from "Still Open" to "Open now" for better clarity.  
   **Rationale**: Updated the filter dropdown text to be more concise and user-friendly. "Open now" is clearer and more direct than "Still Open".  

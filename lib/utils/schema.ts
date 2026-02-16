@@ -96,7 +96,7 @@ export function generateOrganizationSchema() {
     name: 'Gym Near Me Cyprus',
     url: 'https://gymnearme.cy',
     logo: 'https://gymnearme.cy/logo.png',
-    description: 'Find the best gyms and fitness centers in Cyprus. Your ultimate fitness directory.',
+    description: 'The #1 fitness directory for the best gyms across Cyprus.',
     sameAs: [
       // Add social media links when available
     ],

@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
               />
             </Link>
             <p className="text-text-muted text-sm mb-4">
-              Find the best gyms and fitness centers in Cyprus. Your ultimate fitness directory.
+              The #1 fitness directory for the best gyms across Cyprus.
             </p>
             <div className="space-y-2 text-sm text-text-muted">
               <div className="flex items-center space-x-2">
