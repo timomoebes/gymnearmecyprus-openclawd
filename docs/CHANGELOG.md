@@ -16,6 +16,14 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-16  
+  **Area**: `components`  
+  **Summary**: Changed filter option text from "Still Open" to "Open now" for better clarity.  
+  **Rationale**: Updated the filter dropdown text to be more concise and user-friendly. "Open now" is clearer and more direct than "Still Open".  
+  **Files changed**:
+  - `components/shared/FilterSort.tsx` (changed option text from "Still Open" to "Open now")
+  **Manual test plan**: Open any gym listing page (e.g., `/gyms` or `/cities/nicosia`); open the sort/filter dropdown and verify the option shows "Open now" instead of "Still Open".
+
+- **Date**: 2026-02-16  
   **Area**: `app`  
   **Summary**: Removed redundant Key Stats section on gym detail pages that duplicated rating and review count.  
   **Rationale**: Rating and reviews were displayed twice on gym detail pages—once in the hero section and again in separate Key Stats cards. Removed the redundant Key Stats section to eliminate duplication, reduce visual clutter, and improve UX clarity. Rating/reviews now appear only once in the hero section where users expect them.  

@@ -43,7 +43,7 @@ export const FilterSort: React.FC<FilterSortProps> = ({
           className="bg-surface-lighter border border-surface-lighter rounded-lg px-4 py-2 text-text-white focus:outline-none focus:ring-2 focus:ring-primary-blue"
         >
           <option value="featured">Featured First</option>
-          <option value="open">Still Open</option>
+          <option value="open">Open now</option>
           <option value="rating">Highest Rated</option>
           <option value="reviews">Most Reviews</option>
           <option value="name">Name (A-Z)</option>
