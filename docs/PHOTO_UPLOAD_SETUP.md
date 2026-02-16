@@ -109,7 +109,10 @@ interface OwnerPhotoUploadProps {
 - Name: `Allow public read gym photos`
 - Command: `SELECT`
 - Target roles: `public`
-- USING: `true`
+- **USING expression:** In the "USING expression" field, enter either:
+  - `true` (allow read on all rows), or
+  - `(bucket_id = 'gym-photos')` (allow read only for objects in the `gym-photos` bucket — **recommended**; this is often the Supabase default when creating a policy for this bucket).  
+  Both work; the second is more precise.
 
 **Policy 2: Allow authenticated uploads to own gym**
 - Name: `Allow authenticated users upload to own gym`
