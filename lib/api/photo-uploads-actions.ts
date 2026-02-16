@@ -29,14 +29,21 @@ export async function saveFeaturedImagesToGymAction(
     }
 
     // Update gym with featured images
-    const { error: updateError } = await supabase
+    const { data: updated, error: updateError } = await supabase
       .from('gyms')
       .update({ featured_images: imageUrls })
-      .eq('id', gymId);
+      .eq('id', gymId)
+      .select('featured_images')
+      .single();
 
-    if (updateError) throw updateError;
+    if (updateError) {
+      throw new Error(`Database update failed: ${updateError.message}`);
+    }
+    if (!updated?.featured_images) {
+      throw new Error('Database update did not persist featured_images.');
+    }
 
-    return { success: true };
+    return { success: true, images: updated.featured_images };
   } catch (error) {
     console.error('Error saving featured images:', error);
     throw error;

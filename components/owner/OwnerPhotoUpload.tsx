@@ -149,12 +149,23 @@ export function OwnerPhotoUpload({ gymId, onSuccess }: OwnerPhotoUploadProps) {
         }
       }
 
-      // Save all URLs to gym profile
+      // Save all URLs to gym profile (server action; throws if DB update or auth fails)
       const allImages = [...images, ...uploadedUrls];
       await saveFeaturedImagesToGymAction(gymId, allImages);
 
-      // Update local state (action returns { success: true } on success, throws on failure)
-      setImages(allImages);
+      // Verify the save persisted: refetch from DB so we never show success if DB didn't update
+      const verified = await getFeaturedImagesForGym(gymId);
+      const missing = uploadedUrls.filter((u) => !verified.includes(u));
+      if (missing.length > 0) {
+        setStatusMessage({
+          type: 'error',
+          text: `Images uploaded to storage but could not be saved to your listing. Please refresh and try again.`,
+        });
+        setIsUploading(false);
+        return;
+      }
+
+      setImages(verified);
       setUploadQueue([]);
       setStatusMessage({
         type: 'success',
@@ -162,12 +173,15 @@ export function OwnerPhotoUpload({ gymId, onSuccess }: OwnerPhotoUploadProps) {
       });
 
       if (onSuccess) {
-        onSuccess(allImages);
+        onSuccess(verified);
       }
     } catch (err: any) {
+      const message = err?.message ?? String(err);
       setStatusMessage({
         type: 'error',
-        text: `Upload error: ${err.message}`,
+        text: message.includes('Unauthorized')
+          ? 'You don’t have permission to update this gym. Make sure you’re the claimed owner.'
+          : `Upload error: ${message}`,
       });
     } finally {
       setIsUploading(false);

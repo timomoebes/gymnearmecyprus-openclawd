@@ -16,6 +16,15 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-16  
+  **Area**: `components`, `lib`  
+  **Summary**: Photo upload: only show success after DB verification; clearer errors for save failures and unauthorized updates.  
+  **Rationale**: Users could see “Successfully uploaded” even when images were not in the bucket or database. Now we refetch featured images after save and show success only if the DB contains the new URLs; otherwise we show an error. Server action returns and validates updated row and throws with explicit messages.  
+  **Files changed**:
+  - `components/owner/OwnerPhotoUpload.tsx` (verify after save via getFeaturedImagesForGym; show error if save didn’t persist; clearer Unauthorized message)
+  - `lib/api/photo-uploads-actions.ts` (update now .select('featured_images').single(); throw with “Database update failed” or “did not persist”; return images)
+  **Manual test plan**: As gym owner, upload a photo → only see success if image appears in gallery and in Supabase; if DB save fails, see “Images uploaded to storage but could not be saved…” or “Database update failed: …”.
+
+- **Date**: 2026-02-16  
   **Area**: `lib`, `docs`  
   **Summary**: Fix gym photo upload RLS error: use browser Supabase client so uploads send the user session and Storage allows INSERT.  
   **Rationale**: Uploads were using the plain anon client, so Storage saw requests as anonymous and rejected them with “new row violates row-level security policy”. The browser client sends the logged-in user’s JWT so the authenticated INSERT policy applies.  
