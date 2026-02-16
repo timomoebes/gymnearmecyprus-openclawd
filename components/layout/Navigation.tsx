@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown, LayoutDashboard, LogOut } from 'lucide-react';
 import { cities } from '@/lib/data';
 import { createClient } from '@/lib/supabase/browser';
@@ -17,6 +17,7 @@ const LANGUAGES = [
 
 export const Navigation: React.FC = () => {
   const router = useRouter();
+  const pathname = usePathname();
   const { locale, setLocale, t } = useLocale();
   const [isOpen, setIsOpen] = useState(false);
   const [isCitiesDropdownOpen, setIsCitiesDropdownOpen] = useState(false);
@@ -39,6 +40,16 @@ export const Navigation: React.FC = () => {
 
   const handleSignOut = async () => {
     await createClient().auth.signOut();
+    
+    // If user is on a claim page, redirect to the corresponding gym listing page
+    const claimPageMatch = pathname?.match(/^\/claim\/(.+)$/);
+    if (claimPageMatch) {
+      const gymSlug = decodeURIComponent(claimPageMatch[1]);
+      router.push(`/gyms/${gymSlug}`);
+      router.refresh();
+      return;
+    }
+    
     router.refresh();
   };
 

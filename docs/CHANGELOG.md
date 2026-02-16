@@ -16,6 +16,14 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-15  
+  **Area**: `components`  
+  **Summary**: Improve logout redirect: users logging out from claim pages are now redirected to the gym listing page instead of staying on the claim page.  
+  **Rationale**: After successfully claiming a gym and logging out, users were being redirected back to the claim page (`/claim/[slug]`) which showed a login form. Now when users log out from a claim page, they are automatically redirected to the corresponding gym listing page (`/gyms/[slug]`) for a better user experience.  
+  **Files changed**:
+  - `components/layout/Navigation.tsx` (updated handleSignOut to detect claim pages and redirect to gym listing)
+  **Manual test plan**: Navigate to `/claim/[gym-slug]` → log out → should redirect to `/gyms/[gym-slug]` instead of staying on the claim page.
+
+- **Date**: 2026-02-15  
   **Area**: `app`  
   **Summary**: Fix "Email not confirmed" error after clicking email confirmation link. Improved session handling and error messages in auth callback.  
   **Rationale**: After clicking the email confirmation link, users were seeing "Email not confirmed" errors even though `verifyOtp` succeeded. The callback route now properly verifies session creation after email confirmation, handles cases where verification succeeds but no session is created (redirects to login with success message), and displays clear error/success messages on the login page.  
