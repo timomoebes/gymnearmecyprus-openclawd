@@ -419,13 +419,13 @@ export default async function GymPage({ params }: GymPageProps) {
           <div className="lg:col-span-2 space-y-8">
             {/* About Section */}
             <section className="bg-surface-card rounded-card p-6">
-              <h2 className="text-2xl font-bold text-text-white mb-4">About</h2>
-              <p className="text-text-light leading-relaxed">{gym.description}</p>
+              <h2 className="text-2xl sm:text-3xl font-bold text-text-white mb-8">About</h2>
+              <p className="text-[#E0E0E0] text-base sm:text-lg leading-[1.9] sm:leading-[2] tracking-[0.02em] mb-6 sm:mb-8">{gym.description}</p>
             </section>
 
             {/* Specialties & Amenities */}
             <section className="bg-surface-card rounded-card p-6">
-              <h2 className="text-2xl font-bold text-text-white mb-4">Specialties</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-text-white mb-8">Specialties</h2>
               <div className="flex flex-wrap gap-2 mb-6">
                 {sortSpecialties(gym.specialties).map((specialty) => (
                   <Badge key={specialty} variant="specialty">
@@ -433,7 +433,7 @@ export default async function GymPage({ params }: GymPageProps) {
                   </Badge>
                 ))}
               </div>
-              <h2 className="text-2xl font-bold text-text-white mb-4">Amenities</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-text-white mb-8">Amenities</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 {sortAmenities(gym.amenities).map((amenity) => (
                   <div

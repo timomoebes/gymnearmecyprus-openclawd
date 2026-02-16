@@ -16,6 +16,16 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-16  
+  **Area**: `app`  
+  **Summary**: Updated About section text formatting on gym detail pages to match guide styling for consistent readability.  
+  **Rationale**: Improved text formatting consistency across the app. Updated About, Specialties, and Amenities section headings and body text to match the guide styling (font sizes, line-height, letter-spacing, colors) for better readability and consistent quality. Removed horizontal border lines from headings per user preference.  
+  **Files changed**:
+  - `app/gyms/[slug]/page.tsx` (About section: h2 text-2xl sm:text-3xl, body text #E0E0E0 with line-height 1.9/2, letter-spacing 0.02em; Specialties/Amenities headings updated; removed border-bottom lines)
+  - `components/gym/GymCard.tsx` (added guide-style variant support, but not used)
+  - `components/shared/GymListPageClient.tsx` (added useGuideStyle prop support, but not used)
+  **Manual test plan**: Open any gym detail page (e.g., `/gyms/iron-fitness-limassol`); verify About section text formatting matches guide styling (larger headings, improved body text readability). Check Specialties and Amenities headings have same formatting without horizontal lines.
+
+- **Date**: 2026-02-16  
   **Area**: `app`, `components`  
   **Summary**: Contact Us page at `/contact` with email, quick contact form, FAQ, and CTAs.  
   **Rationale**: Nav already linked to `/contact` but the page was missing. Added a full contact page inspired by Scratch & Dent Locator: hero, “Ways to Reach Us” (email info@gymnearme.cy), Quick Contact Form (client form that opens mailto with pre-filled subject/body), FAQ (add gym, free to use, updates, report errors), and “Help Us Grow” CTAs (Suggest a Gym mailto, Browse Directory). No backend email required—form uses mailto.  

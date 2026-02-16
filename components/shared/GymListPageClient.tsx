@@ -38,6 +38,9 @@ interface GymListPageClientProps {
 
   /** Custom all gyms section title (defaults to "All Gyms in {entityName}") */
   allGymsTitle?: string;
+
+  /** Use guide-style layout (numbered list instead of grid) */
+  useGuideStyle?: boolean;
 }
 
 /**
@@ -53,6 +56,7 @@ export const GymListPageClient: React.FC<GymListPageClientProps> = ({
   showStarIcon = false,
   featuredTitle = 'Featured Gyms',
   allGymsTitle,
+  useGuideStyle = false,
 }) => {
   const [sortBy, setSortBy] = useState<GymSortOption>('featured');
   const [featuredOnly, setFeaturedOnly] = useState(false);
@@ -95,11 +99,25 @@ export const GymListPageClient: React.FC<GymListPageClientProps> = ({
             {showStarIcon && <Star className="w-6 h-6 text-accent-gold" />}
             {featuredTitle}
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredGyms.map((gym) => (
-              <GymCard key={gym.id} gym={gym} showCity={showCityInCards} />
-            ))}
-          </div>
+          {useGuideStyle ? (
+            <div className="space-y-0">
+              {featuredGyms.map((gym, idx) => (
+                <GymCard 
+                  key={gym.id} 
+                  gym={gym} 
+                  showCity={showCityInCards}
+                  variant="guide-style"
+                  index={idx + 1}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {featuredGyms.map((gym) => (
+                <GymCard key={gym.id} gym={gym} showCity={showCityInCards} />
+              ))}
+            </div>
+          )}
         </section>
       )}
 
@@ -143,6 +161,18 @@ export const GymListPageClient: React.FC<GymListPageClientProps> = ({
               </a>
               .
             </p>
+          </div>
+        ) : useGuideStyle ? (
+          <div className="space-y-0">
+            {filteredGyms.map((gym, idx) => (
+              <GymCard 
+                key={gym.id} 
+                gym={gym} 
+                showCity={showCityInCards}
+                variant="guide-style"
+                index={idx + 1}
+              />
+            ))}
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
