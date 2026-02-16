@@ -79,12 +79,16 @@ export function ClaimPageAuth({ gymSlug }: ClaimPageAuthProps) {
       return;
     }
 
+    const emailRedirectTo =
+      typeof window !== 'undefined'
+        ? `${window.location.origin}/auth/callback?redirectTo=${encodeURIComponent(`/claim/${gymSlug}`)}`
+        : undefined;
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
         ...(captchaOptions ?? {}),
-        emailRedirectTo: typeof window !== 'undefined' ? `${window.location.origin}/claim/${gymSlug}` : undefined,
+        emailRedirectTo,
       },
     });
     if (error) {

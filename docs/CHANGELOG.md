@@ -16,6 +16,16 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-16  
+  **Area**: `app`  
+  **Summary**: Fix email confirmation redirect: signup now redirects to `/auth/callback` instead of root with code.  
+  **Rationale**: When users clicked the email confirmation link, Supabase redirected to root (`/`) with `?code=...` which didn't handle the code exchange. Now signup sets `emailRedirectTo` to `/auth/callback?redirectTo=/dashboard` (or intended page) so the callback route exchanges the code for a session and redirects properly.  
+  **Files changed**:
+  - `app/signup/SignupForm.tsx` (added emailRedirectTo to signUp options)
+  - `app/claim/[slug]/ClaimPageAuth.tsx` (updated emailRedirectTo to use /auth/callback)
+  - `website-live-tasks.md` (new: Supabase redirect URLs checklist)
+  **Manual test plan**: Sign up with a new email → check inbox → click confirmation link → should redirect to `/auth/callback` then `/dashboard` and be signed in. Add `/auth/callback` URLs to Supabase Redirect URLs first (see `website-live-tasks.md`).
+
+- **Date**: 2026-02-16  
   **Area**: `components`, `app`, `lib`  
   **Summary**: Updated footer and metadata descriptions to new tagline "The #1 fitness directory for the best gyms across Cyprus."  
   **Rationale**: Unified brand messaging across the app. Updated footer description, organization schema description, and main layout metadata to use the new concise tagline instead of the previous longer description.  

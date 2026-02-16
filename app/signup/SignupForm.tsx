@@ -63,10 +63,17 @@ export function SignupForm() {
     }
 
     const supabase = createClient();
+    const emailRedirectTo =
+      typeof window !== 'undefined'
+        ? `${window.location.origin}/auth/callback?redirectTo=${encodeURIComponent(redirectTo)}`
+        : undefined;
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
-      ...(needCaptcha && hcaptchaToken ? { options: { captchaToken: hcaptchaToken } } : {}),
+      options: {
+        ...(needCaptcha && hcaptchaToken ? { captchaToken: hcaptchaToken } : {}),
+        emailRedirectTo,
+      },
     });
 
     if (error) {
