@@ -181,7 +181,9 @@ export function OwnerPhotoUpload({ gymId, onSuccess }: OwnerPhotoUploadProps) {
         type: 'error',
         text: message.includes('Unauthorized')
           ? 'You don’t have permission to update this gym. Make sure you’re the claimed owner.'
-          : `Upload error: ${message}`,
+          : (typeof message === 'string' && (message.includes('Server Components render') || message.includes('digest')))
+            ? 'Upload or save failed. Ensure the gym is claimed by you and the featured_images column exists on the gyms table. Try again or check the browser console for details.'
+            : `Upload error: ${message}`,
       });
     } finally {
       setIsUploading(false);

@@ -28,25 +28,32 @@ export async function saveFeaturedImagesToGymAction(
       throw new Error('Unauthorized');
     }
 
-    // Update gym with featured images
+    // Update gym with featured images (.maybeSingle() avoids PGRST116 when 0 rows)
     const { data: updated, error: updateError } = await supabase
       .from('gyms')
       .update({ featured_images: imageUrls })
       .eq('id', gymId)
       .select('featured_images')
-      .single();
+      .maybeSingle();
 
     if (updateError) {
       throw new Error(`Database update failed: ${updateError.message}`);
     }
     if (!updated?.featured_images) {
-      throw new Error('Database update did not persist featured_images.');
+      throw new Error('Database update did not persist featured_images. The gym may not exist or row-level security may have blocked the update.');
     }
 
     return { success: true, images: updated.featured_images };
   } catch (error) {
     console.error('Error saving featured images:', error);
-    throw error;
+    // Throw a plain Error with a safe message so production shows a readable message instead of "Server Components render"
+    const message =
+      error instanceof Error
+        ? error.message
+        : typeof error === 'object' && error !== null && 'message' in error
+          ? String((error as { message: unknown }).message)
+          : 'Failed to save images to your gym listing.';
+    throw new Error(message);
   }
 }
 
@@ -83,7 +90,13 @@ export async function deletePhotoFromStorageAction(
     return { success: true };
   } catch (error) {
     console.error('Error deleting photo:', error);
-    throw error;
+    const message =
+      error instanceof Error
+        ? error.message
+        : typeof error === 'object' && error !== null && 'message' in error
+          ? String((error as { message: unknown }).message)
+          : 'Failed to delete photo.';
+    throw new Error(message);
   }
 }
 
