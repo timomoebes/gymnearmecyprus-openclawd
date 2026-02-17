@@ -5,7 +5,7 @@
 ALTER TABLE gyms
 ADD COLUMN IF NOT EXISTS featured_images JSONB DEFAULT '[]'::jsonb;
 
-COMMENT ON COLUMN gyms.featured_images IS 'Array of featured image URLs uploaded by gym owner via Supabase Storage. Max 5 images.';
+COMMENT ON COLUMN gyms.featured_images IS 'Array of featured image URLs uploaded by gym owner via Supabase Storage. Limit by plan: free 3, featured 10.';
 
 -- Create an index on the featured_images column for better query performance
 CREATE INDEX IF NOT EXISTS idx_gyms_featured_images 

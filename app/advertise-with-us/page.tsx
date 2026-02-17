@@ -381,7 +381,7 @@ export default async function AdvertiseWithUsPage() {
                 title: 'Add Photos & Optimize Your Listing',
                 description: 'Upload gym photos, update your specialties, and add special offers to attract more members.',
                 details: ['🏋️ Gym Facilities', '💪 Equipment', '🎯 Special Offers'],
-                tip: 'Best Practice: Gyms with 5+ photos get 2x more member inquiries. Show your facilities, equipment, and best training areas.',
+                tip: 'Best Practice: Gyms with 3+ photos get 2x more member inquiries. Show your facilities, equipment, and best training areas.',
               },
             ].map((item) => (
               <div key={item.step} className="bg-surface-card rounded-card p-8">

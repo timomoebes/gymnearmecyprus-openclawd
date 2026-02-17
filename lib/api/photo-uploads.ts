@@ -8,7 +8,15 @@ import {
 const STORAGE_BUCKET = 'gym-photos';
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ALLOWED_TYPES = ['image/jpeg', 'image/png'];
-const MAX_IMAGES_PER_GYM = 5;
+
+/** Max photos per plan (pricing: free = 3, featured = 10) */
+export const MAX_IMAGES_FREE = 3;
+export const MAX_IMAGES_FEATURED = 10;
+
+/** Resolve max images for a gym based on featured status. */
+export function getMaxImagesForGym(featured: boolean): number {
+  return featured ? MAX_IMAGES_FEATURED : MAX_IMAGES_FREE;
+}
 
 /**
  * Validation types and utilities

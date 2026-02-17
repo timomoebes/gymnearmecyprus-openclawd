@@ -9,22 +9,29 @@ import {
   Loader,
   Image as ImageIcon,
 } from 'lucide-react';
+import Link from 'next/link';
 import {
   uploadPhotoToStorage,
   validatePhotoFile,
   saveFeaturedImagesToGymAction,
   deletePhotoFromStorageAction,
   getFeaturedImagesForGym,
+  getMaxImagesForGym,
   PhotoUploadResult,
 } from '@/lib/api/photo-uploads';
 import { Button } from '@/components/shared/Button';
 
 interface OwnerPhotoUploadProps {
   gymId: string;
+  /** Max photos allowed for this gym's plan (default 5 for free). Use 10 for featured. */
+  maxImages?: number;
+  /** Whether this gym is on a featured plan (used for upgrade CTA when at free limit). */
+  isFeatured?: boolean;
   onSuccess?: (imageUrls: string[]) => void;
 }
 
-export function OwnerPhotoUpload({ gymId, onSuccess }: OwnerPhotoUploadProps) {
+export function OwnerPhotoUpload({ gymId, maxImages: maxImagesProp, isFeatured = false, onSuccess }: OwnerPhotoUploadProps) {
+  const maxImages = maxImagesProp ?? getMaxImagesForGym(isFeatured);
   const [images, setImages] = useState<string[]>([]);
   const [uploadQueue, setUploadQueue] = useState<File[]>([]);
   const [isUploading, setIsUploading] = useState(false);
@@ -74,12 +81,12 @@ export function OwnerPhotoUpload({ gymId, onSuccess }: OwnerPhotoUploadProps) {
         });
       }
 
-      // Check total images wouldn't exceed limit
+      // Check total images wouldn't exceed plan limit
       const totalImages = images.length + newFiles.length + uploadQueue.length;
-      if (totalImages > 5) {
+      if (totalImages > maxImages) {
         setStatusMessage({
           type: 'error',
-          text: `You can upload a maximum of 5 images total. You have ${images.length} existing and ${uploadQueue.length} pending.`,
+          text: `Your plan allows up to ${maxImages} photo${maxImages === 1 ? '' : 's'}. You have ${images.length} existing and ${uploadQueue.length} pending.`,
         });
         return;
       }
@@ -97,7 +104,7 @@ export function OwnerPhotoUpload({ gymId, onSuccess }: OwnerPhotoUploadProps) {
         fileInputRef.current.value = '';
       }
     },
-    [images, uploadQueue]
+    [images, uploadQueue, maxImages]
   );
 
   // Drag and drop handlers
@@ -195,18 +202,18 @@ export function OwnerPhotoUpload({ gymId, onSuccess }: OwnerPhotoUploadProps) {
     setUploadQueue((prev) => prev.filter((_, i) => i !== index));
   };
 
-  // Delete uploaded image
+  // Delete uploaded image (refetch from DB so UI stays in sync with server)
   const handleDeleteImage = async (imageUrl: string) => {
     try {
       await deletePhotoFromStorageAction(gymId, imageUrl);
-      const newImages = images.filter((img) => img !== imageUrl);
-      setImages(newImages);
+      const afterDelete = await getFeaturedImagesForGym(gymId);
+      setImages(Array.isArray(afterDelete) ? afterDelete : []);
       setStatusMessage({
         type: 'success',
         text: 'Image deleted successfully.',
       });
-      if (onSuccess) {
-        onSuccess(newImages);
+      if (onSuccess && Array.isArray(afterDelete)) {
+        onSuccess(afterDelete);
       }
     } catch (err: any) {
       setStatusMessage({
@@ -256,7 +263,7 @@ export function OwnerPhotoUpload({ gymId, onSuccess }: OwnerPhotoUploadProps) {
       {images.length > 0 && (
         <div>
           <h3 className="text-lg font-semibold text-text-white mb-4">
-            Your Photos ({images.length}/5)
+            Your Photos ({images.length}/{maxImages})
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
             {images.map((imageUrl, index) => (
@@ -382,14 +389,22 @@ export function OwnerPhotoUpload({ gymId, onSuccess }: OwnerPhotoUploadProps) {
         )}
 
         {/* Image Limit Info */}
-        <div className="mt-4 p-3 bg-surface-lighter rounded-lg">
+        <div className="mt-4 p-3 bg-surface-lighter rounded-lg space-y-2">
           <p className="text-text-muted text-sm">
-            ℹ️ You can upload a maximum of 5 images per gym. Currently:{' '}
+            ℹ️ Your plan allows up to {maxImages} photo{maxImages === 1 ? '' : 's'} per gym. Currently:{' '}
             <span className="text-text-light font-semibold">
               {images.length}
             </span>
-            /5
+            /{maxImages}
           </p>
+          {!isFeatured && (
+            <p className="text-text-muted text-sm">
+              <Link href="/pricing" className="text-primary-blue hover:underline">
+                Upgrade to featured
+              </Link>
+              {' '}to add up to 10 photos and get more visibility.
+            </p>
+          )}
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@
 
 ## Overview
 
-Successfully implemented a complete photo upload feature for gym owners to upload and manage up to 5 images per gym listing. The feature is fully integrated into the owner dashboard with end-to-end functionality.
+Successfully implemented a complete photo upload feature for gym owners to upload and manage up to 3 images (free tier) or 10 images (featured tier) per gym listing. The feature is fully integrated into the owner dashboard with end-to-end functionality.
 
 ## Deliverables Completed
 
@@ -63,7 +63,7 @@ gym-photos/
 - Image gallery with delete buttons
 - Error/success toast messages
 - Loading states and disabled states during upload
-- Image counter (X/5)
+- Image counter (X/3 free or X/10 featured)
 
 **Component Features**:
 - Validates files before upload
@@ -119,7 +119,7 @@ gym-photos/
 
 | Criteria | Status | Notes |
 |----------|--------|-------|
-| Owner can upload up to 5 images per gym | ✅ | Component enforces max 5 images |
+| Owner can upload up to 3 (free) or 10 (featured) images per gym | ✅ | Component enforces plan limit |
 | Images stored in Supabase Storage at `/gyms/{gym-id}/photos/` | ✅ | Path pattern: `gyms/{gymId}/photos/{gymId}-{timestamp}.{ext}` |
 | Image URLs returned and stored in `featured_images` array | ✅ | Saved to database, persisted in JSONB column |
 | UI: Drag-drop or file picker | ✅ | Both supported in OwnerPhotoUpload component |
@@ -175,7 +175,7 @@ gymnearmecyprus/
 - [ ] Try uploading invalid file (TIFF, GIF): Should show error
 - [ ] Try uploading file > 5MB: Should show size error
 - [ ] Try uploading JPG/PNG < 5MB: Should add to queue
-- [ ] Try uploading 6 images: Should show "max 5 images" error
+- [ ] Try uploading 4 images (free tier): Should show plan limit error
 
 #### 4. Drag & Drop
 - [ ] Drag single file to zone: Should add to queue
@@ -193,14 +193,14 @@ gymnearmecyprus/
 - [ ] Progress icon visible: Loader spins during upload
 - [ ] Success message appears: "Successfully uploaded X images"
 - [ ] Images appear in gallery: Thumbnails visible
-- [ ] Counter updates: Shows X/5 images
+- [ ] Counter updates: Shows X/3 or X/10 depending on plan
 
 #### 7. Image Management
 - [ ] Hover over image: X button appears
 - [ ] Click X button: Shows delete confirmation (hover)
 - [ ] Confirm delete: Image removed from storage + DB
 - [ ] Success message: "Image deleted successfully"
-- [ ] Counter decreases: Now shows X-1/5
+- [ ] Counter decreases: Now shows X-1
 
 #### 8. Error Handling
 - [ ] Simulate upload failure: Check error message
@@ -215,8 +215,8 @@ gymnearmecyprus/
 - [ ] Verify URLs in featured_images array
 
 #### 10. Edge Cases
-- [ ] Upload exactly 5 images: Should work
-- [ ] Try uploading 6th image: Should show "max reached" error
+- [ ] Upload exactly 3 images (free): Should work
+- [ ] Try uploading 4th image (free): Should show plan limit error
 - [ ] Delete image: Should free up slot
 - [ ] Upload new image after delete: Should work
 - [ ] Delete all images: Should show empty state
@@ -322,7 +322,7 @@ WHERE table_name = 'gyms' AND column_name = 'featured_images';
 5. Minimal component re-renders: useState hooks used efficiently
 
 ### Scalability Notes
-- JSONB array allows up to 5 images (small, fast queries)
+- JSONB array holds plan-limited images (free: 3, featured: 10; small, fast queries)
 - Storage bucket auto-scales with Supabase
 - No database overhead for missing featured_images
 - Path structure supports millions of gyms

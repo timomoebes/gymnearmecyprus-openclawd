@@ -16,6 +16,22 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-16  
+  **Area**: `lib`, `app`, `components`, `docs`  
+  **Summary**: Photo limits aligned with pricing (free 3, featured 10); robust photo delete and gallery fix so all owner photos show on listing.  
+  **Rationale**: Pricing states free = 3 photos, featured = 10. Code and docs now use 3 for free everywhere. Delete now matches URLs robustly and refetches after delete so the UI stays in sync. Gym listing page was sometimes showing only one owner photo; featured_images is now normalized to an array and displayImages is derived safely so all uploaded photos appear in the gallery.  
+  **Files changed**:
+  - `lib/api/photo-uploads.ts` (MAX_IMAGES_FREE = 3, getMaxImagesForGym)
+  - `lib/api/photo-uploads-actions.ts` (free limit 3; robust URL normalization on delete)
+  - `lib/api/gyms.ts` (normalizeFeaturedImages so featured_images is always string[]; used in transform)
+  - `app/dashboard/page.tsx` (maxImages 3 for free, isFeatured passed to OwnerPhotoUpload)
+  - `app/gyms/[slug]/page.tsx` (displayImages from safe array; stable keys for gallery items)
+  - `app/advertise-with-us/page.tsx` (tip: 3+ photos)
+  - `components/owner/OwnerPhotoUpload.tsx` (maxImages/isFeatured props; refetch after delete; upgrade CTA; 3/10 copy)
+  - `docs/PHOTO_UPLOAD_SETUP.md`, `docs/PHOTO_UPLOAD_IMPLEMENTATION.md`, `docs/archive/PHOTO_UPLOAD_DELIVERY.md` (3 free, 10 featured)
+  - `supabase/migrations/012_add_featured_images.sql` (comment: limit by plan free 3, featured 10)
+  **Manual test plan**: Free-tier owner: Dashboard → Photos shows X/3 and upgrade CTA; upload 3 then try 4th → error. Featured: X/10. Delete a photo → it disappears and stays gone after refresh. Gym listing page for a gym with 2+ owner photos → gallery shows all of them.
+
+- **Date**: 2026-02-16  
   **Area**: `components`, `lib`  
   **Summary**: Photo upload: only show success after DB verification; clearer errors for save failures and unauthorized updates.  
   **Rationale**: Users could see “Successfully uploaded” even when images were not in the bucket or database. Now we refetch featured images after save and show success only if the DB contains the new URLs; otherwise we show an error. Server action returns and validates updated row and throws with explicit messages.  

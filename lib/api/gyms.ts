@@ -8,6 +8,22 @@ import {
   parseJSONField,
 } from '@/lib/utils/gym-transformers';
 
+/** Ensure featured_images from DB is always an array of URL strings (handles JSONB array or JSON string). */
+function normalizeFeaturedImages(raw: unknown): string[] {
+  if (Array.isArray(raw)) {
+    return raw.filter((v): v is string => typeof v === 'string' && v.length > 0);
+  }
+  if (typeof raw === 'string') {
+    try {
+      const parsed = JSON.parse(raw);
+      return Array.isArray(parsed) ? parsed.filter((v: unknown): v is string => typeof v === 'string' && v.length > 0) : [];
+    } catch {
+      return [];
+    }
+  }
+  return [];
+}
+
 /**
  * Extract and transform gym data from raw database query result
  * Handles extraction of specialties and amenities from join tables
@@ -63,7 +79,7 @@ function transformGymFromDB(dbGym: any, specialties: string[], amenities: string
     featured: dbGym.is_featured || false,
     description: dbGym.description || '',
     images: dbGym.cover_image_url ? [dbGym.cover_image_url] : [],
-    featuredImages: dbGym.featured_images || [],
+    featuredImages: normalizeFeaturedImages(dbGym.featured_images),
     openingHours,
     pricing,
     ownerId: dbGym.owner_id || undefined,

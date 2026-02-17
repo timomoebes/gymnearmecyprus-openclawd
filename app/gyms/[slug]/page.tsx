@@ -233,11 +233,12 @@ export default async function GymPage({ params }: GymPageProps) {
     ? formatSpecialtyHeading(primarySpecialty, city?.name || 'Cyprus')
     : `Other Gyms in ${city?.name || 'Cyprus'}`;
 
-  // Photos to show on the listing: owner-uploaded (featuredImages) take priority, then legacy images
-  const displayImages =
-    gym.featuredImages && gym.featuredImages.length > 0
-      ? gym.featuredImages
-      : gym.images || [];
+  // Photos to show on the listing: owner-uploaded (featuredImages) take priority, then legacy images. Ensure array.
+  const displayImages = (() => {
+    const featured = Array.isArray(gym.featuredImages) ? gym.featuredImages : [];
+    const legacy = Array.isArray(gym.images) ? gym.images : [];
+    return featured.length > 0 ? featured : legacy;
+  })();
 
   // Generate Schema.org JSON-LD
   const localBusinessSchema = generateLocalBusinessSchema(gym, city?.name || 'Cyprus', allReviews);
@@ -399,7 +400,7 @@ export default async function GymPage({ params }: GymPageProps) {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {displayImages.slice(0, 6).map((imageUrl, index) => (
                 <div
-                  key={index}
+                  key={typeof imageUrl === 'string' ? imageUrl : `img-${index}`}
                   className="relative aspect-[4/3] bg-surface-card rounded-card overflow-hidden"
                 >
                   <img

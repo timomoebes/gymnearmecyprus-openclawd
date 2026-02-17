@@ -9,7 +9,7 @@
 
 ## Executive Summary
 
-Successfully implemented a **production-ready photo upload feature** allowing gym owners to upload and manage up to 5 images per gym listing. The implementation includes:
+Successfully implemented a **production-ready photo upload feature** allowing gym owners to upload and manage up to 3 images (free) or 10 (featured) per gym listing. The implementation includes:
 
 ✅ **Database Schema**: New `featured_images` JSONB column on gyms table  
 ✅ **Storage Integration**: Supabase Storage bucket configuration  
@@ -46,7 +46,7 @@ Successfully implemented a **production-ready photo upload feature** allowing gy
   - `deletePhotoFromStorageAction()` - Server action to delete photos
   - `validatePhotoFile()` - Client validation (JPG/PNG, max 5MB)
   - `getFeaturedImagesForGym()` - Fetch existing images
-- **Validation**: File type, size, count (max 5), ownership checks
+- **Validation**: File type, size, count (free: 3, featured: 10), ownership checks
 - **Error Handling**: Comprehensive with user-friendly messages
 - **Status**: Production-ready
 
@@ -60,7 +60,7 @@ Successfully implemented a **production-ready photo upload feature** allowing gy
   - Image gallery with delete buttons
   - Status messages (success/error/info toasts)
   - Loading states and disabled during upload
-  - Image counter (X/5)
+  - Image counter (X/3 or X/10 by plan)
   - Responsive grid layout
 - **Styling**: Tailwind CSS with project theme colors
 - **Status**: Production-ready
@@ -122,7 +122,7 @@ Successfully implemented a **production-ready photo upload feature** allowing gy
 
 | Criteria | Status | Implementation |
 |----------|--------|-----------------|
-| Owner can upload up to 5 images | ✅ | Component enforces via state management + server validation |
+| Owner can upload up to 3 (free) or 10 (featured) images | ✅ | Component enforces plan limit + server validation |
 | Images stored in `/gyms/{gym-id}/photos/` | ✅ | Path: `gyms/{gymId}/photos/{gymId}-{timestamp}.{ext}` |
 | URLs stored in `featured_images` JSONB array | ✅ | Migration adds column, server action saves array |
 | UI: Drag-drop or file picker | ✅ | Both implemented in component |

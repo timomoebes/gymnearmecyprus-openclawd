@@ -291,6 +291,8 @@ export default function DashboardPage() {
             {mockGym ? (
               <OwnerPhotoUpload
                 gymId={mockGym.id}
+                maxImages={mockGym.featured ? 10 : 3}
+                isFeatured={mockGym.featured}
                 onSuccess={(images) => {
                   // Update gym with new images if needed
                   setMyGyms((prevGyms) =>

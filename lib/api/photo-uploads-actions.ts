@@ -17,15 +17,22 @@ export async function saveFeaturedImagesToGymAction(
 
     const supabase = await createClient();
     
-    // Verify ownership
+    // Verify ownership and plan for limit (pricing: free = 3, featured = 10)
     const { data: gym, error: gymError } = await supabase
       .from('gyms')
-      .select('owner_id')
+      .select('owner_id, is_featured')
       .eq('id', gymId)
       .single();
 
     if (gymError || gym.owner_id !== userId) {
       throw new Error('Unauthorized');
+    }
+
+    const maxImages = gym.is_featured ? 10 : 3;
+    if (imageUrls.length > maxImages) {
+      throw new Error(
+        `Your plan allows up to ${maxImages} photos. Upgrade to featured for up to 10 photos.`
+      );
     }
 
     // Update gym with featured images (.maybeSingle() avoids PGRST116 when 0 rows)
@@ -70,6 +77,15 @@ function pathFromPublicUrl(publicUrlOrPath: string): string {
   return trimmed;
 }
 
+/** Normalize URL for comparison so delete works even with encoding/slash differences. */
+function normalizeUrlForCompare(url: string): string {
+  try {
+    return decodeURIComponent(url.trim()).replace(/\/+$/, '');
+  } catch {
+    return url.trim();
+  }
+}
+
 export async function deletePhotoFromStorageAction(
   gymId: string,
   imageUrlOrPath: string
@@ -104,9 +120,15 @@ export async function deletePhotoFromStorageAction(
       console.warn('Storage remove failed (file may already be gone):', deleteError.message);
     }
 
-    // Remove this URL from the gym's featured_images in the DB so the photo stays deleted
+    // Remove this URL from the gym's featured_images (match by normalized URL or by storage path)
     const current = (gym.featured_images || []) as string[];
-    const updated = current.filter((url) => url !== imageUrlOrPath && url.trim() !== imageUrlOrPath.trim());
+    const normalizedInput = normalizeUrlForCompare(imageUrlOrPath);
+    const inputPath = pathFromPublicUrl(imageUrlOrPath);
+    const updated = current.filter((url) => {
+      if (normalizeUrlForCompare(url) === normalizedInput) return false;
+      if (pathFromPublicUrl(url) === inputPath) return false;
+      return true;
+    });
     if (updated.length === current.length) {
       console.warn('deletePhotoFromStorageAction: URL not found in featured_images', imageUrlOrPath);
     }

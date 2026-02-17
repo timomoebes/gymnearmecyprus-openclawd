@@ -1,7 +1,7 @@
 # Photo Upload Feature Setup Guide
 
 ## Overview
-The photo upload feature allows gym owners to upload up to 5 photos (logos, facility images) to their claimed listings. Photos are stored in Supabase Storage and URLs are saved to the gym profile in the database.
+The photo upload feature allows gym owners to upload up to 3 photos (free tier) or 10 photos (featured tier) to their claimed listings. Photos are stored in Supabase Storage and URLs are saved to the gym profile in the database.
 
 ## Tech Stack
 - **Storage**: Supabase Storage (bucket: `gym-photos`)
@@ -71,12 +71,14 @@ User-facing component with:
 - **Image gallery**: Displays uploaded images with delete buttons
 - **Error handling**: Toast messages for all operations
 - **Loading states**: Smooth UX during uploads
-- **Image limit tracking**: Shows current count (X/5)
+- **Image limit tracking**: Shows current count (X/3 free or X/10 featured)
 
 **Props**:
 ```typescript
 interface OwnerPhotoUploadProps {
   gymId: string;              // Required: gym ID
+  maxImages?: number;        // Optional: plan limit (default 3 free, 10 featured)
+  isFeatured?: boolean;      // Optional: used for upgrade CTA when false
   onSuccess?: (imageUrls: string[]) => void;  // Optional: callback after successful upload
 }
 ```
@@ -157,8 +159,8 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 ### File Validation
 - **Formats**: JPG, PNG only
 - **Size**: Max 5MB per file
-- **Count**: Max 5 images per gym
-- **Total**: Existing + Pending + New cannot exceed 5
+- **Count**: Max 3 images per gym (free) or 10 (featured)
+- **Total**: Existing + Pending + New cannot exceed plan limit
 
 ### Database Validation
 - **Ownership**: Only gym owner (owner_id = auth.uid()) can upload
