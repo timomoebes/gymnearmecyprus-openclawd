@@ -16,6 +16,14 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-18  
+  **Area**: `components`, `app`, `lib`  
+  **Summary**: Update contact email from info@gymnearme.cy to gymnearmecyprus@gmail.com site-wide.  
+  **Rationale**: Single contact address used everywhere (footer, contact page, schema, form, privacy/terms/imprint) for consistency and correct mailto links.  
+  **Files changed**:
+  - `components/layout/Footer.tsx`, `lib/utils/schema.ts`, `app/contact/page.tsx`, `components/contact/ContactForm.tsx`, `app/privacy/page.tsx`, `app/terms/page.tsx`, `app/imprint/page.tsx`  
+  **Manual test plan**: Check footer and contact/privacy/terms/imprint pages show gymnearmecyprus@gmail.com; click mailto links to confirm they open the new address.
+
+- **Date**: 2026-02-18  
   **Area**: `lib`, `scripts`, `docs`, `supabase`  
   **Summary**: Finalize Outdoor Gym specialty and remove duplicate "24/7" amenity in favor of existing "24/7 Access".  
   **Rationale**: To avoid duplicate 24/7 flags, the temporary "24/7" amenity (slug `24-7`) was removed from the database and from migration scripts/docs. The existing "24/7 Access" amenity continues to represent 24-hour opening, while "Outdoor Gym" remains as the dedicated specialty for outdoor facilities.  

@@ -231,8 +231,8 @@ export default function TermsPage() {
             <h2 className="text-xl font-semibold text-text-white mb-3">14. Contact</h2>
             <p>
               If you have any questions about these Terms of Service, please contact us at{' '}
-              <a href="mailto:info@gymnearme.cy" className="text-primary-blue hover:underline">
-                info@gymnearme.cy
+              <a href="mailto:gymnearmecyprus@gmail.com" className="text-primary-blue hover:underline">
+                gymnearmecyprus@gmail.com
               </a>
               .
             </p>

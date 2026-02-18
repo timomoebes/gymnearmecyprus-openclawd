@@ -6,7 +6,7 @@ import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { Button } from '@/components/shared/Button';
 import { ContactForm } from '@/components/contact/ContactForm';
 
-const CONTACT_EMAIL = 'info@gymnearme.cy';
+const CONTACT_EMAIL = 'gymnearmecyprus@gmail.com';
 
 export const metadata: Metadata = {
   title: 'Contact Us | Gym Near Me Cyprus',
@@ -19,7 +19,7 @@ const faqs = [
   {
     question: 'How do I add my gym to the directory?',
     answer:
-      'Use our free "Add Your Gym" form from the main menu or the link below. You can also email us at info@gymnearme.cy with your gym details (name, address, phone, hours, and services). We\'ll review and add it within 2–3 business days.',
+      'Use our free "Add Your Gym" form from the main menu or the link below. You can also email us at gymnearmecyprus@gmail.com with your gym details (name, address, phone, hours, and services). We\'ll review and add it within 2–3 business days.',
   },
   {
     question: 'Is the directory free to use?',
@@ -34,7 +34,7 @@ const faqs = [
   {
     question: 'Can I report incorrect or outdated information?',
     answer:
-      'Absolutely. If you see wrong address, hours, or other details, email us at info@gymnearme.cy with the gym name and what needs changing. We\'ll update the listing promptly.',
+      'Absolutely. If you see wrong address, hours, or other details, email us at gymnearmecyprus@gmail.com with the gym name and what needs changing. We\'ll update the listing promptly.',
   },
 ];
 

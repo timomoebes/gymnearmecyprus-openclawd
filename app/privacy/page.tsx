@@ -25,8 +25,8 @@ export default function PrivacyPage() {
             <p>
               This website is operated by <strong>Gym Near Me Cyprus</strong> (the data controller).
               For privacy-related requests you can reach us at{' '}
-              <a href="mailto:info@gymnearme.cy" className="text-primary-blue hover:underline">
-                info@gymnearme.cy
+              <a href="mailto:gymnearmecyprus@gmail.com" className="text-primary-blue hover:underline">
+                gymnearmecyprus@gmail.com
               </a>
               .
             </p>
@@ -149,8 +149,8 @@ export default function PrivacyPage() {
             </ul>
             <p className="mt-3">
               To exercise these rights, contact us at{' '}
-              <a href="mailto:info@gymnearme.cy" className="text-primary-blue hover:underline">
-                info@gymnearme.cy
+              <a href="mailto:gymnearmecyprus@gmail.com" className="text-primary-blue hover:underline">
+                gymnearmecyprus@gmail.com
               </a>
               . We will respond within the time limits required by applicable law.
             </p>
@@ -190,8 +190,8 @@ export default function PrivacyPage() {
             <p>
               For any questions about this privacy policy or your personal data, please contact us
               at{' '}
-              <a href="mailto:info@gymnearme.cy" className="text-primary-blue hover:underline">
-                info@gymnearme.cy
+              <a href="mailto:gymnearmecyprus@gmail.com" className="text-primary-blue hover:underline">
+                gymnearmecyprus@gmail.com
               </a>
               .
             </p>

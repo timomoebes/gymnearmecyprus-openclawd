@@ -103,7 +103,7 @@ export function generateOrganizationSchema() {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Customer Service',
-      email: 'info@gymnearme.cy',
+      email: 'gymnearmecyprus@gmail.com',
     },
   };
 }

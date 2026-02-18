@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Send } from 'lucide-react';
 import { Button } from '@/components/shared/Button';
 
-const CONTACT_EMAIL = 'info@gymnearme.cy';
+const CONTACT_EMAIL = 'gymnearmecyprus@gmail.com';
 
 const SUBJECT_OPTIONS = [
   { value: '', label: 'Select a topic' },

@@ -44,8 +44,8 @@ export default function ImprintPage() {
               <strong>Contact:</strong>
               <br />
               Email:{' '}
-              <a href="mailto:info@gymnearme.cy" className="text-primary-blue hover:underline">
-                info@gymnearme.cy
+              <a href="mailto:gymnearmecyprus@gmail.com" className="text-primary-blue hover:underline">
+                gymnearmecyprus@gmail.com
               </a>
               <br />
               Website:{' '}
@@ -156,8 +156,8 @@ export default function ImprintPage() {
             <h2 className="text-xl font-semibold text-text-white mb-3">Contact</h2>
             <p>
               For questions regarding this imprint or legal matters, please contact us at{' '}
-              <a href="mailto:info@gymnearme.cy" className="text-primary-blue hover:underline">
-                info@gymnearme.cy
+              <a href="mailto:gymnearmecyprus@gmail.com" className="text-primary-blue hover:underline">
+                gymnearmecyprus@gmail.com
               </a>
               .
             </p>
