@@ -24,7 +24,7 @@ export function HomeBenefitsSection() {
       iconBg: 'bg-primary-purple/20',
       iconColor: 'text-primary-purple',
       title: '24/7 Access & Accurate Info',
-      text: 'Find 24 hour gyms and 24 7 gyms near me for flexible schedules. Get up-to-date opening hours, contact details, and locations—all verified and regularly updated.',
+      text: 'Find 24 hour gyms and 24/7 gyms near me for flexible schedules. Get up-to-date opening hours, contact details, and locations—all verified and regularly updated.',
     },
   ];
 

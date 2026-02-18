@@ -16,6 +16,17 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-18  
+  **Area**: `components`  
+  **Summary**: Update 24-hour gym text and limit homepage section to 3 gyms.  
+  **Rationale**: Standardize "24/7" formatting (not "24 7") across homepage sections. Change "Many gyms" to "Some gyms" for accuracy. Limit 24-hour gyms section to 3 gyms for better homepage layout.  
+  **Files changed**:
+  - `components/home/Home24HourSection.tsx` (text: "24 7 gyms" → "24/7 gyms"; `.slice(0, 6)` → `.slice(0, 3)`)
+  - `components/home/HomeBenefitsSection.tsx` (text: "24 7 gyms" → "24/7 gyms")
+  - `components/home/HomeGuideSection.tsx` (text: "24 7 gyms" → "24/7 gyms"; "Many fitness centers" → "Some fitness centers")
+  - `components/home/FAQSection.tsx` (text: "Many gyms" → "Some gyms"; "24 7 gyms" → "24/7 gyms")
+  **Manual test plan**: Homepage → verify 24-hour gyms section shows exactly 3 gyms; check all text uses "24/7" format (not "24 7"); verify "Some gyms" wording in FAQ and guide sections.
+
+- **Date**: 2026-02-18  
   **Area**: `components`, `app`  
   **Summary**: Use 🌄 emoji for Outdoor Gym specialty so it is distinct from Fitness/Gym (💪).  
   **Rationale**: Outdoor Gym previously used the same emoji as Fitness/Gym; the sunrise emoji (🌄) now differentiates outdoor gyms across specialty cards and specialty pages.  

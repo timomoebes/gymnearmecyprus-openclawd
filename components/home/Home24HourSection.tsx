@@ -22,13 +22,13 @@ export function Home24HourSection({ twentyFourHourGyms, cities }: Home24HourSect
             24 Hour Gyms Near Me in Cyprus
           </h2>
           <p className="text-lg text-text-light max-w-3xl mx-auto">
-            Need a 24/7 gym near me? Find gyms that are open 24 hours a day, 7 days a week. Perfect for early morning workouts, late-night training sessions, or flexible schedules. Search for 24 hour gyms and 24 7 gyms near you.
+            Need a 24/7 gym near me? Find gyms that are open 24 hours a day, 7 days a week. Perfect for early morning workouts, late-night training sessions, or flexible schedules. Search for 24 hour gyms and 24/7 gyms near you.
           </p>
         </div>
 
         {twentyFourHourGyms.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {twentyFourHourGyms.slice(0, 6).map((gym) => {
+            {twentyFourHourGyms.slice(0, 3).map((gym) => {
               const city = cities.find((c) => c.id === gym.cityId);
               return (
                 <Link

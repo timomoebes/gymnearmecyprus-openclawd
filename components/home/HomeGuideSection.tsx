@@ -90,7 +90,7 @@ export function HomeGuideSection() {
               </div>
               <div>
                 <h4 className="text-lg font-semibold text-text-white mb-2">24/7 Gyms</h4>
-                <p className="text-text-light text-sm">24 hour gyms and 24 7 gyms near me offer round-the-clock access. Perfect for early morning workouts, late-night training, or flexible schedules. Many fitness centers now offer 24/7 access options.</p>
+                <p className="text-text-light text-sm">24 hour gyms and 24/7 gyms near me offer round-the-clock access. Perfect for early morning workouts, late-night training, or flexible schedules. Some fitness centers now offer 24/7 access options.</p>
               </div>
             </div>
           </div>
