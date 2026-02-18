@@ -3,7 +3,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/shared/Button';
-import { useLocale } from '@/components/providers/LocaleProvider';
 import { Specialty } from '@/lib/types';
 
 interface SpecialtyCardGridProps {
@@ -27,7 +26,6 @@ export const SpecialtyCardGrid: React.FC<SpecialtyCardGridProps> = ({
   specialties,
   specialtyGymCounts,
 }) => {
-  const { t } = useLocale();
   const visibleSpecialties = specialties.filter(
     (s) => !['hotel-gym', 'women-only'].includes(s.slug)
   );
@@ -37,10 +35,10 @@ export const SpecialtyCardGrid: React.FC<SpecialtyCardGridProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 id="specialties-heading" className="text-3xl md:text-4xl font-bold text-text-white mb-4">
-            {t('specialties.heading')}
+            Fitness Specialties Available at Cyprus Gyms
           </h2>
           <p className="text-lg text-text-light max-w-3xl mx-auto">
-            {t('specialties.description')}
+            Explore gyms by specialty. Find the perfect training style that matches your fitness goals, from high-intensity workouts to mindful practices.
           </p>
         </div>
 
@@ -64,7 +62,7 @@ export const SpecialtyCardGrid: React.FC<SpecialtyCardGridProps> = ({
                   </h3>
                   <p className="text-text-muted text-sm">
                     {specialtyGymCounts[specialty.id] || 0}{' '}
-                    {(specialtyGymCounts[specialty.id] || 0) === 1 ? t('specialties.gym') : t('specialties.gyms')}
+                    {(specialtyGymCounts[specialty.id] || 0) === 1 ? 'gym' : 'gyms'}
                   </p>
                 </div>
               </Link>
@@ -76,7 +74,7 @@ export const SpecialtyCardGrid: React.FC<SpecialtyCardGridProps> = ({
         <div className="text-center">
           <Link href="/specialties">
             <Button variant="outline" size="lg">
-              {t('specialties.viewAllSpecialties')}
+              View All Specialties
               <span className="ml-2">→</span>
             </Button>
           </Link>

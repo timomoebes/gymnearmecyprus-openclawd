@@ -16,6 +16,19 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-16  
+  **Area**: `components`, `app`, `lib`  
+  **Summary**: Remove translation feature (Greek/Russian): app is now English-only.  
+  **Rationale**: Translation feature removed as native speaker resources are not available. All translation infrastructure (LocaleProvider, translations.ts, FlagIcons) deleted. All UI components now use hardcoded English text instead of translation keys. Language switcher removed from navigation (desktop dropdown and mobile flags).  
+  **Files changed**:
+  - `app/layout.tsx` (removed LocaleProvider wrapper)
+  - `components/layout/Navigation.tsx` (removed language switcher UI and all t() calls)
+  - `components/home/*.tsx` (all home components: removed useLocale(), hardcoded English text)
+  - `lib/i18n/translations.ts` (deleted)
+  - `components/providers/LocaleProvider.tsx` (deleted)
+  - `components/icons/FlagIcons.tsx` (deleted)
+  **Manual test plan**: Verify app loads in English only; no language switcher visible in nav; all text displays correctly in English; no console errors.
+
+- **Date**: 2026-02-16  
   **Area**: `components`, `app`  
   **Summary**: Gym listing photos: swipeable carousel gallery replaces vertical grid.  
   **Rationale**: Users requested a gallery-style swipe experience instead of photos stacked vertically. New GymPhotoGallery component shows one photo at a time with native touch swipe, dot indicators, and prev/next buttons. Uses CSS scroll-snap for smooth native scrolling on mobile and desktop.  

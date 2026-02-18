@@ -3,7 +3,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/shared/Button';
-import { useLocale } from '@/components/providers/LocaleProvider';
 import { City } from '@/lib/types';
 
 interface CityCardGridProps {
@@ -21,16 +20,15 @@ const CITY_EMOJIS: Record<string, string> = {
 };
 
 export const CityCardGrid: React.FC<CityCardGridProps> = ({ cities, cityGymCounts }) => {
-  const { t } = useLocale();
   return (
     <section id="cities" className="py-16 bg-background-dark-gray" aria-labelledby="cities-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 id="cities-heading" className="text-3xl md:text-4xl font-bold text-text-white mb-4">
-            {t('cities.heading')}
+            Gyms in Cyprus by City
           </h2>
           <p className="text-lg text-text-light max-w-3xl mx-auto">
-            {t('cities.description')}
+            Find gyms and fitness centers in your city. Our directory includes independent gyms, specialized training facilities, and comprehensive fitness centers offering various training programs and amenities.
           </p>
         </div>
 
@@ -58,12 +56,12 @@ export const CityCardGrid: React.FC<CityCardGridProps> = ({ cities, cityGymCount
 
                   {/* Stats */}
                   <div className="flex items-center gap-3 mb-4 text-text-muted text-sm">
-                    <span>{cityGymCounts[city.id] || 0} {(cityGymCounts[city.id] || 0) === 1 ? t('cities.gym') : t('cities.gyms')}</span>
+                    <span>{cityGymCounts[city.id] || 0} {(cityGymCounts[city.id] || 0) === 1 ? 'gym' : 'gyms'}</span>
                   </div>
 
                   {/* View Directory Link */}
                   <div className="flex items-center text-primary-blue font-medium text-sm group-hover:underline">
-                    <span>{t('cities.viewDirectory')}</span>
+                    <span>View Directory</span>
                     <span className="ml-1">→</span>
                   </div>
                 </div>
@@ -76,7 +74,7 @@ export const CityCardGrid: React.FC<CityCardGridProps> = ({ cities, cityGymCount
         <div className="text-center">
           <Link href="/cities">
             <Button variant="primary" size="lg">
-              {t('cities.viewAllCities')}
+              View All Cities
               <span className="ml-2">→</span>
             </Button>
           </Link>

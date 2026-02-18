@@ -3,7 +3,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { SearchBar } from '@/components/home/SearchBar';
-import { useLocale } from '@/components/providers/LocaleProvider';
 import type { Gym } from '@/lib/types';
 import type { City } from '@/lib/types';
 
@@ -13,7 +12,6 @@ interface HomeHeroProps {
 }
 
 export function HomeHero({ gyms, cities }: HomeHeroProps) {
-  const { t } = useLocale();
   const gymCount = gyms.length;
 
   // Dynamic subtitle with gym count
@@ -28,9 +26,9 @@ export function HomeHero({ gyms, cities }: HomeHeroProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center space-y-8">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-text-white leading-tight">
-            {t('hero.titleBefore')}
+            Find Gyms Near Me in{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-blue to-primary-purple animate-pulse">
-              {t('hero.titleCyprus')}
+              Cyprus
             </span>
           </h1>
           
@@ -47,14 +45,14 @@ export function HomeHero({ gyms, cities }: HomeHeroProps) {
               href="/cities"
               className="text-primary-blue hover:text-primary-blue-light transition-colors font-medium hover:underline underline-offset-2"
             >
-              {t('hero.exploreGyms')}
+              Explore Gyms
             </Link>
             <span className="mx-2" aria-hidden>·</span>
             <Link
               href="/add-gym"
               className="text-primary-blue hover:text-primary-blue-light transition-colors font-medium hover:underline underline-offset-2"
             >
-              {t('hero.listYourGymFree')}
+              List Your Gym Free
             </Link>
           </p>
         </div>

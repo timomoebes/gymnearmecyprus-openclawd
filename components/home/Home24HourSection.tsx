@@ -4,7 +4,6 @@ import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/shared/Button';
 import { Clock, MapPin, Star } from 'lucide-react';
-import { useLocale } from '@/components/providers/LocaleProvider';
 import { formatGymNameWithCity } from '@/lib/utils/gym-name';
 import type { Gym } from '@/lib/types';
 import type { City } from '@/lib/types';
@@ -15,17 +14,15 @@ interface Home24HourSectionProps {
 }
 
 export function Home24HourSection({ twentyFourHourGyms, cities }: Home24HourSectionProps) {
-  const { t } = useLocale();
-
   return (
     <section className="py-16 bg-background-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-text-white mb-4">
-            {t('gyms24.heading')}
+            24 Hour Gyms Near Me in Cyprus
           </h2>
           <p className="text-lg text-text-light max-w-3xl mx-auto">
-            {t('gyms24.description')}
+            Need a 24/7 gym near me? Find gyms that are open 24 hours a day, 7 days a week. Perfect for early morning workouts, late-night training sessions, or flexible schedules. Search for 24 hour gyms and 24 7 gyms near you.
           </p>
         </div>
 
@@ -55,7 +52,7 @@ export function Home24HourSection({ twentyFourHourGyms, cities }: Home24HourSect
                       {gym.rating}
                     </div>
                     <div className="text-text-muted">
-                      {gym.reviewCount} {t('gyms24.reviews')}
+                      {gym.reviewCount} reviews
                     </div>
                   </div>
                 </Link>
@@ -67,7 +64,7 @@ export function Home24HourSection({ twentyFourHourGyms, cities }: Home24HourSect
         <div className="text-center">
           <Link href="/gyms?amenity=24-hour">
             <Button variant="outline" size="lg">
-              {t('gyms24.viewAll')}
+              View All 24 Hour Gyms
               <span className="ml-2">→</span>
             </Button>
           </Link>
