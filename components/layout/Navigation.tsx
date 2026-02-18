@@ -78,9 +78,7 @@ export const Navigation: React.FC = () => {
     };
   }, [isCitiesDropdownOpen]);
 
-
   return (
-    <>
     <nav className="bg-[#1a1a2e] sticky top-0 z-50 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-40 py-2">
