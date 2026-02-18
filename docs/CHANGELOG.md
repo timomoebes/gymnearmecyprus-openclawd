@@ -16,6 +16,15 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-16  
+  **Area**: `components`, `app`  
+  **Summary**: Gym listing photos: swipeable carousel gallery replaces vertical grid.  
+  **Rationale**: Users requested a gallery-style swipe experience instead of photos stacked vertically. New GymPhotoGallery component shows one photo at a time with native touch swipe, dot indicators, and prev/next buttons. Uses CSS scroll-snap for smooth native scrolling on mobile and desktop.  
+  **Files changed**:
+  - `components/gym/GymPhotoGallery.tsx` (new: swipeable carousel with dots, prev/next, scroll-snap)
+  - `app/gyms/[slug]/page.tsx` (replace grid with GymPhotoGallery component)
+  **Manual test plan**: Open a gym listing with 2+ photos → see one large photo; swipe/drag horizontally to navigate; dots show current photo; prev/next buttons work on desktop; keyboard navigation works.
+
+- **Date**: 2026-02-16  
   **Area**: `lib`, `app`, `components`, `docs`  
   **Summary**: Photo limits aligned with pricing (free 3, featured 10); robust photo delete and gallery fix so all owner photos show on listing.  
   **Rationale**: Pricing states free = 3 photos, featured = 10. Code and docs now use 3 for free everywhere. Delete now matches URLs robustly and refetches after delete so the UI stays in sync. Gym listing page was sometimes showing only one owner photo; featured_images is now normalized to an array and displayImages is derived safely so all uploaded photos appear in the gallery.  

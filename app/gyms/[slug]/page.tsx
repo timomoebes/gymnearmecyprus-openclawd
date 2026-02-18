@@ -10,6 +10,7 @@ import { GymCard } from '@/components/gym/GymCard';
 import { Button } from '@/components/shared/Button';
 import { GymMapWithToggle } from '@/components/gym/GymMapWithToggle';
 import { GymOwnerBanner } from '@/components/gym/GymOwnerBanner';
+import { GymPhotoGallery } from '@/components/gym/GymPhotoGallery';
 import { getCurrentUserId } from '@/lib/supabase/server';
 import { generateLocalBusinessSchema, generateBreadcrumbSchema } from '@/lib/utils/schema';
 import { isGymOpenNow } from '@/lib/utils/opening-hours';
@@ -393,27 +394,8 @@ export default async function GymPage({ params }: GymPageProps) {
           <GymOwnerBanner gym={gym} currentUserId={currentUserId} />
         </div>
 
-        {/* Image Gallery: owner-uploaded photos (featuredImages) or legacy images */}
-        {displayImages.length > 0 && (
-          <section className="mb-12" aria-label="Gym photos">
-            <h2 className="sr-only">Photos</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {displayImages.slice(0, 6).map((imageUrl, index) => (
-                <div
-                  key={typeof imageUrl === 'string' ? imageUrl : `img-${index}`}
-                  className="relative aspect-[4/3] bg-surface-card rounded-card overflow-hidden"
-                >
-                  <img
-                    src={imageUrl}
-                    alt={`${gym.name} photo ${index + 1}`}
-                    className="w-full h-full object-cover"
-                    loading={index < 3 ? 'eager' : 'lazy'}
-                  />
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
+        {/* Image Gallery: swipeable carousel (owner-uploaded or legacy images) */}
+        <GymPhotoGallery images={displayImages} gymName={gym.name} maxImages={6} />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content */}
