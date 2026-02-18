@@ -226,6 +226,7 @@ export default async function SpecialtyPage({ params }: SpecialtyPageProps) {
                 'dance-group-fitness': '💃',
                 'strength-training': '🏋️',
                 'swimming-aquatics': '🏊',
+                'outdoor-gym': '🌄',
               };
               const emoji = specialtyEmojis[specialty.id] || '💪';
               return <div className="text-5xl">{emoji}</div>;

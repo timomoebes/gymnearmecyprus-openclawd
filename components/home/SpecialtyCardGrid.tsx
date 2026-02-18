@@ -20,6 +20,7 @@ const SPECIALTY_EMOJIS: Record<string, string> = {
   'dance-group-fitness': '💃',
   'strength-training': '🏋️',
   'swimming-aquatics': '🏊',
+  'outdoor-gym': '🌄',
 };
 
 export const SpecialtyCardGrid: React.FC<SpecialtyCardGridProps> = ({

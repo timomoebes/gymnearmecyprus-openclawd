@@ -33,6 +33,7 @@ export default async function SpecialtiesPage() {
     'dance-group-fitness': '💃',
     'strength-training': '🏋️',
     'swimming-aquatics': '🏊',
+    'outdoor-gym': '🌄',
   };
 
   return (

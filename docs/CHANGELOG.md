@@ -16,6 +16,16 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-18  
+  **Area**: `components`, `app`  
+  **Summary**: Use 🌄 emoji for Outdoor Gym specialty so it is distinct from Fitness/Gym (💪).  
+  **Rationale**: Outdoor Gym previously used the same emoji as Fitness/Gym; the sunrise emoji (🌄) now differentiates outdoor gyms across specialty cards and specialty pages.  
+  **Files changed**:
+  - `components/home/SpecialtyCardGrid.tsx` (SPECIALTY_EMOJIS: add `'outdoor-gym': '🌄'`)
+  - `app/specialties/page.tsx` (specialtyEmojis: add `'outdoor-gym': '🌄'`)
+  - `app/specialties/[specialty]/page.tsx` (specialtyEmojis: add `'outdoor-gym': '🌄'`)
+  **Manual test plan**: Homepage → specialty grid and /specialties → Outdoor Gym shows 🌄; Fitness/Gym shows 💪. Open /specialties/outdoor-gym → heading shows 🌄.
+
+- **Date**: 2026-02-18  
   **Area**: `components`, `app`, `lib`  
   **Summary**: Update contact email from info@gymnearme.cy to gymnearmecyprus@gmail.com site-wide.  
   **Rationale**: Single contact address used everywhere (footer, contact page, schema, form, privacy/terms/imprint) for consistency and correct mailto links.  
