@@ -1,11 +1,12 @@
-# Outdoor Gym Specialty and 24/7 Amenity Migration
+# Outdoor Gym Specialty Migration
 
 **Date:** 2026-02-18  
 **Status:** Ready to apply
 
 ## Overview
 
-This migration adds a new "Outdoor gym" specialty and "24/7" amenity, then updates three outdoor gym facilities to use these new classifications.
+This migration adds a new "Outdoor gym" specialty and updates three outdoor gym facilities to use this new classification.  
+Note: the separate \"24/7\" amenity that was briefly introduced has been removed in favor of the existing \"24/7 Access\" amenity.
 
 ## Changes Made
 
@@ -28,20 +29,14 @@ This migration will:
    - Slug: `outdoor-gym`
    - Icon: `activity`
 
-2. **Create "24/7" amenity** in the database
-   - Name: "24/7"
-   - Slug: `24-7`
-   - Icon: `clock`
-
-3. **Update three gym facilities:**
+2. **Update three gym facilities:**
    - Calisthenics Area Nicosia (`calisthenics-area-nicosia`)
    - Municipality Gym Paphos (`municipality-gym-paphos`)
    - Outdoor Calisthenics Workout Spot Larnaca (`outdoor-calisthenics-workout-spot-larnaca`)
 
-4. **For each of the three gyms:**
+3. **For each of the three gyms:**
    - Remove "Fitness/Gym" specialty
    - Add "Outdoor gym" specialty
-   - Add "24/7" amenity
 
 ## How to Apply the Migration
 
@@ -68,11 +63,6 @@ After running the migration, verify the changes using these queries in the Supab
 ### Check specialty was created:
 ```sql
 SELECT id, name, slug FROM specialties WHERE slug = 'outdoor-gym';
-```
-
-### Check amenity was created:
-```sql
-SELECT id, name, slug FROM amenities WHERE slug = '24-7';
 ```
 
 ### Check gym specialties:
@@ -117,24 +107,20 @@ After migration:
 
 1. **Calisthenics Area Nicosia** should have:
    - Specialty: "Outdoor Gym" ✅
-   - Amenity: "24/7" ✅
    - No longer has "Fitness/Gym" specialty ✅
 
 2. **Municipality Gym Paphos** should have:
    - Specialty: "Outdoor Gym" ✅
-   - Amenity: "24/7" ✅
    - No longer has "Fitness/Gym" specialty ✅
 
 3. **Outdoor Calisthenics Workout Spot Larnaca** should have:
    - Specialty: "Outdoor Gym" ✅
-   - Amenity: "24/7" ✅
    - No longer has "Fitness/Gym" specialty ✅
 
 ## Frontend Impact
 
 - The "Outdoor gym" specialty will appear in specialty filters and specialty pages
-- The "24/7" amenity will work with existing 24-hour gym filtering (the search utility already handles "24/7" format)
-- The three updated gyms will appear in the "24 Hour Gyms Near Me" section on the homepage
+- The three updated gyms will appear in the "24 Hour Gyms Near Me" section on the homepage (via the existing "24/7 Access" amenity)
 - The three updated gyms will appear when filtering by "Outdoor gym" specialty
 
 ## Notes

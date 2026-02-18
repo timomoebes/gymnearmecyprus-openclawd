@@ -16,15 +16,15 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-18  
-  **Area**: `lib`, `scripts`, `docs`  
-  **Summary**: Add "Outdoor gym" specialty and "24/7" amenity; update three outdoor gym facilities to use new classifications.  
-  **Rationale**: Three facilities in the "24 hour gyms near me" section are outdoor gyms. Created a dedicated "Outdoor gym" specialty and "24/7" amenity to better categorize these facilities. Removed "Fitness/Gym" specialty from these gyms since "Outdoor gym" is more specific.  
+  **Area**: `lib`, `scripts`, `docs`, `supabase`  
+  **Summary**: Finalize Outdoor Gym specialty and remove duplicate "24/7" amenity in favor of existing "24/7 Access".  
+  **Rationale**: To avoid duplicate 24/7 flags, the temporary "24/7" amenity (slug `24-7`) was removed from the database and from migration scripts/docs. The existing "24/7 Access" amenity continues to represent 24-hour opening, while "Outdoor Gym" remains as the dedicated specialty for outdoor facilities.  
   **Files changed**:
-  - `lib/data/specialties.ts` (added "Outdoor gym" specialty definition)
-  - `scripts/add-outdoor-gym-specialty-and-24-7-amenity.ts` (new: TypeScript migration script)
-  - `scripts/add-outdoor-gym-specialty-and-24-7-amenity.sql` (new: SQL migration file)
-  - `docs/OUTDOOR_GYM_SPECIALTY_MIGRATION.md` (new: migration documentation)
-  **Manual test plan**: Verify "Outdoor gym" specialty appears in specialty filters and specialty pages. Check that Calisthenics Area Nicosia, Municipality Gym Paphos, and Outdoor Calisthenics Workout Spot Larnaca have "Outdoor Gym" specialty and "24/7" amenity, and no longer have "Fitness/Gym" specialty. Confirm these three gyms appear in the "24 Hour Gyms Near Me" section on homepage.
+  - `scripts/remove-24-7-amenity.ts` (new: cleanup script to delete the "24/7" amenity and its gym assignments, keeping "24/7 Access")  
+  - `scripts/add-outdoor-gym-specialty-and-24-7-amenity.ts` (updated: now only manages Outdoor Gym specialty, no longer creates or assigns a separate "24/7" amenity)  
+  - `scripts/add-outdoor-gym-specialty-and-24-7-amenity.sql` (updated: only adds Outdoor Gym specialty and updates specialties for the three outdoor gyms)  
+  - `docs/OUTDOOR_GYM_SPECIALTY_MIGRATION.md` (updated: documents Outdoor Gym specialty only; notes that "24/7" amenity was removed in favor of "24/7 Access")  
+  **Manual test plan**: Run `npx tsx scripts/remove-24-7-amenity.ts` and confirm the "24/7" amenity (slug `24-7`) no longer exists in `amenities` and `gym_amenities`. Check that "24/7 Access" still exists and that Calisthenics Area Nicosia, Municipality Gym Paphos, and Outdoor Calisthenics Workout Spot Larnaca have the "Outdoor Gym" specialty and only the "24/7 Access" amenity for 24-hour status.
 
 - **Date**: 2026-02-16  
   **Area**: `components`, `app`, `lib`  
