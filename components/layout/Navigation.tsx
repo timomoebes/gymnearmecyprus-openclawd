@@ -122,7 +122,7 @@ export const Navigation: React.FC = () => {
                     className="block px-4 py-2 text-sm text-blue-600 font-medium hover:bg-gray-50 transition-colors"
                     onClick={() => setIsCitiesDropdownOpen(false)}
                   >
-                    {t('nav.viewAllCities')}
+                    View All Cities →
                   </Link>
                   
                   {/* Divider */}
@@ -151,19 +151,19 @@ export const Navigation: React.FC = () => {
               href="/advertise-with-us"
               className="text-gray-200 hover:text-white transition-colors text-sm font-medium"
             >
-              {t('nav.advertiseWithUs')}
+              Advertise With Us
             </Link>
             <Link
               href="/about"
               className="text-gray-200 hover:text-white transition-colors text-sm font-medium"
             >
-              {t('nav.aboutUs')}
+              About Us
             </Link>
             <Link
               href="/contact"
               className="text-gray-200 hover:text-white transition-colors text-sm font-medium"
             >
-              {t('nav.contact')}
+              Contact
             </Link>
             
             {/* + Add Your Gym Button - Next to Contact */}
