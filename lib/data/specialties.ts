@@ -86,6 +86,15 @@ export const specialties: Specialty[] = [
     gymCount: 0,
     relatedSpecialties: ['fitness-gym', 'personal-training'],
   },
+  {
+    id: 'outdoor-gym',
+    name: 'Outdoor Gym',
+    slug: 'outdoor-gym',
+    description: 'Outdoor fitness facilities and calisthenics parks offering free or public access to exercise equipment. Perfect for bodyweight training, calisthenics, and outdoor workouts.',
+    icon: 'activity',
+    gymCount: 0,
+    relatedSpecialties: ['fitness-gym', 'strength-training'],
+  },
 ];
 
 // Helper function to get specialty by slug

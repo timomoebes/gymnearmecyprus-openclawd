@@ -15,6 +15,17 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 
 ## Unreleased
 
+- **Date**: 2026-02-18  
+  **Area**: `lib`, `scripts`, `docs`  
+  **Summary**: Add "Outdoor gym" specialty and "24/7" amenity; update three outdoor gym facilities to use new classifications.  
+  **Rationale**: Three facilities in the "24 hour gyms near me" section are outdoor gyms. Created a dedicated "Outdoor gym" specialty and "24/7" amenity to better categorize these facilities. Removed "Fitness/Gym" specialty from these gyms since "Outdoor gym" is more specific.  
+  **Files changed**:
+  - `lib/data/specialties.ts` (added "Outdoor gym" specialty definition)
+  - `scripts/add-outdoor-gym-specialty-and-24-7-amenity.ts` (new: TypeScript migration script)
+  - `scripts/add-outdoor-gym-specialty-and-24-7-amenity.sql` (new: SQL migration file)
+  - `docs/OUTDOOR_GYM_SPECIALTY_MIGRATION.md` (new: migration documentation)
+  **Manual test plan**: Verify "Outdoor gym" specialty appears in specialty filters and specialty pages. Check that Calisthenics Area Nicosia, Municipality Gym Paphos, and Outdoor Calisthenics Workout Spot Larnaca have "Outdoor Gym" specialty and "24/7" amenity, and no longer have "Fitness/Gym" specialty. Confirm these three gyms appear in the "24 Hour Gyms Near Me" section on homepage.
+
 - **Date**: 2026-02-16  
   **Area**: `components`, `app`, `lib`  
   **Summary**: Remove translation feature (Greek/Russian): app is now English-only.  
