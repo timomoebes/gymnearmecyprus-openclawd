@@ -15,6 +15,15 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 
 ## Unreleased
 
+- **Date**: 2026-02-19  
+  **Area**: `lib`, `app`  
+  **Summary**: Show Lucide icons for gym amenities on the gym detail page instead of blue dots.  
+  **Rationale**: Users requested emojis or modern icons for amenities in gym listings. The app already uses Lucide React; a central amenity-to-icon mapping (Cafe→Coffee, Showers→Droplets, 24/7 Access→Clock, etc.) with fallback for unknown amenities keeps the UI consistent and future-proof.  
+  **Files changed**:
+  - `lib/utils/amenity-icons.ts` (new: getAmenityIcon mapping for all known amenities + fallback)
+  - `app/gyms/[slug]/page.tsx` (Amenities section: icon + label per amenity, replace dot)
+  **Manual test plan**: Open any gym detail page → scroll to Specialties & Amenities → confirm each amenity shows a small blue icon and label (e.g. Cafe with coffee icon, Showers with droplets). Open a gym with 24/7 Access → confirm clock icon. Any amenity not in the map should show the fallback (circle-check) icon.
+
 - **Date**: 2026-02-18  
   **Area**: `components`  
   **Summary**: Update 24-hour gym text and limit homepage section to 3 gyms.  

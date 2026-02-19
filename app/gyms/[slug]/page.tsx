@@ -16,6 +16,7 @@ import { generateLocalBusinessSchema, generateBreadcrumbSchema } from '@/lib/uti
 import { isGymOpenNow } from '@/lib/utils/opening-hours';
 import { shouldAppendCityName, formatGymNameWithCity } from '@/lib/utils/gym-name';
 import { sortSpecialties, sortAmenities } from '@/lib/utils/sort-specialties-amenities';
+import { getAmenityIcon } from '@/lib/utils/amenity-icons';
 import { generateGymMetaDescription } from '@/lib/utils/meta-descriptions';
 import { getPrimarySpecialty, formatSpecialtyHeading, getSpecialtySlug } from '@/lib/utils/specialty-heading';
 
@@ -418,15 +419,18 @@ export default async function GymPage({ params }: GymPageProps) {
               </div>
               <h2 className="text-2xl sm:text-3xl font-bold text-text-white mb-8">Amenities</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                {sortAmenities(gym.amenities).map((amenity) => (
-                  <div
-                    key={amenity}
-                    className="flex items-center text-text-light text-sm"
-                  >
-                    <span className="w-2 h-2 bg-primary-blue rounded-full mr-2" />
-                    {amenity}
-                  </div>
-                ))}
+                {sortAmenities(gym.amenities).map((amenity) => {
+                  const Icon = getAmenityIcon(amenity);
+                  return (
+                    <div
+                      key={amenity}
+                      className="flex items-center gap-2 text-text-light text-sm"
+                    >
+                      <Icon className="w-4 h-4 shrink-0 text-primary-blue" aria-hidden />
+                      <span>{amenity}</span>
+                    </div>
+                  );
+                })}
               </div>
             </section>
 
