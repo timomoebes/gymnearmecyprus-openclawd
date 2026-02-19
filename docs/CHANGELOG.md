@@ -16,6 +16,19 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-19  
+  **Area**: `scripts`, `data`, DB  
+  **Summary**: Amenity data enrichment for gyms with no amenities: heuristic script, CSV template, and apply script. Wrote 254 gym_amenities rows so 88 of 90 previously empty gyms now have amenities.  
+  **Rationale**: 90 gyms had no amenities; heuristics (from specialties and opening hours) assign Group Classes, Cardio Equipment, Showers, Toilets, Locker Room where applicable. Remaining 2 gyms (Crossfit Limassol, Personal Trainer - Paphos Kissonerga & Peyia) can be filled via CSV.  
+  **Files changed**:
+  - `scripts/assign-amenities-heuristics.ts` (new: heuristics + --dry-run)
+  - `scripts/export-gyms-no-amenities-template.ts` (new: export CSV template)
+  - `scripts/apply-amenities-from-csv.ts` (new: apply enriched CSV to DB)
+  - `scripts/list-gyms-with-no-amenities.ts` (existing: used for verification)
+  - `data/enrich/gyms-no-amenities-template.csv` (generated template)
+  - `data/enrich/README-amenities-template.md` (instructions + allowed amenity names)
+  **Manual test plan**: Run `npx tsx scripts/list-gyms-with-no-amenities.ts` → expect 2 gyms. Open a few gym detail pages that were in the 90 (e.g. Piero Judo Academy, Gabriel Fitness & Boxing Gym) → Amenities section shows icons and labels.
+
+- **Date**: 2026-02-19  
   **Area**: `lib`, `app`  
   **Summary**: Show Lucide icons for gym amenities on the gym detail page instead of blue dots.  
   **Rationale**: Users requested emojis or modern icons for amenities in gym listings. The app already uses Lucide React; a central amenity-to-icon mapping (Cafe→Coffee, Showers→Droplets, 24/7 Access→Clock, etc.) with fallback for unknown amenities keeps the UI consistent and future-proof.  
