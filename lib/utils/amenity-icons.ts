@@ -16,12 +16,12 @@ import {
   Baby,
   AirVent,
   Clock,
-  CircleCheck,
+  CheckCircle,
 } from 'lucide-react';
 
 /**
  * Map amenity name (as stored in DB / displayed) to a Lucide icon.
- * Unknown amenities fall back to CircleCheck.
+ * Unknown amenities fall back to CheckCircle.
  */
 const AMENITY_ICONS: Record<string, LucideIcon> = {
   'Cafe': Coffee,
@@ -44,8 +44,8 @@ const AMENITY_ICONS: Record<string, LucideIcon> = {
 
 /**
  * Returns the Lucide icon component for an amenity name.
- * Uses CircleCheck for any amenity not in the map (e.g. future DB entries).
+ * Uses CheckCircle for any amenity not in the map (e.g. future DB entries).
  */
 export function getAmenityIcon(amenityName: string): LucideIcon {
-  return AMENITY_ICONS[amenityName] ?? CircleCheck;
+  return AMENITY_ICONS[amenityName] ?? CheckCircle;
 }
