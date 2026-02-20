@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { Clock, X } from 'lucide-react';
 import { getAllGyms, cities, specialties } from '@/lib/data';
 import { searchGyms } from '@/lib/utils/search';
@@ -110,7 +111,22 @@ export default async function GymsPage({ searchParams }: GymsPageProps) {
           <p className="text-xl text-text-light max-w-3xl mb-4">
             {pageDescription}
           </p>
-          
+
+          {/* Quick filter: 24/7 Access (show when not already filtered by 24/7) */}
+          {!searchParams.amenity?.toLowerCase().includes('24') && (
+            <div className="flex flex-wrap items-center gap-3 mb-4">
+              <span className="text-text-muted">Quick filters:</span>
+              <Link
+                href={`/gyms${buildGymsQueryString({ ...searchParams, amenity: '24-hour' })}`}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-card border border-surface-lighter text-text-white hover:bg-surface-lighter hover:border-primary-blue transition-colors"
+                aria-label="Show only 24/7 Access gyms"
+              >
+                <Clock className="w-4 h-4 text-primary-blue" />
+                24/7 Access
+              </Link>
+            </div>
+          )}
+
           {/* Active Filters Display */}
           {activeFilters.length > 0 && (
             <div className="flex flex-wrap items-center gap-3 mb-4">
@@ -206,7 +222,14 @@ export default async function GymsPage({ searchParams }: GymsPageProps) {
   );
 }
 
-// Helper function to build query string without a specific param
+/** Build gyms page query string from params (for links that add or preserve filters). */
+function buildGymsQueryString(params: Record<string, string | undefined>): string {
+  const entries = Object.entries(params).filter(([, value]) => value != null && value !== '');
+  if (entries.length === 0) return '';
+  return '?' + entries.map(([key, value]) => `${key}=${encodeURIComponent(value ?? '')}`).join('&');
+}
+
+/** Build query string without a specific param (for remove-filter links). */
 function buildQueryString(params: Record<string, string | undefined>, excludeKey: string): string {
   const filtered = Object.entries(params).filter(([key]) => key !== excludeKey);
   if (filtered.length === 0) return '';

@@ -19,10 +19,10 @@ export function Home24HourSection({ twentyFourHourGyms, cities }: Home24HourSect
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-text-white mb-4">
-            24 Hour Gyms Near Me in Cyprus
+            Gyms Open 24/7
           </h2>
           <p className="text-lg text-text-light max-w-3xl mx-auto">
-            Need a 24/7 gym near me? Find gyms that are open 24 hours a day, 7 days a week. Perfect for early morning workouts, late-night training sessions, or flexible schedules. Search for 24 hour gyms and 24/7 gyms near you.
+            Early bird or night owl? Several gyms in Cyprus are open around the clock. Use the filter below or browse the list to find one that fits your schedule.
           </p>
         </div>
 

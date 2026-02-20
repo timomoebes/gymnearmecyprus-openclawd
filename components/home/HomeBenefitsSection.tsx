@@ -9,22 +9,22 @@ export function HomeBenefitsSection() {
       icon: MapPin,
       iconBg: 'bg-primary-blue/20',
       iconColor: 'text-primary-blue',
-      title: 'Find Gyms Near Me & Save Time',
-      text: 'Search for gyms close to me, nearby gyms, and fitness centers in your area. No more endless searches for "gym near me"—find amenities, hours, and specialties in one place.',
+      title: 'Find the Right Gym Fast',
+      text: 'Search by location or browse by city. See amenities, hours, and specialties without hopping between sites.',
     },
     {
       icon: Star,
       iconBg: 'bg-secondary-green/20',
       iconColor: 'text-secondary-green',
-      title: 'Compare Ratings & Discover Specialties',
-      text: 'Read authentic reviews and compare ratings from real members. Find gyms by specialty: CrossFit, yoga, pilates, MMA, fitness studios, and health clubs.',
+      title: 'Compare Ratings & Specialties',
+      text: 'Read reviews and compare ratings. Filter by CrossFit, yoga, pilates, MMA, or general fitness.',
     },
     {
       icon: Clock,
       iconBg: 'bg-primary-purple/20',
       iconColor: 'text-primary-purple',
-      title: '24/7 Access & Accurate Info',
-      text: 'Find 24 hour gyms and 24/7 gyms near me for flexible schedules. Get up-to-date opening hours, contact details, and locations—all verified and regularly updated.',
+      title: '24/7 Access & Up-to-Date Info',
+      text: 'See which gyms are open around the clock. We keep opening hours and contact details updated.',
     },
   ];
 
@@ -33,10 +33,10 @@ export function HomeBenefitsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-text-white mb-4">
-            Why Use Gym Near Me Cyprus to Find Your Perfect Gym
+            Compare Gyms Without the Guesswork
           </h2>
           <p className="text-lg text-text-light max-w-3xl mx-auto">
-            Discover why thousands of people use our directory to find gyms near me, fitness centers, and health clubs across Cyprus.
+            See fitness centers and gyms across Cyprus in one place—ratings, opening hours, and what each offers.
           </p>
         </div>
 

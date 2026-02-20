@@ -62,8 +62,6 @@ Find your gym. Commit to the process. Let the Mediterranean energy accelerate yo
 
 ---
 
----
-
 ## Discover Cyprus's Best Gyms Across All Cities
 
 Looking beyond Ayia Napa? **[View the absolute top-rated gyms across all of Cyprus here](/guides/6-best-gyms-cyprus)** — our flagship City Champions guide showcases the #1 elite gym in each major region, strategically selected for geographic diversity and verified results.

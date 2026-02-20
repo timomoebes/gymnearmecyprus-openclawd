@@ -19,9 +19,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'Gym Near Me Cyprus | Find the Best Gyms in Cyprus',
-  description: 'The #1 fitness directory for the best gyms across Cyprus. Browse by city, specialty, ratings, and reviews. List your gym for free.',
-  keywords: 'gyms cyprus, fitness centers cyprus, limassol gyms, nicosia gyms, paphos gyms',
+  title: 'Gym Near Me Cyprus | Gyms & Fitness Directory',
+  description: 'Gym directory for Cyprus—find and compare gyms, fitness centers, and 24/7 gyms by city or specialty.',
+  keywords: 'gyms cyprus, fitness centers cyprus, gym limassol, gym nicosia, gym paphos',
 };
 
 export const viewport = { width: 'device-width', initialScale: 1 };

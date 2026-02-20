@@ -8,8 +8,8 @@ import { Metadata } from 'next';
 import { ChevronRight, BookOpen } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Expert Cyprus Fitness Guides | Gym Near Me',
-  description: 'Discover the best gyms, training tips, and fitness locations in Cyprus with our expert-curated guides.',
+  title: 'Best Gyms in Cyprus – City & Fitness Guides | Gym Near Me',
+  description: 'Expert guides to the best gyms in Cyprus by city. Compare fitness centers, 24/7 gyms, and find your gym—Limassol, Nicosia, Paphos, Larnaca.',
 };
 
 const GUIDES_PATH = path.join(process.cwd(), 'docs/guides');

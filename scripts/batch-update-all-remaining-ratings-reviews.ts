@@ -1,10 +1,9 @@
 /**
- * Batch Update All Remaining Gyms - Rating & Review Count
- * 
- * Updates rating and review_count for all gyms that haven't been updated today.
- * Excludes: Kings Brazilian Jiu Jitsu, Komanetsi Fitness Center, 
- *           Kpk Performance & Rehabilitation Center, Legacy - Chris Antoniou Training
- * 
+ * Batch Update All Gyms - Rating & Review Count
+ *
+ * Fetches rating and review_count from Google Places API and updates all gyms
+ * in the database. Run periodically to keep gym data fresh.
+ *
  * Usage:
  *   npx tsx scripts/batch-update-all-remaining-ratings-reviews.ts
  */
@@ -17,13 +16,8 @@ dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
 
 const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY || '';
 
-// Gyms already updated today
-const ALREADY_UPDATED = [
-  'Kings Brazilian Jiu Jitsu',
-  'Komanetsi Fitness Center',
-  'Kpk Performance & Rehabilitation Center',
-  'Legacy - Chris Antoniou Training'
-];
+// Set to gym names to skip (e.g. if updated separately). Empty = update all gyms.
+const EXCLUDE_GYM_NAMES: string[] = [];
 
 async function findPlaceId(gymName: string, address: string, cityName: string): Promise<string | null> {
   const query = `${gymName}, ${address}, ${cityName}, Cyprus`;
@@ -73,7 +67,7 @@ async function getPlaceDetails(placeId: string): Promise<{ rating: number | null
 
 async function batchUpdateAllRemaining() {
   console.log('='.repeat(80));
-  console.log('BATCH UPDATE ALL REMAINING GYMS - Rating & Review Count');
+  console.log('BATCH UPDATE ALL GYMS - Rating & Review Count (Google Places API)');
   console.log('='.repeat(80));
   console.log();
 
@@ -82,8 +76,8 @@ async function batchUpdateAllRemaining() {
     return;
   }
 
-  // Fetch all gyms except already updated ones
-  console.log('📋 Fetching all gyms (excluding already updated)...');
+  // Fetch all gyms
+  console.log('📋 Fetching all gyms...');
   const { data: allGyms, error: gymsError } = await supabaseAdmin
     .from('gyms')
     .select('id, name, address, rating, review_count, city_id, cities!inner(name)')
@@ -94,13 +88,14 @@ async function batchUpdateAllRemaining() {
     return;
   }
 
-  // Filter out already updated gyms
   const gymsToUpdate = (allGyms || []).filter(
-    gym => !ALREADY_UPDATED.some(updatedName => gym.name.includes(updatedName))
+    gym => !EXCLUDE_GYM_NAMES.some(name => gym.name.includes(name))
   );
 
   console.log(`✅ Found ${gymsToUpdate.length} gyms to update`);
-  console.log(`   Excluded ${ALREADY_UPDATED.length} already updated today`);
+  if (EXCLUDE_GYM_NAMES.length > 0) {
+    console.log(`   Excluded ${EXCLUDE_GYM_NAMES.length} by name`);
+  }
   console.log();
 
   console.log('🌐 Processing gyms with Google Places API...');

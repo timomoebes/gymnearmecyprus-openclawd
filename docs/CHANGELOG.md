@@ -15,6 +15,48 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 
 ## Unreleased
 
+- **Date**: 2026-02-20  
+  **Area**: `components/shared`, `lib/utils`  
+  **Summary**: Sort and filter unified in one dropdown: "Featured only" and "24/7 Access only" are now options in the left dropdown (with Featured First, Open now, Highest Rated, Most Reviews, Name A–Z). Separate "Featured Only" and "24/7 Access" buttons removed. Batch script now updates all gyms by default.  
+  **Rationale**: User requested filters in the dropdown instead of separate buttons for a cleaner filter bar. Single dropdown drives both sort and quick filters.  
+  **Files changed**:
+  - `components/shared/FilterSort.tsx` (single dropdown with SortOrFilterValue; removed Button blocks)
+  - `components/shared/GymListPageClient.tsx` (sortOrFilterValue, handleSortOrFilterChange)
+  - `lib/utils/search.ts` (has24_7Access helper)
+  - `scripts/batch-update-all-remaining-ratings-reviews.ts` (EXCLUDE_GYM_NAMES = [], update-all by default)
+  **Manual test plan**: Open `/cities/limassol` or `/gyms` → left dropdown shows "Featured First", "Open now", "Highest Rated", "Most Reviews", "Name (A-Z)", "Featured only", "24/7 Access only". Select "24/7 Access only" → list shows only 24/7 gyms. Select "Featured only" → only featured. Select a sort option → filters clear and list sorts. No separate filter buttons.
+
+- **Date**: 2026-02-20  
+  **Area**: `app`, `components/home`, `lib/data`, `app/sitemap.ts`  
+  **Summary**: SEO follow-up and trust-section refresh: keyword-rich hero/benefits copy and meta descriptions, new "gym directory Cyprus" FAQ, prominent trust bar and trust section with "Join thousands finding their gym in Cyprus", Cities stat, gradient and card styling; sitemap extended with about, contact, guides, imprint, terms, privacy.  
+  **Rationale**: Align with SEO_INDEX_ANALYSIS and plan: add target phrases without stuffing, improve meta descriptions (homepage, layout, guides), strengthen trust signals and make stats more visually prominent.  
+  **Files changed**:
+  - `app/page.tsx` (meta description, pass cityCount to trust components)
+  - `app/layout.tsx` (default meta title/description)
+  - `app/guides/page.tsx` (meta title/description)
+  - `components/home/HomeHero.tsx` (subtitle: find gyms near you, gyms in Cyprus)
+  - `components/home/HomeBenefitsSection.tsx` (subhead: fitness centers and gyms across Cyprus)
+  - `lib/data/faq.ts` (FAQ "Is there a gym directory for Cyprus?")
+  - `components/home/HeroTrustBar.tsx` (trust line, city count, gradient, larger numbers)
+  - `components/home/HomeTrustSection.tsx` (trust line, 4 stats with icons, gradient background, card style)
+  - `app/sitemap.ts` (about, contact, guides, imprint, terms, privacy)
+  **Manual test plan**: Open `/` → hero subtitle and benefits subhead show keyword phrases; trust bar shows "Join thousands…" and Cities; bottom trust section has 4 cards with icons and same line. View source: homepage meta description mentions gym directory. Fetch `/sitemap.xml` → includes /about, /contact, /guides, /imprint, /terms, /privacy. FAQ section shows 5 questions including gym directory.
+
+- **Date**: 2026-02-20  
+  **Area**: `app`, `components/home`, `lib/data`  
+  **Summary**: Landing page SEO and copy improvements: humanized headlines and body copy, tightened meta title/description/keywords, single FAQ source, and shorter section subheads.  
+  **Rationale**: Reduce keyword stuffing and generic phrasing; keep one primary intent per section and natural language for readability and trust while retaining SEO value.  
+  **Files changed**:
+  - `app/page.tsx` (metadata: title, description, keywords)
+  - `components/home/HomeHero.tsx` (H1, subtitle)
+  - `components/home/HomeBenefitsSection.tsx` (section heading, subhead, 3 benefit cards)
+  - `components/home/Home24HourSection.tsx` (heading, intro)
+  - `components/home/HomeGuideSection.tsx` (heading, intro, tips, gym types, pro tip)
+  - `lib/data/faq.ts` (shortened FAQ answers; single source for schema + UI)
+  - `components/home/FAQSection.tsx` (import FAQ_DATA from lib, heading "Common Questions")
+  - `components/home/CityCardGrid.tsx`, `components/home/SpecialtyCardGrid.tsx` (subheads)
+  **Manual test plan**: Open `/` → confirm hero "Find Your Gym in Cyprus", benefits "Compare Gyms Without the Guesswork", 24/7 "Gyms Open 24/7", guide "How to Choose a Gym", FAQ "Common Questions". View page source → meta title/description updated. No duplicate FAQ definitions in codebase.
+
 - **Date**: 2026-02-19  
   **Area**: `scripts`, `data`, DB  
   **Summary**: Amenity data enrichment for gyms with no amenities: heuristic script, CSV template, and apply script. Wrote 254 gym_amenities rows so 88 of 90 previously empty gyms now have amenities.  

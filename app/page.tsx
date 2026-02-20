@@ -21,13 +21,13 @@ export async function generateMetadata(): Promise<Metadata> {
   const allGyms = await getAllGyms();
   const totalGyms = allGyms.length;
   
-  const title = `${totalGyms}+ Best Gyms in Cyprus | Find Top Fitness Centers & Health Clubs`;
-  const description = `Find the best gyms in Cyprus. Compare ${totalGyms}+ verified fitness centers, health clubs, and 24-hour facilities. Ratings, reviews, and amenities included. Find your perfect workout space today.`;
+  const title = `Best Gyms in Cyprus — Compare ${totalGyms}+ Gyms by City & Style`;
+  const description = `Free gym directory for Cyprus. Compare gyms, fitness centers, and 24/7 gyms—ratings, hours & amenities by city or specialty.`;
 
   return {
     title,
     description,
-    keywords: 'gym near me, fitness near me, gym close to me, nearby gym, fitness center, health club, fitness club, gym cyprus, 24 hour gym near me, 24 7 gym near me, gym limassol, gym nicosia, gym larnaca, gym paphos',
+    keywords: 'gym cyprus, gym limassol, gym nicosia, gym larnaca, gym paphos, 24 hour gym cyprus',
     openGraph: {
       title,
       description,
@@ -105,7 +105,7 @@ export default async function HomePage() {
       />
       <div className="min-h-screen">
       <HomeHero gyms={allGyms} cities={cities} />
-      <HeroTrustBar totalGyms={totalGyms} formattedAverageRating={formattedAverageRating} />
+      <HeroTrustBar totalGyms={totalGyms} formattedAverageRating={formattedAverageRating} cityCount={cities.length} />
 
       {/* City Cards Grid */}
       <CityCardGrid cities={cities} cityGymCounts={cityGymCounts} />
@@ -124,7 +124,7 @@ export default async function HomePage() {
 
       <FAQSection />
 
-      <HomeTrustSection totalGyms={totalGyms} formattedAverageRating={formattedAverageRating} />
+      <HomeTrustSection totalGyms={totalGyms} formattedAverageRating={formattedAverageRating} cityCount={cities.length} />
     </div>
     </>
   );

@@ -586,17 +586,19 @@ export default async function GymPage({ params }: GymPageProps) {
                         }>).map((plan, index) => (
                           <div
                             key={index}
-                            className="flex items-center justify-between py-2 border-b border-surface-lighter last:border-0"
+                            className="flex items-center justify-between gap-4 py-2 border-b border-surface-lighter last:border-0"
                           >
-                            <span className="text-text-light font-medium">
-                              {plan.name}
+                            <div className="min-w-0">
+                              <div className="text-text-light font-medium">
+                                {plan.name}
+                              </div>
                               {plan.validity && (
-                                <span className="text-text-muted text-sm ml-2">
+                                <div className="text-text-muted text-sm mt-0.5">
                                   ({plan.validity})
-                                </span>
+                                </div>
                               )}
-                            </span>
-                            <span className="text-text-white font-semibold">
+                            </div>
+                            <span className="text-text-white font-semibold shrink-0">
                               {plan.currency === 'EUR' ? '€' : plan.currency || '€'}
                               {plan.price}
                             </span>

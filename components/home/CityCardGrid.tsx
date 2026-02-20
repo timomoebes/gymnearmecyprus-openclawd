@@ -28,7 +28,7 @@ export const CityCardGrid: React.FC<CityCardGridProps> = ({ cities, cityGymCount
             Gyms in Cyprus by City
           </h2>
           <p className="text-lg text-text-light max-w-3xl mx-auto">
-            Find gyms and fitness centers in your city. Our directory includes independent gyms, specialized training facilities, and comprehensive fitness centers offering various training programs and amenities.
+            Pick your city to see gyms, opening hours, and reviews.
           </p>
         </div>
 

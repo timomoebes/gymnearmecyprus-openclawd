@@ -50,8 +50,6 @@ Bigger isn't always better. Better is better. And Paralimni's best gyms are genu
 
 ---
 
----
-
 ## Discover Cyprus's Best Gyms Across All Cities
 
 Looking for options beyond Paralimni? **[View the absolute top-rated gyms across all of Cyprus here](/guides/6-best-gyms-cyprus)** — our flagship City Champions guide showcases the #1 elite gym in each major region, strategically selected for geographic diversity and verified results.

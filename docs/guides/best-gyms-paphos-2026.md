@@ -1,5 +1,5 @@
 ---
-title: "Best Gyms in Paphos 2026 | Top-Rated Fitness Centers & Pricing"
+title: "Best Gyms in Paphos 2026 | Top-Rated Fitness Centers"
 description: "Discover the best gyms in Paphos. Kings BJJ, Poseidonio Health Spa & more. Compare facilities, pricing, reviews. Find your perfect gym near you."
 ---
 
@@ -47,8 +47,6 @@ When you search for **best gyms in Paphos** or **fitness centers in Paphos**, yo
 The difference between average results and exceptional transformation isn't luck—it's environment. Paphos's top gyms provide that environment. World-class equipment, professional programming, and communities of people who are committed to actual progress.
 
 Your transformation is waiting. The question is: which gym will be your launching pad?
-
----
 
 ---
 

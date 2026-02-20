@@ -23,7 +23,7 @@ The undisputed champion in Larnaca—and Cyprus's highest-ranked facility by rev
 ## 2. **[Legacy - Chris Antoniou Training](/gyms/legacy-chris-antoniou-training)** ⭐ 5.0 (86 reviews)
 Premium personalized coaching from a legendary trainer. Legacy represents the pinnacle of one-on-one coaching excellence in Larnaca. If you're serious about specific goals—strength, body composition, athletic performance—Chris Antoniou's expertise is second to none.
 
-## 3. **[RACK GYM Larnaca](/gyms/rack-gym-ltd)** ⭐ 5.0 (72 reviews)
+## 3. **[RACK GYM Larnaca](/gyms/rack-gym-larnaca)** ⭐ 5.0 (72 reviews)
 Built by strength athletes, for strength athletes. RACK GYM specializes in serious strength training with equipment and programming that respects the iron discipline. A facility where powerlifters and strength enthusiasts know they're home.
 
 ## 4. **[Cyprus Top Team CTT Larnaca](/gyms/cyprus-top-team-cttmma-kickboxing-muaythaibjj-fitness-gym)** ⭐ 5.0 (58 reviews)
@@ -47,8 +47,6 @@ If you're researching the **best gyms in Larnaca**, these five represent the tie
 The combination of Larnaca's lifestyle and these world-class training facilities creates the perfect environment for achieving your goals. You don't get this combination everywhere.
 
 Find your gym. Start your transformation. The Mediterranean isn't going anywhere—but your goals need you *right now*.
-
----
 
 ---
 

@@ -4,8 +4,8 @@ import React, { useState, useMemo } from 'react';
 import { Star } from 'lucide-react';
 import { Gym, GymSortOption } from '@/lib/types';
 import { GymCard } from '@/components/gym/GymCard';
-import { FilterSort } from '@/components/shared/FilterSort';
-import { sortGyms } from '@/lib/utils/search';
+import { FilterSort, type SortOrFilterValue } from '@/components/shared/FilterSort';
+import { sortGyms, has24_7Access } from '@/lib/utils/search';
 
 type FilterType = 'specialty' | 'city';
 
@@ -60,6 +60,7 @@ export const GymListPageClient: React.FC<GymListPageClientProps> = ({
 }) => {
   const [sortBy, setSortBy] = useState<GymSortOption>('featured');
   const [featuredOnly, setFeaturedOnly] = useState(false);
+  const [only24_7, setOnly24_7] = useState(false);
   const [filterValue, setFilterValue] = useState('');
 
   // Filter and sort gyms
@@ -82,13 +83,38 @@ export const GymListPageClient: React.FC<GymListPageClientProps> = ({
       filtered = filtered.filter(gym => gym.featured);
     }
 
+    // Filter by 24/7 access
+    if (only24_7) {
+      filtered = filtered.filter(gym => has24_7Access(gym));
+    }
+
     // Sort
     return sortGyms(filtered, sortBy);
-  }, [initialGyms, filterValue, featuredOnly, sortBy, filterType]);
+  }, [initialGyms, filterValue, featuredOnly, only24_7, sortBy, filterType]);
 
   const featuredGyms = filteredGyms.filter(gym => gym.featured);
 
   const finalAllGymsTitle = allGymsTitle || `All Gyms in ${entityName}`;
+
+  // Single value for the left dropdown: sort mode or filter mode
+  const sortOrFilterValue: SortOrFilterValue =
+    featuredOnly ? 'filter-featured' : only24_7 ? 'filter-24' : sortBy;
+
+  const handleSortOrFilterChange = (value: SortOrFilterValue) => {
+    if (value === 'filter-featured') {
+      setFeaturedOnly(true);
+      setOnly24_7(false);
+      return;
+    }
+    if (value === 'filter-24') {
+      setOnly24_7(true);
+      setFeaturedOnly(false);
+      return;
+    }
+    setSortBy(value);
+    setFeaturedOnly(false);
+    setOnly24_7(false);
+  };
 
   return (
     <>
@@ -133,11 +159,9 @@ export const GymListPageClient: React.FC<GymListPageClientProps> = ({
         </div>
 
         <FilterSort
-          sortBy={sortBy}
-          onSortChange={setSortBy}
-          showFeaturedFilter={true}
-          featuredOnly={featuredOnly}
-          onFeaturedFilterChange={setFeaturedOnly}
+          sortOrFilterValue={sortOrFilterValue}
+          onSortOrFilterChange={handleSortOrFilterChange}
+          showFilterOptionsInDropdown={true}
           {...(filterType === 'specialty' ? {
             specialtyFilter: filterValue,
             onSpecialtyFilterChange: setFilterValue,

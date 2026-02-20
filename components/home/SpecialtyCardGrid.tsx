@@ -39,7 +39,7 @@ export const SpecialtyCardGrid: React.FC<SpecialtyCardGridProps> = ({
             Fitness Specialties Available at Cyprus Gyms
           </h2>
           <p className="text-lg text-text-light max-w-3xl mx-auto">
-            Explore gyms by specialty. Find the perfect training style that matches your fitness goals, from high-intensity workouts to mindful practices.
+            Browse by training style—from CrossFit and strength to yoga and martial arts.
           </p>
         </div>
 
