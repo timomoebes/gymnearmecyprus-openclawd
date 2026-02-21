@@ -40,6 +40,8 @@ export function OwnerPhotoUpload({ gymId, maxImages: maxImagesProp, isFeatured =
     text: string;
   } | null>(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
+  const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
   const [loadingInitial, setLoadingInitial] = useState(true);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -223,6 +225,61 @@ export function OwnerPhotoUpload({ gymId, maxImages: maxImagesProp, isFeatured =
     }
   };
 
+  // Photo reordering (featured only)
+  const handlePhotoDragStart = (index: number) => {
+    if (!isFeatured) return;
+    setDraggedIndex(index);
+  };
+
+  const handlePhotoDragOver = (e: React.DragEvent, index: number) => {
+    if (!isFeatured) return;
+    e.preventDefault();
+    setDragOverIndex(index);
+  };
+
+  const handlePhotoDragEnd = () => {
+    setDraggedIndex(null);
+    setDragOverIndex(null);
+  };
+
+  const handlePhotoDrop = async (e: React.DragEvent, dropIndex: number) => {
+    e.preventDefault();
+    if (!isFeatured || draggedIndex === null || draggedIndex === dropIndex) {
+      setDraggedIndex(null);
+      setDragOverIndex(null);
+      return;
+    }
+
+    // Reorder images array
+    const newImages = [...images];
+    const [draggedImage] = newImages.splice(draggedIndex, 1);
+    newImages.splice(dropIndex, 0, draggedImage);
+
+    setImages(newImages);
+    setDraggedIndex(null);
+    setDragOverIndex(null);
+
+    // Save new order to database
+    try {
+      await saveFeaturedImagesToGymAction(gymId, newImages);
+      setStatusMessage({
+        type: 'success',
+        text: 'Photo order updated successfully.',
+      });
+      if (onSuccess) {
+        onSuccess(newImages);
+      }
+    } catch (err: any) {
+      setStatusMessage({
+        type: 'error',
+        text: `Failed to save order: ${err.message}`,
+      });
+      // Revert on error
+      const current = await getFeaturedImagesForGym(gymId);
+      setImages(Array.isArray(current) ? current : []);
+    }
+  };
+
   if (loadingInitial) {
     return (
       <div className="flex items-center justify-center py-12">
@@ -262,14 +319,40 @@ export function OwnerPhotoUpload({ gymId, maxImages: maxImagesProp, isFeatured =
       {/* Existing Images */}
       {images.length > 0 && (
         <div>
-          <h3 className="text-lg font-semibold text-text-white mb-4">
-            Your Photos ({images.length}/{maxImages})
-          </h3>
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold text-text-white">
+              Your Photos ({images.length}/{maxImages})
+              {isFeatured && images.length > 1 && (
+                <span className="ml-2 text-sm text-text-muted font-normal">
+                  (Drag to reorder)
+                </span>
+              )}
+            </h3>
+            {!isFeatured && images.length > 1 && (
+              <Link
+                href="/pricing"
+                className="text-sm text-primary-blue hover:text-primary-blue/80 transition-colors"
+              >
+                Upgrade to reorder photos →
+              </Link>
+            )}
+          </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
             {images.map((imageUrl, index) => (
               <div
                 key={imageUrl}
-                className="relative group aspect-square rounded-lg overflow-hidden bg-surface-lighter border border-surface-lighter hover:border-primary-blue transition-colors"
+                draggable={isFeatured}
+                onDragStart={() => handlePhotoDragStart(index)}
+                onDragOver={(e) => handlePhotoDragOver(e, index)}
+                onDragEnd={handlePhotoDragEnd}
+                onDrop={(e) => handlePhotoDrop(e, index)}
+                className={`relative group aspect-square rounded-lg overflow-hidden bg-surface-lighter border transition-all ${
+                  draggedIndex === index
+                    ? 'opacity-50 scale-95 border-primary-blue'
+                    : dragOverIndex === index && draggedIndex !== null
+                      ? 'border-primary-blue border-2 scale-105'
+                      : 'border-surface-lighter hover:border-primary-blue'
+                } ${isFeatured ? 'cursor-move' : ''}`}
               >
                 <img
                   src={imageUrl}

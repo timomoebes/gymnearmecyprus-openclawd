@@ -42,6 +42,7 @@ const pricingPlans = [
       'Featured badge',
       'Priority placement',
       'Up to 10 photos',
+      'Drag-and-drop photo ordering',
       'Enhanced description',
       'Analytics dashboard',
       'Email support',
