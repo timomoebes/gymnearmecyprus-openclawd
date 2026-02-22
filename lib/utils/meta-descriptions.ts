@@ -13,12 +13,12 @@ import { Gym, City, Specialty } from '@/lib/types';
 // Load custom descriptions from SEO content department
 // In production, this would be a static JSON import or DB fetch
 const CUSTOM_DESCRIPTIONS: Record<string, string> = {
-  "limassol": "Best gyms in Limassol 2026: Iron Fitness & elite facilities with expert coaching. Transform in Cyprus's fastest-growing gym scene. Compare verified reviews.",
-  "larnaca": "Best gyms in Larnaca: Samtsihara Fight System (439 reviews) leads elite facilities. World-class coaching & proven results. Start your transformation now.",
-  "nicosia": "Best gyms in Nicosia with expert coaching & verified reviews. Gabriel Fitness, Old Town Studio & more. Join Cyprus's fitness revolution with results.",
-  "paphos": "Best gyms in Paphos: Elite martial arts, boxing & strength training. Expert coaching, premium facilities, proven transformations. Start your fitness journey.",
-  "ayia-napa": "Best gyms in Ayia Napa: World Gym (1,266 reviews) & elite facilities with expert coaching. International community. Start your transformation today.",
-  "paralimni": "Best gyms in Paralimni: Bodyart Fitness Center (154 reviews) & elite facilities. Premium coaching, verified results. Find your transformation center."
+  "limassol": "Discover 52+ gyms in Limassol, Cyprus. Compare CrossFit boxes, bodybuilding gyms, yoga studios & 24/7 fitness centers. Find ratings, reviews & amenities.",
+  "larnaca": "Find 38+ top-rated gyms in Larnaca. Compare MMA academies, pilates studios, strength training & swimming facilities. Ratings, reviews & expert trainers.",
+  "nicosia": "Explore 68+ gyms in Nicosia, Cyprus's capital. Compare bodybuilding gyms, yoga studios, boxing clubs & fitness centers. Find your perfect workout space.",
+  "paphos": "Browse 34+ gyms in Paphos. Compare martial arts academies, boxing gyms, personal training studios & fitness centers. Ratings, amenities & expert coaching.",
+  "ayia-napa": "Discover 4+ top gyms in Ayia Napa. Compare fitness centers, international facilities & specialized training. Find ratings, reviews & 24/7 access options.",
+  "paralimni": "Find 6+ top gyms in Paralimni, Cyprus. Compare fitness centers, outdoor calisthenics parks & wellness facilities. Expert trainers, ratings & amenities."
 };
 
 /**
