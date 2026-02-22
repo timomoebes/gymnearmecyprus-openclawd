@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   title: 'Gym Near Me Cyprus | Gyms & Fitness Directory',
   description: 'Gym directory for Cyprus—find and compare gyms, fitness centers, and 24/7 gyms by city or specialty.',
   keywords: 'gyms cyprus, fitness centers cyprus, gym limassol, gym nicosia, gym paphos',
+  verification: {
+    google: 'oDKi7ktL5Vx8VI8PdNDjfXUu8K2q6rFs0QIE40J1-Zs',
+  },
 };
 
 export const viewport = { width: 'device-width', initialScale: 1 };
