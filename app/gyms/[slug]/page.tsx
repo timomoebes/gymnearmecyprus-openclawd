@@ -432,6 +432,18 @@ export default async function GymPage({ params }: GymPageProps) {
                   );
                 })}
               </div>
+              {gym.vibeTags && gym.vibeTags.length > 0 && (
+                <>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-text-white mt-8 mb-4">Vibe</h2>
+                  <div className="flex flex-wrap gap-2">
+                    {gym.vibeTags.map((tag) => (
+                      <Badge key={tag} variant="specialty" className="bg-primary-purple/20 text-primary-purple border border-primary-purple/40">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </>
+              )}
             </section>
 
             {/* Opening Hours - Always show, display "Contact for opening hour details" if all days are Closed */}

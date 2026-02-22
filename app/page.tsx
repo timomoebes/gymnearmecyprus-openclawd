@@ -2,17 +2,34 @@ import React from 'react';
 import type { Metadata } from 'next';
 import { cities, getAllGyms } from '@/lib/data';
 import { specialties } from '@/lib/data';
+import type { Gym } from '@/lib/types';
+import { filterGymsBySpecialty } from '@/lib/utils/specialty-matcher';
 import { HomeHero } from '@/components/home/HomeHero';
 import { HeroTrustBar } from '@/components/home/HeroTrustBar';
 import { CityCardGrid } from '@/components/home/CityCardGrid';
 import { SpecialtyCardGrid } from '@/components/home/SpecialtyCardGrid';
-import { Home24HourSection } from '@/components/home/Home24HourSection';
+import { HomePersonalTrainingSection } from '@/components/home/HomePersonalTrainingSection';
 import { HomeBenefitsSection } from '@/components/home/HomeBenefitsSection';
 import { HomeGuideSection } from '@/components/home/HomeGuideSection';
 import { HomeTrustSection } from '@/components/home/HomeTrustSection';
 import { FAQSection } from '@/components/home/FAQSection';
 import { FAQ_DATA } from '@/lib/data/faq';
 import { generateFAQPageSchema } from '@/lib/utils/schema';
+
+/** Pick up to 3 Personal Training gyms for the homepage: prefer Ufit (Nicosia), then one per other city. */
+function selectPersonalTrainingGymsForHome(ptGyms: Gym[]): Gym[] {
+  const ufit = ptGyms.find(g => /ufit|university of nicosia.*fitness/i.test(g.name));
+  const rest = ufit ? ptGyms.filter(g => g.id !== ufit.id) : ptGyms;
+  const result: Gym[] = ufit ? [ufit] : [];
+  const usedCities = new Set(result.map(g => g.cityId));
+  for (const gym of rest) {
+    if (result.length >= 3) break;
+    if (usedCities.has(gym.cityId)) continue;
+    usedCities.add(gym.cityId);
+    result.push(gym);
+  }
+  return result;
+}
 
 // Enable revalidation so homepage updates when gym counts change
 export const revalidate = 0; // 0 = always revalidate, or use a number for seconds
@@ -56,9 +73,8 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function HomePage() {
   const allGyms = await getAllGyms();
   const totalGyms = allGyms.length;
-  const twentyFourHourGyms = allGyms.filter(gym => 
-    gym.amenities.some(amenity => amenity.toLowerCase().includes('24') || amenity.toLowerCase().includes('24/7'))
-  );
+  const personalTrainingGyms = filterGymsBySpecialty(allGyms, 'personal-training');
+  const selectedPersonalTrainingGyms = selectPersonalTrainingGymsForHome(personalTrainingGyms);
 
   // Calculate weighted average rating across all reviews
   const { totalReviews, weightedRatingSum } = allGyms.reduce(
@@ -116,7 +132,7 @@ export default async function HomePage() {
         specialtyGymCounts={specialtyGymCounts}
       />
 
-      <Home24HourSection twentyFourHourGyms={twentyFourHourGyms} cities={cities} />
+      <HomePersonalTrainingSection personalTrainingGyms={selectedPersonalTrainingGyms} cities={cities} />
 
       <HomeBenefitsSection />
 

@@ -15,6 +15,26 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 
 ## Unreleased
 
+- **Date**: 2026-02-22  
+  **Area**: `lib/api/gyms`  
+  **Summary**: Fix gym counts by city: removed `gym_vibe_tags` join from all gym fetches so the app works when migration 015 has not been applied. All cities now show correct gym counts from the database; previously the Supabase query failed (missing relation), the API returned empty, and the app fell back to mock data (5 Limassol-only gyms), so only Limassol showed gyms and others showed 0.  
+  **Rationale**: Restore correct behavior when `vibe_tags`/`gym_vibe_tags` tables do not exist yet. Vibe tags will appear once migration 015 is applied and the join is re-added to the gym selects.  
+  **Files changed**:
+  - `lib/api/gyms.ts` (removed `gym_vibe_tags ( vibe_tag:vibe_tags (name) )` from all 7 gym select queries; transform still supports `vibeTags` when present)
+  **Manual test plan**: Open `/` → "Gyms in Cyprus by City" shows non-zero counts for all cities that have gyms in the DB (e.g. Nicosia, Paphos, Larnaca). Open `/cities/nicosia` → gym list and count match database. No fallback to mock data.
+
+- **Date**: 2026-02-20  
+  **Area**: `supabase/migrations`, `lib/types`, `lib/api/gyms`, `app/gyms/[slug]`, `components/gym`  
+  **Summary**: Vibe tags for gyms: editorial tags (e.g. Community vibe, Beginner-friendly, 24/7 grind) stored in `vibe_tags` and `gym_vibe_tags`; displayed on gym detail page (Vibe section) and on gym cards (up to 2 tags). Seed taxonomy of 8 tags; sample assignments for Raw Calisthenics Academy, Soul Vibe Space, Piero Judo Academy.  
+  **Rationale**: User requested Vibe tags feature; enables subjective/editorial tagging for discovery and filtering (filter by vibe can be added later).  
+  **Files changed**:
+  - `supabase/migrations/015_vibe_tags.sql` (new: vibe_tags table, gym_vibe_tags junction, RLS, seed tags + sample gym assignments)
+  - `lib/types/index.ts` (Gym.vibeTags optional)
+  - `lib/api/gyms.ts` (all gym fetches join gym_vibe_tags; transformRawGym/transformGymFromDB include vibeTags)
+  - `app/gyms/[slug]/page.tsx` (Vibe section with badges after Amenities)
+  - `components/gym/GymCard.tsx` (show up to 2 vibe tags on card)
+  **Manual test plan**: Run `supabase db push` (or apply migration 015) so `gym_vibe_tags` exists. Open `/gyms/raw-calisthenics-academy`, `/gyms/soul-vibe-space`, or `/gyms/piero-judo-academy` → Vibe section shows tags. Open `/cities/limassol` or `/gyms` → cards for those gyms show purple vibe badges. Other gyms show no vibe section/cards until assigned tags.
+
 - **Date**: 2026-02-20  
   **Area**: `components/shared`, `lib/utils`  
   **Summary**: Sort and filter unified in one dropdown: "Featured only" and "24/7 Access only" are now options in the left dropdown (with Featured First, Open now, Highest Rated, Most Reviews, Name A–Z). Separate "Featured Only" and "24/7 Access" buttons removed. Batch script now updates all gyms by default.  

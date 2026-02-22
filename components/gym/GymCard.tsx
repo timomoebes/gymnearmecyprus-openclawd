@@ -96,6 +96,11 @@ export const GymCard: React.FC<GymCardProps> = ({
         {gym.specialties.length > 3 && (
           <span className="text-text-muted text-xs">+{gym.specialties.length - 3} more</span>
         )}
+        {gym.vibeTags && gym.vibeTags.slice(0, 2).map((tag) => (
+          <Badge key={tag} variant="specialty" className="bg-primary-purple/20 text-primary-purple border border-primary-purple/40">
+            {tag}
+          </Badge>
+        ))}
       </div>
 
       <div className="flex items-center justify-between pt-4 border-t border-surface-lighter">

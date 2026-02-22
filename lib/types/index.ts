@@ -28,6 +28,7 @@ export interface Gym {
   };
   specialties: string[];
   amenities: string[];
+  vibeTags?: string[]; // Editorial vibe tags (e.g. "Community vibe", "Beginner-friendly")
   rating: number; // 0-5
   reviewCount: number;
   featured: boolean;

@@ -60,7 +60,7 @@ const mockGyms: Gym[] = [
     address: 'Eustathiou Paraskeva 18, Limassol, Cyprus',
     coordinates: [34.7071, 33.0226],
     phone: '+35799580158',
-    specialties: ['MMA'],
+    specialties: ['Martial Arts & MMA'],
     amenities: [],
     rating: 5.0,
     reviewCount: 122,

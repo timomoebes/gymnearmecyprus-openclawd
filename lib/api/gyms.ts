@@ -26,18 +26,21 @@ function normalizeFeaturedImages(raw: unknown): string[] {
 
 /**
  * Extract and transform gym data from raw database query result
- * Handles extraction of specialties and amenities from join tables
+ * Handles extraction of specialties, amenities, and vibe tags from join tables
  */
 function transformRawGym(gym: any, citySlugFallback?: string): Gym {
   const rawSpecialties = (gym.gym_specialties || []).map((gs: any) => gs.specialty?.name || '').filter(Boolean);
   const specialties = mapSpecialtyNames(rawSpecialties);
   const amenities = (gym.gym_amenities || []).map((ga: any) => ga.amenity?.name || '').filter(Boolean);
+  const vibeTags = (gym.gym_vibe_tags || [])
+    .map((gvt: any) => gvt.vibe_tag?.name || '')
+    .filter(Boolean);
   const citySlug = gym.city?.slug || citySlugFallback;
-  return transformGymFromDB(gym, specialties, amenities, citySlug);
+  return transformGymFromDB(gym, specialties, amenities, vibeTags, citySlug);
 }
 
 // Transform Supabase gym data to match our Gym interface
-function transformGymFromDB(dbGym: any, specialties: string[], amenities: string[], citySlug?: string): Gym {
+function transformGymFromDB(dbGym: any, specialties: string[], amenities: string[], vibeTags: string[], citySlug?: string): Gym {
   // Parse opening hours
   const openingHours = parseOpeningHours(dbGym.opening_hours);
 
@@ -74,6 +77,7 @@ function transformGymFromDB(dbGym: any, specialties: string[], amenities: string
     socialMedia,
     specialties,
     amenities,
+    vibeTags: vibeTags.length > 0 ? vibeTags : undefined,
     rating: dbGym.rating || 0,
     reviewCount: dbGym.review_count || 0,
     featured: dbGym.is_featured || false,
@@ -91,7 +95,7 @@ function transformGymFromDB(dbGym: any, specialties: string[], amenities: string
 // Fetch all gyms from Supabase
 export async function getAllGymsFromDB(): Promise<Gym[]> {
   try {
-    // Fetch gyms with their specialties, amenities, and city
+    // Fetch gyms with their specialties, amenities, and city (vibe_tags join omitted until migration 015 is applied to avoid breaking when table missing)
     const { data: gyms, error } = await supabase
       .from('gyms')
       .select(`
