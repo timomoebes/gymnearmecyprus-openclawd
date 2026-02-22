@@ -10,15 +10,15 @@
 
 import { Gym, City, Specialty } from '@/lib/types';
 
-// Load custom descriptions from SEO content department
-// In production, this would be a static JSON import or DB fetch
+// City meta description templates with {COUNT} placeholder for dynamic gym counts
+// The {COUNT} placeholder will be replaced with actual gym count at runtime
 const CUSTOM_DESCRIPTIONS: Record<string, string> = {
-  "limassol": "Discover 52+ gyms in Limassol, Cyprus. Compare CrossFit boxes, bodybuilding gyms, yoga studios & 24/7 fitness centers. Find ratings, reviews & amenities.",
-  "larnaca": "Find 38+ top-rated gyms in Larnaca. Compare MMA academies, pilates studios, strength training & swimming facilities. Ratings, reviews & expert trainers.",
-  "nicosia": "Explore 68+ gyms in Nicosia, Cyprus's capital. Compare bodybuilding gyms, yoga studios, boxing clubs & fitness centers. Find your perfect workout space.",
-  "paphos": "Browse 34+ gyms in Paphos. Compare martial arts academies, boxing gyms, personal training studios & fitness centers. Ratings, amenities & expert coaching.",
-  "ayia-napa": "Discover 4+ top gyms in Ayia Napa. Compare fitness centers, international facilities & specialized training. Find ratings, reviews & 24/7 access options.",
-  "paralimni": "Find 6+ top gyms in Paralimni, Cyprus. Compare fitness centers, outdoor calisthenics parks & wellness facilities. Expert trainers, ratings & amenities."
+  "limassol": "Discover {COUNT}+ gyms in Limassol, Cyprus. Compare CrossFit boxes, bodybuilding gyms, yoga studios & 24/7 fitness centers. Find ratings, reviews & amenities.",
+  "larnaca": "Find {COUNT}+ top-rated gyms in Larnaca. Compare MMA academies, pilates studios, strength training & swimming facilities. Ratings, reviews & expert trainers.",
+  "nicosia": "Explore {COUNT}+ gyms in Nicosia, Cyprus's capital. Compare bodybuilding gyms, yoga studios, boxing clubs & fitness centers. Find your perfect workout space.",
+  "paphos": "Browse {COUNT}+ gyms in Paphos. Compare martial arts academies, boxing gyms, personal training studios & fitness centers. Ratings, amenities & expert coaching.",
+  "ayia-napa": "Discover {COUNT}+ top gyms in Ayia Napa. Compare fitness centers, international facilities & specialized training. Find ratings, reviews & 24/7 access options.",
+  "paralimni": "Find {COUNT}+ top gyms in Paralimni, Cyprus. Compare fitness centers, outdoor calisthenics parks & wellness facilities. Expert trainers, ratings & amenities."
 };
 
 /**
@@ -244,9 +244,9 @@ export function generateCityMetaDescription(city: City, gymCount: number): strin
   const citySlug = city.slug.toLowerCase();
 
   // 1. Check for custom SEO department descriptions first
-  // Note: We use a placeholder [COUNT] to inject the real-time number
+  // Replace {COUNT} placeholder with actual gym count
   if (CUSTOM_DESCRIPTIONS[citySlug]) {
-    const dynamicDesc = CUSTOM_DESCRIPTIONS[citySlug].replace('198+', `${gymCount}+`);
+    const dynamicDesc = CUSTOM_DESCRIPTIONS[citySlug].replace('{COUNT}', gymCount.toString());
     return truncateToOptimalLength(dynamicDesc, MAX_LENGTH);
   }
 
