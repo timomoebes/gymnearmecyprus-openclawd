@@ -1,16 +1,33 @@
 import { Gym, City, Review } from '@/lib/types';
 
 export function generateLocalBusinessSchema(gym: Gym, cityName: string, reviews: Review[]) {
-  const averageRating = reviews.length > 0
-    ? reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length
-    : gym.rating;
+  // Helper: clean specialty names (remove "Training" suffix duplication)
+  const cleanSpecialtyName = (specialty: string) => {
+    return specialty.replace(/ Training$/, '').trim();
+  };
+
+  // Helper: parse opening hours (handles simple "HH:MM - HH:MM" format, skips complex multi-session)
+  const parseOpeningHours = (day: string, hours: string) => {
+    if (!hours || hours === 'Closed' || hours.includes('\n') || hours.includes(',')) return null;
+    const match = hours.match(/^(\d{2}:\d{2})\s*-\s*(\d{2}:\d{2})$/);
+    if (!match) return null;
+    return {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: day.charAt(0).toUpperCase() + day.slice(1),
+      opens: match[1],
+      closes: match[2],
+    };
+  };
 
   return {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': 'SportsActivityLocation', // More specific than LocalBusiness for gyms
     '@id': `https://gymnearme.cy/gyms/${gym.slug}`,
     name: gym.name,
-    image: gym.images.length > 0 ? gym.images.map(img => `https://gymnearme.cy${img}`) : [],
+    // Fallback to logo if no images available
+    image: gym.images.length > 0 
+      ? gym.images.map(img => `https://gymnearme.cy${img}`) 
+      : ['https://gymnearme.cy/logo.png'],
     description: gym.description,
     address: {
       '@type': 'PostalAddress',
@@ -23,48 +40,40 @@ export function generateLocalBusinessSchema(gym: Gym, cityName: string, reviews:
       latitude: gym.coordinates[0],
       longitude: gym.coordinates[1],
     },
+    // Add Google Maps link for better local SEO
+    hasMap: gym.coordinates[0] !== 0 && gym.coordinates[1] !== 0 
+      ? `https://www.google.com/maps?q=${gym.coordinates[0]},${gym.coordinates[1]}`
+      : undefined,
     url: `https://gymnearme.cy/gyms/${gym.slug}`,
-    telephone: gym.phone,
-    email: gym.email,
+    // Only include telephone/email if they exist (avoid null values)
+    ...(gym.phone ? { telephone: gym.phone } : {}),
+    ...(gym.email ? { email: gym.email } : {}),
     priceRange: '$$',
+    currenciesAccepted: 'EUR',
+    paymentAccepted: 'Cash, Credit Card',
+    // Filter complex multi-session hours (only include simple HH:MM - HH:MM format)
     openingHoursSpecification: Object.entries(gym.openingHours)
-      .filter(([_, hours]) => hours && hours !== 'Closed')
-      .map(([day, hours]) => {
-        const [open, close] = hours.split(' - ');
-        return {
-          '@type': 'OpeningHoursSpecification',
-          dayOfWeek: day.charAt(0).toUpperCase() + day.slice(1),
-          opens: open?.trim(),
-          closes: close?.trim(),
-        };
-      }),
-    aggregateRating: reviews.length > 0 ? {
-      '@type': 'AggregateRating',
-      ratingValue: averageRating.toFixed(1),
-      reviewCount: reviews.length,
-      bestRating: '5',
-      worstRating: '1',
-    } : undefined,
-    review: reviews.slice(0, 5).map(review => ({
-      '@type': 'Review',
-      author: {
-        '@type': 'Person',
-        name: review.reviewerName,
-      },
-      datePublished: review.date,
-      reviewBody: review.text,
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: review.rating,
+      .map(([day, hours]) => parseOpeningHours(day, hours))
+      .filter(Boolean),
+    // Use gym.rating and gym.reviewCount from Google Maps data (Apify scraper)
+    // Only show if rating exists and review count > 0
+    ...(gym.rating && gym.reviewCount > 0 ? {
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: gym.rating.toFixed(1),
+        reviewCount: gym.reviewCount,
         bestRating: '5',
         worstRating: '1',
       },
-    })),
+    } : {}),
+    // NOTE: Individual reviews removed until Google Places API integration
+    // Real reviews will be fetched via Google Places API and added here
+    // Clean specialty names (remove "Training" suffix duplication)
     makesOffer: gym.specialties.map(specialty => ({
       '@type': 'Offer',
       itemOffered: {
         '@type': 'Service',
-        name: `${specialty} Training`,
+        name: cleanSpecialtyName(specialty),
         category: 'Fitness Service',
       },
     })),
