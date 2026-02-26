@@ -16,6 +16,12 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-26  
+  **Area**: Deploy  
+  **Summary**: Trigger Vercel redeploy so live app (gymnearme.cy) serves latest pricing CTA styling; no functional change.  
+  **Rationale**: Pricing button updates were on main but not visible on production; new deploy ensures live gets the build.  
+  **Manual test plan**: After deploy completes, open https://gymnearme.cy/pricing and hard refresh (Ctrl+Shift+R); confirm buttons show elegant gradients (sky–indigo, emerald–amber, slate outline).
+
+- **Date**: 2026-02-26  
   **Area**: Pricing, shared Button, Tailwind theme  
   **Summary**: Pricing CTAs made more elegant and exclusive: refined shadows/glow, rounded-xl, hover scale, and a new elegant CTA color palette. Primary (Featured) uses soft sky→indigo; Secondary (Lifetime) uses deep emerald→amber; Outline (Free) uses muted slate.  
   **Rationale**: User requested more elegant button styling and colors on the pricing page.  

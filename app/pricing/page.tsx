@@ -4,6 +4,8 @@ import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { Button } from '@/components/shared/Button';
 import { Badge } from '@/components/shared/Badge';
 
+// Pricing page: CTA colors from tailwind cta palette (elegant sky–indigo, emerald–amber, slate outline)
+
 export const metadata = {
   title: 'Gym Listing Pricing | List Your Gym on Gym Near Me',
   description: 'Choose the perfect plan for your gym listing. Free basic listings or upgrade to featured for maximum visibility. Transparent pricing, no hidden fees.',
