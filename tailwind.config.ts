@@ -7,10 +7,12 @@ const config: Config = {
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './lib/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  // Ensure critical layout utilities are always generated
+  // Ensure critical layout utilities and CTA button colors are always generated (fixes production deploy)
   safelist: [
     'flex', 'hidden', 'md:flex', 'md:hidden', 'items-center', 'justify-between',
     'max-w-7xl', 'mx-auto', 'px-4', 'py-2', 'sticky', 'top-0', 'z-50',
+    'from-[#0EA5E9]', 'to-[#6366F1]', 'from-[#059669]', 'to-[#B45309]',
+    'border-[#64748B]', 'hover:bg-[#64748B]/20', 'hover:border-[#64748B]', 'focus:ring-[#64748B]', 'text-[#E0E0E0]',
   ],
   theme: {
     extend: {

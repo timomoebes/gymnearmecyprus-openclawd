@@ -16,6 +16,13 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-26  
+  **Area**: Button, Tailwind, Production  
+  **Summary**: CTA button colors now use explicit hex values and safelist so they always appear in production. Replaced theme tokens (cta-primary-start etc.) with from-[#0EA5E9], to-[#6366F1], etc., and safelisted these classes so Tailwind never purges them.  
+  **Rationale**: Live (gymnearme.cy) continued to show old button colors after deploy; production build may not include extended theme or may purge; explicit values and safelist guarantee correct output.  
+  **Files changed**: `components/shared/Button.tsx`, `tailwind.config.ts`  
+  **Manual test plan**: Deploy, then open https://www.gymnearme.cy/pricing in a new browser/incognito; confirm Featured = sky–indigo gradient, Lifetime = emerald–amber, Free = slate outline.
+
+- **Date**: 2026-02-26  
   **Area**: Deploy  
   **Summary**: Trigger Vercel redeploy so live app (gymnearme.cy) serves latest pricing CTA styling; no functional change.  
   **Rationale**: Pricing button updates were on main but not visible on production; new deploy ensures live gets the build.  
