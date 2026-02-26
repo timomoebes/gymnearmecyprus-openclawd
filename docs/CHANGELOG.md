@@ -16,6 +16,13 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-26  
+  **Area**: Open Gyms page, UI/design  
+  **Summary**: Open Gyms page (`/open-gyms`) aligned with site design: dark background (`bg-background-dark`), design tokens (text-text-white, surface-card, primary-blue, etc.), and same filter bar as cities/specialties. Added city and specialty filters via new `OpenGymsPageClient` (FilterSort with both dropdowns), sort options, and “Featured only” / “24/7 Access only”. Removed “Looking for something specific?” CTA box; FAQ and stats use surface-card and background-dark-gray.  
+  **Rationale**: Page had white background and no filters; user requested design consistency and filters like on specialties/cities pages.  
+  **Files changed**: `app/open-gyms/page.tsx` (redesign, client usage), `app/open-gyms/OpenGymsPageClient.tsx` (new: filters + sort + grid)  
+  **Manual test plan**: Open https://gymnearme.cy/open-gyms → dark theme, stats cards and FAQ match rest of site; city and specialty dropdowns filter the list; sort and “Featured only” / “24/7 Access only” work.
+
+- **Date**: 2026-02-26  
   **Area**: Button, Tailwind, Production  
   **Summary**: CTA button colors now use explicit hex values and safelist so they always appear in production. Replaced theme tokens (cta-primary-start etc.) with from-[#0EA5E9], to-[#6366F1], etc., and safelisted these classes so Tailwind never purges them.  
   **Rationale**: Live (gymnearme.cy) continued to show old button colors after deploy; production build may not include extended theme or may purge; explicit values and safelist guarantee correct output.  
