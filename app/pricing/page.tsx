@@ -114,10 +114,10 @@ export default function PricingPage() {
           </Badge>
         </div>
 
-        {/* Urgency Banner */}
-        <div className="bg-gradient-to-r from-primary-blue/20 to-primary-purple/20 border border-primary-blue/30 rounded-card p-4 mb-12 text-center">
-          <p className="text-text-white font-semibold">
-            ⚡ Limited Availability: Only 2 featured slots left in Limassol!
+        {/* Urgency Banner — elegant palette */}
+        <div className="bg-[#1e2836]/90 border border-[rgba(184,168,138,0.35)] rounded-card p-4 mb-12 text-center">
+          <p className="text-[#f5f0e8] font-semibold">
+            Limited Availability: Only 2 featured slots left in Limassol
           </p>
         </div>
 
@@ -130,7 +130,7 @@ export default function PricingPage() {
                 key={plan.id}
                 className={`bg-surface-card rounded-card p-8 relative ${
                   plan.popular
-                    ? 'ring-2 ring-primary-blue shadow-lg scale-105'
+                    ? 'ring-2 ring-[rgba(184,168,138,0.5)] shadow-lg scale-105'
                     : ''
                 }`}
               >

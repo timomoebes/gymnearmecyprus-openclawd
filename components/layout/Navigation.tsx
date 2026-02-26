@@ -79,7 +79,7 @@ export const Navigation: React.FC = () => {
   }, [isCitiesDropdownOpen]);
 
   return (
-    <nav className="bg-[#1a1a2e] sticky top-0 z-50 shadow-lg">
+    <nav className="bg-[#151b28] sticky top-0 z-50 shadow-lg border-b border-[rgba(184,168,138,0.2)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-40 py-2">
           {/* Logo */}
@@ -115,18 +115,18 @@ export const Navigation: React.FC = () => {
               
               {/* Dropdown Menu */}
               {isCitiesDropdownOpen && (
-                <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-2xl border border-gray-200 py-3 z-50 max-h-[500px] overflow-y-auto">
+                <div className="absolute top-full left-0 mt-2 w-80 bg-[#1e2836] rounded-xl shadow-2xl border border-[rgba(184,168,138,0.3)] py-3 z-50 max-h-[500px] overflow-y-auto">
                   {/* View All Cities Link */}
                   <Link
                     href="/cities"
-                    className="block px-4 py-2 text-sm text-blue-600 font-medium hover:bg-gray-50 transition-colors"
+                    className="block px-4 py-2 text-sm text-[#f5f0e8] font-medium hover:bg-white/10 transition-colors rounded mx-2"
                     onClick={() => setIsCitiesDropdownOpen(false)}
                   >
                     View All Cities →
                   </Link>
                   
                   {/* Divider */}
-                  <div className="border-t border-gray-200 my-2"></div>
+                  <div className="border-t border-[rgba(184,168,138,0.2)] my-2" />
                   
                   {/* Cities List - Two Columns */}
                   <div className="max-h-[400px] overflow-y-auto px-2">
@@ -135,7 +135,7 @@ export const Navigation: React.FC = () => {
                         <Link
                           key={city.id}
                           href={`/cities/${city.slug}`}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors rounded"
+                          className="block px-4 py-2 text-sm text-[#cbd5e1] hover:bg-white/10 hover:text-[#f5f0e8] transition-colors rounded"
                           onClick={() => setIsCitiesDropdownOpen(false)}
                         >
                           {city.name}
@@ -168,7 +168,7 @@ export const Navigation: React.FC = () => {
             
             {/* + Add Your Gym Button - Next to Contact */}
             <Link href="/add-gym">
-              <button className="px-5 py-2.5 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full text-sm hover:opacity-90 transition-opacity shadow-lg shadow-blue-500/50">
+              <button className="nav-cta-primary" type="button">
                 + Add Your Gym
               </button>
             </Link>
@@ -188,7 +188,7 @@ export const Navigation: React.FC = () => {
                 <button
                   type="button"
                   onClick={handleSignOut}
-                  className="flex items-center gap-1.5 px-4 py-2.5 text-gray-200 hover:text-white transition-colors text-sm font-medium rounded-full border border-gray-600 hover:border-gray-500"
+                  className="nav-cta-outline flex items-center gap-1.5"
                 >
                   <LogOut className="w-4 h-4" aria-hidden />
                   Sign out
@@ -203,7 +203,7 @@ export const Navigation: React.FC = () => {
                   Log In
                 </Link>
                 <Link href="/signup">
-                  <button className="px-5 py-2.5 bg-blue-500 text-white font-semibold rounded-full text-sm hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/50">
+                  <button className="nav-cta-primary" type="button">
                     Sign Up
                   </button>
                 </Link>
@@ -224,7 +224,7 @@ export const Navigation: React.FC = () => {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden border-t border-gray-700 bg-[#1a1a2e]">
+        <div className="md:hidden border-t border-[rgba(184,168,138,0.2)] bg-[#151b28]">
           <div className="px-4 pt-4 pb-6 space-y-3">
             <Link
               href="/"
@@ -301,7 +301,7 @@ export const Navigation: React.FC = () => {
                 className="block"
                 onClick={() => setIsOpen(false)}
               >
-                <button className="w-full px-5 py-2.5 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full text-sm shadow-lg shadow-blue-500/50">
+                <button className="nav-cta-primary w-full" type="button">
                   + Add Your Gym
                 </button>
               </Link>
@@ -316,7 +316,7 @@ export const Navigation: React.FC = () => {
                   </Link>
                   <button
                     type="button"
-                    className="w-full flex items-center justify-center gap-2 py-2.5 text-gray-200 hover:text-white transition-colors text-sm font-medium rounded-full border border-gray-600"
+                    className="nav-cta-outline w-full flex items-center justify-center gap-2"
                     onClick={() => {
                       handleSignOut();
                       setIsOpen(false);
@@ -339,7 +339,7 @@ export const Navigation: React.FC = () => {
                     className="block"
                     onClick={() => setIsOpen(false)}
                   >
-                    <button className="w-full px-5 py-2.5 bg-blue-500 text-white font-semibold rounded-full text-sm shadow-lg shadow-blue-500/50">
+                    <button className="nav-cta-primary w-full" type="button">
                       Sign Up
                     </button>
                   </Link>

@@ -16,6 +16,13 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 ## Unreleased
 
 - **Date**: 2026-02-26  
+  **Area**: UI/design — exclusive elegant palette (nav, footer, buttons, badges)  
+  **Summary**: Site-wide elegant styling: CTA buttons use deep navy + champagne border (primary), warm charcoal (secondary), minimal outline; styles injected in `app/layout.tsx` so they always load. Badge `featured` and new `elegant` variant use same palette. Nav bar: background `#151b28`, champagne bottom border, “+ Add Your Gym” and “Sign Up” use `.nav-cta-primary`, “Sign out” uses `.nav-cta-outline`; cities dropdown dark panel with champagne border. Footer: same navy background, champagne top/bottom borders, section headings with cream + champagne underline, links hover to cream. Pricing: urgency banner and “Most Popular” ring use champagne; badges use elegant style. Added `npm run clean-dev` script.  
+  **Rationale**: User requested consistent elegant/exclusive look beyond pricing buttons; extend to nav, footer, badges, and pricing touches.  
+  **Files changed**: `app/layout.tsx`, `app/globals.css`, `app/pricing/page.tsx`, `components/shared/Button.tsx`, `components/shared/Badge.tsx`, `components/layout/Navigation.tsx`, `components/layout/Footer.tsx`, `package.json`  
+  **Manual test plan**: Open any page → nav and footer use deep navy + champagne accents; /pricing shows elegant buttons and badges; nav “+ Add Your Gym” and “Sign Up” match CTA style; footer links hover to cream.
+
+- **Date**: 2026-02-26  
   **Area**: Open Gyms page, UI/design  
   **Summary**: Open Gyms page (`/open-gyms`) aligned with site design: dark background (`bg-background-dark`), design tokens (text-text-white, surface-card, primary-blue, etc.), and same filter bar as cities/specialties. Added city and specialty filters via new `OpenGymsPageClient` (FilterSort with both dropdowns), sort options, and “Featured only” / “24/7 Access only”. Removed “Looking for something specific?” CTA box; FAQ and stats use surface-card and background-dark-gray.  
   **Rationale**: Page had white background and no filters; user requested design consistency and filters like on specialties/cities pages.  

@@ -2,7 +2,7 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 
 interface BadgeProps {
-  variant?: 'featured' | 'default' | 'specialty' | 'rating';
+  variant?: 'featured' | 'elegant' | 'default' | 'specialty' | 'rating';
   children: React.ReactNode;
   className?: string;
 }
@@ -15,7 +15,8 @@ export const Badge: React.FC<BadgeProps> = ({
   const baseStyles = 'inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold';
   
   const variants = {
-    featured: 'bg-accent-gold text-background-dark',
+    featured: 'badge-elegant-featured',
+    elegant: 'badge-elegant',
     default: 'bg-surface-lighter text-text-white',
     specialty: 'bg-primary-purple text-white',
     rating: 'bg-secondary-green text-white',
