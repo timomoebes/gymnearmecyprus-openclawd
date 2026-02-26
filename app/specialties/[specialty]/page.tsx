@@ -68,8 +68,8 @@ export async function generateMetadata({ params }: SpecialtyPageProps): Promise<
 
   // Personal Training - Quick Win (210 vol, 13 diff)
   if (specialtySlug === 'personal-training') {
-    title = 'Find Personal Trainers in Cyprus | Best Personal Training Gyms | Expert Trainers';
-    keywords = 'personal trainer nicosia, personal training cyprus, personal trainers limassol, certified personal trainer, fitness trainer cyprus';
+    title = 'Personal Trainers Near Me in Cyprus | Find Certified Trainers';
+    keywords = 'personal trainer nicosia, personal training cyprus, personal trainers limassol, certified personal trainer, fitness trainer cyprus, personal trainer near me';
   }
   
   // Swimming & Aquatics - High Volume Quick Win (1,000 + 720 vol, 17 diff)
@@ -86,14 +86,14 @@ export async function generateMetadata({ params }: SpecialtyPageProps): Promise<
   
   // CrossFit - Quick Win (170 vol, 15 diff)
   if (specialtySlug === 'crossfit') {
-    title = 'Best CrossFit Gyms in Cyprus | Find CrossFit Near Me | CrossFit Nicosia';
+    title = 'CrossFit Nicosia & Cyprus | Find CrossFit Gyms Near Me';
     keywords = 'crossfit nicosia, crossfit cyprus, crossfit gyms, crossfit near me, crossfit boxes, functional fitness';
   }
   
   // Fitness/Gym
   if (specialtySlug === 'fitness-gym') {
-    title = 'Best Fitness Centers & Gyms in Cyprus | Find Gyms Near Me | Fitness Facilities';
-    keywords = 'gym near me, fitness center cyprus, gyms nicosia, fitness facilities, traditional gyms, workout facilities';
+    title = 'Fitness Centers Near Me in Cyprus | Compare Gyms & Open Gym Hours';
+    keywords = 'gym near me, gyms near me, fitness near me, open gyms today, open gyms near me, fitness center cyprus, gyms nicosia, fitness facilities';
   }
   
   // Martial Arts & MMA

@@ -20,8 +20,8 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: 'Gym Near Me Cyprus | Gyms & Fitness Directory',
-  description: 'Gym directory for Cyprus—find and compare gyms, fitness centers, and 24/7 gyms by city or specialty.',
-  keywords: 'gyms cyprus, fitness centers cyprus, gym limassol, gym nicosia, gym paphos',
+  description: 'Find gyms near me in Cyprus. Compare fitness centers, open gyms, and 24/7 gyms by city or specialty. Ratings, hours, amenities — free directory.',
+  keywords: 'gym near me, gyms near me, fitness near me, open gyms near me, gyms cyprus, fitness centers cyprus, gym limassol, gym nicosia, gym paphos',
   verification: {
     google: 'oDKi7ktL5Vx8VI8PdNDjfXUu8K2q6rFs0QIE40J1-Zs',
   },

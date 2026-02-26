@@ -38,21 +38,21 @@ export async function generateMetadata(): Promise<Metadata> {
   const allGyms = await getAllGyms();
   const totalGyms = allGyms.length;
   
-  const title = `Best Gyms in Cyprus — Compare ${totalGyms}+ Gyms by City & Style`;
-  const description = `Free gym directory for Cyprus. Compare gyms, fitness centers, and 24/7 gyms—ratings, hours & amenities by city or specialty.`;
+  const title = `Gyms Near Me in Cyprus | Compare ${totalGyms}+ Fitness Centers & Open Gyms`;
+  const description = `Find gyms near me in Cyprus. Compare ${totalGyms}+ gyms, fitness centers, and open gyms by city. Ratings, hours, amenities — 100% free directory.`;
 
   return {
     title,
     description,
-    keywords: 'gym cyprus, gym limassol, gym nicosia, gym larnaca, gym paphos, 24 hour gym cyprus',
+    keywords: 'gym near me, gyms near me, fitness near me, open gyms near me, open gyms today, gym cyprus, gym limassol, gym nicosia, gym larnaca, gym paphos, 24 hour gym cyprus',
     openGraph: {
       title,
       description,
-      url: 'https://gymnearme.cy',
+      url: 'https://www.gymnearme.cy',
       siteName: 'Gym Near Me Cyprus',
       images: [
         {
-          url: 'https://gymnearme.cy/logo.png',
+          url: 'https://www.gymnearme.cy/logo.png',
           width: 1200,
           height: 630,
           alt: 'Gym Near Me Cyprus - Find Gyms Near Me',
@@ -65,7 +65,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: 'summary_large_image',
       title,
       description,
-      images: ['https://gymnearme.cy/logo.png'],
+      images: ['https://www.gymnearme.cy/logo.png'],
     },
   };
 }

@@ -51,17 +51,17 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
   
   // Add specific keywords for high-volume cities
   if (isLimassol) {
-    title = `Best Gyms in Limassol | Find Gyms Near Me in Limassol, Cyprus | ${gymCount} Gyms`;
-    keywords += ', best gym limassol, gym limassol';
+    title = `Best Gym Limassol | ${gymCount}+ Gyms & Fitness Centers Near Me in Cyprus`;
+    keywords += ', best gym limassol, gym limassol, fitness near me';
   } else if (isNicosia) {
-    title = `Best Gyms in Nicosia | Find Gyms Near Me in Nicosia, Cyprus | ${gymCount} Gyms`;
-    keywords += ', best gyms in nicosia, gym nicosia, gym strovolos';
+    title = `Gym Nicosia | ${gymCount}+ Best Gyms & CrossFit Near Me in Nicosia, Cyprus`;
+    keywords += ', best gyms in nicosia, gym nicosia, gym strovolos, crossfit nicosia';
   } else if (isLarnaca) {
-    title = `Best Gyms in Larnaca | Find Gyms Near Me in Larnaca, Cyprus | ${gymCount} Gyms`;
-    keywords += ', gym larnaca';
+    title = `Gym Larnaca | ${gymCount}+ Best Gyms & Fitness Centers Near Me in Cyprus`;
+    keywords += ', gym larnaca, fitness near me';
   } else if (isPaphos) {
-    title = `Best Gyms in Paphos | Find Gyms Near Me in Paphos, Cyprus | ${gymCount} Gyms`;
-    keywords += ', gym paphos';
+    title = `Gym Paphos | ${gymCount}+ Best Gyms Near Me in Paphos, Cyprus`;
+    keywords += ', gym paphos, fitness near me';
   }
 
   // Generate optimized meta description using centralized utility

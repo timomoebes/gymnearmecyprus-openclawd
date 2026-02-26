@@ -13,12 +13,12 @@ import { Gym, City, Specialty } from '@/lib/types';
 // City meta description templates with {COUNT} placeholder for dynamic gym counts
 // The {COUNT} placeholder will be replaced with actual gym count at runtime
 const CUSTOM_DESCRIPTIONS: Record<string, string> = {
-  "limassol": "Discover {COUNT}+ gyms in Limassol, Cyprus. Compare CrossFit boxes, bodybuilding gyms, yoga studios & 24/7 fitness centers. Find ratings, reviews & amenities.",
-  "larnaca": "Find {COUNT}+ top-rated gyms in Larnaca. Compare MMA academies, pilates studios, strength training & swimming facilities. Ratings, reviews & expert trainers.",
-  "nicosia": "Explore {COUNT}+ gyms in Nicosia, Cyprus's capital. Compare bodybuilding gyms, yoga studios, boxing clubs & fitness centers. Find your perfect workout space.",
-  "paphos": "Browse {COUNT}+ gyms in Paphos. Compare martial arts academies, boxing gyms, personal training studios & fitness centers. Ratings, amenities & expert coaching.",
-  "ayia-napa": "Discover {COUNT}+ top gyms in Ayia Napa. Compare fitness centers, international facilities & specialized training. Find ratings, reviews & 24/7 access options.",
-  "paralimni": "Find {COUNT}+ top gyms in Paralimni, Cyprus. Compare fitness centers, outdoor calisthenics parks & wellness facilities. Expert trainers, ratings & amenities."
+  "limassol": "Find the best gym in Limassol, Cyprus. Compare {COUNT}+ gyms, CrossFit boxes, 24/7 fitness centers & yoga studios near me. Ratings, reviews & amenities.",
+  "larnaca": "Find {COUNT}+ gyms near me in Larnaca, Cyprus. Compare MMA academies, pilates studios, strength training & swimming facilities. Ratings & expert trainers.",
+  "nicosia": "Find {COUNT}+ gyms near me in Nicosia, Cyprus. Compare CrossFit boxes, bodybuilding gyms, yoga studios & fitness centers. Ratings, reviews & hours.",
+  "paphos": "Find the best gyms near me in Paphos, Cyprus. Compare {COUNT}+ fitness centers, CrossFit boxes & open gyms. Ratings, hours, amenities — all free.",
+  "ayia-napa": "Find {COUNT}+ gyms near me in Ayia Napa, Cyprus. Compare fitness centers, international facilities & specialized training. Ratings, reviews & 24/7 access.",
+  "paralimni": "Find {COUNT}+ gyms near me in Paralimni, Cyprus. Compare fitness centers, outdoor calisthenics parks & wellness facilities. Expert trainers & amenities."
 };
 
 /**
@@ -302,11 +302,11 @@ export function generateCityMetaDescription(city: City, gymCount: number): strin
  * All descriptions are 150-160 characters for optimal SEO
  */
 const SPECIALTY_DESCRIPTIONS: Record<string, string> = {
-  'personal-training': 'Find personal trainers in Cyprus. Discover certified trainers in Nicosia, Limassol, and across Cyprus. One-on-one training and customized workout plans.',
+  'personal-training': 'Find personal trainers near me in Cyprus. Certified trainers in Nicosia, Limassol, Paphos. One-on-one coaching, custom workout plans, reviews.',
   'swimming-aquatics': 'Find gyms with swimming pools in Cyprus. Discover pools in Nicosia, Limassol, and aquatic fitness facilities. Perfect for lap swimming and water workouts.',
   'yoga-pilates': 'Find yoga and pilates near me in Cyprus. Discover reformer pilates studios, yoga classes in Nicosia, and pilates instructors. Compare studios and book your class today.',
-  'crossfit': 'Find CrossFit gyms in Cyprus. Discover CrossFit boxes in Nicosia, Limassol, and across Cyprus. High-intensity functional training, expert coaches, and supportive communities.',
-  'fitness-gym': 'Find the best fitness centers and gyms in Cyprus. Discover traditional gyms and fitness facilities in Nicosia, Limassol, and across Cyprus with comprehensive equipment and training options.',
+  'crossfit': 'Find CrossFit gyms in Cyprus. Compare CrossFit boxes in Nicosia, Limassol, Paphos, and Larnaca. Expert coaches, WODs, and open gym schedules.',
+  'fitness-gym': 'Find fitness centers and gyms near me in Cyprus. Compare gyms by city, ratings, hours, and amenities. Open gyms today — 100% free directory.',
   'martial-arts-mma': 'Find martial arts and MMA gyms in Cyprus. Discover MMA, Brazilian Jiu-Jitsu, Muay Thai, wrestling, and other combat sports training facilities. Train like a fighter with expert coaches.',
   'boxing': 'Find boxing gyms in Cyprus. Discover professional boxing trainers, heavy bags, sparring rings, and boxing clubs. Perfect for fitness and competitive boxing training.',
   'strength-training': 'Find strength training gyms in Cyprus. Discover bodybuilding and powerlifting facilities with professional equipment, squat racks, and competition-grade training areas.',
