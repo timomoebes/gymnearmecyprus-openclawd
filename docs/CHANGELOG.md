@@ -15,25 +15,44 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 
 ## Unreleased
 
-- **Date**: 2026-02-22  
-  **Area**: `lib/api/gyms`  
-  **Summary**: Fix gym counts by city: removed `gym_vibe_tags` join from all gym fetches so the app works when migration 015 has not been applied. All cities now show correct gym counts from the database; previously the Supabase query failed (missing relation), the API returned empty, and the app fell back to mock data (5 Limassol-only gyms), so only Limassol showed gyms and others showed 0.  
-  **Rationale**: Restore correct behavior when `vibe_tags`/`gym_vibe_tags` tables do not exist yet. Vibe tags will appear once migration 015 is applied and the join is re-added to the gym selects.  
+- **Date**: 2026-02-26  
+  **Area**: Pricing, shared Button, Tailwind theme  
+  **Summary**: Pricing CTAs made more elegant and exclusive: refined shadows/glow, rounded-xl, hover scale, and a new elegant CTA color palette. Primary (Featured) uses soft sky→indigo; Secondary (Lifetime) uses deep emerald→amber; Outline (Free) uses muted slate.  
+  **Rationale**: User requested more elegant button styling and colors on the pricing page.  
   **Files changed**:
-  - `lib/api/gyms.ts` (removed `gym_vibe_tags ( vibe_tag:vibe_tags (name) )` from all 7 gym select queries; transform still supports `vibeTags` when present)
-  **Manual test plan**: Open `/` → "Gyms in Cyprus by City" shows non-zero counts for all cities that have gyms in the DB (e.g. Nicosia, Paphos, Larnaca). Open `/cities/nicosia` → gym list and count match database. No fallback to mock data.
+  - `tailwind.config.ts` (new `cta` palette: primary-start/end, secondary-start/end, outline)
+  - `components/shared/Button.tsx` (variants use cta colors and matching shadows; base: rounded-xl, tracking-wide, active scale)
+  - `app/pricing/page.tsx` (min-height on plan CTAs for consistent button height)
+  **Manual test plan**: Open `/pricing` → all four plan buttons show new gradients (sky–indigo for Featured, emerald–amber for Lifetime, slate outline for Free) with subtle glow; hover shows lift and stronger shadow; hard refresh if needed.
 
-- **Date**: 2026-02-20  
-  **Area**: `supabase/migrations`, `lib/types`, `lib/api/gyms`, `app/gyms/[slug]`, `components/gym`  
-  **Summary**: Vibe tags for gyms: editorial tags (e.g. Community vibe, Beginner-friendly, 24/7 grind) stored in `vibe_tags` and `gym_vibe_tags`; displayed on gym detail page (Vibe section) and on gym cards (up to 2 tags). Seed taxonomy of 8 tags; sample assignments for Raw Calisthenics Academy, Soul Vibe Space, Piero Judo Academy.  
-  **Rationale**: User requested Vibe tags feature; enables subjective/editorial tagging for discovery and filtering (filter by vibe can be added later).  
+- **Date**: 2026-02-22  
+  **Area**: Owner dashboard, admin, API, DB  
+  **Summary**: Badge Generator and engagement analytics: new **Promote** tab on owner dashboard with 4-step guide, badge generator (Minimal Link / Card / Button), gym-scoped engagement stats (this month, total, most effective style, 30-day trend chart). Backend: `badge_analytics` table, GET `/api/analytics/badge-click` (slug + style only; server derives gym/owner; ip_hash dedupe 60s). Admin page `/admin/badge-analytics` with gym ranking and style performance; CSV export (admin-only, cap 10k rows, UTF-8). No owner/internal IDs in public URLs; CTR out of MVP.  
+  **Rationale**: Let owners promote listings on GBP and social with trackable badges; give admins visibility into badge engagement.  
   **Files changed**:
-  - `supabase/migrations/015_vibe_tags.sql` (new: vibe_tags table, gym_vibe_tags junction, RLS, seed tags + sample gym assignments)
-  - `lib/types/index.ts` (Gym.vibeTags optional)
-  - `lib/api/gyms.ts` (all gym fetches join gym_vibe_tags; transformRawGym/transformGymFromDB include vibeTags)
-  - `app/gyms/[slug]/page.tsx` (Vibe section with badges after Amenities)
-  - `components/gym/GymCard.tsx` (show up to 2 vibe tags on card)
-  **Manual test plan**: Run `supabase db push` (or apply migration 015) so `gym_vibe_tags` exists. Open `/gyms/raw-calisthenics-academy`, `/gyms/soul-vibe-space`, or `/gyms/piero-judo-academy` → Vibe section shows tags. Open `/cities/limassol` or `/gyms` → cards for those gyms show purple vibe badges. Other gyms show no vibe section/cards until assigned tags.
+  - `lib/utils/badge-generator.ts` (new: getBadgeTrackingUrl, getBadgeHtml, styles/sizes/themes)
+  - `lib/types/index.ts` (BadgeMetrics, BadgeTrendPoint, BadgeStyleBreakdown; Gym.badgeMetrics, badgeGeneratedAt)
+  - `lib/actions/badge-analytics.ts` (new: getBadgeAnalyticsForOwner, getBadgeAnalyticsForAdmin)
+  - `components/gym/BadgeGuide.tsx`, `components/gym/BadgeGenerator.tsx`, `components/gym/BadgeTrendMiniChart.tsx` (new)
+  - `app/dashboard/page.tsx` (Promote tab, gym selector, BadgeGuide, BadgeGenerator, engagement stats)
+  - `supabase/migrations/016_badge_analytics.sql` (new: table, indexes, RLS)
+  - `app/api/analytics/badge-click/route.ts` (new: log + redirect)
+  - `app/admin/badge-analytics/page.tsx`, `app/admin/badge-analytics/BadgeAnalyticsTable.tsx` (new)
+  - `app/api/admin/badge-analytics/export/route.ts` (new: CSV export)
+  - `app/admin/page.tsx` (Quick Action link to Badge Analytics)
+  **Manual test plan**: (1) Run `supabase db push` or apply migration 016. (2) As owner: open Dashboard → Promote tab; select gym if multiple; expand guide steps; choose style/size/theme; Copy Direct Link; open link in new tab → redirects to gym page. (3) Promote tab shows This month, Total, Most effective style, 30-day chart (or empty state). (4) As admin: open Admin → Badge Analytics; see style cards and gym table; click Export CSV → download UTF-8 CSV with expected columns. (5) Non-admin cannot open `/admin/badge-analytics` or export.
+
+- **Date**: 2026-02-22  
+  **Area**: `lib/api/gyms`, `lib/types`, `app/gyms/[slug]`, `components/gym`, `supabase/migrations`  
+  **Summary**: Removed vibe tag feature entirely: no vibe_tags/gym_vibe_tags in API, no Gym.vibeTags in types, no Vibe section or vibe badges in UI; deleted migration 015_vibe_tags.sql.  
+  **Rationale**: User requested full removal of the vibe tag idea with nothing left in the codebase.  
+  **Files changed**:
+  - `lib/api/gyms.ts` (removed all vibe join/fallback/demo logic; transform no longer handles vibeTags)
+  - `lib/types/index.ts` (removed vibeTags from Gym)
+  - `app/gyms/[slug]/page.tsx` (removed Vibe section)
+  - `components/gym/GymCard.tsx` (removed vibe tag badges)
+  - `supabase/migrations/015_vibe_tags.sql` (deleted)
+  **Manual test plan**: Open any gym page and city list → no "Vibe" heading or purple vibe badges. Grep for vibe_tags/vibeTags → no matches in app/lib/components.
 
 - **Date**: 2026-02-20  
   **Area**: `components/shared`, `lib/utils`  

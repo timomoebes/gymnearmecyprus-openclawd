@@ -39,6 +39,14 @@ const config: Config = {
         accent: {
           gold: '#FFD700',
         },
+        // Elegant CTA palette (softer, more refined than primary/secondary)
+        cta: {
+          'primary-start': '#0EA5E9',   // soft sky
+          'primary-end': '#6366F1',     // soft indigo
+          'secondary-start': '#059669', // deep emerald
+          'secondary-end': '#B45309',   // warm amber
+          outline: '#64748B',           // slate (muted border)
+        },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

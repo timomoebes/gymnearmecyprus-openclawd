@@ -175,7 +175,7 @@ export default function PricingPage() {
                 <Button
                   variant={plan.ctaVariant}
                   size="lg"
-                  className="w-full"
+                  className="w-full min-h-[3.25rem]"
                   asChild
                 >
                   <a href="/add-gym">{plan.cta}</a>
