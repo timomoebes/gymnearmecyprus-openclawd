@@ -30,6 +30,13 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
   **Manual test plan**: Open https://gymnearme.cy/open-gyms → dark theme, stats cards and FAQ match rest of site; city and specialty dropdowns filter the list; sort and “Featured only” / “24/7 Access only” work.
 
 - **Date**: 2026-02-26  
+  **Area**: Open Gyms page, 24/7 stats & filters  
+  **Summary**: Fixed /open-gyms 24/7 logic so the “24/7 Open Now” stat uses the same `has24_7Access` helper as the “24/7 Access only” filter. `has24_7Access` now treats a gym as 24/7 if either amenities include a 24/7 marker or any opening-hours string mentions “24/7”/“24 hours”, and the stat counts only among gyms currently open.  
+  **Rationale**: Previously “24/7 Gyms Available” showed 0 while the 24/7 filter still listed gyms; logic was split between opening-hours checks and amenities.  
+  **Files changed**: `app/open-gyms/page.tsx`, `lib/utils/search.ts`  
+  **Manual test plan**: Open https://gymnearme.cy/open-gyms → note “Gyms Open Now” and “24/7 Open Now” stats; select “24/7 Access only” in the filter. The 24/7 stat should be > 0 and match the number of visible gyms.
+
+- **Date**: 2026-02-26  
   **Area**: Button, Tailwind, Production  
   **Summary**: CTA button colors now use explicit hex values and safelist so they always appear in production. Replaced theme tokens (cta-primary-start etc.) with from-[#0EA5E9], to-[#6366F1], etc., and safelisted these classes so Tailwind never purges them.  
   **Rationale**: Live (gymnearme.cy) continued to show old button colors after deploy; production build may not include extended theme or may purge; explicit values and safelist guarantee correct output.  

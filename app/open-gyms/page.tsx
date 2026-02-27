@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Clock } from 'lucide-react';
 import { getAllGyms } from '@/lib/data';
 import { isGymOpenNow } from '@/lib/utils/opening-hours';
+import { has24_7Access } from '@/lib/utils/search';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { OpenGymsPageClient } from './OpenGymsPageClient';
 import { generateBreadcrumbSchema, generateCollectionPageSchema } from '@/lib/utils/schema';
@@ -69,7 +70,7 @@ export default async function OpenGymsPage() {
   const openGymsCount = sortedOpenGyms.length;
   const currentHour = new Date().getHours();
   const timeOfDay = currentHour < 12 ? 'morning' : currentHour < 18 ? 'afternoon' : 'evening';
-  const count24_7 = allGyms.filter(g => g.openingHours.monday?.toLowerCase().includes('24/7')).length;
+  const count24_7 = openGyms.filter(g => has24_7Access(g)).length;
 
   const breadcrumbs = [
     { label: 'Home', href: '/' },
@@ -121,7 +122,7 @@ export default async function OpenGymsPage() {
               </div>
               <div className="bg-surface-card rounded-card p-5 border border-surface-lighter">
                 <div className="text-3xl font-bold text-accent-gold">{count24_7}</div>
-                <p className="text-text-muted text-sm mt-1">24/7 Gyms Available</p>
+                <p className="text-text-muted text-sm mt-1">24/7 Open Now</p>
               </div>
             </div>
 

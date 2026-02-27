@@ -2,12 +2,19 @@ import { Gym } from '@/lib/types';
 import { getAllGyms } from '@/lib/data';
 import { isGymOpenNow } from '@/lib/utils/opening-hours';
 
-/** True if gym has 24/7 access (amenity indicates 24-hour, e.g. "24/7 Access", "24-hour"). */
+/** True if gym has 24/7 access (amenity or opening hours indicate 24-hour). */
 export function has24_7Access(gym: Gym): boolean {
-  return gym.amenities.some(amenity => {
+  const fromAmenity = gym.amenities.some(amenity => {
     const a = amenity.toLowerCase();
     return a.includes('24') || a.includes('24/7');
   });
+  if (fromAmenity) return true;
+  const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'] as const;
+  const fromHours = days.some(day => {
+    const h = (gym.openingHours[day] ?? '').toLowerCase();
+    return h.includes('24/7') || h.includes('24 hours');
+  });
+  return fromHours;
 }
 
 export interface SearchFilters {
