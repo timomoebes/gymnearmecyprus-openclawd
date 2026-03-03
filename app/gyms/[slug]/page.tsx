@@ -40,56 +40,57 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: GymPageProps): Promise<Metadata> {
-  const gym = await getGymBySlug(params.slug);
-  
-  if (!gym) {
+  try {
+    const slug = params?.slug;
+    if (!slug) return { title: 'Gym | Gym Near Me Cyprus' };
+
+    const gym = await getGymBySlug(slug);
+    if (!gym) return { title: 'Gym Not Found' };
+
+    const city = getCityById(gym.cityId);
+    const firstImage =
+      gym.featuredImages?.[0] ?? (gym.images?.length ? gym.images[0] : null);
+    const ogImage = firstImage
+      ? (firstImage.startsWith('http') ? firstImage : `https://gymnearme.cy${firstImage}`)
+      : 'https://gymnearme.cy/logo.png';
+
+    const cityName = city?.name || 'Cyprus';
+    const seoTitle = shouldAppendCityName(gym.name, cityName)
+      ? `${gym.name} ${cityName}`
+      : gym.name;
+
+    const metaDescription = generateGymMetaDescription(gym, city ?? null);
+
     return {
-      title: 'Gym Not Found',
+      title: seoTitle,
+      description: metaDescription,
+      keywords: `${gym.name}, ${cityName} gym, ${(gym.specialties || []).join(', ')}, fitness center ${cityName}`,
+      openGraph: {
+        title: seoTitle,
+        description: metaDescription,
+        url: `https://gymnearme.cy/gyms/${gym.slug}`,
+        siteName: 'Gym Near Me Cyprus',
+        images: [
+          {
+            url: ogImage,
+            width: 1200,
+            height: 630,
+            alt: gym.name,
+          },
+        ],
+        locale: 'en_US',
+        type: 'website',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: seoTitle,
+        description: metaDescription,
+        images: [ogImage],
+      },
     };
+  } catch (_) {
+    return { title: 'Gym | Gym Near Me Cyprus', description: 'Find gyms in Cyprus.' };
   }
-
-  const city = getCityById(gym.cityId);
-  const firstImage =
-    gym.featuredImages?.[0] ?? (gym.images?.length ? gym.images[0] : null);
-  const ogImage = firstImage
-    ? (firstImage.startsWith('http') ? firstImage : `https://gymnearme.cy${firstImage}`)
-    : 'https://gymnearme.cy/logo.png';
-
-  const cityName = city?.name || 'Cyprus';
-  const seoTitle = shouldAppendCityName(gym.name, cityName) 
-    ? `${gym.name} ${cityName}` 
-    : gym.name;
-
-  // Generate optimized meta description using centralized utility
-  const metaDescription = generateGymMetaDescription(gym, city ?? null);
-
-  return {
-    title: seoTitle,
-    description: metaDescription,
-    keywords: `${gym.name}, ${cityName} gym, ${gym.specialties.join(', ')}, fitness center ${cityName}`,
-    openGraph: {
-      title: seoTitle,
-      description: metaDescription,
-      url: `https://gymnearme.cy/gyms/${gym.slug}`,
-      siteName: 'Gym Near Me Cyprus',
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: gym.name,
-        },
-      ],
-      locale: 'en_US',
-      type: 'website',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: seoTitle,
-      description: metaDescription,
-      images: [ogImage],
-    },
-  };
 }
 
 export default async function GymPage({ params }: GymPageProps) {
@@ -214,22 +215,31 @@ export default async function GymPage({ params }: GymPageProps) {
   }
 
   const city = getCityById(gym.cityId);
-  const currentUserId = await getCurrentUserId();
+  let currentUserId: string | null = null;
+  try {
+    currentUserId = await getCurrentUserId();
+  } catch {
+    // Auth/cookies unavailable (e.g. crawler); render page without owner UI
+  }
   const reviews = getTopReviews(gym.id, 5);
   const allReviews = getReviewsByGymId(gym.id);
 
-  // Get related gyms by specialty and city
+  // Get related gyms by specialty and city (defensive: avoid 5xx if DB is slow/unavailable)
   const primarySpecialty = getPrimarySpecialty(gym.specialties);
-  const specialtySlug = getSpecialtySlug(primarySpecialty);
-  const relatedGyms = (await getGymsBySpecialtyAndCity(specialtySlug, gym.cityId))
-    .filter(g => g.id !== gym.id)
-    .slice(0, 3);
-  
-  // Fallback to city gyms if no specialty matches found
-  const cityGyms = relatedGyms.length > 0 
-    ? relatedGyms 
-    : (await getGymsByCity(gym.cityId)).filter(g => g.id !== gym.id).slice(0, 3);
-  
+  let relatedGyms: Awaited<ReturnType<typeof getGymsBySpecialtyAndCity>> = [];
+  let cityGyms: Awaited<ReturnType<typeof getGymsByCity>> = [];
+  try {
+    const specialtySlug = getSpecialtySlug(primarySpecialty);
+    relatedGyms = (await getGymsBySpecialtyAndCity(specialtySlug, gym.cityId))
+      .filter(g => g.id !== gym.id)
+      .slice(0, 3);
+    cityGyms = relatedGyms.length > 0
+      ? relatedGyms
+      : (await getGymsByCity(gym.cityId)).filter(g => g.id !== gym.id).slice(0, 3);
+  } catch {
+    // Leave relatedGyms and cityGyms empty so page still renders
+  }
+
   // Format the heading
   const relatedGymsHeading = relatedGyms.length > 0
     ? formatSpecialtyHeading(primarySpecialty, city?.name || 'Cyprus')

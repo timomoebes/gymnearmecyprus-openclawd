@@ -141,12 +141,18 @@ const getAllGymsMock = (): Gym[] => {
 // Unified data access functions (Supabase first, fallback to mock)
 export async function getGymBySlug(slug: string): Promise<Gym | undefined> {
   try {
+    if (!slug || typeof slug !== 'string') return undefined;
     const gym = await getGymBySlugFromDB(slug);
     if (gym) return gym;
+    return getGymBySlugMock(slug);
   } catch (error) {
     console.warn('Supabase fetch failed for getGymBySlug, using mock data:', error);
+    try {
+      return getGymBySlugMock(slug);
+    } catch {
+      return undefined;
+    }
   }
-  return getGymBySlugMock(slug);
 }
 
 export async function getGymById(id: string): Promise<Gym | undefined> {

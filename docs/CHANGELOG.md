@@ -15,6 +15,13 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
 
 ## Unreleased
 
+- **Date**: 2026-03-03  
+  **Area**: Gym detail page, indexing (GSC 5xx fix)  
+  **Summary**: Hardened gym detail page and data layer so Googlebot and other crawlers no longer receive Server error (5xx) when fetching `/gyms/[slug]`. generateMetadata is wrapped in try/catch with safe fallbacks; getCurrentUserId() and related-gyms fetches are wrapped in try/catch so auth/DB hiccups do not crash the request; getGymBySlug never throws (double catch and invalid-slug guard). Added `app/gyms/[slug]/error.tsx` so any remaining uncaught errors show a friendly “Something went wrong” UI instead of a raw 5xx.  
+  **Rationale**: GSC reported “Page is not indexed: Server error (5xx)” for several gym URLs; fetch failed when Googlebot requested the page. Defensive handling ensures the page returns 200 (or 404 via notFound) instead of 5xx when Supabase or auth is slow/unavailable.  
+  **Files changed**: `app/gyms/[slug]/page.tsx`, `app/gyms/[slug]/error.tsx` (new), `lib/data/gyms.ts`  
+  **Manual test plan**: Deploy to Vercel, then in GSC use URL Inspection → “Test live URL” on an affected URL (e.g. `/gyms/ara-gym-xl-limassol`). Confirm “URL is available to Google” and Page fetch: Successful. Use “Request indexing” for a few URLs; re-check “Page indexing” report after 1–2 days.
+
 - **Date**: 2026-02-26  
   **Area**: UI/design — exclusive elegant palette (nav, footer, buttons, badges)  
   **Summary**: Site-wide elegant styling: CTA buttons use deep navy + champagne border (primary), warm charcoal (secondary), minimal outline; styles injected in `app/layout.tsx` so they always load. Badge `featured` and new `elegant` variant use same palette. Nav bar: background `#151b28`, champagne bottom border, “+ Add Your Gym” and “Sign Up” use `.nav-cta-primary`, “Sign out” uses `.nav-cta-outline`; cities dropdown dark panel with champagne border. Footer: same navy background, champagne top/bottom borders, section headings with cream + champagne underline, links hover to cream. Pricing: urgency banner and “Most Popular” ring use champagne; badges use elegant style. Added `npm run clean-dev` script.  
