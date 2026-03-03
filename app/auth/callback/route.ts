@@ -3,6 +3,8 @@ import { NextResponse, type NextRequest } from 'next/server';
 import type { EmailOtpType } from '@supabase/supabase-js';
 import { isAdminEmail } from '@/lib/supabase/server';
 
+export const dynamic = 'force-dynamic';
+
 /**
  * Supabase auth callback: exchange code/token_hash for session and redirect.
  * Used after OAuth, magic link sign-in, or email confirmation.

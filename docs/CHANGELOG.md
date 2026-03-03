@@ -29,6 +29,13 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
   **Files changed**: `app/layout.tsx`, `components/analytics/GoogleAnalyticsClient.tsx`  
   **Manual test plan**: Set `NEXT_PUBLIC_GA_MEASUREMENT_ID` in `.env.local`, restart dev server, open the app on localhost, and check DevTools Network tab for `gtag/js?id=...` and `collect?...tid=...` requests. In GA4, open DebugView and confirm `page_view` events appear when loading the homepage and navigating between pages.
 
+- **Date**: 2026-03-03  
+  **Area**: Auth callback, login, layout  
+  **Summary**: Fixed Vercel build/export errors by marking `/auth/callback` as dynamic and wrapping client components that use `useSearchParams()` in Suspense. Layout now renders the GA4 client tracker inside a Suspense boundary, and the login page lazily loads `LoginForm` behind a small loading fallback.  
+  **Rationale**: Next.js 14 requires dynamic routing or Suspense when using `useSearchParams()` and app-route handlers must be explicitly marked dynamic when they depend on request URL search params. These adjustments restore successful static generation and deployment.  
+  **Files changed**: `app/auth/callback/route.ts`, `app/layout.tsx`, `app/login/page.tsx`  
+  **Manual test plan**: Run `npm run build` locally or trigger a Vercel deploy; confirm the build completes without `useSearchParams()` or DYNAMIC_SERVER_USAGE errors. Hit `/auth/callback` via a Supabase email link to verify login flow works as before, and open `/login` to check the form still behaves correctly. 
+
 - **Date**: 2026-02-26  
   **Area**: Open Gyms page, UI/design  
   **Summary**: Open Gyms page (`/open-gyms`) aligned with site design: dark background (`bg-background-dark`), design tokens (text-text-white, surface-card, primary-blue, etc.), and same filter bar as cities/specialties. Added city and specialty filters via new `OpenGymsPageClient` (FilterSort with both dropdowns), sort options, and “Featured only” / “24/7 Access only”. Removed “Looking for something specific?” CTA box; FAQ and stats use surface-card and background-dark-gray.  

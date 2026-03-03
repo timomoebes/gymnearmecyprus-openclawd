@@ -1,3 +1,4 @@
+import React, { Suspense } from 'react';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Inter, Poppins } from 'next/font/google';
@@ -95,7 +96,9 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <GoogleAnalyticsClient />
+        <Suspense fallback={null}>
+          <GoogleAnalyticsClient />
+        </Suspense>
       </body>
     </html>
   );

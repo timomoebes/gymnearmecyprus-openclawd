@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { LoginForm } from './LoginForm';
 
@@ -23,7 +23,9 @@ export default function LoginPage({ searchParams }: LoginPageProps) {
               : 'Sign in to claim your gym, manage your listing, or access your dashboard.'}
           </p>
 
-          <LoginForm />
+          <Suspense fallback={<div className="text-text-muted">Loading…</div>}>
+            <LoginForm />
+          </Suspense>
         </div>
       </div>
     </div>
