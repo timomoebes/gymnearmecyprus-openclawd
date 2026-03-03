@@ -22,6 +22,13 @@ This changelog captures **human-readable, repo-wide changes** that affect how th
   **Files changed**: `app/layout.tsx`, `app/globals.css`, `app/pricing/page.tsx`, `components/shared/Button.tsx`, `components/shared/Badge.tsx`, `components/layout/Navigation.tsx`, `components/layout/Footer.tsx`, `package.json`  
   **Manual test plan**: Open any page → nav and footer use deep navy + champagne accents; /pricing shows elegant buttons and badges; nav “+ Add Your Gym” and “Sign Up” match CTA style; footer links hover to cream.
 
+- **Date**: 2026-03-03  
+  **Area**: Analytics, layout  
+  **Summary**: Integrated Google Analytics 4 using a measurement ID env var and App Router-aware pageview tracking. Root layout now injects the GA4 gtag snippet when `NEXT_PUBLIC_GA_MEASUREMENT_ID` is set, and a small client component sends `page_view` events on route changes so single-page navigation is tracked correctly.  
+  **Rationale**: Enable data-driven decisions on how users navigate the directory before going fully live, while keeping the integration optional and environment-configurable.  
+  **Files changed**: `app/layout.tsx`, `components/analytics/GoogleAnalyticsClient.tsx`  
+  **Manual test plan**: Set `NEXT_PUBLIC_GA_MEASUREMENT_ID` in `.env.local`, restart dev server, open the app on localhost, and check DevTools Network tab for `gtag/js?id=...` and `collect?...tid=...` requests. In GA4, open DebugView and confirm `page_view` events appear when loading the homepage and navigating between pages.
+
 - **Date**: 2026-02-26  
   **Area**: Open Gyms page, UI/design  
   **Summary**: Open Gyms page (`/open-gyms`) aligned with site design: dark background (`bg-background-dark`), design tokens (text-text-white, surface-card, primary-blue, etc.), and same filter bar as cities/specialties. Added city and specialty filters via new `OpenGymsPageClient` (FilterSort with both dropdowns), sort options, and “Featured only” / “24/7 Access only”. Removed “Looking for something specific?” CTA box; FAQ and stats use surface-card and background-dark-gray.  

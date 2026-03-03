@@ -28,7 +28,6 @@ export interface Gym {
   };
   specialties: string[];
   amenities: string[];
-  vibeTags?: string[]; // Editorial vibe tags (e.g. "Community vibe", "Beginner-friendly")
   rating: number; // 0-5
   reviewCount: number;
   featured: boolean;
@@ -48,6 +47,29 @@ export interface Gym {
   ownerId?: string;
   createdAt: string;
   updatedAt: string;
+  badgeMetrics?: BadgeMetrics;
+  badgeGeneratedAt?: string;
+}
+
+export interface BadgeMetrics {
+  totalClicks: number;
+  monthlyClicks: number;
+  clicksBySource?: { directLink: number; htmlEmbed: number; socialShare: number; gbpProfile: number };
+  lastClickDate?: string;
+  ctr?: number;
+  styleBreakdown?: BadgeStyleBreakdown[];
+  trendPoints?: BadgeTrendPoint[];
+}
+
+export interface BadgeTrendPoint {
+  date: string; // YYYY-MM-DD
+  clicks: number;
+}
+
+export interface BadgeStyleBreakdown {
+  style: string;
+  clicks: number;
+  percentage: number;
 }
 
 export interface Review {

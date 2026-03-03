@@ -26,21 +26,18 @@ function normalizeFeaturedImages(raw: unknown): string[] {
 
 /**
  * Extract and transform gym data from raw database query result
- * Handles extraction of specialties, amenities, and vibe tags from join tables
+ * Handles extraction of specialties and amenities from join tables
  */
 function transformRawGym(gym: any, citySlugFallback?: string): Gym {
   const rawSpecialties = (gym.gym_specialties || []).map((gs: any) => gs.specialty?.name || '').filter(Boolean);
   const specialties = mapSpecialtyNames(rawSpecialties);
   const amenities = (gym.gym_amenities || []).map((ga: any) => ga.amenity?.name || '').filter(Boolean);
-  const vibeTags = (gym.gym_vibe_tags || [])
-    .map((gvt: any) => gvt.vibe_tag?.name || '')
-    .filter(Boolean);
   const citySlug = gym.city?.slug || citySlugFallback;
-  return transformGymFromDB(gym, specialties, amenities, vibeTags, citySlug);
+  return transformGymFromDB(gym, specialties, amenities, citySlug);
 }
 
 // Transform Supabase gym data to match our Gym interface
-function transformGymFromDB(dbGym: any, specialties: string[], amenities: string[], vibeTags: string[], citySlug?: string): Gym {
+function transformGymFromDB(dbGym: any, specialties: string[], amenities: string[], citySlug?: string): Gym {
   // Parse opening hours
   const openingHours = parseOpeningHours(dbGym.opening_hours);
 
@@ -77,7 +74,6 @@ function transformGymFromDB(dbGym: any, specialties: string[], amenities: string
     socialMedia,
     specialties,
     amenities,
-    vibeTags: vibeTags.length > 0 ? vibeTags : undefined,
     rating: dbGym.rating || 0,
     reviewCount: dbGym.review_count || 0,
     featured: dbGym.is_featured || false,
@@ -95,7 +91,6 @@ function transformGymFromDB(dbGym: any, specialties: string[], amenities: string
 // Fetch all gyms from Supabase
 export async function getAllGymsFromDB(): Promise<Gym[]> {
   try {
-    // Fetch gyms with their specialties, amenities, and city (vibe_tags join omitted until migration 015 is applied to avoid breaking when table missing)
     const { data: gyms, error } = await supabase
       .from('gyms')
       .select(`
@@ -117,7 +112,6 @@ export async function getAllGymsFromDB(): Promise<Gym[]> {
 
     if (!gyms) return [];
 
-    // Transform each gym
     return gyms.map((gym: any) => transformRawGym(gym));
   } catch (error) {
     console.error('Error in getAllGymsFromDB:', error);
@@ -137,7 +131,6 @@ export async function getGymsByCityFromDB(cityId: string): Promise<Gym[]> {
 
     if (!city) return [];
 
-    // Fetch gyms for this city
     const { data: gyms, error } = await supabase
       .from('gyms')
       .select(`
@@ -160,7 +153,6 @@ export async function getGymsByCityFromDB(cityId: string): Promise<Gym[]> {
 
     if (!gyms) return [];
 
-    // Transform each gym
     return gyms.map((gym: any) => transformRawGym(gym, cityId));
   } catch (error) {
     console.error('Error in getGymsByCityFromDB:', error);
@@ -219,9 +211,7 @@ export async function getFeaturedGymsFromDB(): Promise<Gym[]> {
       console.error('Error fetching featured gyms:', error);
       return [];
     }
-
     if (!gyms) return [];
-
     return gyms.map((gym: any) => transformRawGym(gym));
   } catch (error) {
     console.error('Error in getFeaturedGymsFromDB:', error);
@@ -241,7 +231,6 @@ export async function getGymsBySpecialtyFromDB(specialtySlug: string): Promise<G
 
     if (!specialty) return [];
 
-    // Fetch gyms with this specialty
     const { data: gymSpecialties, error } = await supabase
       .from('gym_specialties')
       .select(`
@@ -265,7 +254,6 @@ export async function getGymsBySpecialtyFromDB(specialtySlug: string): Promise<G
 
     if (!gymSpecialties) return [];
 
-    // Transform each gym
     return gymSpecialties
       .map((gs: any) => gs.gym)
       .filter(Boolean)
@@ -297,7 +285,6 @@ export async function getGymsBySpecialtyAndCityFromDB(specialtySlug: string, cit
 
     if (!city) return [];
 
-    // Fetch gyms with this specialty in this city
     const { data: gymSpecialties, error } = await supabase
       .from('gym_specialties')
       .select(`
@@ -322,7 +309,6 @@ export async function getGymsBySpecialtyAndCityFromDB(specialtySlug: string, cit
 
     if (!gymSpecialties) return [];
 
-    // Transform each gym
     return gymSpecialties
       .map((gs: any) => gs.gym)
       .filter(Boolean)
@@ -355,9 +341,7 @@ export async function getMyGymsFromDB(userId: string): Promise<Gym[]> {
       console.error('Error fetching my gyms:', error);
       return [];
     }
-
     if (!gyms) return [];
-
     return gyms.map((gym: any) => transformRawGym(gym));
   } catch (error) {
     console.error('Error in getMyGymsFromDB:', error);

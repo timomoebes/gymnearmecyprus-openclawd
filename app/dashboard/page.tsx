@@ -13,16 +13,22 @@ import {
   Image as ImageIcon,
   Crown,
   Zap,
-  Building2
+  Building2,
+  Megaphone
 } from 'lucide-react';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { Button } from '@/components/shared/Button';
 import { Badge } from '@/components/shared/Badge';
 import { Rating } from '@/components/shared/Rating';
 import { GymCard } from '@/components/gym/GymCard';
+import { BadgeGuide } from '@/components/gym/BadgeGuide';
+import { BadgeGenerator } from '@/components/gym/BadgeGenerator';
+import { BadgeTrendMiniChart } from '@/components/gym/BadgeTrendMiniChart';
 import { getMyGymsAction } from '@/lib/actions/dashboard';
+import { getBadgeAnalyticsForOwner } from '@/lib/actions/badge-analytics';
 import { OwnerPhotoUpload } from '@/components/owner/OwnerPhotoUpload';
 import type { Gym } from '@/lib/types';
+import type { BadgeMetrics } from '@/lib/types';
 
 const placeholderStats = {
   views: 0,
@@ -34,16 +40,33 @@ const placeholderStats = {
 };
 
 export default function DashboardPage() {
-  const [activeTab, setActiveTab] = useState<'overview' | 'listing' | 'photos' | 'analytics'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'listing' | 'photos' | 'promote' | 'analytics'>('overview');
   const [myGyms, setMyGyms] = useState<Gym[]>([]);
   const [loading, setLoading] = useState(true);
+  const [promoteGymId, setPromoteGymId] = useState<string | null>(null);
+  const [badgeMetrics, setBadgeMetrics] = useState<BadgeMetrics | null>(null);
+  const [badgeMetricsLoading, setBadgeMetricsLoading] = useState(false);
 
   useEffect(() => {
     getMyGymsAction().then(({ gyms }) => {
       setMyGyms(gyms);
+      if (gyms.length && !promoteGymId) setPromoteGymId(gyms[0].id);
       setLoading(false);
     });
   }, []);
+
+  useEffect(() => {
+    if (activeTab !== 'promote' || !promoteGymId) {
+      setBadgeMetrics(null);
+      return;
+    }
+    setBadgeMetricsLoading(true);
+    getBadgeAnalyticsForOwner(promoteGymId).then((res) => {
+      setBadgeMetricsLoading(false);
+      if (res.ok) setBadgeMetrics(res.metrics);
+      else setBadgeMetrics(null);
+    });
+  }, [activeTab, promoteGymId]);
 
   const mockStats = placeholderStats;
   const mockGym = myGyms[0];
@@ -126,6 +149,7 @@ export default function DashboardPage() {
             { id: 'overview', label: 'Overview', icon: BarChart3 },
             { id: 'listing', label: 'My Listing', icon: Edit },
             { id: 'photos', label: 'Photos', icon: ImageIcon },
+            { id: 'promote', label: 'Promote', icon: Megaphone },
             { id: 'analytics', label: 'Analytics', icon: TrendingUp },
           ].map((tab) => {
             const Icon = tab.icon;
@@ -280,6 +304,80 @@ export default function DashboardPage() {
               </div>
             ) : (
               <p className="text-text-muted">Claim a gym first to edit your listing.</p>
+            )}
+          </div>
+        )}
+
+        {/* Promote Tab */}
+        {activeTab === 'promote' && (
+          <div className="space-y-8">
+            <h2 className="text-2xl font-bold text-text-white">Promote Your Listing</h2>
+            {myGyms.length === 0 ? (
+              <div className="bg-surface-card rounded-card p-8 text-center text-text-muted">
+                <p>Claim a gym to generate badges and track engagement.</p>
+                <Link href="/gyms" className="text-primary-blue hover:underline mt-2 inline-block">Browse gyms</Link>
+              </div>
+            ) : (
+              <>
+                {myGyms.length > 1 && (
+                  <div>
+                    <label htmlFor="promote-gym-select" className="block text-text-white font-semibold mb-2">Select gym</label>
+                    <select
+                      id="promote-gym-select"
+                      value={promoteGymId ?? ''}
+                      onChange={(e) => setPromoteGymId(e.target.value || null)}
+                      className="px-4 py-2 rounded-lg bg-surface-lighter border border-surface-lighter text-text-white focus:ring-2 focus:ring-primary-blue"
+                    >
+                      {myGyms.map((g) => (
+                        <option key={g.id} value={g.id}>{g.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+                <BadgeGuide />
+                {(() => {
+                  const gym = myGyms.find((g) => g.id === promoteGymId) ?? myGyms[0];
+                  return gym ? (
+                    <BadgeGenerator slug={gym.slug} gymName={gym.name} rating={gym.rating} />
+                  ) : null;
+                })()}
+                <div className="rounded-card border border-surface-lighter bg-surface-card p-6">
+                  <h3 className="text-lg font-bold text-text-white mb-4">Engagement stats</h3>
+                  {badgeMetricsLoading ? (
+                    <div className="text-text-muted animate-pulse">Loading…</div>
+                  ) : badgeMetrics ? (
+                    <div className="space-y-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div className="bg-surface-lighter/50 rounded-lg p-4">
+                          <div className="text-2xl font-bold text-text-white">{badgeMetrics.monthlyClicks}</div>
+                          <div className="text-text-muted text-sm">This month</div>
+                        </div>
+                        <div className="bg-surface-lighter/50 rounded-lg p-4">
+                          <div className="text-2xl font-bold text-text-white">{badgeMetrics.totalClicks}</div>
+                          <div className="text-text-muted text-sm">Total clicks</div>
+                        </div>
+                        <div className="bg-surface-lighter/50 rounded-lg p-4">
+                          <div className="text-lg font-bold text-text-white capitalize">
+                            {badgeMetrics.styleBreakdown?.length
+                              ? (() => {
+                                  const best = badgeMetrics.styleBreakdown!.reduce((a, s) => (s.clicks > a.clicks ? s : a), badgeMetrics.styleBreakdown![0]);
+                                  return best.clicks > 0 ? `${best.style} — ${best.percentage.toFixed(0)}%` : '—';
+                                })()
+                              : '—'}
+                          </div>
+                          <div className="text-text-muted text-sm">Most effective style</div>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-text-muted text-sm mb-2">Last 30 days</div>
+                        <BadgeTrendMiniChart points={badgeMetrics.trendPoints ?? []} />
+                      </div>
+                    </div>
+                  ) : (
+                    <p className="text-text-muted">Share your badge to see clicks here.</p>
+                  )}
+                </div>
+              </>
             )}
           </div>
         )}

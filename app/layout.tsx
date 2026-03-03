@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { Inter, Poppins } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { generateOrganizationSchema, generateWebSiteSchema } from '@/lib/utils/schema';
+import { GoogleAnalyticsClient } from '@/components/analytics/GoogleAnalyticsClient';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -40,6 +42,26 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`} suppressHydrationWarning>
       <body className="bg-background-dark text-text-white antialiased">
+        {/* Google Analytics 4 (only if measurement ID is configured) */}
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script
+              id="ga4-init"
+              strategy="afterInteractive"
+            >{`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}', {
+                send_page_view: true
+              });
+            `}</Script>
+          </>
+        )}
         {/* Critical fallback + CTA buttons — exclusive palette (inline so they always load) */}
         <style dangerouslySetInnerHTML={{ __html: `
           body{background-color:#0A0E27;color:#fff;}
@@ -73,6 +95,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <GoogleAnalyticsClient />
       </body>
     </html>
   );

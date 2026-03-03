@@ -232,17 +232,20 @@ export default async function AdminDashboardPage() {
               </div>
             </div>
 
-            <div className="bg-surface-card rounded-card p-6 border border-surface-lighter opacity-60">
-              <div className="flex items-center gap-4">
-                <div className="p-3 bg-surface-lighter rounded-lg">
-                  <TrendingUp className="w-6 h-6 text-text-muted" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-text-white mb-1">Analytics</h3>
-                  <p className="text-sm text-text-muted">Coming soon</p>
+            <Link href="/admin/badge-analytics">
+              <div className="bg-gradient-to-br from-primary-blue/10 to-primary-purple/10 rounded-card p-6 border border-primary-blue/30 hover:border-primary-blue/50 transition-all group">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 bg-primary-blue/20 rounded-lg group-hover:scale-110 transition-transform">
+                    <TrendingUp className="w-6 h-6 text-primary-blue" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-text-white mb-1">Badge Analytics</h3>
+                    <p className="text-sm text-text-muted">Gym ranking and badge style performance</p>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-text-muted group-hover:text-primary-blue group-hover:translate-x-1 transition-all" />
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
 
