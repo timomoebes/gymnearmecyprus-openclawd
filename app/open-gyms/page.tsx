@@ -111,7 +111,7 @@ export default async function OpenGymsPage() {
             </div>
 
             {/* Stats bar */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
               <div className="bg-surface-card rounded-card p-5 border border-surface-lighter">
                 <div className="text-3xl font-bold text-primary-blue">{openGymsCount}</div>
                 <p className="text-text-muted text-sm mt-1">Gyms Open Now</p>
@@ -119,10 +119,6 @@ export default async function OpenGymsPage() {
               <div className="bg-surface-card rounded-card p-5 border border-surface-lighter">
                 <div className="text-3xl font-bold text-text-white">{allGyms.length}</div>
                 <p className="text-text-muted text-sm mt-1">Total Gyms in Cyprus</p>
-              </div>
-              <div className="bg-surface-card rounded-card p-5 border border-surface-lighter">
-                <div className="text-3xl font-bold text-accent-gold">{count24_7}</div>
-                <p className="text-text-muted text-sm mt-1">24/7 Open Now</p>
               </div>
             </div>
 
