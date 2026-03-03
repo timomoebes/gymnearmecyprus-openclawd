@@ -9,6 +9,10 @@ export const metadata = {
 };
 
 export default function ImprintPage() {
+  const showPublicAddress = Boolean(
+    process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK || process.env.STRIPE_SECRET_KEY
+  );
+
   return (
     <div className="min-h-screen bg-background-dark">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -34,11 +38,17 @@ export default function ImprintPage() {
             <p className="mt-3">
               <strong>Address:</strong>
               <br />
-              Evagorou 21
-              <br />
-              Emba, Cyprus
-              <br />
-              8250
+              {showPublicAddress ? (
+                <>
+                  Evagorou 21
+                  <br />
+                  Emba, Cyprus
+                  <br />
+                  8250
+                </>
+              ) : (
+                <>Address withheld until payment integration is live.</>
+              )}
             </p>
             <p className="mt-3">
               <strong>Contact:</strong>
@@ -70,11 +80,17 @@ export default function ImprintPage() {
             <p className="mt-3">
               <strong>Timo Möbes</strong>
               <br />
-              Evagorou 21
-              <br />
-              Emba, Cyprus
-              <br />
-              8250
+              {showPublicAddress ? (
+                <>
+                  Evagorou 21
+                  <br />
+                  Emba, Cyprus
+                  <br />
+                  8250
+                </>
+              ) : (
+                <>Address withheld until payment integration is live.</>
+              )}
             </p>
           </section>
 
